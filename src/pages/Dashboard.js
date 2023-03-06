@@ -149,7 +149,7 @@ function Dashboard() {
 
   return (
 
-    <>
+    <div className="client-dashboard">
 
       <Grid container style={{ padding: '1%', background: 'ghostwhite' }}>
 
@@ -239,10 +239,6 @@ function Dashboard() {
 
           <div style={{ fontSize: '19px', display: 'inline-flex' }}>
 
-            {/* <Radio id="a" checked={duration === 'daily'} onChange={handleChange} value="daily" name="duration" /> Daily
-            <Radio id="b" checked={duration === 'weekly'} onChange={handleChange} value="weekly" name="duration" /> Weekly
-            <Radio id="c" checked={duration === 'monthly'} onChange={handleChange} value="monthly" name="duration" /> Monthly */}
-
             <RadioGroup style={{ display: 'inline-block' }} onChange={(e) => { setduration(e.target.value) }}>
               <Radio checked={duration === 'daily'} value="daily" name="duration" /> Day
               <Radio checked={duration === 'weekly'} value="weekly" name="duration" /> Week
@@ -322,7 +318,7 @@ function Dashboard() {
 
       {/* <DashEmail/> */}
 
-    </>
+    </div>
   )
 
 }

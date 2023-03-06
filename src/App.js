@@ -67,8 +67,6 @@ function App() {
 
   return (
 
-    <>
-
       <BrowserRouter>
         
         <Grid container>
@@ -152,8 +150,6 @@ function App() {
         </Grid>
 
       </BrowserRouter>
-
-    </>
   );
 
 }

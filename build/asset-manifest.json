@@ -1,0 +1,19 @@
+{
+  "files": {
+    "main.css": "/shopexClient/static/css/main.2b0dc136.css",
+    "main.js": "/shopexClient/static/js/main.ffdcdba6.js",
+    "static/js/498.f5ddcf3a.chunk.js": "/shopexClient/static/js/498.f5ddcf3a.chunk.js",
+    "static/js/703.d779ab6b.chunk.js": "/shopexClient/static/js/703.d779ab6b.chunk.js",
+    "static/js/513.a6ab0d4e.chunk.js": "/shopexClient/static/js/513.a6ab0d4e.chunk.js",
+    "index.html": "/shopexClient/index.html",
+    "main.2b0dc136.css.map": "/shopexClient/static/css/main.2b0dc136.css.map",
+    "main.ffdcdba6.js.map": "/shopexClient/static/js/main.ffdcdba6.js.map",
+    "498.f5ddcf3a.chunk.js.map": "/shopexClient/static/js/498.f5ddcf3a.chunk.js.map",
+    "703.d779ab6b.chunk.js.map": "/shopexClient/static/js/703.d779ab6b.chunk.js.map",
+    "513.a6ab0d4e.chunk.js.map": "/shopexClient/static/js/513.a6ab0d4e.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.2b0dc136.css",
+    "static/js/main.ffdcdba6.js"
+  ]
+}
