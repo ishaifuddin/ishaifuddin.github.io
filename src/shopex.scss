@@ -195,8 +195,14 @@ aside {
             
             .Component-paginationToolbar-2 {
                 min-height: unset !important;
-                height: 30px !important;
+                // height: 30px !important;
                 overflow: hidden;
+                padding-top: .5rem;
+                .MTablePaginationInner-root-14 button {
+                    padding: 0;
+                    color: #67748e;
+                    opacity: .25;
+                }
             }
         }
         .css-1laqsz7-MuiInputAdornment-root {

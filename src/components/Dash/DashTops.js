@@ -371,7 +371,7 @@ const revprof_state = {
           <Radio checked={duration === 'monthly'}value="monthly" name="duration" /> Month
         </RadioGroup>
 
-        <Button variant="contained" color="secondary" style={{fontSize: '12px', marginLeft: '1rem', padding: '3px 15px'}} onClick={dateSubmit}> Submit </Button>
+        <Button variant="contained" color="secondary" style={{background: 'rgb(251, 122, 64)', fontSize: '12px', marginLeft: '1rem', padding: '3px 15px'}} onClick={dateSubmit}> Submit </Button>
       </div>
       </Grid>
 

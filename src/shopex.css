@@ -187,8 +187,13 @@ aside .css-cveggr-MuiListItemIcon-root {
 }
 .dashboard .dash-card table .Component-paginationToolbar-2 {
   min-height: unset !important;
-  height: 30px !important;
   overflow: hidden;
+  padding-top: 0.5rem;
+}
+.dashboard .dash-card table .Component-paginationToolbar-2 .MTablePaginationInner-root-14 button {
+  padding: 0;
+  color: #67748e;
+  opacity: 0.25;
 }
 .dashboard .dash-card .css-1laqsz7-MuiInputAdornment-root {
   max-height: 0;
