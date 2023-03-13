@@ -69,15 +69,15 @@ function App() {
 
       <BrowserRouter>
         
-        <Grid container>
+        <div className='wrapper'>
 
           {status==='success' && 
-            <Grid item sm={2}>
+            <aside>
               <SideNav/>
-            </Grid>
+            </aside>
           }
 
-          <Grid item sm={10}>
+          <main className='dashboard'>
 
             <Routes>
 
@@ -145,9 +145,9 @@ function App() {
 
             </Routes>
           
-          </Grid>
+          </main>
 
-        </Grid>
+        </div>
 
       </BrowserRouter>
   );

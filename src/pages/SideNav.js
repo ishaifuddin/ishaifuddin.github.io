@@ -132,276 +132,267 @@ function SideNav() {
 
             </Grid> */}
 
-      <div style={{"position":"fixed","background":"ghostwhite",height:'100vh'}}>
         
-        <List sx={{ width: "100%",  bgcolor: "background.paper",height:'100vh',background:"ghostwhite",maxWidth:'250px',boxShadow: "rgb(65 69 88 / 10%) 0px 7px 14px 0px, rgb(0 0 0 / 7%) 0px 3px 6px 0px" }} component="nav" aria-labelledby="nested-list-subheader"
-
-          subheader={<ListSubheader component="div" id="nested-list-subheader"> S h o p e x </ListSubheader>}>
-
-          <ListItemButton style={{padding:'6px 10px 6px 20px'}}>
-            <ListItemIcon style={{minWidth:'40px'}}>
-              <AnalyticsIcon style={{color:'teal'}}/>
+        <List className="nav-list" component="nav" aria-labelledby="nested-list-subheader" subheader={<img className="logo" src='/images/shopex.png'/>}>
+            <hr/>
+          <ListItemButton>
+            <ListItemIcon>
+              <AnalyticsIcon style={{color:'#7366E3'}}/>
             </ListItemIcon>
             <ListItemText>
-              <Link style={{ "fontFamily": "system-ui", "fontSize": "16px", "textDecoration": "none", "color": "black" }} to="/Dashboard">Dashboard</Link>
+              <Link to="/Dashboard">Dashboard</Link>
             </ListItemText>
           </ListItemButton>
 
-
-          <ListItemButton onClick={handleClick1} style={{padding:'6px 10px 6px 20px'}}>
-            <ListItemIcon style={{minWidth:'40px'}}>
-              <PeopleIcon style={{color:'teal'}}/>
+          <ListItemButton onClick={handleClick1}>
+            <ListItemIcon>
+              <PeopleIcon style={{color:'#F44D48'}}/>
             </ListItemIcon>
             <ListItemText primary="Customers" />
-
             {open1 ? <ExpandLess /> : <ExpandMore />}
           </ListItemButton>
 
           <Collapse in={open1} timeout="auto" unmountOnExit>
-            <ListItemButton style={{"padding":"4px 0px 4px 20px"}} sx={{ pl: 4 }}>
-              <ListItemIcon style={{minWidth:'40px'}}>
+            <ListItemButton  sx={{ pl: 4 }}>
+              <ListItemIcon>
                 <NavigateNextOutlinedIcon />
               </ListItemIcon>
-              <ListItemText>  <Link style={{ "fontFamily": "system-ui", "fontSize": "14px", "textDecoration": "none", "color": "slategrey" }} to="/Customers/reports">Reports</Link>  </ListItemText>
+              <ListItemText>  <Link to="/Customers/reports">Reports</Link>  </ListItemText>
             </ListItemButton>
           </Collapse>
 
           <Collapse in={open1} timeout="auto" unmountOnExit>
-            <ListItemButton style={{"padding":"4px 0px 4px 20px"}} sx={{ pl: 4 }}>
-              <ListItemIcon style={{minWidth:'40px'}}>
+            <ListItemButton  sx={{ pl: 4 }}>
+              <ListItemIcon>
                 <NavigateNextOutlinedIcon />
               </ListItemIcon>
-              <ListItemText >  <Link style={{ "fontFamily": "system-ui", "fontSize": "14px", "textDecoration": "none", "color": "slategrey" }} to="/Customers/CustomerAndSegemnt">List And Segemnt</Link></ListItemText>
+              <ListItemText >  <Link to="/Customers/CustomerAndSegemnt">List And Segemnt</Link></ListItemText>
             </ListItemButton>
           </Collapse>
 
          
 
           <Collapse in={open1} timeout="auto" unmountOnExit>
-            <ListItemButton style={{"padding":"4px 0px 4px 20px"}} sx={{ pl: 4 }}>
-              <ListItemIcon style={{minWidth:'40px'}}>
+            <ListItemButton  sx={{ pl: 4 }}>
+              <ListItemIcon>
                 <NavigateNextOutlinedIcon />
               </ListItemIcon>
-              <ListItemText > <Link style={{ "fontFamily": "system-ui", "fontSize": "14px", "textDecoration": "none", "color": "slategrey" }} to="/Customers/retention">Retention</Link> </ListItemText>
+              <ListItemText > <Link to="/Customers/retention">Retention</Link> </ListItemText>
             </ListItemButton>
           </Collapse>
 
 
           <Collapse in={open1} timeout="auto" unmountOnExit>
-            <ListItemButton style={{"padding":"4px 0px 4px 20px"}} sx={{ pl: 4 }}>
-              <ListItemIcon style={{minWidth:'40px'}}>
+            <ListItemButton  sx={{ pl: 4 }}>
+              <ListItemIcon>
                 <NavigateNextOutlinedIcon />
               </ListItemIcon>
-              <ListItemText > <Link style={{ "fontFamily": "system-ui", "fontSize": "14px", "textDecoration": "none", "color": "slategrey" }} to="/Customers/retention/selected-city">Retention-SingleCity</Link></ListItemText>
+              <ListItemText > <Link to="/Customers/retention/selected-city">Retention-SingleCity</Link></ListItemText>
             </ListItemButton>
           </Collapse>
 
 
 
 
-          <ListItemButton onClick={handleClick2} style={{padding:'6px 10px 6px 20px'}}>
-            <ListItemIcon style={{minWidth:'40px'}}>
-              <WidgetsIcon style={{color:'teal'}}/>
+          <ListItemButton onClick={handleClick2}>
+            <ListItemIcon>
+              <WidgetsIcon style={{color:'#2BCEA1'}}/>
             </ListItemIcon>
             <ListItemText primary="Products" />
             {open2 ? <ExpandLess /> : <ExpandMore />}
           </ListItemButton>
 
           <Collapse in={open2} timeout="auto" unmountOnExit>
-            <ListItemButton style={{"padding":"4px 0px 4px 20px"}} sx={{ pl: 4 }}>
-              <ListItemIcon style={{minWidth:'40px'}}>
+            <ListItemButton  sx={{ pl: 4 }}>
+              <ListItemIcon>
                 <NavigateNextOutlinedIcon />
               </ListItemIcon>
-              <ListItemText> <Link style={{ "fontFamily": "system-ui", "fontSize": "14px", "textDecoration": "none", "color": "slategrey" }} to="/Products">Available</Link> </ListItemText>
+              <ListItemText> <Link to="/Products">Available</Link> </ListItemText>
             </ListItemButton>
           </Collapse>
           <Collapse in={open2} timeout="auto" unmountOnExit>
-            <ListItemButton style={{"padding":"4px 0px 4px 20px"}} sx={{ pl: 4 }}>
-              <ListItemIcon style={{minWidth:'40px'}}>
+            <ListItemButton  sx={{ pl: 4 }}>
+              <ListItemIcon>
                 <NavigateNextOutlinedIcon />
               </ListItemIcon>
-              <ListItemText> <Link style={{ "fontFamily": "system-ui", "fontSize": "14px", "textDecoration": "none", "color": "slategrey" }} to="/Products/Sales">Sales</Link> </ListItemText>
+              <ListItemText> <Link to="/Products/Sales">Sales</Link> </ListItemText>
             </ListItemButton>
           </Collapse>
           <Collapse in={open2} timeout="auto" unmountOnExit>
-            <ListItemButton style={{"padding":"4px 0px 4px 20px"}} sx={{ pl: 4 }}>
-              <ListItemIcon style={{minWidth:'40px'}}>
+            <ListItemButton  sx={{ pl: 4 }}>
+              <ListItemIcon>
                 <NavigateNextOutlinedIcon />
               </ListItemIcon>
-              <ListItemText> <Link style={{ "fontFamily": "system-ui", "fontSize": "14px", "textDecoration": "none", "color": "slategrey" }} to="/Products/Performance">Performance</Link> </ListItemText>
+              <ListItemText> <Link to="/Products/Performance">Performance</Link> </ListItemText>
             </ListItemButton>
           </Collapse>
           <Collapse in={open2} timeout="auto" unmountOnExit>
-            <ListItemButton style={{"padding":"4px 0px 4px 20px"}} sx={{ pl: 4 }}>
-              <ListItemIcon style={{minWidth:'40px'}}>
+            <ListItemButton  sx={{ pl: 4 }}>
+              <ListItemIcon>
                 <NavigateNextOutlinedIcon />
               </ListItemIcon>
-              <ListItemText> <Link style={{ "fontFamily": "system-ui", "fontSize": "14px", "textDecoration": "none", "color": "slategrey" }} to="/Products/Specific-city"> ShipCity-Performance</Link> </ListItemText>
+              <ListItemText> <Link to="/Products/Specific-city"> ShipCity-Performance</Link> </ListItemText>
             </ListItemButton>
           </Collapse>
           <Collapse in={open2} timeout="auto" unmountOnExit>
-            <ListItemButton style={{"padding":"4px 0px 4px 20px"}} sx={{ pl: 4 }}>
-              <ListItemIcon style={{minWidth:'40px'}}>
+            <ListItemButton  sx={{ pl: 4 }}>
+              <ListItemIcon>
                 <NavigateNextOutlinedIcon />
               </ListItemIcon>
-              <ListItemText> <Link style={{ "fontFamily": "system-ui", "fontSize": "14px", "textDecoration": "none", "color": "slategrey" }} to="/Products/Customer-Segment-based-on-product-purchase"> OrderBased Segment </Link> </ListItemText>
+              <ListItemText> <Link to="/Products/Customer-Segment-based-on-product-purchase"> OrderBased Segment </Link> </ListItemText>
             </ListItemButton>
           </Collapse>
           <Collapse in={open2} timeout="auto" unmountOnExit>
-            <ListItemButton style={{"padding":"4px 0px 4px 20px"}} sx={{ pl: 4 }}>
-              <ListItemIcon style={{minWidth:'40px'}}>
+            <ListItemButton  sx={{ pl: 4 }}>
+              <ListItemIcon>
                 <NavigateNextOutlinedIcon />
               </ListItemIcon>
-              <ListItemText> <Link style={{ "fontFamily": "system-ui", "fontSize": "14px", "textDecoration": "none", "color": "slategrey" }} to="/Products/Product-segment-performance"> Segment Performance </Link> </ListItemText>
+              <ListItemText> <Link to="/Products/Product-segment-performance"> Segment Performance </Link> </ListItemText>
             </ListItemButton>
           </Collapse>
 
 
 
 
-          <ListItemButton onClick={handleClick3} style={{padding:'6px 10px 6px 20px'}}>
-            <ListItemIcon style={{minWidth:'40px'}}>
-              <ShoppingBasketIcon style={{color:'teal'}}/>
+          <ListItemButton onClick={handleClick3}>
+            <ListItemIcon>
+              <ShoppingBasketIcon style={{color:'#FB7A40'}}/>
             </ListItemIcon>
             <ListItemText primary="Orders" />
             {open3 ? <ExpandLess /> : <ExpandMore />}
           </ListItemButton>
 
           <Collapse in={open3} timeout="auto" unmountOnExit>
-            <ListItemButton style={{"padding":"4px 0px 4px 20px"}} sx={{ pl: 4 }}>
-              <ListItemIcon style={{minWidth:'40px'}}>
+            <ListItemButton  sx={{ pl: 4 }}>
+              <ListItemIcon>
                 <NavigateNextOutlinedIcon />
               </ListItemIcon>
-              <ListItemText> <Link style={{ "fontFamily": "system-ui", "fontSize": "14px", "textDecoration": "none", "color": "slategrey" }} to="/Orders/Report">Report</Link> </ListItemText>
+              <ListItemText> <Link to="/Orders/Report">Report</Link> </ListItemText>
             </ListItemButton>
           </Collapse>
           <Collapse in={open3} timeout="auto" unmountOnExit>
-            <ListItemButton style={{"padding":"4px 0px 4px 20px"}} sx={{ pl: 4 }}>
-              <ListItemIcon style={{minWidth:'40px'}}>
+            <ListItemButton  sx={{ pl: 4 }}>
+              <ListItemIcon>
                 <NavigateNextOutlinedIcon />
               </ListItemIcon>
-              <ListItemText> <Link style={{ "fontFamily": "system-ui", "fontSize": "14px", "textDecoration": "none", "color": "slategrey" }} to="/Orders">List And Segments</Link> </ListItemText>
+              <ListItemText> <Link to="/Orders">List And Segments</Link> </ListItemText>
             </ListItemButton>
           </Collapse>
 
 
 
 
-          <ListItemButton onClick={handleClick4} style={{padding:'6px 10px 6px 20px'}}>
-            <ListItemIcon style={{minWidth:'40px'}}>
-              <CampaignIcon style={{color:'teal'}}/>
+          <ListItemButton onClick={handleClick4}>
+            <ListItemIcon>
+              <CampaignIcon style={{color:'#2C7AE5'}}/>
             </ListItemIcon>
             <ListItemText primary="Campaign" />
             {open4 ? <ExpandLess /> : <ExpandMore />}
           </ListItemButton>
 
           <Collapse in={open4} timeout="auto" unmountOnExit>
-            <ListItemButton style={{"padding":"4px 0px 4px 20px"}} sx={{ pl: 4 }}>
-              <ListItemIcon style={{minWidth:'40px'}}>
+            <ListItemButton  sx={{ pl: 4 }}>
+              <ListItemIcon>
                 <NavigateNextOutlinedIcon />
               </ListItemIcon>
-              <ListItemText> <Link style={{ "fontFamily": "system-ui", "fontSize": "14px", "textDecoration": "none", "color": "slategrey" }} to="/campaign">Campaign</Link> </ListItemText>
+              <ListItemText> <Link to="/campaign">Campaign</Link> </ListItemText>
             </ListItemButton>
           </Collapse>
           <Collapse in={open4} timeout="auto" unmountOnExit>
-            <ListItemButton style={{"padding":"4px 0px 4px 20px"}} sx={{ pl: 4 }}>
-              <ListItemIcon style={{minWidth:'40px'}}>
+            <ListItemButton  sx={{ pl: 4 }}>
+              <ListItemIcon>
                 <NavigateNextOutlinedIcon />
               </ListItemIcon>
-              <ListItemText> <Link style={{ "fontFamily": "system-ui", "fontSize": "14px", "textDecoration": "none", "color": "slategrey" }} to="/campaign/orders">Orders</Link> </ListItemText>
+              <ListItemText> <Link to="/campaign/orders">Orders</Link> </ListItemText>
             </ListItemButton>
           </Collapse>
           <Collapse in={open4} timeout="auto" unmountOnExit>
-            <ListItemButton style={{"padding":"4px 0px 4px 20px"}} sx={{ pl: 4 }}>
-              <ListItemIcon style={{minWidth:'40px'}}>
+            <ListItemButton  sx={{ pl: 4 }}>
+              <ListItemIcon>
                 <NavigateNextOutlinedIcon />
               </ListItemIcon>
-              <ListItemText> <Link style={{ "fontFamily": "system-ui", "fontSize": "14px", "textDecoration": "none", "color": "slategrey" }} to="/campaign/compare">Compare</Link> </ListItemText>
+              <ListItemText> <Link to="/campaign/compare">Compare</Link> </ListItemText>
             </ListItemButton>
           </Collapse>
 
 
 
-          <ListItemButton onClick={handleClick5} style={{padding:'6px 10px 6px 20px'}}>
-            <ListItemIcon style={{minWidth:'40px'}}>
-              <DiscountRoundedIcon style={{color:'teal'}}/>
+          <ListItemButton onClick={handleClick5}>
+            <ListItemIcon>
+              <DiscountRoundedIcon style={{color:'#ECA13B'}}/>
             </ListItemIcon>
             <ListItemText primary="Pricing" />
             {open5 ? <ExpandLess /> : <ExpandMore />}
           </ListItemButton>
 
           <Collapse in={open5} timeout="auto" unmountOnExit>
-            <ListItemButton style={{"padding":"4px 0px 4px 20px"}} sx={{ pl: 4 }}>
-              <ListItemIcon style={{minWidth:'40px'}}>
+            <ListItemButton  sx={{ pl: 4 }}>
+              <ListItemIcon>
                 <NavigateNextOutlinedIcon />
               </ListItemIcon>
-              <ListItemText> <Link style={{ "fontFamily": "system-ui", "fontSize": "14px", "textDecoration": "none", "color": "slategrey" }} to="/pricing">Create New</Link> </ListItemText>
+              <ListItemText> <Link to="/pricing">Create New</Link> </ListItemText>
             </ListItemButton>
           </Collapse>
           <Collapse in={open5} timeout="auto" unmountOnExit>
-            <ListItemButton style={{"padding":"4px 0px 4px 20px"}} sx={{ pl: 4 }}>
-              <ListItemIcon style={{minWidth:'40px'}}>
+            <ListItemButton  sx={{ pl: 4 }}>
+              <ListItemIcon>
                 <NavigateNextOutlinedIcon />
               </ListItemIcon>
-              <ListItemText> <Link style={{ "fontFamily": "system-ui", "fontSize": "14px", "textDecoration": "none", "color": "slategrey" }} to="/pricing/created">Available</Link> </ListItemText>
+              <ListItemText> <Link to="/pricing/created">Available</Link> </ListItemText>
             </ListItemButton>
           </Collapse>
 
 
 
-          <ListItemButton style={{padding:'6px 10px 6px 20px'}}>
-            <ListItemIcon style={{minWidth:'40px'}}>
-              <LocalOfferIcon style={{color:'teal'}}/>
+          <ListItemButton>
+            <ListItemIcon>
+              <LocalOfferIcon style={{color:'#DE2868'}}/>
             </ListItemIcon>
             <ListItemText>
-              <Link style={{ "fontFamily": "system-ui", "fontSize": "16px", "textDecoration": "none", "color": "black" }} to="/coupons">Coupon</Link>
+              <Link to="/coupons">Coupon</Link>
             </ListItemText>
           </ListItemButton>
 
 
 
 
-          <ListItemButton onClick={handleClick6} style={{padding:'6px 10px 6px 20px'}}>
-            <ListItemIcon style={{minWidth:'40px'}}>
-              <ScheduleSendIcon style={{color:'teal'}}/>
+          <ListItemButton onClick={handleClick6}>
+            <ListItemIcon>
+              <ScheduleSendIcon style={{color:'#05AFC5'}}/>
             </ListItemIcon>
             <ListItemText primary="Engage" />
             {open6 ? <ExpandLess /> : <ExpandMore />}
           </ListItemButton>
 
           <Collapse in={open6} timeout="auto" unmountOnExit>
-            <ListItemButton style={{"padding":"4px 0px 4px 20px"}} sx={{ pl: 4 }}>
-              <ListItemIcon style={{minWidth:'40px'}}>
+            <ListItemButton  sx={{ pl: 4 }}>
+              <ListItemIcon>
                 <NavigateNextOutlinedIcon />
               </ListItemIcon>
-              <ListItemText> <Link style={{ "fontFamily": "system-ui", "fontSize": "14px", "textDecoration": "none", "color": "slategrey" }} to="/engage/available">Available</Link> </ListItemText>
+              <ListItemText> <Link to="/engage/available">Available</Link> </ListItemText>
             </ListItemButton>
           </Collapse>
           <Collapse in={open6} timeout="auto" unmountOnExit>
-            <ListItemButton style={{"padding":"4px 0px 4px 20px"}} sx={{ pl: 4 }}>
-              <ListItemIcon style={{minWidth:'40px'}}>
+            <ListItemButton  sx={{ pl: 4 }}>
+              <ListItemIcon>
                 <NavigateNextOutlinedIcon />
               </ListItemIcon>
-              <ListItemText> <Link style={{ "fontFamily": "system-ui", "fontSize": "14px", "textDecoration": "none", "color": "slategrey" }} to="/engage/createnew">Create New</Link> </ListItemText>
+              <ListItemText> <Link to="/engage/createnew">Create New</Link> </ListItemText>
             </ListItemButton>
           </Collapse>
 
 
 
-          <ListItemButton style={{padding:'6px 10px 6px 20px'}}>
-            <ListItemIcon style={{minWidth:'40px'}}>
-              <ManageAccountsIcon  style={{color:'teal'}}/>
+          <ListItemButton>
+            <ListItemIcon>
+              <ManageAccountsIcon  style={{color:'#4FA953'}}/>
             </ListItemIcon>
             <ListItemText>
-              <Link style={{ "fontFamily": "system-ui", "fontSize": "16px", "textDecoration": "none", "color": "black" }} to="/profile">Profile</Link>
+              <Link to="/profile">Profile</Link>
             </ListItemText>
           </ListItemButton>
 
         </List>
-      </div>
-
-
-
     </>
   )
 }

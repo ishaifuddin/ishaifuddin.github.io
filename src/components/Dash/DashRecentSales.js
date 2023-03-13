@@ -26,23 +26,20 @@ import TimelineOppositeContent, {
 function DashRecentSales() {
 
   var dispatch = useDispatch();
-  useEffect(() => {
-    dispatch(get_recent_sales({ ajax_call: 'recent_sales' }));
-  }, []);
+  // useEffect(() => {
+  //   dispatch(get_recent_sales({ ajax_call: 'recent_sales' }));
+  // }, []);
 
-  var recent_sales = useSelector((state) => state.dash.rsale.rsd);
-  //console.log(recent_sales);
-
-  //recent_sales = structuredClone(recent_sales);
-
+  // var recent_sales = useSelector((state) => state.dash.rsale.rsd);
+  var recent_sales="";
   return (
 
 
     <>
 
-      <Timeline sx={{[`& .${timelineOppositeContentClasses.root}`]: {flex: 0.2,},padding:'0px 40px', height: '89vh', overflow: 'auto',background:'white'}}>
+      <Timeline sx={{[`& .${timelineOppositeContentClasses.root}`]: {flex: 0.2,}, overflow: 'auto',}}>
 
-        {recent_sales && recent_sales.map(sale => (
+        {recent_sales !==undefined && recent_sales.length >0 && recent_sales.map(sale => (
         
         <TimelineItem style={{width:'501px',minHeight:'90px'}}>
 
