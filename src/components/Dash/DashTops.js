@@ -375,7 +375,7 @@ const revprof_state = {
       </div>
       </Grid>
 
-    <Grid item sm={3}>
+    <Grid item sm={6}>
       <Card className='dash-card'>
         <h6>Revenue & Profit</h6>
         {/* <Chart type='line' data={revprof_state} /> */}
@@ -390,7 +390,7 @@ const revprof_state = {
         </Timeline>
         </Card>
     </Grid>
-    <Grid item sm={3}>
+    <Grid item sm={6}>
       <Card className='dash-card'>
         <h6> Customer & Order </h6>
         {/* <Chart type='line' data={cusor_state} /> */}
@@ -402,7 +402,7 @@ const revprof_state = {
       </Card>
     </Grid>
         
-    <Grid item sm={3}>
+    <Grid item sm={6}>
       {
         tmnew && tmnew.length > 0 &&
         <Card className='dash-card'>
@@ -430,6 +430,7 @@ const revprof_state = {
             }}
             options={
               {
+                showFirstLastPageButtons: false,
                 pageSize: 10,       // make initial page size
                 emptyRowsWhenPaging: false,   // To avoid of having empty rows
                 pageSizeOptions: [10, 15, 25, 40, 50],
@@ -454,7 +455,8 @@ const revprof_state = {
                   showPageSizeOptions: false,
                   showPageJump: false,
               }
-          }}/><br/>
+            }}
+          /><br/>
 
           <Timeline>
             <Timeline.Item>Total : {tmnew_note !==undefined && tmnew_note[0]}  </Timeline.Item>
@@ -468,7 +470,7 @@ const revprof_state = {
     
 
 
-    <Grid item sm={3}>
+    <Grid item sm={6}>
       {
         tmret && tmret.length > 0 &&
         <Card className='dash-card'>
@@ -495,6 +497,7 @@ const revprof_state = {
               }}
               options={
                 {
+                  showFirstLastPageButtons: false,
                   pageSize: 10,       // make initial page size
                   emptyRowsWhenPaging: false,   // To avoid of having empty rows
                   pageSizeOptions: [10, 15, 25, 40, 50],
@@ -563,6 +566,7 @@ const revprof_state = {
             }}
             options={
               {
+                showFirstLastPageButtons: false,
                 pageSize: 10,       // make initial page size
                 emptyRowsWhenPaging: false,   // To avoid of having empty rows
                 pageSizeOptions: [10, 15, 25, 40, 50],
@@ -584,6 +588,14 @@ const revprof_state = {
 
               }
             }
+            localization={{
+              pagination: {
+                  labelRowsPerPage: '',
+                  showFirstLastPageButtons: false,
+                  showPageSizeOptions: false,
+                  showPageJump: false,
+              }
+            }}
           />
         </ThemeProvider>
         </Card>
@@ -619,6 +631,7 @@ const revprof_state = {
             }}
             options={
               {
+                showFirstLastPageButtons: false,
                 pageSize: 10,       // make initial page size
                 emptyRowsWhenPaging: false,   // To avoid of having empty rows
                 pageSizeOptions: [10, 15, 25, 40, 50],
@@ -634,6 +647,14 @@ const revprof_state = {
                 }
               }
             }
+            localization={{
+              pagination: {
+                  labelRowsPerPage: '',
+                  showFirstLastPageButtons: false,
+                  showPageSizeOptions: false,
+                  showPageJump: false,
+              }
+            }}
           />
         </ThemeProvider>
         </Card>
@@ -669,6 +690,7 @@ const revprof_state = {
             }}
             options={
               {
+                showFirstLastPageButtons: false,
                 pageSize: 10,       // make initial page size
                 emptyRowsWhenPaging: false,   // To avoid of having empty rows
                 pageSizeOptions: [10, 15, 25, 40, 50],
@@ -686,6 +708,14 @@ const revprof_state = {
 
               }
             }
+            localization={{
+              pagination: {
+                  labelRowsPerPage: '',
+                  showFirstLastPageButtons: false,
+                  showPageSizeOptions: false,
+                  showPageJump: false,
+              }
+            }}
           />
         </ThemeProvider>
         </Card>
@@ -720,6 +750,7 @@ const revprof_state = {
               Clear: CancelIcon
             }}
             options={{
+              showFirstLastPageButtons: false,
               pageSize: 10,       // make initial page size
               emptyRowsWhenPaging: false,   // To avoid of having empty rows
               pageSizeOptions: [10, 15, 25, 40, 50],
@@ -733,6 +764,14 @@ const revprof_state = {
                 fontFamily: 'Circular-Loom',
                 textAlign: 'center',
                 borderBottom: '2px solid rgb(246, 224, 224)'
+              }
+            }}
+            localization={{
+              pagination: {
+                  labelRowsPerPage: '',
+                  showFirstLastPageButtons: false,
+                  showPageSizeOptions: false,
+                  showPageJump: false,
               }
             }}
           />
@@ -772,6 +811,7 @@ const revprof_state = {
               Clear: CancelIcon
             }}
             options={{
+              showFirstLastPageButtons: false,
               pageSize: 10,       // make initial page size
               emptyRowsWhenPaging: false,   // To avoid of having empty rows
               pageSizeOptions: [10, 15, 25, 40, 50],
@@ -785,6 +825,14 @@ const revprof_state = {
                 fontFamily: 'Circular-Loom',
                 textAlign: 'center',
                 borderBottom: '2px solid rgb(246, 224, 224)'
+              }
+            }}
+            localization={{
+              pagination: {
+                  labelRowsPerPage: '',
+                  showFirstLastPageButtons: false,
+                  showPageSizeOptions: false,
+                  showPageJump: false,
               }
             }}
           />
@@ -820,6 +868,7 @@ const revprof_state = {
               Clear: CancelIcon
             }}
             options={{
+              showFirstLastPageButtons: false,
               pageSize: 10,       // make initial page size
               emptyRowsWhenPaging: false,   // To avoid of having empty rows
               pageSizeOptions: [10, 15, 25, 40, 50],
@@ -833,6 +882,14 @@ const revprof_state = {
                 fontFamily: 'Circular-Loom',
                 textAlign: 'center',
                 borderBottom: '2px solid rgb(246, 224, 224)'
+              }
+            }}
+            localization={{
+              pagination: {
+                  labelRowsPerPage: '',
+                  showFirstLastPageButtons: false,
+                  showPageSizeOptions: false,
+                  showPageJump: false,
               }
             }}
           />

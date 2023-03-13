@@ -63,19 +63,19 @@ import SingleOrder from './components/SinOrder/SingleOrder';
 function App() {
 
   //var authenticated = JSON.parse(localStorage.getItem('authenticated'));
-  var status = useSelector((state) => state.dash.status);
-
+  //var status = useSelector((state) => state.dash.status);
+  var status="";
   return (
 
       <BrowserRouter>
         
         <div className='wrapper'>
 
-          {status==='success' && 
+          {/* {status==='success' &&  */}
             <aside>
               <SideNav/>
             </aside>
-          }
+          {/* } */}
 
           <main className='dashboard'>
 
