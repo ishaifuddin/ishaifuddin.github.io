@@ -1,7 +1,7 @@
 import { ReactSession } from 'react-client-session';
 import React from 'react'
 import { useSelector, useDispatch } from "react-redux";
-
+import { useState } from 'react';
 import { get_cusLocCT_data } from "../../features/cus/CusLocCT";
 
 import Timeline from '@mui/lab/Timeline';
@@ -28,44 +28,177 @@ ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement, Title, T
   
 function CusCityStateChart() {
 
-    var dispatch5 = useDispatch();
+    // var dispatch5 = useDispatch();
 
-    var is_dispatched = (dispatch_function) => {
-        ReactSession.get("get_cusLocCT_data");
-        if (ReactSession.get("get_cusLocCT_data")) {
-            return true;
-        } else {
-            ReactSession.set("get_cusLocCT_data", "1");
-            return false;
-        }
-    }
-    if (!(is_dispatched('get_cusLocCT_data'))) {
-        dispatch5(get_cusLocCT_data({ ajax_seg: 2 }));
-    }
-    var CusLocChartTable = useSelector((state) => state.cusLocChartTable);
+    // var is_dispatched = (dispatch_function) => {
+    //     ReactSession.get("get_cusLocCT_data");
+    //     if (ReactSession.get("get_cusLocCT_data")) {
+    //         return true;
+    //     } else {
+    //         ReactSession.set("get_cusLocCT_data", "1");
+    //         return false;
+    //     }
+    // }
+    // if (!(is_dispatched('get_cusLocCT_data'))) {
+    //     dispatch5(get_cusLocCT_data({ ajax_seg: 2 }));
+    // }
+    // var CusLocChartTable = useSelector((state) => state.cusLocChartTable);
 
 
-    {/* Billing And Shipping City, Customer & Revenue Chart */ }
-    var shipcity_rev_obj = {};
-    var shipcity_rev_dataset = structuredClone(CusLocChartTable.shipcity_rev);
-    var label = structuredClone(CusLocChartTable.label);
-    shipcity_rev_obj.labels = label;
-    shipcity_rev_obj.datasets = shipcity_rev_dataset;
+    // {/* Billing And Shipping City, Customer & Revenue Chart */ }
+    // var shipcity_rev_obj = {};
+    // var shipcity_rev_dataset = structuredClone(CusLocChartTable.shipcity_rev);
+    // var label = structuredClone(CusLocChartTable.label);
+    // shipcity_rev_obj.labels = label;
+    // shipcity_rev_obj.datasets = shipcity_rev_dataset;
 
-    var shipcity_cus_obj = {};
-    var shipcity_cus_dataset = structuredClone(CusLocChartTable.shipcity_cus);
-    shipcity_cus_obj.labels = label;
-    shipcity_cus_obj.datasets = shipcity_cus_dataset;
+    // var shipcity_cus_obj = {};
+    // var shipcity_cus_dataset = structuredClone(CusLocChartTable.shipcity_cus);
+    // shipcity_cus_obj.labels = label;
+    // shipcity_cus_obj.datasets = shipcity_cus_dataset;
 
-    var billcity_cus_obj = {};
-    var billcity_cus_dataset = structuredClone(CusLocChartTable.billcity_cus);
-    billcity_cus_obj.labels = label;
-    billcity_cus_obj.datasets = billcity_cus_dataset;
+    // var billcity_cus_obj = {};
+    // var billcity_cus_dataset = structuredClone(CusLocChartTable.billcity_cus);
+    // billcity_cus_obj.labels = label;
+    // billcity_cus_obj.datasets = billcity_cus_dataset;
 
-    var billcity_rev_obj = {};
-    var billcity_rev_dataset = structuredClone(CusLocChartTable.billcity_rev);
-    billcity_rev_obj.labels = label;
-    billcity_rev_obj.datasets = billcity_rev_dataset;
+    // var billcity_rev_obj = {};
+    // var billcity_rev_dataset = structuredClone(CusLocChartTable.billcity_rev);
+    // billcity_rev_obj.labels = label;
+    // billcity_rev_obj.datasets = billcity_rev_dataset;
+
+    
+    /////////////////////////// DUMMY DATA /////////////////////////////////
+    /////////////////////////// DUMMY DATA /////////////////////////////////
+    /////////////////////////// DUMMY DATA /////////////////////////////////
+    /////////////////////////// DUMMY DATA /////////////////////////////////
+    /////////////////////////// DUMMY DATA /////////////////////////////////
+    /////////////////////////// DUMMY DATA /////////////////////////////////
+
+    const billcity_cus_obj = {
+        labels: ["Jan", "Feb", "Mar", "April", "May", "June", "July"],
+        datasets: [
+            {
+            label: "Sales",
+            tension: 0.4,
+            borderDash: [2, 2],
+            borderJoinStyle: 'round',
+            backgroundColor: "rgba(43, 206, 161, 1)",
+            borderColor: "rgba(43, 206, 161,1)",
+            borderWidth: 2,
+            hoverBackgroundColor: "rgba(255,99,132,0.4)",
+            hoverBorderColor: "rgba(255,99,132,1)",
+            data: [65, 59, 80, 81, 56, 55, 40],
+            },
+            {
+            label: "Expenses",     
+            tension: 0.4,
+            borderJoinStyle: 'round',
+            backgroundColor: "rgba(94, 114, 228, 1)",
+            pointBackgroundColor: "rgba(54,162,235,0.2)",
+            pointBackgroundColor: "rgba(94, 114, 228, 1)",
+            borderColor: "rgba(94, 114, 228, 1)",
+            borderWidth: 2,
+            hoverBackgroundColor: "red)",
+            hoverBorderColor: "rgba(54,162,235,1)",
+            data: [28, 48, 40, 19, 86, 27, 90],
+            },
+        ],
+    };
+
+    const shipcity_cus_obj = {
+        labels: ["Jan", "Feb", "Mar", "April", "May", "June", "July"],
+        datasets: [
+            {
+            label: "Sales",
+            tension: 0.4,
+            borderDash: [2, 2],
+            borderJoinStyle: 'round',
+            backgroundColor: "rgba(43, 206, 161, 1)",
+            borderColor: "rgba(43, 206, 161,1)",
+            borderWidth: 2,
+            hoverBackgroundColor: "rgba(255,99,132,0.4)",
+            hoverBorderColor: "rgba(255,99,132,1)",
+            data: [65, 59, 80, 81, 56, 55, 40],
+            },
+            {
+            label: "Expenses",     
+            tension: 0.4,
+            borderJoinStyle: 'round',
+            backgroundColor: "rgba(94, 114, 228, 1)",
+            pointBackgroundColor: "rgba(54,162,235,0.2)",
+            pointBackgroundColor: "rgba(94, 114, 228, 1)",
+            borderColor: "rgba(94, 114, 228, 1)",
+            borderWidth: 2,
+            hoverBackgroundColor: "red)",
+            hoverBorderColor: "rgba(54,162,235,1)",
+            data: [28, 48, 40, 19, 86, 27, 90],
+            },
+        ],
+    };
+
+    const billcity_rev_obj = {
+        labels: ["Jan", "Feb", "Mar", "April", "May", "June", "July"],
+        datasets: [
+            {
+            label: "Sales",
+            tension: 0.4,
+            borderDash: [2, 2],
+            borderJoinStyle: 'round',
+            backgroundColor: "rgba(43, 206, 161, 1)",
+            borderColor: "rgba(43, 206, 161,1)",
+            borderWidth: 2,
+            hoverBackgroundColor: "rgba(255,99,132,0.4)",
+            hoverBorderColor: "rgba(255,99,132,1)",
+            data: [65, 59, 80, 81, 56, 55, 40],
+            },
+            {
+            label: "Expenses",     
+            tension: 0.4,
+            borderJoinStyle: 'round',
+            backgroundColor: "rgba(94, 114, 228, 1)",
+            pointBackgroundColor: "rgba(54,162,235,0.2)",
+            pointBackgroundColor: "rgba(94, 114, 228, 1)",
+            borderColor: "rgba(94, 114, 228, 1)",
+            borderWidth: 2,
+            hoverBackgroundColor: "red)",
+            hoverBorderColor: "rgba(54,162,235,1)",
+            data: [28, 48, 40, 19, 86, 27, 90],
+            },
+        ],
+    };
+
+    const shipcity_rev_obj = {
+        labels: ["Jan", "Feb", "Mar", "April", "May", "June", "July"],
+        datasets: [
+            {
+            label: "Sales",
+            tension: 0.4,
+            borderDash: [2, 2],
+            borderJoinStyle: 'round',
+            backgroundColor: "rgba(43, 206, 161, 1)",
+            borderColor: "rgba(43, 206, 161,1)",
+            borderWidth: 2,
+            hoverBackgroundColor: "rgba(255,99,132,0.4)",
+            hoverBorderColor: "rgba(255,99,132,1)",
+            data: [65, 59, 80, 81, 56, 55, 40],
+            },
+            {
+            label: "Expenses",     
+            tension: 0.4,
+            borderJoinStyle: 'round',
+            backgroundColor: "rgba(94, 114, 228, 1)",
+            pointBackgroundColor: "rgba(54,162,235,0.2)",
+            pointBackgroundColor: "rgba(94, 114, 228, 1)",
+            borderColor: "rgba(94, 114, 228, 1)",
+            borderWidth: 2,
+            hoverBackgroundColor: "red)",
+            hoverBorderColor: "rgba(54,162,235,1)",
+            data: [28, 48, 40, 19, 86, 27, 90],
+            },
+        ],
+    };
+
 
     var option = {
 

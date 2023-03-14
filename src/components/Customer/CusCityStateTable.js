@@ -2,7 +2,7 @@ import { ReactSession } from 'react-client-session';
 import React from 'react'
 import { useSelector, useDispatch } from "react-redux";
 import Grid from '@mui/material/Grid';
-
+import { useState } from 'react';
 import MaterialTable from 'material-table';
 import { ThemeProvider, createTheme } from '@mui/material';
 
@@ -28,44 +28,45 @@ import CancelIcon from '@mui/icons-material/Cancel';
 
 function CusCityStateTable() {
 
-    var dispatch5 = useDispatch();
+    ////////////////////------------------ Privious -------------------------------------
+    // var dispatch5 = useDispatch();
     var defaultMaterialTheme = createTheme();
 
-    var is_dispatched = (dispatch_function) => {
-        ReactSession.get("get_cusLocCT_data");
-        if (ReactSession.get("get_cusLocCT_data")) {
-            return true;
-        } else {
-            ReactSession.set("get_cusLocCT_data", "1");
-            return false;
-        }
-    }
-    if (!(is_dispatched('get_cusLocCT_data'))) {
-        dispatch5(get_cusLocCT_data({ ajax_seg: 2 }));
-    }
+    // var is_dispatched = (dispatch_function) => {
+    //     ReactSession.get("get_cusLocCT_data");
+    //     if (ReactSession.get("get_cusLocCT_data")) {
+    //         return true;
+    //     } else {
+    //         ReactSession.set("get_cusLocCT_data", "1");
+    //         return false;
+    //     }
+    // }
+    // if (!(is_dispatched('get_cusLocCT_data'))) {
+    //     dispatch5(get_cusLocCT_data({ ajax_seg: 2 }));
+    // }
 
-    var CusLocChartTable = useSelector((state) => state.cusLocChartTable);
-    var billcityData = CusLocChartTable.billcity_table;
-    var shipcityTable = CusLocChartTable.shipcity_table;
-    var billstateTable = CusLocChartTable.billstate_table;
-    var shipstateTable = CusLocChartTable.shipstate_table;
-    {/* Billing And Shipping City,State Customer Table */ }
+    // var CusLocChartTable = useSelector((state) => state.cusLocChartTable);
+    // var billcityData = CusLocChartTable.billcity_table;
+    // var shipcityTable = CusLocChartTable.shipcity_table;
+    // var billstateTable = CusLocChartTable.billstate_table;
+    // var shipstateTable = CusLocChartTable.shipstate_table;
+    // {/* Billing And Shipping City,State Customer Table */ }
 
-    if (CusLocChartTable.billcity_table.length > 0) {
-        var billcitycloneData = structuredClone(billcityData);
-    }
+    // if (CusLocChartTable.billcity_table.length > 0) {
+    //     var billcitycloneData = structuredClone(billcityData);
+    // }
 
-    if (CusLocChartTable.shipcity_table.length > 0) {
-        var shipcitycloneData = structuredClone(shipcityTable);
-    }
+    // if (CusLocChartTable.shipcity_table.length > 0) {
+    //     var shipcitycloneData = structuredClone(shipcityTable);
+    // }
 
-    if (CusLocChartTable.billstate_table.length > 0) {
-        var billstatecloneData = structuredClone(billstateTable);
-    }
+    // if (CusLocChartTable.billstate_table.length > 0) {
+    //     var billstatecloneData = structuredClone(billstateTable);
+    // }
 
-    if (CusLocChartTable.shipstate_table.length > 0) {
-        var shipstatecloneData = structuredClone(shipstateTable);
-    }
+    // if (CusLocChartTable.shipstate_table.length > 0) {
+    //     var shipstatecloneData = structuredClone(shipstateTable);
+    // }
 
     const MyNewTitle = ({ text, variant }) => (
         <Typography
@@ -118,6 +119,221 @@ function CusCityStateTable() {
     ];
 
 
+        
+    /////////////////////////// DUMMY DATA /////////////////////////////////
+    /////////////////////////// DUMMY DATA /////////////////////////////////
+    /////////////////////////// DUMMY DATA /////////////////////////////////
+    /////////////////////////// DUMMY DATA /////////////////////////////////
+    /////////////////////////// DUMMY DATA /////////////////////////////////
+    /////////////////////////// DUMMY DATA /////////////////////////////////
+
+
+    const [billcitycloneData, setTpbp] = useState([
+        { product: 'John', profit: 23, '%':'1', data3 : 'data3Value',data4 : 'data4Value',data5 : 'data5Value',data6 : 'data6Value', },
+        { product: 'John', profit: 23, '%':'1', data3 : 'data3Value',data4 : 'data4Value',data5 : 'data5Value',data6 : 'data6Value', },
+        { product: 'John', profit: 23, '%':'1', data3 : 'data3Value',data4 : 'data4Value',data5 : 'data5Value',data6 : 'data6Value', },
+        { product: 'John', profit: 23, '%':'1', data3 : 'data3Value',data4 : 'data4Value',data5 : 'data5Value',data6 : 'data6Value', },
+        { product: 'John', profit: 23, '%':'1', data3 : 'data3Value',data4 : 'data4Value',data5 : 'data5Value',data6 : 'data6Value', },
+        { product: 'John', profit: 23, '%':'1', data3 : 'data3Value',data4 : 'data4Value',data5 : 'data5Value',data6 : 'data6Value', },
+        { product: 'John', profit: 23, '%':'1', data3 : 'data3Value',data4 : 'data4Value',data5 : 'data5Value',data6 : 'data6Value', },
+        { product: 'John', profit: 23, '%':'1', data3 : 'data3Value',data4 : 'data4Value',data5 : 'data5Value',data6 : 'data6Value', },
+        { product: 'John', profit: 23, '%':'1', data3 : 'data3Value',data4 : 'data4Value',data5 : 'data5Value',data6 : 'data6Value', },
+        { product: 'John', profit: 23, '%':'1', data3 : 'data3Value',data4 : 'data4Value',data5 : 'data5Value',data6 : 'data6Value', },
+        { product: 'John', profit: 23, '%':'1', data3 : 'data3Value',data4 : 'data4Value',data5 : 'data5Value',data6 : 'data6Value', },
+        { product: 'John', profit: 23, '%':'1', data3 : 'data3Value',data4 : 'data4Value',data5 : 'data5Value',data6 : 'data6Value', },
+        { product: 'John', profit: 23, '%':'1', data3 : 'data3Value',data4 : 'data4Value',data5 : 'data5Value',data6 : 'data6Value', },
+        { product: 'John', profit: 23, '%':'1', data3 : 'data3Value',data4 : 'data4Value',data5 : 'data5Value',data6 : 'data6Value', },
+        { product: 'John', profit: 23, '%':'1', data3 : 'data3Value',data4 : 'data4Value',data5 : 'data5Value',data6 : 'data6Value', },
+        { product: 'John', profit: 23, '%':'1', data3 : 'data3Value',data4 : 'data4Value',data5 : 'data5Value',data6 : 'data6Value', },
+        { product: 'John', profit: 23, '%':'1', data3 : 'data3Value',data4 : 'data4Value',data5 : 'data5Value',data6 : 'data6Value', },
+        { product: 'John', profit: 23, '%':'1', data3 : 'data3Value',data4 : 'data4Value',data5 : 'data5Value',data6 : 'data6Value', },
+        { product: 'John', profit: 23, '%':'1', data3 : 'data3Value',data4 : 'data4Value',data5 : 'data5Value',data6 : 'data6Value', },
+        { product: 'John', profit: 23, '%':'1', data3 : 'data3Value',data4 : 'data4Value',data5 : 'data5Value',data6 : 'data6Value', },
+        { product: 'John', profit: 23, '%':'1', data3 : 'data3Value',data4 : 'data4Value',data5 : 'data5Value',data6 : 'data6Value', },
+        { product: 'John', profit: 23, '%':'1', data3 : 'data3Value',data4 : 'data4Value',data5 : 'data5Value',data6 : 'data6Value', },
+        { product: 'John', profit: 23, '%':'1', data3 : 'data3Value',data4 : 'data4Value',data5 : 'data5Value',data6 : 'data6Value', },
+        { product: 'John', profit: 23, '%':'1', data3 : 'data3Value',data4 : 'data4Value',data5 : 'data5Value',data6 : 'data6Value', },
+        { product: 'John', profit: 23, '%':'1', data3 : 'data3Value',data4 : 'data4Value',data5 : 'data5Value',data6 : 'data6Value', },
+        { product: 'John', profit: 23, '%':'1', data3 : 'data3Value',data4 : 'data4Value',data5 : 'data5Value',data6 : 'data6Value', },
+        { product: 'John', profit: 23, '%':'1', data3 : 'data3Value',data4 : 'data4Value',data5 : 'data5Value',data6 : 'data6Value', },
+        { product: 'John', profit: 23, '%':'1', data3 : 'data3Value',data4 : 'data4Value',data5 : 'data5Value',data6 : 'data6Value', },
+        { product: 'John', profit: 23, '%':'1', data3 : 'data3Value',data4 : 'data4Value',data5 : 'data5Value',data6 : 'data6Value', },
+        { product: 'John', profit: 23, '%':'1', data3 : 'data3Value',data4 : 'data4Value',data5 : 'data5Value',data6 : 'data6Value', },
+        { product: 'John', profit: 23, '%':'1', data3 : 'data3Value',data4 : 'data4Value',data5 : 'data5Value',data6 : 'data6Value', },
+        { product: 'John', profit: 23, '%':'1', data3 : 'data3Value',data4 : 'data4Value',data5 : 'data5Value',data6 : 'data6Value', },
+        { product: 'John', profit: 23, '%':'1', data3 : 'data3Value',data4 : 'data4Value',data5 : 'data5Value',data6 : 'data6Value', },
+        { product: 'John', profit: 23, '%':'1', data3 : 'data3Value',data4 : 'data4Value',data5 : 'data5Value',data6 : 'data6Value', },
+        { product: 'John', profit: 23, '%':'1', data3 : 'data3Value',data4 : 'data4Value',data5 : 'data5Value',data6 : 'data6Value', },
+        { product: 'John', profit: 23, '%':'1', data3 : 'data3Value',data4 : 'data4Value',data5 : 'data5Value',data6 : 'data6Value', },
+        
+        
+    ]);
+    
+    
+    const [shipcitycloneData, setTcbr] = useState([
+        { product: 'John', profit: 23, '%':'1', data3 : 'data3Value',data4 : 'data4Value',data5 : 'data5Value',data6 : 'data6Value', },
+        { product: 'John', profit: 23, '%':'1', data3 : 'data3Value',data4 : 'data4Value',data5 : 'data5Value',data6 : 'data6Value', },
+        { product: 'John', profit: 23, '%':'1', data3 : 'data3Value',data4 : 'data4Value',data5 : 'data5Value',data6 : 'data6Value', },
+        { product: 'John', profit: 23, '%':'1', data3 : 'data3Value',data4 : 'data4Value',data5 : 'data5Value',data6 : 'data6Value', },
+        { product: 'John', profit: 23, '%':'1', data3 : 'data3Value',data4 : 'data4Value',data5 : 'data5Value',data6 : 'data6Value', },
+        { product: 'John', profit: 23, '%':'1', data3 : 'data3Value',data4 : 'data4Value',data5 : 'data5Value',data6 : 'data6Value', },
+        
+        { product: 'John', profit: 23, '%':'1', data3 : 'data3Value',data4 : 'data4Value',data5 : 'data5Value',data6 : 'data6Value', },
+        { product: 'John', profit: 23, '%':'1', data3 : 'data3Value',data4 : 'data4Value',data5 : 'data5Value',data6 : 'data6Value', },
+        { product: 'John', profit: 23, '%':'1', data3 : 'data3Value',data4 : 'data4Value',data5 : 'data5Value',data6 : 'data6Value', },
+        { product: 'John', profit: 23, '%':'1', data3 : 'data3Value',data4 : 'data4Value',data5 : 'data5Value',data6 : 'data6Value', },
+        { product: 'John', profit: 23, '%':'1', data3 : 'data3Value',data4 : 'data4Value',data5 : 'data5Value',data6 : 'data6Value', },
+        { product: 'John', profit: 23, '%':'1', data3 : 'data3Value',data4 : 'data4Value',data5 : 'data5Value',data6 : 'data6Value', },
+        
+        { product: 'John', profit: 23, '%':'1', data3 : 'data3Value',data4 : 'data4Value',data5 : 'data5Value',data6 : 'data6Value', },
+        { product: 'John', profit: 23, '%':'1', data3 : 'data3Value',data4 : 'data4Value',data5 : 'data5Value',data6 : 'data6Value', },
+        { product: 'John', profit: 23, '%':'1', data3 : 'data3Value',data4 : 'data4Value',data5 : 'data5Value',data6 : 'data6Value', },
+        { product: 'John', profit: 23, '%':'1', data3 : 'data3Value',data4 : 'data4Value',data5 : 'data5Value',data6 : 'data6Value', },
+        { product: 'John', profit: 23, '%':'1', data3 : 'data3Value',data4 : 'data4Value',data5 : 'data5Value',data6 : 'data6Value', },
+        { product: 'John', profit: 23, '%':'1', data3 : 'data3Value',data4 : 'data4Value',data5 : 'data5Value',data6 : 'data6Value', },
+        
+        { product: 'John', profit: 23, '%':'1', data3 : 'data3Value',data4 : 'data4Value',data5 : 'data5Value',data6 : 'data6Value', },
+        { product: 'John', profit: 23, '%':'1', data3 : 'data3Value',data4 : 'data4Value',data5 : 'data5Value',data6 : 'data6Value', },
+        { product: 'John', profit: 23, '%':'1', data3 : 'data3Value',data4 : 'data4Value',data5 : 'data5Value',data6 : 'data6Value', },
+        { product: 'John', profit: 23, '%':'1', data3 : 'data3Value',data4 : 'data4Value',data5 : 'data5Value',data6 : 'data6Value', },
+        { product: 'John', profit: 23, '%':'1', data3 : 'data3Value',data4 : 'data4Value',data5 : 'data5Value',data6 : 'data6Value', },
+        { product: 'John', profit: 23, '%':'1', data3 : 'data3Value',data4 : 'data4Value',data5 : 'data5Value',data6 : 'data6Value', },
+        
+        { product: 'John', profit: 23, '%':'1', data3 : 'data3Value',data4 : 'data4Value',data5 : 'data5Value',data6 : 'data6Value', },
+        { product: 'John', profit: 23, '%':'1', data3 : 'data3Value',data4 : 'data4Value',data5 : 'data5Value',data6 : 'data6Value', },
+        { product: 'John', profit: 23, '%':'1', data3 : 'data3Value',data4 : 'data4Value',data5 : 'data5Value',data6 : 'data6Value', },
+        { product: 'John', profit: 23, '%':'1', data3 : 'data3Value',data4 : 'data4Value',data5 : 'data5Value',data6 : 'data6Value', },
+        { product: 'John', profit: 23, '%':'1', data3 : 'data3Value',data4 : 'data4Value',data5 : 'data5Value',data6 : 'data6Value', },
+        { product: 'John', profit: 23, '%':'1', data3 : 'data3Value',data4 : 'data4Value',data5 : 'data5Value',data6 : 'data6Value', },
+        
+        { product: 'John', profit: 23, '%':'1', data3 : 'data3Value',data4 : 'data4Value',data5 : 'data5Value',data6 : 'data6Value', },
+        { product: 'John', profit: 23, '%':'1', data3 : 'data3Value',data4 : 'data4Value',data5 : 'data5Value',data6 : 'data6Value', },
+        { product: 'John', profit: 23, '%':'1', data3 : 'data3Value',data4 : 'data4Value',data5 : 'data5Value',data6 : 'data6Value', },
+        { product: 'John', profit: 23, '%':'1', data3 : 'data3Value',data4 : 'data4Value',data5 : 'data5Value',data6 : 'data6Value', },
+        { product: 'John', profit: 23, '%':'1', data3 : 'data3Value',data4 : 'data4Value',data5 : 'data5Value',data6 : 'data6Value', },
+        { product: 'John', profit: 23, '%':'1', data3 : 'data3Value',data4 : 'data4Value',data5 : 'data5Value',data6 : 'data6Value', },
+        { product: 'John', profit: 23, '%':'1', data3 : 'data3Value',data4 : 'data4Value',data5 : 'data5Value',data6 : 'data6Value', },
+        { product: 'John', profit: 23, '%':'1', data3 : 'data3Value',data4 : 'data4Value',data5 : 'data5Value',data6 : 'data6Value', },
+        { product: 'John', profit: 23, '%':'1', data3 : 'data3Value',data4 : 'data4Value',data5 : 'data5Value',data6 : 'data6Value', },
+        { product: 'John', profit: 23, '%':'1', data3 : 'data3Value',data4 : 'data4Value',data5 : 'data5Value',data6 : 'data6Value', },
+        { product: 'John', profit: 23, '%':'1', data3 : 'data3Value',data4 : 'data4Value',data5 : 'data5Value',data6 : 'data6Value', },
+        { product: 'John', profit: 23, '%':'1', data3 : 'data3Value',data4 : 'data4Value',data5 : 'data5Value',data6 : 'data6Value', },
+        { product: 'John', profit: 23, '%':'1', data3 : 'data3Value',data4 : 'data4Value',data5 : 'data5Value',data6 : 'data6Value', },
+        { product: 'John', profit: 23, '%':'1', data3 : 'data3Value',data4 : 'data4Value',data5 : 'data5Value',data6 : 'data6Value', },
+        { product: 'John', profit: 23, '%':'1', data3 : 'data3Value',data4 : 'data4Value',data5 : 'data5Value',data6 : 'data6Value', },
+        { product: 'John', profit: 23, '%':'1', data3 : 'data3Value',data4 : 'data4Value',data5 : 'data5Value',data6 : 'data6Value', },
+        { product: 'John', profit: 23, '%':'1', data3 : 'data3Value',data4 : 'data4Value',data5 : 'data5Value',data6 : 'data6Value', },
+        { product: 'John', profit: 23, '%':'1', data3 : 'data3Value',data4 : 'data4Value',data5 : 'data5Value',data6 : 'data6Value', },
+        
+    ]);
+
+    const [billstatecloneData, setTcbu] = useState([
+        { product: 'John', profit: 23, '%':'1', data3 : 'data3Value',data4 : 'data4Value',data5 : 'data5Value',data6 : 'data6Value', },
+        { product: 'John', profit: 23, '%':'1', data3 : 'data3Value',data4 : 'data4Value',data5 : 'data5Value',data6 : 'data6Value', },
+        { product: 'John', profit: 23, '%':'1', data3 : 'data3Value',data4 : 'data4Value',data5 : 'data5Value',data6 : 'data6Value', },
+        { product: 'John', profit: 23, '%':'1', data3 : 'data3Value',data4 : 'data4Value',data5 : 'data5Value',data6 : 'data6Value', },
+        { product: 'John', profit: 23, '%':'1', data3 : 'data3Value',data4 : 'data4Value',data5 : 'data5Value',data6 : 'data6Value', },
+        { product: 'John', profit: 23, '%':'1', data3 : 'data3Value',data4 : 'data4Value',data5 : 'data5Value',data6 : 'data6Value', },
+        { product: 'John', profit: 23, '%':'1', data3 : 'data3Value',data4 : 'data4Value',data5 : 'data5Value',data6 : 'data6Value', },
+        { product: 'John', profit: 23, '%':'1', data3 : 'data3Value',data4 : 'data4Value',data5 : 'data5Value',data6 : 'data6Value', },
+        { product: 'John', profit: 23, '%':'1', data3 : 'data3Value',data4 : 'data4Value',data5 : 'data5Value',data6 : 'data6Value', },
+        { product: 'John', profit: 23, '%':'1', data3 : 'data3Value',data4 : 'data4Value',data5 : 'data5Value',data6 : 'data6Value', },
+        { product: 'John', profit: 23, '%':'1', data3 : 'data3Value',data4 : 'data4Value',data5 : 'data5Value',data6 : 'data6Value', },
+        { product: 'John', profit: 23, '%':'1', data3 : 'data3Value',data4 : 'data4Value',data5 : 'data5Value',data6 : 'data6Value', },
+        { product: 'John', profit: 23, '%':'1', data3 : 'data3Value',data4 : 'data4Value',data5 : 'data5Value',data6 : 'data6Value', },
+        { product: 'John', profit: 23, '%':'1', data3 : 'data3Value',data4 : 'data4Value',data5 : 'data5Value',data6 : 'data6Value', },
+        { product: 'John', profit: 23, '%':'1', data3 : 'data3Value',data4 : 'data4Value',data5 : 'data5Value',data6 : 'data6Value', },
+        { product: 'John', profit: 23, '%':'1', data3 : 'data3Value',data4 : 'data4Value',data5 : 'data5Value',data6 : 'data6Value', },
+        { product: 'John', profit: 23, '%':'1', data3 : 'data3Value',data4 : 'data4Value',data5 : 'data5Value',data6 : 'data6Value', },
+        { product: 'John', profit: 23, '%':'1', data3 : 'data3Value',data4 : 'data4Value',data5 : 'data5Value',data6 : 'data6Value', },
+        { product: 'John', profit: 23, '%':'1', data3 : 'data3Value',data4 : 'data4Value',data5 : 'data5Value',data6 : 'data6Value', },
+        { product: 'John', profit: 23, '%':'1', data3 : 'data3Value',data4 : 'data4Value',data5 : 'data5Value',data6 : 'data6Value', },
+        { product: 'John', profit: 23, '%':'1', data3 : 'data3Value',data4 : 'data4Value',data5 : 'data5Value',data6 : 'data6Value', },
+        { product: 'John', profit: 23, '%':'1', data3 : 'data3Value',data4 : 'data4Value',data5 : 'data5Value',data6 : 'data6Value', },
+        { product: 'John', profit: 23, '%':'1', data3 : 'data3Value',data4 : 'data4Value',data5 : 'data5Value',data6 : 'data6Value', },
+        { product: 'John', profit: 23, '%':'1', data3 : 'data3Value',data4 : 'data4Value',data5 : 'data5Value',data6 : 'data6Value', },
+        { product: 'John', profit: 23, '%':'1', data3 : 'data3Value',data4 : 'data4Value',data5 : 'data5Value',data6 : 'data6Value', },
+        { product: 'John', profit: 23, '%':'1', data3 : 'data3Value',data4 : 'data4Value',data5 : 'data5Value',data6 : 'data6Value', },
+        { product: 'John', profit: 23, '%':'1', data3 : 'data3Value',data4 : 'data4Value',data5 : 'data5Value',data6 : 'data6Value', },
+        { product: 'John', profit: 23, '%':'1', data3 : 'data3Value',data4 : 'data4Value',data5 : 'data5Value',data6 : 'data6Value', },
+        { product: 'John', profit: 23, '%':'1', data3 : 'data3Value',data4 : 'data4Value',data5 : 'data5Value',data6 : 'data6Value', },
+        { product: 'John', profit: 23, '%':'1', data3 : 'data3Value',data4 : 'data4Value',data5 : 'data5Value',data6 : 'data6Value', },
+        { product: 'John', profit: 23, '%':'1', data3 : 'data3Value',data4 : 'data4Value',data5 : 'data5Value',data6 : 'data6Value', },
+        { product: 'John', profit: 23, '%':'1', data3 : 'data3Value',data4 : 'data4Value',data5 : 'data5Value',data6 : 'data6Value', },
+        { product: 'John', profit: 23, '%':'1', data3 : 'data3Value',data4 : 'data4Value',data5 : 'data5Value',data6 : 'data6Value', },
+        { product: 'John', profit: 23, '%':'1', data3 : 'data3Value',data4 : 'data4Value',data5 : 'data5Value',data6 : 'data6Value', },
+        { product: 'John', profit: 23, '%':'1', data3 : 'data3Value',data4 : 'data4Value',data5 : 'data5Value',data6 : 'data6Value', },
+        { product: 'John', profit: 23, '%':'1', data3 : 'data3Value',data4 : 'data4Value',data5 : 'data5Value',data6 : 'data6Value', },
+        { product: 'John', profit: 23, '%':'1', data3 : 'data3Value',data4 : 'data4Value',data5 : 'data5Value',data6 : 'data6Value', },
+        { product: 'John', profit: 23, '%':'1', data3 : 'data3Value',data4 : 'data4Value',data5 : 'data5Value',data6 : 'data6Value', },
+        { product: 'John', profit: 23, '%':'1', data3 : 'data3Value',data4 : 'data4Value',data5 : 'data5Value',data6 : 'data6Value', },
+        { product: 'John', profit: 23, '%':'1', data3 : 'data3Value',data4 : 'data4Value',data5 : 'data5Value',data6 : 'data6Value', },
+        { product: 'John', profit: 23, '%':'1', data3 : 'data3Value',data4 : 'data4Value',data5 : 'data5Value',data6 : 'data6Value', },
+        { product: 'John', profit: 23, '%':'1', data3 : 'data3Value',data4 : 'data4Value',data5 : 'data5Value',data6 : 'data6Value', },
+        { product: 'John', profit: 23, '%':'1', data3 : 'data3Value',data4 : 'data4Value',data5 : 'data5Value',data6 : 'data6Value', },
+        { product: 'John', profit: 23, '%':'1', data3 : 'data3Value',data4 : 'data4Value',data5 : 'data5Value',data6 : 'data6Value', },
+        { product: 'John', profit: 23, '%':'1', data3 : 'data3Value',data4 : 'data4Value',data5 : 'data5Value',data6 : 'data6Value', },
+        { product: 'John', profit: 23, '%':'1', data3 : 'data3Value',data4 : 'data4Value',data5 : 'data5Value',data6 : 'data6Value', },
+        { product: 'John', profit: 23, '%':'1', data3 : 'data3Value',data4 : 'data4Value',data5 : 'data5Value',data6 : 'data6Value', },
+        { product: 'John', profit: 23, '%':'1', data3 : 'data3Value',data4 : 'data4Value',data5 : 'data5Value',data6 : 'data6Value', },
+        
+    ]);
+
+
+    const [shipstatecloneData, setTcbp] = useState([
+        { product: 'John', profit: 23, '%':'1', data3 : 'data3Value',data4 : 'data4Value',data5 : 'data5Value',data6 : 'data6Value', },
+        { product: 'John', profit: 23, '%':'1', data3 : 'data3Value',data4 : 'data4Value',data5 : 'data5Value',data6 : 'data6Value', },
+        { product: 'John', profit: 23, '%':'1', data3 : 'data3Value',data4 : 'data4Value',data5 : 'data5Value',data6 : 'data6Value', },
+        { product: 'John', profit: 23, '%':'1', data3 : 'data3Value',data4 : 'data4Value',data5 : 'data5Value',data6 : 'data6Value', },
+        { product: 'John', profit: 23, '%':'1', data3 : 'data3Value',data4 : 'data4Value',data5 : 'data5Value',data6 : 'data6Value', },
+        { product: 'John', profit: 23, '%':'1', data3 : 'data3Value',data4 : 'data4Value',data5 : 'data5Value',data6 : 'data6Value', },
+        { product: 'John', profit: 23, '%':'1', data3 : 'data3Value',data4 : 'data4Value',data5 : 'data5Value',data6 : 'data6Value', },
+        { product: 'John', profit: 23, '%':'1', data3 : 'data3Value',data4 : 'data4Value',data5 : 'data5Value',data6 : 'data6Value', },
+        { product: 'John', profit: 23, '%':'1', data3 : 'data3Value',data4 : 'data4Value',data5 : 'data5Value',data6 : 'data6Value', },
+        { product: 'John', profit: 23, '%':'1', data3 : 'data3Value',data4 : 'data4Value',data5 : 'data5Value',data6 : 'data6Value', },
+        { product: 'John', profit: 23, '%':'1', data3 : 'data3Value',data4 : 'data4Value',data5 : 'data5Value',data6 : 'data6Value', },
+        { product: 'John', profit: 23, '%':'1', data3 : 'data3Value',data4 : 'data4Value',data5 : 'data5Value',data6 : 'data6Value', },
+        { product: 'John', profit: 23, '%':'1', data3 : 'data3Value',data4 : 'data4Value',data5 : 'data5Value',data6 : 'data6Value', },
+        { product: 'John', profit: 23, '%':'1', data3 : 'data3Value',data4 : 'data4Value',data5 : 'data5Value',data6 : 'data6Value', },
+        { product: 'John', profit: 23, '%':'1', data3 : 'data3Value',data4 : 'data4Value',data5 : 'data5Value',data6 : 'data6Value', },
+        { product: 'John', profit: 23, '%':'1', data3 : 'data3Value',data4 : 'data4Value',data5 : 'data5Value',data6 : 'data6Value', },
+        { product: 'John', profit: 23, '%':'1', data3 : 'data3Value',data4 : 'data4Value',data5 : 'data5Value',data6 : 'data6Value', },
+        { product: 'John', profit: 23, '%':'1', data3 : 'data3Value',data4 : 'data4Value',data5 : 'data5Value',data6 : 'data6Value', },
+        { product: 'John', profit: 23, '%':'1', data3 : 'data3Value',data4 : 'data4Value',data5 : 'data5Value',data6 : 'data6Value', },
+        { product: 'John', profit: 23, '%':'1', data3 : 'data3Value',data4 : 'data4Value',data5 : 'data5Value',data6 : 'data6Value', },
+        { product: 'John', profit: 23, '%':'1', data3 : 'data3Value',data4 : 'data4Value',data5 : 'data5Value',data6 : 'data6Value', },
+        { product: 'John', profit: 23, '%':'1', data3 : 'data3Value',data4 : 'data4Value',data5 : 'data5Value',data6 : 'data6Value', },
+        { product: 'John', profit: 23, '%':'1', data3 : 'data3Value',data4 : 'data4Value',data5 : 'data5Value',data6 : 'data6Value', },
+        { product: 'John', profit: 23, '%':'1', data3 : 'data3Value',data4 : 'data4Value',data5 : 'data5Value',data6 : 'data6Value', },
+        { product: 'John', profit: 23, '%':'1', data3 : 'data3Value',data4 : 'data4Value',data5 : 'data5Value',data6 : 'data6Value', },
+        { product: 'John', profit: 23, '%':'1', data3 : 'data3Value',data4 : 'data4Value',data5 : 'data5Value',data6 : 'data6Value', },
+        { product: 'John', profit: 23, '%':'1', data3 : 'data3Value',data4 : 'data4Value',data5 : 'data5Value',data6 : 'data6Value', },
+        { product: 'John', profit: 23, '%':'1', data3 : 'data3Value',data4 : 'data4Value',data5 : 'data5Value',data6 : 'data6Value', },
+        { product: 'John', profit: 23, '%':'1', data3 : 'data3Value',data4 : 'data4Value',data5 : 'data5Value',data6 : 'data6Value', },
+        { product: 'John', profit: 23, '%':'1', data3 : 'data3Value',data4 : 'data4Value',data5 : 'data5Value',data6 : 'data6Value', },
+        { product: 'John', profit: 23, '%':'1', data3 : 'data3Value',data4 : 'data4Value',data5 : 'data5Value',data6 : 'data6Value', },
+        { product: 'John', profit: 23, '%':'1', data3 : 'data3Value',data4 : 'data4Value',data5 : 'data5Value',data6 : 'data6Value', },
+        { product: 'John', profit: 23, '%':'1', data3 : 'data3Value',data4 : 'data4Value',data5 : 'data5Value',data6 : 'data6Value', },
+        { product: 'John', profit: 23, '%':'1', data3 : 'data3Value',data4 : 'data4Value',data5 : 'data5Value',data6 : 'data6Value', },
+        { product: 'John', profit: 23, '%':'1', data3 : 'data3Value',data4 : 'data4Value',data5 : 'data5Value',data6 : 'data6Value', },
+        { product: 'John', profit: 23, '%':'1', data3 : 'data3Value',data4 : 'data4Value',data5 : 'data5Value',data6 : 'data6Value', },
+        { product: 'John', profit: 23, '%':'1', data3 : 'data3Value',data4 : 'data4Value',data5 : 'data5Value',data6 : 'data6Value', },
+        { product: 'John', profit: 23, '%':'1', data3 : 'data3Value',data4 : 'data4Value',data5 : 'data5Value',data6 : 'data6Value', },
+        { product: 'John', profit: 23, '%':'1', data3 : 'data3Value',data4 : 'data4Value',data5 : 'data5Value',data6 : 'data6Value', },
+        { product: 'John', profit: 23, '%':'1', data3 : 'data3Value',data4 : 'data4Value',data5 : 'data5Value',data6 : 'data6Value', },
+        { product: 'John', profit: 23, '%':'1', data3 : 'data3Value',data4 : 'data4Value',data5 : 'data5Value',data6 : 'data6Value', },
+        { product: 'John', profit: 23, '%':'1', data3 : 'data3Value',data4 : 'data4Value',data5 : 'data5Value',data6 : 'data6Value', },
+        { product: 'John', profit: 23, '%':'1', data3 : 'data3Value',data4 : 'data4Value',data5 : 'data5Value',data6 : 'data6Value', },
+        { product: 'John', profit: 23, '%':'1', data3 : 'data3Value',data4 : 'data4Value',data5 : 'data5Value',data6 : 'data6Value', },
+        { product: 'John', profit: 23, '%':'1', data3 : 'data3Value',data4 : 'data4Value',data5 : 'data5Value',data6 : 'data6Value', },
+        { product: 'John', profit: 23, '%':'1', data3 : 'data3Value',data4 : 'data4Value',data5 : 'data5Value',data6 : 'data6Value', },
+        { product: 'John', profit: 23, '%':'1', data3 : 'data3Value',data4 : 'data4Value',data5 : 'data5Value',data6 : 'data6Value', },
+        { product: 'John', profit: 23, '%':'1', data3 : 'data3Value',data4 : 'data4Value',data5 : 'data5Value',data6 : 'data6Value', },
+        
+
+    ]);
+
+
     return (
 
         <>
@@ -125,8 +341,10 @@ function CusCityStateTable() {
             {/* Billing And Shipping City,State Customer Table */}
             <Grid style={{ marginTop: "20px" }}>
                 <ThemeProvider theme={defaultMaterialTheme}>
-                    {CusLocChartTable.billcity_table && <MaterialTable style={{borderRadius:'14px'}}
-                        columns={city_columns}
+                    {
+                    //CusLocChartTable.billcity_table && 
+                    <MaterialTable style={{borderRadius:'14px'}}
+                        //columns={city_columns}
                         data={billcitycloneData}
                         title={<MyNewTitle variant="h6" text="Billing-city" />}
                         icons={{
@@ -178,15 +396,18 @@ function CusCityStateTable() {
                               showFirstLastPageButtons: false,
                             }
                         }}
-                    />}
+                    />
+                    }
                 </ThemeProvider>
             </Grid>
 
 
             <Grid style={{ marginTop: "20px" }}>
                 <ThemeProvider theme={defaultMaterialTheme}>
-                    {CusLocChartTable.shipcity_table && <MaterialTable style={{borderRadius:'14px'}}
-                        columns={city_columns}
+                    {
+                    //CusLocChartTable.shipcity_table && 
+                    <MaterialTable style={{borderRadius:'14px'}}
+                        //columns={city_columns}
                         data={shipcitycloneData}
                         title={<MyNewTitle variant="h6" text="Shipping-city" />}
                         icons={{
@@ -246,8 +467,10 @@ function CusCityStateTable() {
 
             <Grid style={{ marginTop: "20px" }}>
                 <ThemeProvider theme={defaultMaterialTheme}>
-                    {CusLocChartTable.billstate_table && <MaterialTable style={{borderRadius:'14px'}}
-                        columns={state_columns}
+                    {
+                    //CusLocChartTable.billstate_table && 
+                    <MaterialTable style={{borderRadius:'14px'}}
+                        //columns={state_columns}
                         data={billstatecloneData}
                         title={<MyNewTitle variant="h6" text="Billing-state" />}
                         icons={{
@@ -299,15 +522,18 @@ function CusCityStateTable() {
                               showFirstLastPageButtons: false,
                             }
                         }}
-                    />}
+                    />
+                    }
                 </ThemeProvider>
             </Grid>
 
 
             <Grid style={{ marginTop: "20px" }}>
                 <ThemeProvider theme={defaultMaterialTheme}>
-                    {CusLocChartTable.shipstate_table && <MaterialTable style={{borderRadius:'14px'}}
-                        columns={state_columns}
+                    {
+                    // CusLocChartTable.shipstate_table && 
+                    <MaterialTable style={{borderRadius:'14px'}}
+                        //columns={state_columns}
                         data={shipstatecloneData}
                         title={<MyNewTitle variant="h6" text="Shipping-state" />}
                         icons={{
@@ -359,7 +585,8 @@ function CusCityStateTable() {
                               showFirstLastPageButtons: false,
                             }
                         }}
-                    />}
+                    />
+                    }
                 </ThemeProvider>
             </Grid>
 

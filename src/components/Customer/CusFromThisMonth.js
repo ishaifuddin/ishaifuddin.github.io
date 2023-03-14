@@ -1,7 +1,7 @@
 import { ReactSession }  from 'react-client-session';
 import React from 'react'
 import Grid from '@mui/material/Grid';
-
+import { useState } from 'react';
 import MaterialTable from 'material-table';
 import { ThemeProvider, createTheme } from '@mui/material';
 
@@ -31,30 +31,102 @@ function CusFromThisMonth() {
     var dispatch4  = useDispatch();
     
    
-    var is_dispatched2 = (dispatch_function) => {
-        ReactSession.get("get_custm_data");
-        if(ReactSession.get("get_custm_data")) {
-            return true;
-        }else {
-            ReactSession.set("get_custm_data", "1");
-            return false;
-        }
-    }
+    // var is_dispatched2 = (dispatch_function) => {
+    //     ReactSession.get("get_custm_data");
+    //     if(ReactSession.get("get_custm_data")) {
+    //         return true;
+    //     }else {
+    //         ReactSession.set("get_custm_data", "1");
+    //         return false;
+    //     }
+    // }
 
-    if(!(is_dispatched2('get_custm_data'))) {
-        dispatch4(get_custm_data({ajax_seg:2}));
-    }
+    // if(!(is_dispatched2('get_custm_data'))) {
+    //     dispatch4(get_custm_data({ajax_seg:2}));
+    // }
   
-    var new_customer_this_month = useSelector((state) => state.cusTM.newcus_obj);
-    if(new_customer_this_month.length > 0){
-        var tmnew = structuredClone(new_customer_this_month);
-    }
+    // var new_customer_this_month = useSelector((state) => state.cusTM.newcus_obj);
+    // if(new_customer_this_month.length > 0){
+    //     var tmnew = structuredClone(new_customer_this_month);
+    // }
 
-    var ret_customer_this_month = useSelector((state) => state.cusTM.retcus_obj);
-    if(ret_customer_this_month.length > 0)  {
-        var tmret = structuredClone(ret_customer_this_month);
-    }
+    // var ret_customer_this_month = useSelector((state) => state.cusTM.retcus_obj);
+    // if(ret_customer_this_month.length > 0)  {
+    //     var tmret = structuredClone(ret_customer_this_month);
+    // }
     
+    
+    /////////////////////////// DUMMY DATA /////////////////////////////////
+    /////////////////////////// DUMMY DATA /////////////////////////////////
+    /////////////////////////// DUMMY DATA /////////////////////////////////
+    /////////////////////////// DUMMY DATA /////////////////////////////////
+    /////////////////////////// DUMMY DATA /////////////////////////////////
+    /////////////////////////// DUMMY DATA /////////////////////////////////
+
+    const [tmret, setTmret] = useState([
+        { name: 'John', spend: 23 },
+        {  name: 'Jane', spend: 31 },
+        {  name: 'Bob', spend: 45  },
+        {  name: 'Alice', spend: 27},
+        { name: 'John', spend: 23 },
+        {  name: 'Jane', spend: 31 },
+        {  name: 'Bob', spend: 45  },
+        {  name: 'Alice', spend: 27},
+        { name: 'John', spend: 23 },
+        {  name: 'Jane', spend: 31 },
+        {  name: 'Bob', spend: 45  },
+        {  name: 'Alice', spend: 27},
+        { name: 'John', spend: 23 },
+        {  name: 'Jane', spend: 31 },
+        {  name: 'Bob', spend: 45  },
+        {  name: 'Alice', spend: 27},
+        { name: 'John', spend: 23 },
+        {  name: 'Jane', spend: 31 },
+        {  name: 'Bob', spend: 45  },
+        {  name: 'Alice', spend: 27},
+        { name: 'John', spend: 23 },
+        {  name: 'Jane', spend: 31 },
+        {  name: 'Bob', spend: 45  },
+        {  name: 'Alice', spend: 27},
+    ]);
+
+
+    const [tmnew, setTmnew] = useState([
+        {  name: 'John', spend: 23, Returned_after : '12' },
+        {  name: 'Jane', spend: 31 , Returned_after : '1' },
+        {  name: 'Bob', spend: 45 , Returned_after : '2' },
+        {  name: 'Alice', spend: 27, Returned_after : '6' },
+        {  name: 'John', spend: 23, Returned_after : '12' },
+        {  name: 'Jane', spend: 31 , Returned_after : '1' },
+        {  name: 'Bob', spend: 45 , Returned_after : '2' },
+        {  name: 'Alice', spend: 27, Returned_after : '6' },
+        {  name: 'John', spend: 23, Returned_after : '12' },
+        {  name: 'Jane', spend: 31 , Returned_after : '1' },
+        {  name: 'Bob', spend: 45 , Returned_after : '2' },
+        {  name: 'Alice', spend: 27, Returned_after : '6' },
+        {  name: 'John', spend: 23, Returned_after : '12' },
+        {  name: 'Jane', spend: 31 , Returned_after : '1' },
+        {  name: 'Bob', spend: 45 , Returned_after : '2' },
+        {  name: 'Alice', spend: 27, Returned_after : '6' },
+        {  name: 'John', spend: 23, Returned_after : '12' },
+        {  name: 'Jane', spend: 31 , Returned_after : '1' },
+        {  name: 'Bob', spend: 45 , Returned_after : '2' },
+        {  name: 'Alice', spend: 27, Returned_after : '6' },
+        {  name: 'John', spend: 23, Returned_after : '12' },
+        {  name: 'Jane', spend: 31 , Returned_after : '1' },
+        {  name: 'Bob', spend: 45 , Returned_after : '2' },
+        {  name: 'Alice', spend: 27, Returned_after : '6' },
+        {  name: 'John', spend: 23, Returned_after : '12' },
+        {  name: 'Jane', spend: 31 , Returned_after : '1' },
+        {  name: 'Bob', spend: 45 , Returned_after : '2' },
+        {  name: 'Alice', spend: 27, Returned_after : '6' },
+        {  name: 'John', spend: 23, Returned_after : '12' },
+        {  name: 'Jane', spend: 31 , Returned_after : '1' },
+        {  name: 'Bob', spend: 45 , Returned_after : '2' },
+        {  name: 'Alice', spend: 27, Returned_after : '6' },
+
+
+    ]);
     
 
 

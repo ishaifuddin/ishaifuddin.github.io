@@ -36,65 +36,130 @@ function CusReport() {
     var dispatch3 = useDispatch();
     var dispatch6 = useDispatch();
 
-    var is_dispatched3 = (dispatch_function) => {
-        ReactSession.get("get_trf_data");
-        if (ReactSession.get("get_trf_data")) {
-            return true;
-        } else {
-            ReactSession.set("get_trf_data", "1");
-            return false;
-        }
-    }
+    // var is_dispatched3 = (dispatch_function) => {
+    //     ReactSession.get("get_trf_data");
+    //     if (ReactSession.get("get_trf_data")) {
+    //         return true;
+    //     } else {
+    //         ReactSession.set("get_trf_data", "1");
+    //         return false;
+    //     }
+    // }
 
-    if (!(is_dispatched3('get_trf_data'))) {
-        dispatch2(get_trf_data({ ajax_seg: 2 }));
-    }
+    // if (!(is_dispatched3('get_trf_data'))) {
+    //     dispatch2(get_trf_data({ ajax_seg: 2 }));
+    // }
 
-    var trf = useSelector((state) => state.cusTRF);
+    // var trf = useSelector((state) => state.cusTRF);
 
-    var new_side_note       = trf.f_s_note;
-    var new_side_note_Array = new_side_note.split("shop");
+    // var new_side_note       = trf.f_s_note;
+    // var new_side_note_Array = new_side_note.split("shop");
 
-    var repeat_side_note    = trf.r_s_note;
-    var repeat_side_note_Array = repeat_side_note.split("shop");
-
-
-    var total_side_note     = trf.total_s_note;
-    var total_side_note_Array = total_side_note.split("shop");
+    // var repeat_side_note    = trf.r_s_note;
+    // var repeat_side_note_Array = repeat_side_note.split("shop");
 
 
-    var totcus_object = {
-        labels: trf.total_label.replace(/\"/g, "").split(","),
+    // var total_side_note     = trf.total_s_note;
+    // var total_side_note_Array = total_side_note.split("shop");
+
+
+    // var totcus_object = {
+    //     labels: trf.total_label.replace(/\"/g, "").split(","),
+    //     datasets: [
+    //         {
+    //             label: 'Total-Cus',
+    //             backgroundColor: 'rgba(75,192,192,1)',
+    //             borderColor: 'rgba(0,0,0,1)',
+    //             borderWidth: 2,
+    //             data: trf.total_data.replace(/\"/g, "").split(",")
+    //         }]
+    // }
+
+
+    // var nrcus_object = {
+    //     labels: trf.f_r_label.replace(/\"/g, "").split(","),
+    //     datasets: [{
+    //         label: 'New-Cus',
+    //         backgroundColor: 'red',
+    //         borderColor: 'rgba(0,0,0,1)',
+    //         borderColor: 'red',
+    //         borderWidth: 1,
+    //         data: trf.ftime_data.replace(/\"/g, "").split(","),
+    //     },
+    //     {
+    //         label: 'Repeat-Cus',
+    //         backgroundColor: 'rgba(75,192,192,1)',
+    //         borderColor: 'rgba(0,0,0,1)',
+    //         borderWidth: 1,
+    //         data: trf.ret_data.replace(/\"/g, "").split(","),
+    //     }]
+    // }
+
+    const totcus_object = {
+        labels: ["Jan", "Feb", "Mar", "April", "May", "June", "July"],
         datasets: [
             {
-                label: 'Total-Cus',
-                backgroundColor: 'rgba(75,192,192,1)',
-                borderColor: 'rgba(0,0,0,1)',
-                borderWidth: 2,
-                data: trf.total_data.replace(/\"/g, "").split(",")
-            }]
-    }
+            label: "Sales",
+            tension: 0.4,
+            borderDash: [2, 2],
+            borderJoinStyle: 'round',
+            backgroundColor: "rgba(43, 206, 161, 1)",
+            borderColor: "rgba(43, 206, 161,1)",
+            borderWidth: 2,
+            hoverBackgroundColor: "rgba(255,99,132,0.4)",
+            hoverBorderColor: "rgba(255,99,132,1)",
+            data: [65, 59, 80, 81, 56, 55, 40],
+            },
+            {
+            label: "Expenses",     
+            tension: 0.4,
+            borderJoinStyle: 'round',
+            backgroundColor: "rgba(94, 114, 228, 1)",
+            pointBackgroundColor: "rgba(54,162,235,0.2)",
+            pointBackgroundColor: "rgba(94, 114, 228, 1)",
+            borderColor: "rgba(94, 114, 228, 1)",
+            borderWidth: 2,
+            hoverBackgroundColor: "red)",
+            hoverBorderColor: "rgba(54,162,235,1)",
+            data: [28, 48, 40, 19, 86, 27, 90],
+            },
+        ],
+    };
+        
+    const nrcus_object = {
+        labels: ["Jan", "Feb", "Mar", "April", "May", "June", "July"],
+        datasets: [
+            {
+            label: "Sales",
+            tension: 0.4,
+            borderDash: [2, 2],
+            borderJoinStyle: 'round',
+            backgroundColor: "rgba(43, 206, 161, 1)",
+            borderColor: "rgba(43, 206, 161,1)",
+            borderWidth: 2,
+            hoverBackgroundColor: "rgba(255,99,132,0.4)",
+            hoverBorderColor: "rgba(255,99,132,1)",
+            data: [65, 59, 80, 81, 56, 55, 40],
+            },
+            {
+            label: "Expenses",     
+            tension: 0.4,
+            borderJoinStyle: 'round',
+            backgroundColor: "rgba(94, 114, 228, 1)",
+            pointBackgroundColor: "rgba(54,162,235,0.2)",
+            pointBackgroundColor: "rgba(94, 114, 228, 1)",
+            borderColor: "rgba(94, 114, 228, 1)",
+            borderWidth: 2,
+            hoverBackgroundColor: "red)",
+            hoverBorderColor: "rgba(54,162,235,1)",
+            data: [28, 48, 40, 19, 86, 27, 90],
+            },
+        ],
+    };
 
-
-    var nrcus_object = {
-        labels: trf.f_r_label.replace(/\"/g, "").split(","),
-        datasets: [{
-            label: 'New-Cus',
-            backgroundColor: 'red',
-            borderColor: 'rgba(0,0,0,1)',
-            borderColor: 'red',
-            borderWidth: 1,
-            data: trf.ftime_data.replace(/\"/g, "").split(","),
-        },
-        {
-            label: 'Repeat-Cus',
-            backgroundColor: 'rgba(75,192,192,1)',
-            borderColor: 'rgba(0,0,0,1)',
-            borderWidth: 1,
-            data: trf.ret_data.replace(/\"/g, "").split(","),
-        }]
-    }
-
+    var total_side_note_Array=[];
+    var repeat_side_note_Array=[];
+    var new_side_note_Array=[];
 
     var [daterange2, setdrange2] = useState([new Date(moment().startOf('month')), new Date(moment().endOf('month'))]);
     var [duration2, setduration2] = useState();
@@ -123,8 +188,8 @@ function CusReport() {
     }
 
 
-    var chartStyle={"background":"white","boxShadow":"rgba(65, 69, 88, 0.1) 0px 7px 14px 0px, rgba(0, 0, 0, 0.07) 0px 3px 6px 0px","padding":"0px","borderRadius":"10px"}
-    var cusChart ={ padding:'10px',background:"mediumseagreen", color:"white", borderRadius:"4px"};
+    var chartStyle      = {"background":"white","boxShadow":"rgba(65, 69, 88, 0.1) 0px 7px 14px 0px, rgba(0, 0, 0, 0.07) 0px 3px 6px 0px","padding":"0px","borderRadius":"10px"}
+    var cusChart        = { padding:'10px',background:"mediumseagreen", color:"white", borderRadius:"4px"};
     var tnr_chart_style = {"boxShadow" : "rgb(65 69 88 / 10%) 0px 7px 14px 0px, rgb(0 0 0 / 7%) 0px 3px 6px 0px", "display" : "contents"};
 
     
@@ -177,6 +242,7 @@ function CusReport() {
                     {/* Total, New And Returning Customer Chart */}
                     <h4 style={cusChart}>Total Customer</h4>
                     <Grid container>
+
                         <Grid item sm={3}> 
                             <Timeline style={{color:'cornflowerblue',padding:'10px'}}>
                                 <Timeline.Item>Total : { total_side_note_Array[0] }</Timeline.Item>
@@ -254,7 +320,6 @@ function CusReport() {
 
                         <Grid item sm={12}>
 
-                            
                             <DateRangePicker
                                 value={daterange}
                                 onChange={setdrange}

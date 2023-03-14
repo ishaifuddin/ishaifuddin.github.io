@@ -2,7 +2,7 @@ import { ReactSession }  from 'react-client-session';
 import React from 'react'
 import { useSelector, useDispatch } from "react-redux";
 import Grid from '@mui/material/Grid';
-
+import { useState } from 'react';
 import MaterialTable from 'material-table';
 import { ThemeProvider, createTheme } from '@mui/material';
 
@@ -31,23 +31,98 @@ function CusGroupByFirstMonth() {
     var dispatch1 = useDispatch();
     var defaultMaterialTheme  = createTheme();
 
-    var is_dispatched1 = (dispatch_function) => {
-        ReactSession.get("get_cus_groupBy1stMonthList");
-        if(ReactSession.get("get_cus_groupBy1stMonthList")) {
-            return true;
-        }else {
-            ReactSession.set("get_cus_groupBy1stMonthList", "1");
-            return false;
-        }
-    }
-    if (!(is_dispatched1('get_cus_groupBy1stMonthList'))) {
-        dispatch1(get_cus_groupBy1stMonthList({ajax_seg:2}));
-    }
+    // var is_dispatched1 = (dispatch_function) => {
+    //     ReactSession.get("get_cus_groupBy1stMonthList");
+    //     if(ReactSession.get("get_cus_groupBy1stMonthList")) {
+    //         return true;
+    //     }else {
+    //         ReactSession.set("get_cus_groupBy1stMonthList", "1");
+    //         return false;
+    //     }
+    // }
+    // if (!(is_dispatched1('get_cus_groupBy1stMonthList'))) {
+    //     dispatch1(get_cus_groupBy1stMonthList({ajax_seg:2}));
+    // }
 
-    var CusGroupBy1stBuy      = useSelector((state) => state.cusGroupBy1stMonth.cuslist_groupBy1stBuy);
-    if(CusGroupBy1stBuy.length > 0){
-        var CusGroupBy1stBuy_obj  = structuredClone(CusGroupBy1stBuy);
-    }
+    // var CusGroupBy1stBuy      = useSelector((state) => state.cusGroupBy1stMonth.cuslist_groupBy1stBuy);
+    // if(CusGroupBy1stBuy.length > 0){
+    //     var CusGroupBy1stBuy_obj  = structuredClone(CusGroupBy1stBuy);
+    // }
+
+
+
+    /////////////////////////// DUMMY DATA /////////////////////////////////
+    /////////////////////////// DUMMY DATA /////////////////////////////////
+    /////////////////////////// DUMMY DATA /////////////////////////////////
+    /////////////////////////// DUMMY DATA /////////////////////////////////
+    /////////////////////////// DUMMY DATA /////////////////////////////////
+    /////////////////////////// DUMMY DATA /////////////////////////////////
+    const [CusGroupBy1stBuy_obj, setTmret] = useState([
+        { customers: 'John', returned : 23, orders : 12, OrderPerCustomer : 2, Revenue : 2122, RevenuePerCustomer : 32 },
+        { customers: 'John', returned : 23, orders : 12, OrderPerCustomer : 2, Revenue : 2122, RevenuePerCustomer : 32 },
+        { customers: 'John', returned : 23, orders : 12, OrderPerCustomer : 2, Revenue : 2122, RevenuePerCustomer : 32 },
+        { customers: 'John', returned : 23, orders : 12, OrderPerCustomer : 2, Revenue : 2122, RevenuePerCustomer : 32 },
+        { customers: 'John', returned : 23, orders : 12, OrderPerCustomer : 2, Revenue : 2122, RevenuePerCustomer : 32 },
+        { customers: 'John', returned : 23, orders : 12, OrderPerCustomer : 2, Revenue : 2122, RevenuePerCustomer : 32 },
+        { customers: 'John', returned : 23, orders : 12, OrderPerCustomer : 2, Revenue : 2122, RevenuePerCustomer : 32 },
+        { customers: 'John', returned : 23, orders : 12, OrderPerCustomer : 2, Revenue : 2122, RevenuePerCustomer : 32 },
+        { customers: 'John', returned : 23, orders : 12, OrderPerCustomer : 2, Revenue : 2122, RevenuePerCustomer : 32 },
+        { customers: 'John', returned : 23, orders : 12, OrderPerCustomer : 2, Revenue : 2122, RevenuePerCustomer : 32 },
+        { customers: 'John', returned : 23, orders : 12, OrderPerCustomer : 2, Revenue : 2122, RevenuePerCustomer : 32 },
+        { customers: 'John', returned : 23, orders : 12, OrderPerCustomer : 2, Revenue : 2122, RevenuePerCustomer : 32 },
+        { customers: 'John', returned : 23, orders : 12, OrderPerCustomer : 2, Revenue : 2122, RevenuePerCustomer : 32 },
+        { customers: 'John', returned : 23, orders : 12, OrderPerCustomer : 2, Revenue : 2122, RevenuePerCustomer : 32 },
+        { customers: 'John', returned : 23, orders : 12, OrderPerCustomer : 2, Revenue : 2122, RevenuePerCustomer : 32 },
+        { customers: 'John', returned : 23, orders : 12, OrderPerCustomer : 2, Revenue : 2122, RevenuePerCustomer : 32 },
+        { customers: 'John', returned : 23, orders : 12, OrderPerCustomer : 2, Revenue : 2122, RevenuePerCustomer : 32 },
+        { customers: 'John', returned : 23, orders : 12, OrderPerCustomer : 2, Revenue : 2122, RevenuePerCustomer : 32 },
+        { customers: 'John', returned : 23, orders : 12, OrderPerCustomer : 2, Revenue : 2122, RevenuePerCustomer : 32 },
+        { customers: 'John', returned : 23, orders : 12, OrderPerCustomer : 2, Revenue : 2122, RevenuePerCustomer : 32 },
+        { customers: 'John', returned : 23, orders : 12, OrderPerCustomer : 2, Revenue : 2122, RevenuePerCustomer : 32 },
+        { customers: 'John', returned : 23, orders : 12, OrderPerCustomer : 2, Revenue : 2122, RevenuePerCustomer : 32 },
+        { customers: 'John', returned : 23, orders : 12, OrderPerCustomer : 2, Revenue : 2122, RevenuePerCustomer : 32 },
+        { customers: 'John', returned : 23, orders : 12, OrderPerCustomer : 2, Revenue : 2122, RevenuePerCustomer : 32 },
+        { customers: 'John', returned : 23, orders : 12, OrderPerCustomer : 2, Revenue : 2122, RevenuePerCustomer : 32 },
+        { customers: 'John', returned : 23, orders : 12, OrderPerCustomer : 2, Revenue : 2122, RevenuePerCustomer : 32 },
+        { customers: 'John', returned : 23, orders : 12, OrderPerCustomer : 2, Revenue : 2122, RevenuePerCustomer : 32 },
+        { customers: 'John', returned : 23, orders : 12, OrderPerCustomer : 2, Revenue : 2122, RevenuePerCustomer : 32 },
+        { customers: 'John', returned : 23, orders : 12, OrderPerCustomer : 2, Revenue : 2122, RevenuePerCustomer : 32 },
+        { customers: 'John', returned : 23, orders : 12, OrderPerCustomer : 2, Revenue : 2122, RevenuePerCustomer : 32 },
+        { customers: 'John', returned : 23, orders : 12, OrderPerCustomer : 2, Revenue : 2122, RevenuePerCustomer : 32 },
+        { customers: 'John', returned : 23, orders : 12, OrderPerCustomer : 2, Revenue : 2122, RevenuePerCustomer : 32 },
+        { customers: 'John', returned : 23, orders : 12, OrderPerCustomer : 2, Revenue : 2122, RevenuePerCustomer : 32 },
+        { customers: 'John', returned : 23, orders : 12, OrderPerCustomer : 2, Revenue : 2122, RevenuePerCustomer : 32 },
+        { customers: 'John', returned : 23, orders : 12, OrderPerCustomer : 2, Revenue : 2122, RevenuePerCustomer : 32 },
+        { customers: 'John', returned : 23, orders : 12, OrderPerCustomer : 2, Revenue : 2122, RevenuePerCustomer : 32 },
+        { customers: 'John', returned : 23, orders : 12, OrderPerCustomer : 2, Revenue : 2122, RevenuePerCustomer : 32 },
+        { customers: 'John', returned : 23, orders : 12, OrderPerCustomer : 2, Revenue : 2122, RevenuePerCustomer : 32 },
+        { customers: 'John', returned : 23, orders : 12, OrderPerCustomer : 2, Revenue : 2122, RevenuePerCustomer : 32 },
+        { customers: 'John', returned : 23, orders : 12, OrderPerCustomer : 2, Revenue : 2122, RevenuePerCustomer : 32 },
+        { customers: 'John', returned : 23, orders : 12, OrderPerCustomer : 2, Revenue : 2122, RevenuePerCustomer : 32 },
+        { customers: 'John', returned : 23, orders : 12, OrderPerCustomer : 2, Revenue : 2122, RevenuePerCustomer : 32 },
+        { customers: 'John', returned : 23, orders : 12, OrderPerCustomer : 2, Revenue : 2122, RevenuePerCustomer : 32 },
+        { customers: 'John', returned : 23, orders : 12, OrderPerCustomer : 2, Revenue : 2122, RevenuePerCustomer : 32 },
+        { customers: 'John', returned : 23, orders : 12, OrderPerCustomer : 2, Revenue : 2122, RevenuePerCustomer : 32 },
+        { customers: 'John', returned : 23, orders : 12, OrderPerCustomer : 2, Revenue : 2122, RevenuePerCustomer : 32 },
+        { customers: 'John', returned : 23, orders : 12, OrderPerCustomer : 2, Revenue : 2122, RevenuePerCustomer : 32 },
+        { customers: 'John', returned : 23, orders : 12, OrderPerCustomer : 2, Revenue : 2122, RevenuePerCustomer : 32 },
+        { customers: 'John', returned : 23, orders : 12, OrderPerCustomer : 2, Revenue : 2122, RevenuePerCustomer : 32 },
+        { customers: 'John', returned : 23, orders : 12, OrderPerCustomer : 2, Revenue : 2122, RevenuePerCustomer : 32 },
+        { customers: 'John', returned : 23, orders : 12, OrderPerCustomer : 2, Revenue : 2122, RevenuePerCustomer : 32 },
+        { customers: 'John', returned : 23, orders : 12, OrderPerCustomer : 2, Revenue : 2122, RevenuePerCustomer : 32 },
+        { customers: 'John', returned : 23, orders : 12, OrderPerCustomer : 2, Revenue : 2122, RevenuePerCustomer : 32 },
+        { customers: 'John', returned : 23, orders : 12, OrderPerCustomer : 2, Revenue : 2122, RevenuePerCustomer : 32 },
+        { customers: 'John', returned : 23, orders : 12, OrderPerCustomer : 2, Revenue : 2122, RevenuePerCustomer : 32 },
+        { customers: 'John', returned : 23, orders : 12, OrderPerCustomer : 2, Revenue : 2122, RevenuePerCustomer : 32 },
+        { customers: 'John', returned : 23, orders : 12, OrderPerCustomer : 2, Revenue : 2122, RevenuePerCustomer : 32 },
+        { customers: 'John', returned : 23, orders : 12, OrderPerCustomer : 2, Revenue : 2122, RevenuePerCustomer : 32 },
+        { customers: 'John', returned : 23, orders : 12, OrderPerCustomer : 2, Revenue : 2122, RevenuePerCustomer : 32 },
+        { customers: 'John', returned : 23, orders : 12, OrderPerCustomer : 2, Revenue : 2122, RevenuePerCustomer : 32 },
+        
+    ]);
+
+
+
 
     return (
         

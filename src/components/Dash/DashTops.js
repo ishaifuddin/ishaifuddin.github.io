@@ -105,185 +105,201 @@ function DashTops() {
   //   var tcbp = structuredClone(tops.tcbp);
   // }
 
- const [tmret, setTmret] = useState([
-  { name: 'John', spend: 23 },
-  {  name: 'Jane', spend: 31 },
-  {  name: 'Bob', spend: 45  },
-  {  name: 'Alice', spend: 27},
-]);
 
-
-const [tmnew, setTmnew] = useState([
-  { name: 'John', spend: 23 },
-  {  name: 'Jane', spend: 31 },
-  {  name: 'Bob', spend: 45  },
-  {  name: 'Alice', spend: 27},
-]);
-
-
-const [tpbr, setTpbr] = useState([
-  { product: 'John', revenue: 23, '%':'1' },
-  { product: 'John', revenue: 23, '%':'1' },
-  { product: 'John', revenue: 23, '%':'1' },
-  { product: 'John', revenue: 23, '%':'1' },
-  { product: 'John', revenue: 23, '%':'1' },
-]);
-
-const [tpbu, setTpbu] = useState([
-  { product: 'John', unit: 23, '%':'1' },
-  { product: 'John', unit: 23, '%':'1' },
-  { product: 'John', unit: 23, '%':'1' },
-  { product: 'John', unit: 23, '%':'1' },
-  { product: 'John', unit: 23, '%':'1' },
-]);
-
-
-const [tpbp, setTpbp] = useState([
-  { product: 'John', profit: 23, '%':'1' },
-  { product: 'John', profit: 23, '%':'1' },
-  { product: 'John', profit: 23, '%':'1' },
-  { product: 'John', profit: 23, '%':'1' },
-  { product: 'John', profit: 23, '%':'1' },
-]);
-
-
-const [tcbr, setTcbr] = useState([
-  { category: 'John', revenue: 23, '%':'1' },
-  { category: 'John', revenue: 23, '%':'1' },
-  { category: 'John', revenue: 23, '%':'1' },
-  { category: 'John', revenue: 23, '%':'1' },
-  { category: 'John', revenue: 23, '%':'1' },
-]);
-
-const [tcbu, setTcbu] = useState([
-  { category: 'John', unit: 23, '%':'1' },
-  { category: 'John', unit: 23, '%':'1' },
-  { category: 'John', unit: 23, '%':'1' },
-  { category: 'John', unit: 23, '%':'1' },
-  { category: 'John', unit: 23, '%':'1' },
-]);
-
-
-const [tcbp, setTcbp] = useState([
-  { category: 'John', profit: 23, '%':'1' },
-  { category: 'John', profit: 23, '%':'1' },
-  { category: 'John', profit: 23, '%':'1' },
-  { category: 'John', profit: 23, '%':'1' },
-  { category: 'John', profit: 23, '%':'1' },
-]);
-
-var tmnew_note=[];
-var tmret_note=[];
-
-var cus_note=[];
-var order_note=[];
-
-
-/////////
-
-var [daterange, setdrange] = useState([
-  new Date(moment().startOf('month')),
-  new Date(moment().endOf('month'))
-  //format(new Date(moment().startOf('month')),'yyyy-MM-dd'),
-]);
-
-
-var [daterange1, setdrange1] = useState([startOfMonth(subDays(new Date(), getDate(new Date()))), endOfMonth(subDays(new Date(), getDate(new Date()))),]);
-
-var [duration, setduration] = useState();
-
-
-var dateSubmit = (e) => {
-  e.preventDefault();
-  dispatch(get_init_data({
-    from: format(daterange[0], 'yyyy-MM-dd'), to: format(daterange[1], 'yyyy-MM-dd'),
-    from1: format(daterange1[0], 'yyyy-MM-dd'), to1: format(daterange1[1], 'yyyy-MM-dd'),
-    unit: duration,
-    ajax_call: 1
-  }));
-}
-
-const handleChange = (e) => {
-  setduration(e.target.value)
-};
-
-
-
-var rev_note=[];
-var prof_note=[];
-var prof_note=[];
-//var cusor_state=[];
-const cusor_state = {
-  labels: ["January", "February", "March", "April", "May", "June", "July"],
-  
-  datasets: [
-    {
       
-      label: "Sales",
-      fill: false,
-      tension: 0.4,
-      borderDash: [2, 2],
-      capBezierPoints: true,
-      borderJoinStyle: 'bevel',
-      backgroundColor: "rgba(43, 206, 161, 1)",
-      borderColor: "rgba(43, 206, 161,1)",
-      borderWidth: 2,
-      hoverBackgroundColor: "rgba(255,99,132,0.4)",
-      hoverBorderColor: "rgba(255,99,132,1)",
-      data: [65, 59, 80, 81, 56, 55, 40],
-    },
-    {
-      label: "Expenses",      
-      tension: 0.4,
-      borderJoinStyle: 'round',
-      backgroundColor: "rgba(94, 114, 228, 1)",
-      pointBackgroundColor: "rgba(54,162,235,0.2)",
-      pointBackgroundColor: "rgba(94, 114, 228, 1)",
-      borderColor: "rgba(94, 114, 228, 1)",
-      borderWidth: 2,
-      hoverBackgroundColor: "red)",
-      hoverBorderColor: "rgba(54,162,235,1)",
-      data: [28, 48, 40, 19, 86, 27, 90],
-    },
-  ],
-};
-const options = {
-  legend: {
-    position: "center"
-  }
-};
+    /////////////////////////// DUMMY DATA /////////////////////////////////
+    /////////////////////////// DUMMY DATA /////////////////////////////////
+    /////////////////////////// DUMMY DATA /////////////////////////////////
+    /////////////////////////// DUMMY DATA /////////////////////////////////
+    /////////////////////////// DUMMY DATA /////////////////////////////////
+    /////////////////////////// DUMMY DATA /////////////////////////////////
 
-//var revprof_state=[];
-const revprof_state = {
-  labels: ["Jan", "Feb", "Mar", "April", "May", "June", "July"],
-  datasets: [
-    {
-      label: "Sales",
-      tension: 0.4,
-      borderDash: [2, 2],
-      borderJoinStyle: 'round',
-      backgroundColor: "rgba(43, 206, 161, 1)",
-      borderColor: "rgba(43, 206, 161,1)",
-      borderWidth: 2,
-      hoverBackgroundColor: "rgba(255,99,132,0.4)",
-      hoverBorderColor: "rgba(255,99,132,1)",
-      data: [65, 59, 80, 81, 56, 55, 40],
-    },
-    {
-      label: "Expenses",     
-      tension: 0.4,
-      borderJoinStyle: 'round',
-      backgroundColor: "rgba(94, 114, 228, 1)",
-      pointBackgroundColor: "rgba(54,162,235,0.2)",
-      pointBackgroundColor: "rgba(94, 114, 228, 1)",
-      borderColor: "rgba(94, 114, 228, 1)",
-      borderWidth: 2,
-      hoverBackgroundColor: "red)",
-      hoverBorderColor: "rgba(54,162,235,1)",
-      data: [28, 48, 40, 19, 86, 27, 90],
-    },
-  ],
-};
+    const [tmret, setTmret] = useState([
+      { name: 'John', spend: 23 },
+      {  name: 'Jane', spend: 31 },
+      {  name: 'Bob', spend: 45  },
+      {  name: 'Alice', spend: 27},
+    ]);
+
+
+    const [tmnew, setTmnew] = useState([
+      { name: 'John', spend: 23 },
+      {  name: 'Jane', spend: 31 },
+      {  name: 'Bob', spend: 45  },
+      {  name: 'Alice', spend: 27},
+    ]);
+
+
+  const [tpbr, setTpbr] = useState([
+    { product: 'John', revenue: 23, '%':'1' },
+    { product: 'John', revenue: 23, '%':'1' },
+    { product: 'John', revenue: 23, '%':'1' },
+    { product: 'John', revenue: 23, '%':'1' },
+    { product: 'John', revenue: 23, '%':'1' },
+  ]);
+
+  const [tpbu, setTpbu] = useState([
+    { product: 'John', unit: 23, '%':'1' },
+    { product: 'John', unit: 23, '%':'1' },
+    { product: 'John', unit: 23, '%':'1' },
+    { product: 'John', unit: 23, '%':'1' },
+    { product: 'John', unit: 23, '%':'1' },
+  ]);
+
+
+  const [tpbp, setTpbp] = useState([
+    { product: 'John', profit: 23, '%':'1' },
+    { product: 'John', profit: 23, '%':'1' },
+    { product: 'John', profit: 23, '%':'1' },
+    { product: 'John', profit: 23, '%':'1' },
+    { product: 'John', profit: 23, '%':'1' },
+  ]);
+
+
+  const [tcbr, setTcbr] = useState([
+    { category: 'John', revenue: 23, '%':'1' },
+    { category: 'John', revenue: 23, '%':'1' },
+    { category: 'John', revenue: 23, '%':'1' },
+    { category: 'John', revenue: 23, '%':'1' },
+    { category: 'John', revenue: 23, '%':'1' },
+  ]);
+
+  const [tcbu, setTcbu] = useState([
+    { category: 'John', unit: 23, '%':'1' },
+    { category: 'John', unit: 23, '%':'1' },
+    { category: 'John', unit: 23, '%':'1' },
+    { category: 'John', unit: 23, '%':'1' },
+    { category: 'John', unit: 23, '%':'1' },
+  ]);
+
+
+  const [tcbp, setTcbp] = useState([
+    { category: 'John', profit: 23, '%':'1' },
+    { category: 'John', profit: 23, '%':'1' },
+    { category: 'John', profit: 23, '%':'1' },
+    { category: 'John', profit: 23, '%':'1' },
+    { category: 'John', profit: 23, '%':'1' },
+  ]);
+
+  var tmnew_note=[];
+  var tmret_note=[];
+
+  var cus_note=[];
+  var order_note=[];
+
+
+  /////////
+
+  var [daterange, setdrange] = useState([
+    new Date(moment().startOf('month')),
+    new Date(moment().endOf('month'))
+    //format(new Date(moment().startOf('month')),'yyyy-MM-dd'),
+  ]);
+
+
+  var [daterange1, setdrange1] = useState([startOfMonth(subDays(new Date(), getDate(new Date()))), endOfMonth(subDays(new Date(), getDate(new Date()))),]);
+
+  var [duration, setduration] = useState();
+
+
+  var dateSubmit = (e) => {
+    e.preventDefault();
+    dispatch(get_init_data({
+      from: format(daterange[0], 'yyyy-MM-dd'), to: format(daterange[1], 'yyyy-MM-dd'),
+      from1: format(daterange1[0], 'yyyy-MM-dd'), to1: format(daterange1[1], 'yyyy-MM-dd'),
+      unit: duration,
+      ajax_call: 1
+    }));
+  }
+
+  const handleChange = (e) => {
+    setduration(e.target.value)
+  };
+
+
+
+  var rev_note=[];
+  var prof_note=[];
+  var prof_note=[];
+  //var cusor_state=[];
+  const cusor_state = {
+    labels: ["January", "February", "March", "April", "May", "June", "July"],
+    
+    datasets: [
+      {
+        
+        label: "Sales",
+        fill: false,
+        tension: 0.4,
+        borderDash: [2, 2],
+        capBezierPoints: true,
+        borderJoinStyle: 'bevel',
+        backgroundColor: "rgba(43, 206, 161, 1)",
+        borderColor: "rgba(43, 206, 161,1)",
+        borderWidth: 2,
+        hoverBackgroundColor: "rgba(255,99,132,0.4)",
+        hoverBorderColor: "rgba(255,99,132,1)",
+        data: [65, 59, 80, 81, 56, 55, 40],
+      },
+      {
+        label: "Expenses",      
+        tension: 0.4,
+        borderJoinStyle: 'round',
+        backgroundColor: "rgba(94, 114, 228, 1)",
+        pointBackgroundColor: "rgba(54,162,235,0.2)",
+        pointBackgroundColor: "rgba(94, 114, 228, 1)",
+        borderColor: "rgba(94, 114, 228, 1)",
+        borderWidth: 2,
+        hoverBackgroundColor: "red)",
+        hoverBorderColor: "rgba(54,162,235,1)",
+        data: [28, 48, 40, 19, 86, 27, 90],
+      },
+    ],
+  };
+
+
+  const options = {
+    legend: {
+      position: "center"
+    }
+  };
+
+
+
+  //var revprof_state=[];
+  const revprof_state = {
+    labels: ["Jan", "Feb", "Mar", "April", "May", "June", "July"],
+    datasets: [
+      {
+        label: "Sales",
+        tension: 0.4,
+        borderDash: [2, 2],
+        borderJoinStyle: 'round',
+        backgroundColor: "rgba(43, 206, 161, 1)",
+        borderColor: "rgba(43, 206, 161,1)",
+        borderWidth: 2,
+        hoverBackgroundColor: "rgba(255,99,132,0.4)",
+        hoverBorderColor: "rgba(255,99,132,1)",
+        data: [65, 59, 80, 81, 56, 55, 40],
+      },
+      {
+        label: "Expenses",     
+        tension: 0.4,
+        borderJoinStyle: 'round',
+        backgroundColor: "rgba(94, 114, 228, 1)",
+        pointBackgroundColor: "rgba(54,162,235,0.2)",
+        pointBackgroundColor: "rgba(94, 114, 228, 1)",
+        borderColor: "rgba(94, 114, 228, 1)",
+        borderWidth: 2,
+        hoverBackgroundColor: "red)",
+        hoverBorderColor: "rgba(54,162,235,1)",
+        data: [28, 48, 40, 19, 86, 27, 90],
+      },
+    ],
+  };
+
+
+
   return (
 
     <>
