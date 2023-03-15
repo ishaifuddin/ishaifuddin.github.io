@@ -8,9 +8,11 @@ body, h1, h2, h3, h4, h5, h6 {
     padding-bottom: 24px;
     padding-top: 24px;
 }
+
 .wrapper{
     position: relative;
     background-color: #edf2f9;
+    min-height: calc(100vh + 24px);
 
     &::before {
         content: '';
@@ -58,6 +60,11 @@ aside {
             padding-bottom: 8px;
             margin:  0 15px;
             border-radius: 6px;
+            border: 1px solid transparent;
+            &:hover {
+                border: 1px solid rgba(0, 0, 0, 0.03) !important;
+                background: rgb(249, 250, 253);
+            }
             
             .MuiListItemText-root +  svg {
                 font-size: 1.2rem;
@@ -68,6 +75,10 @@ aside {
         .MuiListItemButton-root {
             padding-left: 65px;
             opacity: .75;
+
+            a {
+                font-size: 14px;
+            }
 
             &:hover {
                 background-color: transparent;
@@ -100,7 +111,7 @@ aside {
     padding-left: 300px;
 
     .notifications { 
-        color:white ;
+        color:white;
         @extend .space-between;
         svg {
             margin-left: .5rem;
@@ -187,7 +198,9 @@ aside {
                 font-weight: 500;
                 border-bottom: 1px dashed #f1f1f1 !important;
                 font-family: 'Montserrat', sans-serif !important;
+                overflow: hidden;
                 height: 40px;
+                color: #67748e !important;
             }
             tr:last-child {
                 td {border-bottom: none !important;}
@@ -235,5 +248,22 @@ aside {
             overflow: hidden;
             border: 1px solid rgb(237,242,249);
         }
+    }
+    .period-btn {
+        background: rgb(43, 206, 161);
+        border-radius: 3px;
+        color: rgb(255, 255, 255);
+        font-size: 12px;
+        margin-left: 1rem;
+        padding: 3px 15px;
+    }
+    .pediod-seg {
+        display: inline-block;
+        font-size: 13px;
+        color: white;
+        font-weight: 500;
+    }
+    canvas {
+        margin-bottom: 1rem;
     }
 }

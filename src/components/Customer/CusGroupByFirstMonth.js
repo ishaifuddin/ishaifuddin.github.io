@@ -24,6 +24,7 @@ import FilterList from '@material-ui/icons/FilterList'
 import ListAltIcon from '@mui/icons-material/ListAlt';
 import ClearIcon from '@mui/icons-material/Clear';
 import CancelIcon from '@mui/icons-material/Cancel';
+import { Card } from 'react-bootstrap';
 
 
 function CusGroupByFirstMonth() {
@@ -125,9 +126,7 @@ function CusGroupByFirstMonth() {
 
 
     return (
-        
-        <Grid style={{marginTop:"20px"}}>
-
+        <Card className="dash-card"> 
             {
                 CusGroupBy1stBuy_obj && CusGroupBy1stBuy_obj.length > 0 && 
                 <ThemeProvider theme={defaultMaterialTheme}>
@@ -175,19 +174,7 @@ function CusGroupByFirstMonth() {
                                 fontFamily: 'Circular-Loom',
                                 textAlign: 'center',
                                 borderBottom: '2px solid rgb(246, 224, 224)'
-                            },
-                            headerStyle: {
-                                background: 'rgb(52, 195, 255)',
-                                fontSize: '17px',
-                                color: 'white',
-                                padding: '2px',
-                                height: '40px'
-                            },
-                            // rowStyle: {
-                            //     backgroundColor: '#EEE',
-                            // }
-                            //rowStyle: (data, index) => index % 2 === 0 ? { background: "ghostwhite" } : {background:'white'},
-
+                            }
                         }
                     }
                     localization={{
@@ -199,8 +186,7 @@ function CusGroupByFirstMonth() {
                 />
                 </ThemeProvider>
             }
-
-        </Grid>
+        </Card>
     )
 }
 

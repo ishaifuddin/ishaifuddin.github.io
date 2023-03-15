@@ -22,6 +22,7 @@ import CancelIcon from '@mui/icons-material/Cancel';
 import { useSelector, useDispatch } from "react-redux";
 
 import { get_custm_data } from '../../features/cus/CustomersFromThisMonth';
+import { Card } from 'react-bootstrap';
 
 function CusFromThisMonth() {
 
@@ -131,49 +132,123 @@ function CusFromThisMonth() {
 
 
     return (
-    
-        <div>
-            
-            
+        <>
             {/* New and Returning Customers From this Month */}
-            
-            <Grid style={{margin:"20px"}}>
-                    
-                <ThemeProvider theme={defaultMaterialTheme}>
-                {tmnew && 
-                    <MaterialTable style={{borderRadius:'14px'}}
-                        columns={[
-                            { title: 'Customer', field: 'customer' },
-                            { title: 'Spend', field: 'spend' }
-                        ]}
-                        data={tmnew}
-                        title="New Customer from this month"
-                    />}
-                </ThemeProvider>
-
+            <Grid item md={6}>
+                <Card className='dash-card'>
+                    <ThemeProvider theme={defaultMaterialTheme}>
+                        {tmnew && 
+                        <MaterialTable style={{borderRadius:'14px'}}
+                            columns={[
+                                { title: 'Customer', field: 'customer' },
+                                { title: 'Spend', field: 'spend' }
+                            ]}
+                            data={tmnew}
+                            title="New Customer from this month"
+                            icons={{
+                                Check: Check,
+                                DetailPanel: ChevronRight,
+                                Export: SaveAlt,
+                                Filter: FilterList,
+                                FirstPage: FirstPage,
+                                LastPage: LastPage,
+                                NextPage: ChevronRight,
+                                PreviousPage: ChevronLeft,
+                                Search: Search,
+                                ResetSearch: CancelIcon,
+                                Clear: CancelIcon
+                              }}
+                              options={
+                                {
+                                  showFirstLastPageButtons: false,
+                                  pageSize: 10,       // make initial page size
+                                  emptyRowsWhenPaging: false,   // To avoid of having empty rows
+                                  pageSizeOptions: [10, 15, 25, 40, 50],
+                                  search: true,
+                                  searchFieldAlignment: "right",
+                                  exportButton: true,
+                                  exportAllData: true,
+                                  cellStyle: {
+                                    padding: '4px',
+                                    lineHeight: 2,
+                                    fontFamily: 'Circular-Loom',
+                                    textAlign: 'center',
+                                    borderBottom: '2px solid rgb(246, 224, 224)'
+                                  }
+                  
+                                }
+                              }
+                              localization={{
+                                pagination: {
+                                    labelRowsPerPage: '',
+                                    showFirstLastPageButtons: false,
+                                    showPageSizeOptions: false,
+                                    showPageJump: false,
+                                }
+                              }}
+                        />}
+                    </ThemeProvider>
+                </Card>
             </Grid>
-
-
-            <Grid style={{margin:"20px"}}>
-                    
-                <ThemeProvider theme={defaultMaterialTheme}>
-                { tmret && <MaterialTable style={{borderRadius:'14px'}}
-                        columns={[
-                            { title: 'Customer', field: 'customer' },
-                            { title: 'Spend', field: 'spend' },
-                            { title: 'Returned-after', field: 'ret_after' },
-                            { title: 'Placed-Nth-Order', field: 'placed_Nth_order'}
-                        ]}
-                        data={tmret}
-                        title="Repeat customer From this month"
-                    />
-                }
-                </ThemeProvider>
-
+            <Grid item md={6}>
+                <Card className='dash-card'>
+                    <ThemeProvider theme={defaultMaterialTheme}>
+                    { tmret && <MaterialTable
+                            columns={[
+                                { title: 'Customer', field: 'customer' },
+                                { title: 'Spend', field: 'spend' },
+                                { title: 'Returned-after', field: 'ret_after' },
+                                { title: 'Placed-Nth-Order', field: 'placed_Nth_order'}
+                            ]}
+                            data={tmret}
+                            title="Repeat customer From this month"
+                            icons={{
+                                Check: Check,
+                                DetailPanel: ChevronRight,
+                                Export: SaveAlt,
+                                Filter: FilterList,
+                                FirstPage: FirstPage,
+                                LastPage: LastPage,
+                                NextPage: ChevronRight,
+                                PreviousPage: ChevronLeft,
+                                Search: Search,
+                                ResetSearch: CancelIcon,
+                                Clear: CancelIcon
+                              }}
+                              options={
+                                {
+                                  showFirstLastPageButtons: false,
+                                  pageSize: 10,       // make initial page size
+                                  emptyRowsWhenPaging: false,   // To avoid of having empty rows
+                                  pageSizeOptions: [10, 15, 25, 40, 50],
+                                  search: true,
+                                  searchFieldAlignment: "right",
+                                  exportButton: true,
+                                  exportAllData: true,
+                                  cellStyle: {
+                                    padding: '4px',
+                                    lineHeight: 2,
+                                    fontFamily: 'Circular-Loom',
+                                    textAlign: 'center',
+                                    borderBottom: '2px solid rgb(246, 224, 224)'
+                                  }
+                  
+                                }
+                              }
+                              localization={{
+                                pagination: {
+                                    labelRowsPerPage: '',
+                                    showFirstLastPageButtons: false,
+                                    showPageSizeOptions: false,
+                                    showPageJump: false,
+                                }
+                              }}
+                        />
+                    }
+                    </ThemeProvider>
+                </Card>
             </Grid>
-
-
-        </div>
+        </>
     )
 }
 

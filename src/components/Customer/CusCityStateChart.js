@@ -22,6 +22,7 @@ import AttachMoneyIcon from '@mui/icons-material/AttachMoney';
 
 import { Chart as ChartJS, CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend, } from 'chart.js';
 import { Line } from 'react-chartjs-2';
+import { Card } from 'react-bootstrap';
 
 ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend);
   
@@ -225,11 +226,11 @@ function CusCityStateChart() {
         }
     }
 
-    var fourChart = { background: 'white', marginTop: '2%', marginBottom: '2%', borderRadius: "5px", boxShadow: "rgb(65 69 88 / 10%) 0px 7px 14px 0px, rgb(0 0 0 / 7%) 0px 3px 6px 0px", padding: "10px" };
 
     return (
 
-        <>
+        <Card className="dash-card"> 
+            <h6>Customer City State Chart</h6>
             
             <Timeline
                 sx={{
@@ -315,7 +316,7 @@ function CusCityStateChart() {
                 </TimelineItem>
 
             </Timeline>
-        </>
+        </Card>
     )
 
 }

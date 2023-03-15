@@ -26,6 +26,7 @@ import "rsuite/dist/rsuite.css";
 
 import { Chart as ChartJS, CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend, } from 'chart.js';
 import { Line } from 'react-chartjs-2';
+import { Card } from 'react-bootstrap';
 
 ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend);
   
@@ -186,213 +187,153 @@ function CusReport() {
             ajax_seg: 1
         }));
     }
-
-
-    var chartStyle      = {"background":"white","boxShadow":"rgba(65, 69, 88, 0.1) 0px 7px 14px 0px, rgba(0, 0, 0, 0.07) 0px 3px 6px 0px","padding":"0px","borderRadius":"10px"}
-    var cusChart        = { padding:'10px',background:"mediumseagreen", color:"white", borderRadius:"4px"};
-    var tnr_chart_style = {"boxShadow" : "rgb(65 69 88 / 10%) 0px 7px 14px 0px, rgb(0 0 0 / 7%) 0px 3px 6px 0px", "display" : "contents"};
-
     
     return (
 
         <>
-
-            <Grid container style={{background:'whitesmoke'}}>
-                
-                <Grid item sm={10} style={{marginLeft: '57px', background: 'mediumseagreen', position: 'fixed', color: 'white', top: 0, width: '100%', padding: '8px', paddingLeft: '2%', zIndex: 1, borderRadius: '5px'}}> 
-                    <h4>Customer Reports</h4> 
+            <Grid container spacing={3}>
+                <Grid item md={12}>
+                    <div className="notifications">
+                        <h6>Customer Reports</h6>
+                    </div>
                 </Grid>
-                
-                <Grid item sm={10}  style={{background:'whitesmoke',marginLeft:'4%',zIndex:'0',marginTop:'5%'}}>
+                <Grid item md={12}>
+                    <div className="date-period">
+                        <DateRangePicker
+                            label="Timeline"
+                            value={daterange2}
+                            onChange={setdrange2}
+                            oneTap={false}
+                            ranges={[
+                                { label: 'Yesterday', value: [addDays(new Date(), -1), addDays(new Date(), -1)] },
+                                { label: 'Today', value: [new Date(), new Date()] },
+                                { label: 'Tomorrow', value: [addDays(new Date(), 1), addDays(new Date(), 1)] },
+                                { label: 'Last 7 days', value: [subDays(new Date(), 6), new Date()] },
+                                { label: 'This month', value: [subDays(new Date(), getDate(new Date()) - 1), new Date()] },
+                                { label: 'Last month', value: [startOfMonth(subDays(new Date(), getDate(new Date()))), endOfMonth(subDays(new Date(), getDate(new Date())))] },
+                                { label: 'Year To date', value: [startOfYear(new Date()), new Date()] }]}>
+                        </DateRangePicker>
 
-                    {/* Date Range, Time Unit , Customer Type Selector */}
-                    <Grid container style={{ background: 'whitesmoke' }}>
-
-                        <Grid item sm={10} style={{ display: "inline-flex", fontSize:"22px" }}>
-
-                            <DateRangePicker
-                                label="Timeline"
-                                value={daterange2}
-                                onChange={setdrange2}
-                                oneTap={false}
-                                ranges={[
-                                    { label: 'Yesterday', value: [addDays(new Date(), -1), addDays(new Date(), -1)] },
-                                    { label: 'Today', value: [new Date(), new Date()] },
-                                    { label: 'Tomorrow', value: [addDays(new Date(), 1), addDays(new Date(), 1)] },
-                                    { label: 'Last 7 days', value: [subDays(new Date(), 6), new Date()] },
-                                    { label: 'This month', value: [subDays(new Date(), getDate(new Date()) - 1), new Date()] },
-                                    { label: 'Last month', value: [startOfMonth(subDays(new Date(), getDate(new Date()))), endOfMonth(subDays(new Date(), getDate(new Date())))] },
-                                    { label: 'Year To date', value: [startOfYear(new Date()), new Date()] }]}>
-
-                            </DateRangePicker>
-
-                            <RadioGroup style={{ display: 'inline-block' }} onChange={(e) => { setduration2(e.target.value) }}>
-                                <Radio checked={duration === 'daily'} value="daily" name="duration" /> Day
-                                <Radio checked={duration === 'weekly'} value="weekly" name="duration" /> Week
-                                <Radio checked={duration === 'monthly'}value="monthly" name="duration" /> Month
-                            </RadioGroup>
-                                            
-                            <button onClick={dateSubmit2}> Submit </button>
-
+                        <RadioGroup  style={{ display: 'inline-block', fontSize: '13px', color:'white  ', fontWeight: '500' }} onChange={(e) => { setduration2(e.target.value) }}>
+                            <Radio checked={duration === 'daily'} value="daily" name="duration" /> Day
+                            <Radio checked={duration === 'weekly'} value="weekly" name="duration" /> Week
+                            <Radio checked={duration === 'monthly'}value="monthly" name="duration" /> Month
+                        </RadioGroup>                                  
+                        <button className='period-btn' variant="contained" color="secondary" onClick={dateSubmit2}> Submit </button>
+                    </div>
+                </Grid>
+                <Grid item md={6}>
+                    <Card className="dash-card"> 
+                        <h6>Total Customer</h6>
+                        <Line data={totcus_object} /><br/>
+                        <Timeline style={{color:'cornflowerblue',padding:'10px'}}>
+                            <Timeline.Item>Total : { total_side_note_Array[0] }</Timeline.Item>
+                            <Timeline.Item>Min : { total_side_note_Array[1] }</Timeline.Item>
+                            <Timeline.Item>Max :{ total_side_note_Array[2] } </Timeline.Item>
+                            <Timeline.Item>AVG :{ total_side_note_Array[3] } </Timeline.Item>
+                            <Timeline.Item>Total Point : { total_side_note_Array[4] }</Timeline.Item>
+                            <Timeline.Item>Point Bellow AVG : { total_side_note_Array[5] }</Timeline.Item>
+                            <Timeline.Item>Point Above AVG :{ total_side_note_Array[6] }</Timeline.Item>
+                            <Timeline.Item>Change :{ total_side_note_Array[7] }</Timeline.Item>
+                            <Timeline.Item>AVG Change : { total_side_note_Array[8] }</Timeline.Item>
+                        </Timeline>
+                    </Card>
+                </Grid>  
+                <Grid item md={6}>
+                    <Card className="dash-card"> 
+                        <h6>Repeat & New Customer</h6>
+                        <Line data={nrcus_object} />
+                        <Grid container spacing={2} style={{padding: 0}}>
+                            <Grid item md={6}>
+                                <Timeline>
+                                    <Timeline.Item>Total : { repeat_side_note_Array[0] }</Timeline.Item>
+                                    <Timeline.Item>Min : { repeat_side_note_Array[1] }</Timeline.Item>
+                                    <Timeline.Item>Max :{ repeat_side_note_Array[2] } </Timeline.Item>
+                                    <Timeline.Item>AVG :{ repeat_side_note_Array[3] } </Timeline.Item>
+                                    <Timeline.Item>Total Point : { repeat_side_note_Array[4] }</Timeline.Item>
+                                    <Timeline.Item>Point Bellow AVG : { repeat_side_note_Array[5] }</Timeline.Item>
+                                    <Timeline.Item>Point Above AVG :{ repeat_side_note_Array[6] }</Timeline.Item>
+                                    <Timeline.Item>Change :{ repeat_side_note_Array[7] }</Timeline.Item>
+                                    <Timeline.Item>AVG Change : { repeat_side_note_Array[8] }</Timeline.Item>
+                                </Timeline>
+                            </Grid>
+                            <Grid item md={6}>
+                                <Timeline>
+                                    <Timeline.Item>Total : { new_side_note_Array[0] }</Timeline.Item>
+                                    <Timeline.Item>Min : { new_side_note_Array[1] }</Timeline.Item>
+                                    <Timeline.Item>Max : { new_side_note_Array[2] } </Timeline.Item>
+                                    <Timeline.Item>AVG : { new_side_note_Array[3] } </Timeline.Item>
+                                    <Timeline.Item>Total Point : { new_side_note_Array[4] }</Timeline.Item>
+                                    <Timeline.Item>Point Bellow AVG : { new_side_note_Array[5] }</Timeline.Item>
+                                    <Timeline.Item>Point Above AVG :{ new_side_note_Array[6] }</Timeline.Item>
+                                    <Timeline.Item>Change : { new_side_note_Array[7] }</Timeline.Item>
+                                    <Timeline.Item>AVG Change : { new_side_note_Array[8] }</Timeline.Item>
+                                </Timeline>
+                            </Grid>
                         </Grid>
+                    </Card>
+                </Grid>  
 
-                    </Grid>
+                <CusFromThisMonth />
 
-
-                    {/* Total, New And Returning Customer Chart */}
-                    <h4 style={cusChart}>Total Customer</h4>
-                    <Grid container>
-
-                        <Grid item sm={3}> 
-                            <Timeline style={{color:'cornflowerblue',padding:'10px'}}>
-                                <Timeline.Item>Total : { total_side_note_Array[0] }</Timeline.Item>
-                                <Timeline.Item>Min : { total_side_note_Array[1] }</Timeline.Item>
-                                <Timeline.Item>Max :{ total_side_note_Array[2] } </Timeline.Item>
-                                <Timeline.Item>AVG :{ total_side_note_Array[3] } </Timeline.Item>
-                                <Timeline.Item>Total Point : { total_side_note_Array[4] }</Timeline.Item>
-                                <Timeline.Item>Point Bellow AVG : { total_side_note_Array[5] }</Timeline.Item>
-                                <Timeline.Item>Point Above AVG :{ total_side_note_Array[6] }</Timeline.Item>
-                                <Timeline.Item>Change :{ total_side_note_Array[7] }</Timeline.Item>
-                                <Timeline.Item>AVG Change : { total_side_note_Array[8] }</Timeline.Item>
-                            </Timeline>
-                        </Grid>
-
-                        <Grid item sm={7} style={chartStyle}>
-                            <Line data={totcus_object} options={{ title: { display: true, text: 'Revenue', fontSize: 20 }, lineTension: 0.3, legend: { display: true, position: 'right' } }} />
-                        </Grid>
-
-                    </Grid>  
-
-
-                    <h4 style={{...cusChart,marginTop:'20px'}}>Repeat & New Customer </h4>
-                    <Grid container>
-
-                        <Grid item sm={2}> 
-                            <Timeline style={{color:'cornflowerblue',padding:'10px'}}>
-                                <Timeline.Item>Total : { repeat_side_note_Array[0] }</Timeline.Item>
-                                <Timeline.Item>Min : { repeat_side_note_Array[1] }</Timeline.Item>
-                                <Timeline.Item>Max :{ repeat_side_note_Array[2] } </Timeline.Item>
-                                <Timeline.Item>AVG :{ repeat_side_note_Array[3] } </Timeline.Item>
-                                <Timeline.Item>Total Point : { repeat_side_note_Array[4] }</Timeline.Item>
-                                <Timeline.Item>Point Bellow AVG : { repeat_side_note_Array[5] }</Timeline.Item>
-                                <Timeline.Item>Point Above AVG :{ repeat_side_note_Array[6] }</Timeline.Item>
-                                <Timeline.Item>Change :{ repeat_side_note_Array[7] }</Timeline.Item>
-                                <Timeline.Item>AVG Change : { repeat_side_note_Array[8] }</Timeline.Item>
-                            </Timeline>
-                        </Grid>
-
-                        <Grid item sm={7} style={chartStyle}>
-                            <Line data={nrcus_object}
-                                options={{ title: { display: true, text: '', fontSize: 20 }, lineTension: 0.3, legend: { display: true, position: 'right' } }} />
-                        </Grid>
-
-                        <Grid item sm={2}> 
-                            <Timeline style={{color:'cornflowerblue',marginLeft:'17%',padding:'10px'}}>
-                                <Timeline.Item>Total : { new_side_note_Array[0] }</Timeline.Item>
-                                <Timeline.Item>Min : { new_side_note_Array[1] }</Timeline.Item>
-                                <Timeline.Item>Max : { new_side_note_Array[2] } </Timeline.Item>
-                                <Timeline.Item>AVG : { new_side_note_Array[3] } </Timeline.Item>
-                                <Timeline.Item>Total Point : { new_side_note_Array[4] }</Timeline.Item>
-                                <Timeline.Item>Point Bellow AVG : { new_side_note_Array[5] }</Timeline.Item>
-                                <Timeline.Item>Point Above AVG :{ new_side_note_Array[6] }</Timeline.Item>
-                                <Timeline.Item>Change : { new_side_note_Array[7] }</Timeline.Item>
-                                <Timeline.Item>AVG Change : { new_side_note_Array[8] }</Timeline.Item>
-                            </Timeline>
-                        </Grid>
-
-                    </Grid>  
-
-
-                       
-
-                    <CusFromThisMonth />
-
-
-                    <Grid container>
-                        <Grid item sm={10} style={{marginTop:'2%'}}>
-                            <h4 style={{padding: "10px", background: "mediumseagreen", color: "white", borderRadius: "4px"}}> Location Based Data </h4>
-                        </Grid>
-                    </Grid>
-
-
-                    {/* Date Range, Time Unit , Customer Type Selector */}
-                    <Grid container>
-
-                        <Grid item sm={12}>
-
-                            <DateRangePicker
-                                value={daterange}
-                                onChange={setdrange}
-                                oneTap={false}
-                                ranges={[
-                                    { label: 'Yesterday', value: [addDays(new Date(), -1), addDays(new Date(), -1)] },
-                                    { label: 'Today', value: [new Date(), new Date()] },
-                                    { label: 'Tomorrow', value: [addDays(new Date(), 1), addDays(new Date(), 1)] },
-                                    { label: 'Last 7 days', value: [subDays(new Date(), 6), new Date()] },
-                                    { label: 'This month', value: [subDays(new Date(), getDate(new Date()) - 1), new Date()] },
-                                    { label: 'Last month', value: [startOfMonth(subDays(new Date(), getDate(new Date()))), endOfMonth(subDays(new Date(), getDate(new Date())))] },
-                                    { label: 'Year To date', value: [startOfYear(new Date()), new Date()] }]}>
-
-                            </DateRangePicker>
-
-                            
-                            <DateRangePicker
-                                value={daterange1}
-                                onChange={setdrange1}
-                                oneTap={false}
-                                ranges={[
-                                    { label: 'Yesterday', value: [addDays(new Date(), -1), addDays(new Date(), -1)] },
-                                    { label: 'Today', value: [new Date(), new Date()] },
-                                    { label: 'Tomorrow', value: [addDays(new Date(), 1), addDays(new Date(), 1)] },
-                                    { label: 'Last 7 days', value: [subDays(new Date(), 6), new Date()] },
-                                    { label: 'This month', value: [subDays(new Date(), getDate(new Date()) - 1), new Date()] },
-                                    { label: 'Last month', value: [startOfMonth(subDays(new Date(), getDate(new Date()))), endOfMonth(subDays(new Date(), getDate(new Date())))] },
-                                    { label: 'Year To date', value: [startOfYear(new Date()), new Date()] }]}>
-                            </DateRangePicker>
-
-
-                            <div onChange={(e) => { setduration(e.target.value) }}>
-                                <input type="radio" value="daily" name="gender" /> Daily
-                                <input type="radio" value="weekly" name="gender" /> Weekly
-                                <input type="radio" value="monthly" name="gender" /> Monthly
-                            </div>
-
-
-                            <div onChange={(e) => { setcusType(e.target.value) }}>
-                                <input type="radio" value="both" name="cus_type" /> Both
-                                <input type="radio" value="new" name="cus_type" />New
-                                <input type="radio" value="returning" name="cus_type" /> Returning
-                            </div>
-
-
-                            <button onClick={dateSubmit}> Submit </button>
-
-                        </Grid>
-
-                    </Grid>
-
-                    <Grid container>
-                        <Grid item sm={12}>
-                            <CusCityStateTable />
-                        </Grid>
-                    </Grid>
-
-                    <Grid container>
-                        <Grid item sm={12}>
-                            <CusGroupByFirstMonth />
-                        </Grid>
-                    </Grid>
-
-
-                    <Grid container style={{boxShadow: "rgb(65 69 88 / 10%) 0px 7px 14px 0px, rgb(0 0 0 / 7%) 0px 3px 6px 0px", borderRadius:'30px', background:'white'}}>
-                        <Grid item sm={12}>
-                            <CusCityStateChart />
-                        </Grid>
-                    </Grid>
-
-                    
+                <Grid item md={12}><br/>
+                    <div className="">
+                        <h6>Location Based Data</h6>
+                    </div>
                 </Grid>
 
+                <Grid item md={12}>
+                    <div className="date-period" style={{marginBottom: '-15px'}}>
+                        <DateRangePicker
+                            value={daterange}
+                            onChange={setdrange}
+                            oneTap={false}
+                            ranges={[
+                                { label: 'Yesterday', value: [addDays(new Date(), -1), addDays(new Date(), -1)] },
+                                { label: 'Today', value: [new Date(), new Date()] },
+                                { label: 'Tomorrow', value: [addDays(new Date(), 1), addDays(new Date(), 1)] },
+                                { label: 'Last 7 days', value: [subDays(new Date(), 6), new Date()] },
+                                { label: 'This month', value: [subDays(new Date(), getDate(new Date()) - 1), new Date()] },
+                                { label: 'Last month', value: [startOfMonth(subDays(new Date(), getDate(new Date()))), endOfMonth(subDays(new Date(), getDate(new Date())))] },
+                                { label: 'Year To date', value: [startOfYear(new Date()), new Date()] }]}>
+
+                        </DateRangePicker>     
+                        <DateRangePicker
+                            value={daterange1}
+                            onChange={setdrange1}
+                            oneTap={false}
+                            ranges={[
+                                { label: 'Yesterday', value: [addDays(new Date(), -1), addDays(new Date(), -1)] },
+                                { label: 'Today', value: [new Date(), new Date()] },
+                                { label: 'Tomorrow', value: [addDays(new Date(), 1), addDays(new Date(), 1)] },
+                                { label: 'Last 7 days', value: [subDays(new Date(), 6), new Date()] },
+                                { label: 'This month', value: [subDays(new Date(), getDate(new Date()) - 1), new Date()] },
+                                { label: 'Last month', value: [startOfMonth(subDays(new Date(), getDate(new Date()))), endOfMonth(subDays(new Date(), getDate(new Date())))] },
+                                { label: 'Year To date', value: [startOfYear(new Date()), new Date()] }]}>
+                        </DateRangePicker>
+                        <div onChange={(e) => { setduration(e.target.value) }} style={{display: 'inline-block', fontSize: '13px', fontWeight: '500'}}>
+                            <input type="radio" value="daily" name="gender" /> Daily
+                            <input type="radio" value="weekly" name="gender" /> Weekly
+                            <input type="radio" value="monthly" name="gender" /> Monthly
+                        </div>
+                        <div onChange={(e) => { setcusType(e.target.value) }} style={{display: 'inline-block', fontSize: '13px', fontWeight: '500'}}>
+                            <input type="radio" value="both" name="cus_type" /> Both
+                            <input type="radio" value="new" name="cus_type" />New
+                            <input type="radio" value="returning" name="cus_type" /> Returning
+                        </div>
+                        <button className='period-btn' variant="contained" color="secondary" onClick={dateSubmit}> Submit </button>
+                    </div>
+                </Grid>  
+
+                <CusCityStateTable />
+
+                <Grid item md={6}>
+                    <CusGroupByFirstMonth />
+                </Grid>  
+
+                <Grid item md={6}>
+                    <CusCityStateChart />
+                </Grid>
             </Grid>
 
         </>

@@ -25,6 +25,7 @@ import FilterList from '@material-ui/icons/FilterList'
 import ListAltIcon from '@mui/icons-material/ListAlt';
 import ClearIcon from '@mui/icons-material/Clear';
 import CancelIcon from '@mui/icons-material/Cancel';
+import { Card } from 'react-bootstrap';
 
 function CusCityStateTable() {
 
@@ -67,20 +68,6 @@ function CusCityStateTable() {
     // if (CusLocChartTable.shipstate_table.length > 0) {
     //     var shipstatecloneData = structuredClone(shipstateTable);
     // }
-
-    const MyNewTitle = ({ text, variant }) => (
-        <Typography
-            variant={variant}
-            style={{
-                padding: '10px',
-                background: 'aliceblue',
-                color: 'black',
-                borderRadius: '4px'
-            }}
-        >
-            {text}
-        </Typography>
-    );
 
 
     var city_columns = [
@@ -339,77 +326,69 @@ function CusCityStateTable() {
         <>
 
             {/* Billing And Shipping City,State Customer Table */}
-            <Grid style={{ marginTop: "20px" }}>
-                <ThemeProvider theme={defaultMaterialTheme}>
-                    {
-                    //CusLocChartTable.billcity_table && 
-                    <MaterialTable style={{borderRadius:'14px'}}
-                        //columns={city_columns}
-                        data={billcitycloneData}
-                        title={<MyNewTitle variant="h6" text="Billing-city" />}
-                        icons={{
-                            Check: Check,
-                            DetailPanel: ChevronRight,
-                            Export: SaveAlt,
-                            Filter: FilterList,
-                            FirstPage: FirstPage,
-                            LastPage: LastPage,
-                            NextPage: ChevronRight,
-                            PreviousPage: ChevronLeft,
-                            Search: Search,
-                            ResetSearch: CancelIcon,
-                            Clear: CancelIcon
-                        }}
-                        options={
-                            {
-                                pageSize: 10,       // make initial page size
-                                emptyRowsWhenPaging: false,   // To avoid of having empty rows
-                                pageSizeOptions: [10, 15, 25, 40, 50],
-                                search: true,
-                                searchFieldAlignment: "right",
-                                exportButton: true,
-                                exportAllData: true,
-                                cellStyle: {
-                                    padding:'4px',
-                                    lineHeight: 2,
-                                    fontFamily: 'Circular-Loom',
-                                    textAlign: 'center',
-                                    borderBottom: '2px solid rgb(246, 224, 224)'
-                                },
-                                headerStyle: {
-                                    background:'mediumseagreen', 
-                                    fontSize: '17px', 
-                                    color:'white',
-                                    padding:'2px',
-                                    height:'40px'
-                                },
-                                // rowStyle: {
-                                //     backgroundColor: '#EEE',
-                                // }
-                                //rowStyle: (data, index) => index % 2 === 0 ? { background: "ghostwhite" } : {background:'white'},
+            <Grid item md={3}>
+                <Card className="dash-card"> 
+                    <ThemeProvider theme={defaultMaterialTheme}>
+                        {
+                        //CusLocChartTable.billcity_table && 
+                        <MaterialTable style={{borderRadius:'14px'}}
+                            //columns={city_columns}
+                            data={billcitycloneData}
+                            title="Billing-city"
+                            icons={{
+                                Check: Check,
+                                DetailPanel: ChevronRight,
+                                Export: SaveAlt,
+                                Filter: FilterList,
+                                FirstPage: FirstPage,
+                                LastPage: LastPage,
+                                NextPage: ChevronRight,
+                                PreviousPage: ChevronLeft,
+                                Search: Search,
+                                ResetSearch: CancelIcon,
+                                Clear: CancelIcon
+                            }}
+                            options={
+                                {
+                                    pageSize: 10,       // make initial page size
+                                    emptyRowsWhenPaging: false,   // To avoid of having empty rows
+                                    pageSizeOptions: [10, 15, 25, 40, 50],
+                                    search: true,
+                                    searchFieldAlignment: "right",
+                                    exportButton: true,
+                                    exportAllData: true,
+                                    cellStyle: {
+                                        padding:'4px',
+                                        lineHeight: 2,
+                                        fontFamily: 'Circular-Loom',
+                                        textAlign: 'center',
+                                        borderBottom: '2px solid rgb(246, 224, 224)'
+                                    }
 
+                                }
                             }
+                            localization={{
+                                pagination: {
+                                labelRowsPerPage: '',
+                                showFirstLastPageButtons: false,
+                                }
+                            }}
+                        />
                         }
-                        localization={{
-                            pagination: {
-                              labelRowsPerPage: '',
-                              showFirstLastPageButtons: false,
-                            }
-                        }}
-                    />
-                    }
-                </ThemeProvider>
+                    </ThemeProvider>
+                </Card>
             </Grid>
 
 
-            <Grid style={{ marginTop: "20px" }}>
+            <Grid item md={3}>
+                <Card className="dash-card"> 
                 <ThemeProvider theme={defaultMaterialTheme}>
                     {
                     //CusLocChartTable.shipcity_table && 
                     <MaterialTable style={{borderRadius:'14px'}}
                         //columns={city_columns}
                         data={shipcitycloneData}
-                        title={<MyNewTitle variant="h6" text="Shipping-city" />}
+                        title="Shipping-city"
                         icons={{
                             Check: Check,
                             DetailPanel: ChevronRight,
@@ -438,19 +417,7 @@ function CusCityStateTable() {
                                     fontFamily: 'Circular-Loom',
                                     textAlign: 'center',
                                     borderBottom: '2px solid rgb(246, 224, 224)'
-                                },
-                                headerStyle: {
-                                    background:'mediumseagreen', 
-                                    fontSize: '17px', 
-                                    color:'white',
-                                    padding:'2px',
-                                    height:'40px'
-                                },
-                                // rowStyle: {
-                                //     backgroundColor: '#EEE',
-                                // }
-                                //rowStyle: (data, index) => index % 2 === 0 ? { background: "ghostwhite" } : {background:'white'},
-
+                                }
                             }
                         }
                         localization={{
@@ -461,18 +428,20 @@ function CusCityStateTable() {
                         }}
                     />}
                 </ThemeProvider>
+                </Card>
             </Grid>
 
 
 
-            <Grid style={{ marginTop: "20px" }}>
+            <Grid item md={3}>
+                <Card className="dash-card"> 
                 <ThemeProvider theme={defaultMaterialTheme}>
                     {
                     //CusLocChartTable.billstate_table && 
                     <MaterialTable style={{borderRadius:'14px'}}
                         //columns={state_columns}
                         data={billstatecloneData}
-                        title={<MyNewTitle variant="h6" text="Billing-state" />}
+                        title="Billing-state"
                         icons={{
                             Check: Check,
                             DetailPanel: ChevronRight,
@@ -501,19 +470,7 @@ function CusCityStateTable() {
                                     fontFamily: 'Circular-Loom',
                                     textAlign: 'center',
                                     borderBottom: '2px solid rgb(246, 224, 224)'
-                                },
-                                headerStyle: {
-                                    background:'mediumseagreen', 
-                                    fontSize: '17px', 
-                                    color:'white',
-                                    padding:'2px',
-                                    height:'40px'
-                                },
-                                // rowStyle: {
-                                //     backgroundColor: '#EEE',
-                                // }
-                                //rowStyle: (data, index) => index % 2 === 0 ? { background: "ghostwhite" } : {background:'white'},
-
+                                }
                             }
                         }
                         localization={{
@@ -525,17 +482,19 @@ function CusCityStateTable() {
                     />
                     }
                 </ThemeProvider>
+                </Card>
             </Grid>
 
 
-            <Grid style={{ marginTop: "20px" }}>
+            <Grid item md={3}>
+                <Card className="dash-card"> 
                 <ThemeProvider theme={defaultMaterialTheme}>
                     {
                     // CusLocChartTable.shipstate_table && 
                     <MaterialTable style={{borderRadius:'14px'}}
                         //columns={state_columns}
                         data={shipstatecloneData}
-                        title={<MyNewTitle variant="h6" text="Shipping-state" />}
+                        title="Shipping-state"
                         icons={{
                             Check: Check,
                             DetailPanel: ChevronRight,
@@ -564,19 +523,7 @@ function CusCityStateTable() {
                                     fontFamily: 'Circular-Loom',
                                     textAlign: 'center',
                                     borderBottom: '2px solid rgb(246, 224, 224)'
-                                },
-                                headerStyle: {
-                                    background:'mediumseagreen', 
-                                    fontSize: '17px', 
-                                    color:'white',
-                                    padding:'2px',
-                                    height:'40px'
-                                },
-                                // rowStyle: {
-                                //     backgroundColor: '#EEE',
-                                // }
-                                //rowStyle: (data, index) => index % 2 === 0 ? { background: "ghostwhite" } : {background:'white'},
-
+                                }
                             }
                         }
                         localization={{
@@ -588,6 +535,7 @@ function CusCityStateTable() {
                     />
                     }
                 </ThemeProvider>
+                </Card>
             </Grid>
 
         </>

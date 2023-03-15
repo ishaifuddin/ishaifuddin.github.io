@@ -12,6 +12,7 @@ body, h1, h2, h3, h4, h5, h6 {
 .wrapper {
   position: relative;
   background-color: #edf2f9;
+  min-height: calc(100vh + 24px);
 }
 .wrapper::before {
   content: "";
@@ -57,6 +58,11 @@ aside .nav-list > .MuiButtonBase-root, aside .nav-list a > .MuiButtonBase-root {
   padding-bottom: 8px;
   margin: 0 15px;
   border-radius: 6px;
+  border: 1px solid transparent;
+}
+aside .nav-list > .MuiButtonBase-root:hover, aside .nav-list a > .MuiButtonBase-root:hover {
+  border: 1px solid rgba(0, 0, 0, 0.03) !important;
+  background: rgb(249, 250, 253);
 }
 aside .nav-list > .MuiButtonBase-root .MuiListItemText-root + svg, aside .nav-list a > .MuiButtonBase-root .MuiListItemText-root + svg {
   font-size: 1.2rem;
@@ -64,6 +70,9 @@ aside .nav-list > .MuiButtonBase-root .MuiListItemText-root + svg, aside .nav-li
 aside .MuiCollapse-vertical .MuiListItemButton-root {
   padding-left: 65px;
   opacity: 0.75;
+}
+aside .MuiCollapse-vertical .MuiListItemButton-root a {
+  font-size: 14px;
 }
 aside .MuiCollapse-vertical .MuiListItemButton-root:hover {
   background-color: transparent;
@@ -180,7 +189,9 @@ aside .css-cveggr-MuiListItemIcon-root {
   font-weight: 500;
   border-bottom: 1px dashed #f1f1f1 !important;
   font-family: "Montserrat", sans-serif !important;
+  overflow: hidden;
   height: 40px;
+  color: #67748e !important;
 }
 .dashboard .dash-card table tr:last-child td {
   border-bottom: none !important;
@@ -224,4 +235,21 @@ aside .css-cveggr-MuiListItemIcon-root {
   border-radius: 8px;
   overflow: hidden;
   border: 1px solid rgb(237, 242, 249);
+}
+.dashboard .period-btn {
+  background: rgb(43, 206, 161);
+  border-radius: 3px;
+  color: rgb(255, 255, 255);
+  font-size: 12px;
+  margin-left: 1rem;
+  padding: 3px 15px;
+}
+.dashboard .pediod-seg {
+  display: inline-block;
+  font-size: 13px;
+  color: white;
+  font-weight: 500;
+}
+.dashboard canvas {
+  margin-bottom: 1rem;
 }/*# sourceMappingURL=shopex.css.map */

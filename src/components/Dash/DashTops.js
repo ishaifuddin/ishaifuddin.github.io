@@ -386,8 +386,7 @@ function DashTops() {
           <Radio checked={duration === 'weekly'} value="weekly" name="duration" /> Week
           <Radio checked={duration === 'monthly'}value="monthly" name="duration" /> Month
         </RadioGroup>
-
-        <Button variant="contained" color="secondary" style={{background: 'rgb(251, 122, 64)', fontSize: '12px', marginLeft: '1rem', padding: '3px 15px'}} onClick={dateSubmit}> Submit </Button>
+        <Button className='period-btn' variant="contained" color="secondary" onClick={dateSubmit}> Submit </Button>
       </div>
       </Grid>
 
