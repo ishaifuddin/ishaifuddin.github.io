@@ -70,6 +70,51 @@ function CusCityStateTable() {
     // }
 
 
+    // var city_columns = [
+    //     { title: 'City', field: 'city', render: row => <div style={{background:'mintcream'}}>  {row.city} </div> },
+    //     { title: 'Customer', field: 'customers', render: row => <div style={{background:'whitesmoke'}}>  {row.customers} </div>  },
+    //     { title: '%', field: 'cus_change', render: row => <div style={{background:'ghostwhite'}}>  {row.cus_change} </div>  },
+    //     { title: 'Repeat', field: 'retcus', render: row => <div style={{background:'whitesmoke'}}>  {row.retcus} </div>  },
+    //     { title: '%', field: 'retcus_change' , render: row => <div style={{background:'ghostwhite'}}>  {row.retcus_change} </div> },
+    //     { title: 'Revenue', field: 'rev', render: row => <div style={{background:'whitesmoke'}}>  {row.rev} </div>  },
+    //     { title: '%', field: 'rev_change', render: row => <div style={{background:'ghostwhite'}}>  {row.rev_change} </div>  },
+    //     { title: 'Order', field: 'orders', render: row => <div style={{background:'whitesmoke'}}>  {row.orders} </div>  },
+    //     { title: '%', field: 'or_change', render: row => <div style={{background:'ghostwhite'}}> {row.or_change} </div>  },
+    //     { title: 'Order/Cus', field: 'opc', render: row => <div style={{background:'whitesmoke'}}>  {row.opc} </div>  },
+    //     { title: '%', field: 'opc_change', render: row => <div style={{background:'ghostwhite'}}>  {row.opc_change} </div>  },
+    //     { title: 'Rev/Cus', field: 'rpc', render: row => <div style={{background:'whitesmoke'}}>  {row.rpc} </div>  },
+    //     { title: '%', field: 'rpc_change', render: row => <div style={{background:'ghostwhite'}}>  {row.rpc_change} </div>  }
+
+    // ];
+
+
+    // var state_columns = [
+    //     { title: 'State', field: 'state', render: row => <div style={{background:'mintcream'}}>  {row.city} </div> },
+    //     { title: 'Customer', field: 'customers', render: row => <div style={{background:'whitesmoke'}}>  {row.customers} </div>  },
+    //     { title: '%', field: 'cus_change', render: row => <div style={{background:'ghostwhite'}}>  {row.cus_change} </div>  },
+    //     { title: 'Repeat', field: 'retcus', render: row => <div style={{background:'whitesmoke'}}>  {row.retcus} </div>  },
+    //     { title: '%', field: 'retcus_change' , render: row => <div style={{background:'ghostwhite'}}>  {row.retcus_change} </div> },
+    //     { title: 'Revenue', field: 'rev', render: row => <div style={{background:'whitesmoke'}}>  {row.rev} </div>  },
+    //     { title: '%', field: 'rev_change', render: row => <div style={{background:'ghostwhite'}}>  {row.rev_change} </div>  },
+    //     { title: 'Order', field: 'orders', render: row => <div style={{background:'whitesmoke'}}>  {row.orders} </div>  },
+    //     { title: '%', field: 'or_change', render: row => <div style={{background:'ghostwhite'}}> {row.or_change} </div>  },
+    //     { title: 'Order/Cus', field: 'opc', render: row => <div style={{background:'whitesmoke'}}>  {row.opc} </div>  },
+    //     { title: '%', field: 'opc_change', render: row => <div style={{background:'ghostwhite'}}>  {row.opc_change} </div>  },
+    //     { title: 'Rev/Cus', field: 'rpc', render: row => <div style={{background:'whitesmoke'}}>  {row.rpc} </div>  },
+    //     { title: '%', field: 'rpc_change', render: row => <div style={{background:'ghostwhite'}}>  {row.rpc_change} </div>  }
+
+    // ];
+
+
+        
+    /////////////////////////// DUMMY DATA /////////////////////////////////
+    /////////////////////////// DUMMY DATA /////////////////////////////////
+    /////////////////////////// DUMMY DATA /////////////////////////////////
+    /////////////////////////// DUMMY DATA /////////////////////////////////
+    /////////////////////////// DUMMY DATA /////////////////////////////////
+    /////////////////////////// DUMMY DATA /////////////////////////////////
+
+
     var city_columns = [
         { title: 'City', field: 'city', render: row => <div style={{background:'mintcream'}}>  {row.city} </div> },
         { title: 'Customer', field: 'customers', render: row => <div style={{background:'whitesmoke'}}>  {row.customers} </div>  },
@@ -104,15 +149,6 @@ function CusCityStateTable() {
         { title: '%', field: 'rpc_change', render: row => <div style={{background:'ghostwhite'}}>  {row.rpc_change} </div>  }
 
     ];
-
-
-        
-    /////////////////////////// DUMMY DATA /////////////////////////////////
-    /////////////////////////// DUMMY DATA /////////////////////////////////
-    /////////////////////////// DUMMY DATA /////////////////////////////////
-    /////////////////////////// DUMMY DATA /////////////////////////////////
-    /////////////////////////// DUMMY DATA /////////////////////////////////
-    /////////////////////////// DUMMY DATA /////////////////////////////////
 
 
     const [billcitycloneData, setTpbp] = useState([
@@ -332,7 +368,7 @@ function CusCityStateTable() {
                         {
                         //CusLocChartTable.billcity_table && 
                         <MaterialTable style={{borderRadius:'14px'}}
-                            //columns={city_columns}
+                            columns={city_columns}
                             data={billcitycloneData}
                             title="Billing-city"
                             icons={{
@@ -386,7 +422,7 @@ function CusCityStateTable() {
                     {
                     //CusLocChartTable.shipcity_table && 
                     <MaterialTable style={{borderRadius:'14px'}}
-                        //columns={city_columns}
+                        columns={city_columns}
                         data={shipcitycloneData}
                         title="Shipping-city"
                         icons={{
@@ -439,7 +475,7 @@ function CusCityStateTable() {
                     {
                     //CusLocChartTable.billstate_table && 
                     <MaterialTable style={{borderRadius:'14px'}}
-                        //columns={state_columns}
+                        columns={state_columns}
                         data={billstatecloneData}
                         title="Billing-state"
                         icons={{
@@ -492,7 +528,7 @@ function CusCityStateTable() {
                     {
                     // CusLocChartTable.shipstate_table && 
                     <MaterialTable style={{borderRadius:'14px'}}
-                        //columns={state_columns}
+                        columns={state_columns}
                         data={shipstatecloneData}
                         title="Shipping-state"
                         icons={{
