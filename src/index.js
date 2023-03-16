@@ -2,7 +2,7 @@ import { ReactSession } from 'react-client-session';
 import React from "react";
 import './shopex.css';
 import ReactDOM from "react-dom";
-import App from "./App";
+import App from './App';
 import { Provider } from "react-redux";
 import { persistStore } from 'redux-persist';
 import { PersistGate } from 'redux-persist/integration/react';

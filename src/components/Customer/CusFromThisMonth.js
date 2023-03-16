@@ -134,7 +134,7 @@ function CusFromThisMonth() {
     return (
         <>
             {/* New and Returning Customers From this Month */}
-            <Grid item md={6}>
+            <Grid item md={4}>
                 <Card className='dash-card'>
                     <ThemeProvider theme={defaultMaterialTheme}>
                         {tmnew && 
@@ -190,7 +190,7 @@ function CusFromThisMonth() {
                     </ThemeProvider>
                 </Card>
             </Grid>
-            <Grid item md={6}>
+            <Grid item md={4}>
                 <Card className='dash-card'>
                     <ThemeProvider theme={defaultMaterialTheme}>
                     { tmret && <MaterialTable

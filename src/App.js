@@ -71,11 +71,11 @@ function App() {
         
         <div className='wrapper'>
 
-          {/* {status==='success' &&  */}
+          {status==='success' &&  
             <aside>
               <SideNav/>
             </aside>
-          {/* } */}
+           } 
 
           <main className='dashboard'>
 

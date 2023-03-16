@@ -110,20 +110,7 @@ function CusReport() {
             hoverBackgroundColor: "rgba(255,99,132,0.4)",
             hoverBorderColor: "rgba(255,99,132,1)",
             data: [65, 59, 80, 81, 56, 55, 40],
-            },
-            {
-            label: "Expenses",     
-            tension: 0.4,
-            borderJoinStyle: 'round',
-            backgroundColor: "rgba(94, 114, 228, 1)",
-            pointBackgroundColor: "rgba(54,162,235,0.2)",
-            pointBackgroundColor: "rgba(94, 114, 228, 1)",
-            borderColor: "rgba(94, 114, 228, 1)",
-            borderWidth: 2,
-            hoverBackgroundColor: "red)",
-            hoverBorderColor: "rgba(54,162,235,1)",
-            data: [28, 48, 40, 19, 86, 27, 90],
-            },
+            }
         ],
     };
         
@@ -275,6 +262,9 @@ function CusReport() {
                 </Grid>  
 
                 <CusFromThisMonth />
+                <Grid item md={4}>
+                    <CusGroupByFirstMonth />
+                </Grid>  
 
                 <Grid item md={12}><br/>
                     <div className="">
@@ -311,27 +301,23 @@ function CusReport() {
                                 { label: 'Last month', value: [startOfMonth(subDays(new Date(), getDate(new Date()))), endOfMonth(subDays(new Date(), getDate(new Date())))] },
                                 { label: 'Year To date', value: [startOfYear(new Date()), new Date()] }]}>
                         </DateRangePicker>
-                        <div onChange={(e) => { setduration(e.target.value) }} style={{display: 'inline-block', fontSize: '13px', fontWeight: '500'}}>
-                            <input type="radio" value="daily" name="gender" /> Daily
-                            <input type="radio" value="weekly" name="gender" /> Weekly
-                            <input type="radio" value="monthly" name="gender" /> Monthly
-                        </div>
-                        <div onChange={(e) => { setcusType(e.target.value) }} style={{display: 'inline-block', fontSize: '13px', fontWeight: '500'}}>
-                            <input type="radio" value="both" name="cus_type" /> Both
-                            <input type="radio" value="new" name="cus_type" />New
-                            <input type="radio" value="returning" name="cus_type" /> Returning
-                        </div>
+                        <RadioGroup onChange={(e) => { setduration(e.target.value) }} style={{display: 'inline-block', fontSize: '13px', fontWeight: '500'}}>
+                            <Radio type="radio" value="daily" name="gender" /> Daily
+                            <Radio type="radio" value="weekly" name="gender" /> Weekly
+                            <Radio type="radio" value="monthly" name="gender" /> Monthly
+                        </RadioGroup>
+                        <RadioGroup onChange={(e) => { setcusType(e.target.value) }} style={{display: 'inline-block', fontSize: '13px', fontWeight: '500'}}>
+                            <Radio type="radio" value="both" name="cus_type" /> Both
+                            <Radio type="radio" value="new" name="cus_type" />New
+                            <Radio type="radio" value="returning" name="cus_type" /> Returning
+                        </RadioGroup>
                         <button className='period-btn' variant="contained" color="secondary" onClick={dateSubmit}> Submit </button>
                     </div>
                 </Grid>  
 
                 <CusCityStateTable />
 
-                <Grid item md={6}>
-                    <CusGroupByFirstMonth />
-                </Grid>  
-
-                <Grid item md={6}>
+                <Grid item md={12}>
                     <CusCityStateChart />
                 </Grid>
             </Grid>

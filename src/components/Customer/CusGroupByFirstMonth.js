@@ -130,7 +130,7 @@ function CusGroupByFirstMonth() {
             {
                 CusGroupBy1stBuy_obj && CusGroupBy1stBuy_obj.length > 0 && 
                 <ThemeProvider theme={defaultMaterialTheme}>
-                <MaterialTable style={{borderRadius:'14px'}}
+                <MaterialTable
                     columns={[
                         { title: 'FirstPurchase', field: 'FirstPurchase'
                         , render: row =>
