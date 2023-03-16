@@ -24,6 +24,7 @@ p {
     transition: all ease-in-out 0.3s;
     a {
         cursor: pointer;
+        text-decoration: none;
     }
 
     &.active {

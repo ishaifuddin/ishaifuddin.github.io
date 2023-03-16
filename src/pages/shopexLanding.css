@@ -24,6 +24,7 @@ p {
 }
 .menus a {
   cursor: pointer;
+  text-decoration: none;
 }
 .menus.active {
   background: #fff;
