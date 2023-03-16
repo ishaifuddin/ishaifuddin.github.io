@@ -252,4 +252,56 @@ aside .css-cveggr-MuiListItemIcon-root {
 }
 .dashboard canvas {
   margin-bottom: 1rem;
+}
+.dashboard .multiSelectContainer {
+  background-color: #fff;
+  border-radius: 6px;
+}
+.dashboard .multiSelectContainer .chip {
+  background: #ddd;
+  border-radius: 50px;
+  color: #67748e;
+  margin-bottom: 4px;
+  font-weight: 600;
+}
+.dashboard .multiSelectContainer .chip img {
+  margin-left: 10px;
+}
+.dashboard .multiSelectContainer .searchWrapper {
+  border: none;
+  padding: 8px 16px;
+  min-height: 50px;
+}
+.dashboard .multiSelectContainer input {
+  margin-top: 0;
+}
+.dashboard .input-filters {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+.dashboard .input-filters strong {
+  min-width: 130px;
+}
+.dashboard .input-filters input, .dashboard .input-filters .multi {
+  margin-right: 1rem;
+}
+.dashboard input {
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+.dashboard form.dash-card {
+  margin-top: 1rem;
+  height: unset;
+}
+.dashboard form.dash-card [type=submit] {
+  max-width: 500px;
+}
+.dashboard form.dash-card [type=submit]:hover {
+  opacity: 0.9;
+}
+.dashboard form.dash-card:empty {
+  display: none;
 }/*# sourceMappingURL=shopex.css.map */

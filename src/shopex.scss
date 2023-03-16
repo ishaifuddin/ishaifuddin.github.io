@@ -266,5 +266,63 @@ aside {
     canvas {
         margin-bottom: 1rem;
     }
+    .multiSelectContainer {
+        background-color: #fff;
+        border-radius: 6px;
+        
+        .chip {
+            background: #ddd;
+            border-radius: 50px;
+            color: #67748e;
+            margin-bottom: 4px;
+            font-weight: 600;
+
+            img {margin-left: 10px;}
+        }
+        
+        .searchWrapper {
+            border: none;
+            padding: 8px 16px;
+            min-height: 50px;
+        }
+
+        input {
+
+            margin-top: 0;
+        }
+    
+    }
+    .input-filters {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        margin-bottom: 1rem;
+        
+        strong {
+            min-width: 130px;
+        }
+        input, .multi {
+            margin-right: 1rem;
+        }
+    }
+    input {
+        padding: 8px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+    }
+    form.dash-card {
+        margin-top: 1rem;
+        height: unset;
+
+        [type="submit"] {
+            max-width: 500px;
+
+            &:hover {
+                opacity: .9;
+            }
+        }
+
+        &:empty {display: none;}
+    }
 }
 

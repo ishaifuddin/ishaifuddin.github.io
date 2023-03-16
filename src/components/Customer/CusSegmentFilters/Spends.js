@@ -4,7 +4,6 @@ import { Grid } from '@mantine/core';
 
 function Spends() {
 
-
     var [spend_bellow, setspend_bellow] = useState(true);
     var [spend_above, setspend_above] = useState(false);
     var [spend_between, setspend_between] = useState(false);
@@ -25,55 +24,33 @@ function Spends() {
         { value: 'spend_above', label: 'More than' },
         { value: 'spend_between', label: 'In-Between' },
     ];
-      
-
 
     return (
-
-        <>
-            <Grid>
-
-                <Grid.Col span={3} style={{display:'inline-flex'}}>
-                    <strong style={{padding: '9px'}}> Spent :  </strong>
-
-                    <Select
-                        placeholder="Less than"
-                        defaultValue={'spend_bellow'}
-                        onChange={(e)=>{handleChange(e.value)}}
-                        options={options}
-                    />
-                </Grid.Col>
-
-                <Grid.Col span={8} >
-                    
-                    { spend_bellow && 
-                        <input style={{marginTop:'7px'}} defaultValue="0" type="number" id="4" name="order_amount_max"  /> 
-                    }
+        <div className="input-filters">
+            <strong> Spent :  </strong>
+                <Select className="multi"
+                    placeholder="Less than"
+                    defaultValue={'spend_bellow'}
+                    onChange={(e)=>{handleChange(e.value)}}
+                    options={options}
+                />
                 
-        
-                    { spend_above && 
-                        <input style={{marginTop:'7px'}} defaultValue="0" type="number" id="3" name="order_amount_min"  /> 
-                    }
-
-                    { spend_between && 
-
-                        <>
-                            <div id="spend_betwn"  style={{display:'inline-flex'}}>
-                                <input style={{marginTop:'7px'}} defaultValue="0" type="number" id="1" name="order_amount_minval"  />   
-                                <input style={{marginTop:'7px'}} defaultValue="0" type="number" id="2" name="order_amount_maxval"  /> 
-                            </div>
-                        </>
-                    }
-
-                </Grid.Col>
-
-                
-
-            </Grid>
+                { spend_bellow && 
+                    <input defaultValue="0" type="number" id="4" name="order_amount_max"  /> 
+                }
             
-            
+    
+                { spend_above && 
+                    <input defaultValue="0" type="number" id="3" name="order_amount_min"  /> 
+                }
 
-        </>
+                { spend_between && 
+                    <div id="spend_betwn"  style={{display:'inline-flex'}}>
+                        <input defaultValue="0" type="number" id="1" name="order_amount_minval"  />   
+                        <input defaultValue="0" type="number" id="2" name="order_amount_maxval"  /> 
+                    </div>
+                }
+        </div>
     )
 }
 

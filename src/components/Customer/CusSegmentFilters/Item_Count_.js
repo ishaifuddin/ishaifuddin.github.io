@@ -27,47 +27,31 @@ function Item_Count_() {
       
 
     return (
-        
-        <>
-            <Grid>
-
-                <Grid.Col span={3} style={{display:'inline-flex'}}>
-                    <strong style={{padding: '9px'}}> Item-Purchase :  </strong>
-                    <Select
-                        placeholder="Less than"
-                        defaultValue={'numitem_bellow'}
-                        onChange={(e)=>{handleChange(e.value)}}
-                        options={options}
-                    />
-                </Grid.Col>
+        <div className="input-filters">
+            <strong> Item-Purchase :  </strong>
+            <Select className="multi"
+                placeholder="Less than"
+                defaultValue={'numitem_bellow'}
+                onChange={(e)=>{handleChange(e.value)}}
+                options={options}
+            />
+            { numitem_bellow && 
+                <input defaultValue="0" type="number" id="nib" name="numitem_lessthan" />     
+            }
 
 
-                <Grid.Col span={8} >
+            { numitem_above && 
+                <input defaultValue="0" type="number" id="nia" name="numitem_morethan" />     
+            }
 
-                    { numitem_bellow && 
-                        <input style={{marginTop:'7px'}} defaultValue="0" type="number" id="nib" name="numitem_lessthan" />     
-                    }
-
-
-                    { numitem_above && 
-                        <input style={{marginTop:'7px'}} defaultValue="0" type="number" id="nia" name="numitem_morethan" />     
-                    }
-
-                    { numitem_between && 
-
-                        <>
-                            <div id="num_item_between" style={{display:'inline-flex'}}>
-                                <input style={{marginTop:'7px'}} defaultValue="0" type="number" id="nibf" name="numitem_from"  />    
-                                    
-                                <input style={{marginTop:'7px'}} defaultValue="0" type="number" id="nibt" name="numitem_to"  />       
-                            </div>
-                        </>
-                    }
-
-                </Grid.Col>
-
-            </Grid>
-        </>
+            { numitem_between && 
+                <div id="num_item_between">
+                    <input style={{marginTop:'7px'}} defaultValue="0" type="number" id="nibf" name="numitem_from"  />    
+                        
+                    <input defaultValue="0" type="number" id="nibt" name="numitem_to"  />       
+                </div>
+            }
+        </div>
     )
 
 }

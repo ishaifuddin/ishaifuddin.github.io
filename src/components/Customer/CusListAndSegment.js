@@ -221,7 +221,7 @@ function CusListAndSegment() {
     var columns = [
         {
             title: 'Customer', field: 'name', render: row =>
-                <div style={{ background: 'mintcream', fontFamily: 'system-ui', fontSize: '16px', textAlign: 'left' }}>
+                <div>
                     <a href={'/Customers/profile/' + row.chc}> {row.name}</a>
                 </div>
         },
@@ -236,90 +236,73 @@ function CusListAndSegment() {
         { title: 'Profit', field: 'profit', render: row => <div style={{ background: 'whitesmoke' }}>  {row.profit} </div> }
     ];
 
-    const MyNewTitle = ({ text, variant }) => (
-        <Typography
-            variant={variant}
-            style={{
-                padding: '10px',
-                background: 'mediumseagreen',
-                color: 'white',
-                borderRadius: '4px'
-            }}
-        >
-            {text}
-        </Typography>
-    );
-
-
     return (
 
         <>
-            <Grid container>
-
-                <Grid item sm={10} style={{ background: 'mediumseagreen', position: 'fixed', color: 'white', top: 0, width: '100%', padding: '8px', paddingLeft: '2%', zIndex: 1, borderRadius: '5px' }}>
-                    <h4>Customer List and Segments</h4>
+            <Grid container spacing={3}>
+                <Grid item md={12}>
+                    <div className="notifications">
+                        <h6>Customer List and Segments</h6>
+                    </div>
                 </Grid>
 
-                <Grid item sm={12} style={{ zIndex: '0', marginTop: '5%' }}>
+                <Grid item sm={12}>
+                    <Modal
+                        overflow="inside"
+                        overlayColor={theme.colorScheme === 'dark' ? theme.colors.dark[9] : theme.colors.gray[2]}
+                        overlayOpacity={0.55}
+                        overlayBlur={3}
+                        size="70%"
+                        opened={opened}
+                        onClose={() => setOpened(false)}
+                        title="Customer segments">
 
-                    <Grid>
-                        {/* Segment List Modal  */}
-                        <Modal
-                            overflow="inside"
-                            overlayColor={theme.colorScheme === 'dark' ? theme.colors.dark[9] : theme.colors.gray[2]}
-                            overlayOpacity={0.55}
-                            overlayBlur={3}
-                            size="70%"
-                            opened={opened}
-                            onClose={() => setOpened(false)}
-                            title="Customer segments">
-
-                            {
-                                Seglist &&
-                                <ThemeProvider theme={defaultMaterialTheme}>
-                                    <MaterialTable style={{borderRadius:'14px'}}
-                                        columns={[
-                                            {
-                                                title: 'Segment',
-                                                field: 'name',
-                                                render: row => <div style={{ "cursor": "pointer", "background": "cornflowerblue", "color": "aliceblue", "padding": "4px", "borderRadius": "7px" }}
-                                                    onClick={() => { setSegname(row.name); dispatch(get_selseg_List({ segid: row.id })) }}> {row.name}
-                                                </div>
-                                            },
-                                            { title: 'Filter', field: 'filter' },
-                                            { title: 'Created', field: 'created' }
-                                        ]}
-                                        data={Seglist}
-                                        title=""
-                                        icons={{
-                                            Check: Check,
-                                            DetailPanel: ChevronRight,
-                                            Export: SaveAlt,
-                                            Filter: FilterList,
-                                            FirstPage: FirstPage,
-                                            LastPage: LastPage,
-                                            NextPage: ChevronRight,
-                                            PreviousPage: ChevronLeft,
-                                            Search: Search,
-                                            ResetSearch: CancelIcon,
-                                            Clear: CancelIcon
-                                        }}
-                                        localization={{
-                                            pagination: {
-                                                labelRowsPerPage: '',
-                                                showFirstLastPageButtons: false,
-                                            }
-                                        }}
-                                    />
-                                </ThemeProvider>
-                            }
-                        </Modal>
+                        {
+                            Seglist &&
+                            <ThemeProvider theme={defaultMaterialTheme}>
+                                <MaterialTable
+                                    columns={[
+                                        {
+                                            title: 'Segment',
+                                            field: 'name',
+                                            render: row => <div
+                                                onClick={() => { setSegname(row.name); dispatch(get_selseg_List({ segid: row.id })) }}> {row.name}
+                                            </div>
+                                        },
+                                        { title: 'Filter', field: 'filter' },
+                                        { title: 'Created', field: 'created' }
+                                    ]}
+                                    data={Seglist}
+                                    title=""
+                                    icons={{
+                                        Check: Check,
+                                        DetailPanel: ChevronRight,
+                                        Export: SaveAlt,
+                                        Filter: FilterList,
+                                        FirstPage: FirstPage,
+                                        LastPage: LastPage,
+                                        NextPage: ChevronRight,
+                                        PreviousPage: ChevronLeft,
+                                        Search: Search,
+                                        ResetSearch: CancelIcon,
+                                        Clear: CancelIcon
+                                    }}
+                                    localization={{
+                                        pagination: {
+                                            labelRowsPerPage: '',
+                                            showFirstLastPageButtons: false,
+                                        }
+                                    }}
+                                />
+                            </ThemeProvider>
+                        }
+                    </Modal>
 
 
                         {/* Customer filters Dropdown  */}
-                        <Grid style={{ zIndex: '1' }}>
+                        <Grid>
 
-                            {segfils && segfils.length > 0 && <Multiselect isObject={false}
+                            {segfils && segfils.length > 0 && <Multiselect isObject={false} style={{background: '#fff'}}
                                 placeholder=" + Add Filter"
                                 onRemove={(e) => { addfilter(e, 99) }}
                                 onSelect={(e) => { addfilter(e, e[e.length - 1]) }}
@@ -330,7 +313,7 @@ function CusListAndSegment() {
 
                             {Seglist &&
 
-                                <Group position="left" style={{ marginTop: '15px' }} >
+                                <Group position="left">
                                     <Button onClick={() => setOpened(true)}>Customer Segments</Button>
                                 </Group>
                             }
@@ -339,46 +322,37 @@ function CusListAndSegment() {
 
 
                         {/* Customer filters  */}
-                        <Grid>
 
-                            <form onSubmit={filterSubmit}>
-
+                            <form className='dash-card' onSubmit={filterSubmit}>
                                 {filterList.length > 0 &&
-                                    <>
+                                    <div className="input-filters">
                                         <strong>Create Segment :</strong>
-                                        <input style={{ marginBottom: '15px', width: '65%', height: '40px', fontSize: '15px' }}
+                                        <input
                                             type="text"
                                             name="segname"
                                             size="45"
                                             value={segname}
                                             onChange={(e) => setSegname(e.target.value)}
                                             placeholder="Insert segment name...Ex: Loyal Customer" />
-                                    </>
+                                    </div>
                                 }
-
                                 {filterList}
-
                                 {filterList.length > 0 && <input type="submit" value="Submit" />}
-
                             </form>
-
-                        </Grid>
-
-                    </Grid>
 
 
                     {/* Customer List */}
 
 
-                    <Grid style={{ zIndex: '0', marginRight: '20px', marginTop: '20px' }}>
+                    <Grid>
                         {
                             cusListCloneData && cusListCloneData.length > 0 &&
                             <ThemeProvider theme={defaultMaterialTheme}>
-                                <MaterialTable style={{borderRadius:'14px'}}
+                                <MaterialTable
                                     columns={columns}
                                     data={cusListCloneData}
                                     // title={segname}
-                                    title={<MyNewTitle variant="strong" text={segname} />}
+                                    title="strong"
                                     icons={{
                                         Check: Check,
                                         DetailPanel: ChevronRight,
