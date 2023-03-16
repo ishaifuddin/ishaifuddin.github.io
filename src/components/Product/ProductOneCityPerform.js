@@ -73,29 +73,24 @@ function ProductOneCityPerform() {
 
     var [scity, setscity] = useState('');
 
-    // var Cus_scity = useSelector((state) => state.CusRetSC.cusretSC.scity);
-    // if (!(Cus_scity !== undefined && Cus_scity !== null)) {
-    //    dispatch(get_cusret_getcity({ajax_call:2}));
-    // }
+    // var Cus_scity = useSelector((state) => state.CusRetSC.scity);
+    // useEffect(() => {
 
-    var Cus_scity = useSelector((state) => state.CusRetSC.scity);
-    useEffect(() => {
+    //     var is_dispatched = (dispatch_function) => {
+    //         ReactSession.get(dispatch_function);
+    //         if (ReactSession.get(dispatch_function)) {
+    //             return true;
+    //         } else {
+    //             ReactSession.set(dispatch_function, "1");
+    //             return false;
+    //         }
+    //     }
 
-        var is_dispatched = (dispatch_function) => {
-            ReactSession.get(dispatch_function);
-            if (ReactSession.get(dispatch_function)) {
-                return true;
-            } else {
-                ReactSession.set(dispatch_function, "1");
-                return false;
-            }
-        }
+    //     if (!(is_dispatched('get_cusret_getcity'))) {
+    //         dispatch(get_cusret_getcity({ ajax_call: 2 }));
+    //     }
 
-        if (!(is_dispatched('get_cusret_getcity'))) {
-            dispatch(get_cusret_getcity({ ajax_call: 2 }));
-        }
-
-    }, [])
+    // }, [])
 
 
     const dateSubmit = (e) => {
@@ -111,73 +106,49 @@ function ProductOneCityPerform() {
     }
 
 
-    var all_product_single_city = useSelector((state) => state.Product_specific_city_all_product);
+    // var all_product_single_city = useSelector((state) => state.Product_specific_city_all_product);
 
-    var comparison_table = [];
-    if (all_product_single_city.single_city_comparison_table_object && (all_product_single_city.single_city_comparison_table_object).length > 0) {
-        comparison_table = structuredClone(all_product_single_city.single_city_comparison_table_object);
-    }
+    // var comparison_table = [];
+    // if (all_product_single_city.single_city_comparison_table_object && (all_product_single_city.single_city_comparison_table_object).length > 0) {
+    //     comparison_table = structuredClone(all_product_single_city.single_city_comparison_table_object);
+    // }
 
-    var label = structuredClone(all_product_single_city.single_city_comparison_chart_base_label.replace(/\"/g, "").split(","));
-
-
-    ////////////////
-    var single_city_rev_comparison = useSelector((state) => state.Product_specific_city_all_product.single_city_rev_comparison);
-    var rev_obj = {};
-    if (single_city_rev_comparison) {
-        rev_obj.labels = label;
-        rev_obj.datasets = structuredClone(single_city_rev_comparison);
-    }
-
-
-    ////////////////
-    var single_city_order_comparison = useSelector((state) => state.Product_specific_city_all_product.single_city_order_comparison);
-    var order_obj = {};
-    if (single_city_order_comparison) {
-        order_obj.labels = label;
-        order_obj.datasets = structuredClone(single_city_order_comparison);
-    }
-
-
-
-    ////////////////
-    var single_city_profit_comparison = useSelector((state) => state.Product_specific_city_all_product.single_city_profit_comparison);
-    var profit_obj = {};
-    if (single_city_profit_comparison) {
-        profit_obj.labels = label;
-        profit_obj.datasets = structuredClone(single_city_profit_comparison);
-    }
-
-
-    ////////////////
-    var single_city_cus_comparison = useSelector((state) => state.Product_specific_city_all_product.single_city_cus_comparison);
-    var customer_obj = {};
-    if (single_city_cus_comparison) {
-        customer_obj.labels = label;
-        customer_obj.datasets = structuredClone(single_city_cus_comparison);
-    }
-
-
-    ////////////////
-    var single_city_unit_comparison = useSelector((state) => state.Product_specific_city_all_product.single_city_unit_comparison);
-    var unit_obj = {};
-    if (single_city_unit_comparison) {
-        unit_obj.labels = label;
-        unit_obj.datasets = structuredClone(single_city_unit_comparison);
-    }
-
-
-
-    // const lineOptions = {
-    //     onClick: (e, element) => {
-    //         if (element.length > 0) {
-    //             var ind = element[0]._index;
-    //         }
-    //     },
-    //     scales: {},
-    //     legend: { display: false },
-    //     tooltips: { enabled: true }
-    // };
+    // var label = structuredClone(all_product_single_city.single_city_comparison_chart_base_label.replace(/\"/g, "").split(","));
+    // ////////////////
+    // var single_city_rev_comparison = useSelector((state) => state.Product_specific_city_all_product.single_city_rev_comparison);
+    // var rev_obj = {};
+    // if (single_city_rev_comparison) {
+    //     rev_obj.labels = label;
+    //     rev_obj.datasets = structuredClone(single_city_rev_comparison);
+    // }
+    // ////////////////
+    // var single_city_order_comparison = useSelector((state) => state.Product_specific_city_all_product.single_city_order_comparison);
+    // var order_obj = {};
+    // if (single_city_order_comparison) {
+    //     order_obj.labels = label;
+    //     order_obj.datasets = structuredClone(single_city_order_comparison);
+    // }
+    // ////////////////
+    // var single_city_profit_comparison = useSelector((state) => state.Product_specific_city_all_product.single_city_profit_comparison);
+    // var profit_obj = {};
+    // if (single_city_profit_comparison) {
+    //     profit_obj.labels = label;
+    //     profit_obj.datasets = structuredClone(single_city_profit_comparison);
+    // }
+    // ////////////////
+    // var single_city_cus_comparison = useSelector((state) => state.Product_specific_city_all_product.single_city_cus_comparison);
+    // var customer_obj = {};
+    // if (single_city_cus_comparison) {
+    //     customer_obj.labels = label;
+    //     customer_obj.datasets = structuredClone(single_city_cus_comparison);
+    // }
+    // ////////////////
+    // var single_city_unit_comparison = useSelector((state) => state.Product_specific_city_all_product.single_city_unit_comparison);
+    // var unit_obj = {};
+    // if (single_city_unit_comparison) {
+    //     unit_obj.labels = label;
+    //     unit_obj.datasets = structuredClone(single_city_unit_comparison);
+    // }
 
 
     var option = {
@@ -200,6 +171,221 @@ function ProductOneCityPerform() {
     }
 
 
+    ////////////////////////////// DUMMY DATA ///////////////////////////////
+    ////////////////////////////// DUMMY DATA ///////////////////////////////
+    ////////////////////////////// DUMMY DATA ///////////////////////////////
+    ////////////////////////////// DUMMY DATA ///////////////////////////////
+    ////////////////////////////// DUMMY DATA ///////////////////////////////
+
+    // { title: 'Product', field: 'product_name', render: row => <div style={{ background: 'whitesmoke' }}>  {row.product_name} </div> },
+    // { title: 'Revenue', field: 'total_rev', render: row => <div style={{ background: 'ghostwhite' }}>  {row.total_rev} </div> },
+    // { title: 'Unit', field: 'total_unit', render: row => <div style={{ background: 'whitesmoke' }}>  {row.total_unit} </div> },
+    // { title: 'Order', field: 'total_order', render: row => <div style={{ background: 'ghostwhite' }}>  {row.total_order} </div> },
+    // { title: 'Customer', field: 'total_cus', render: row => <div style={{ background: 'whitesmoke' }}>  {row.total_cus} </div> },
+    // { title: 'Profit', field: 'total_profit', render: row => <div style={{ background: 'ghostwhite' }}>  {row.total_profit} </div> },
+
+    var [comparison_table, setTmnew] = useState([
+        {  product_name:'a',total_rev: '1112',total_unit: '11%',total_order: '725',total_cus: '5%',total_profit: '422' },
+        {  product_name:'b',total_rev: '1112',total_unit: '11%',total_order: '725',total_cus: '5%',total_profit: '422'},
+        {  product_name:'c',total_rev: '1112',total_unit: '11%',total_order: '725',total_cus: '5%',total_profit: '422'},
+        {  product_name:'d',total_rev: '1112',total_unit: '11%',total_order: '725',total_cus: '5%',total_profit: '422'},
+        {  product_name:'e',total_rev: '1112',total_unit: '11%',total_order: '725',total_cus: '5%',total_profit: '422'},
+        {  product_name:'f',total_rev: '1112',total_unit: '11%',total_order: '725',total_cus: '5%',total_profit: '422'},
+        {  product_name:'g',total_rev: '1112',total_unit: '11%',total_order: '725',total_cus: '5%',total_profit: '422'},
+        {  product_name:'h',total_rev: '1112',total_unit: '11%',total_order: '725',total_cus: '5%',total_profit: '422'},
+        {  product_name:'i',total_rev: '1112',total_unit: '11%',total_order: '725',total_cus: '5%',total_profit: '422'},
+        {  product_name:'j',total_rev: '1112',total_unit: '11%',total_order: '725',total_cus: '5%',total_profit: '422'},
+        {  product_name:'k',total_rev: '1112',total_unit: '11%',total_order: '725',total_cus: '5%',total_profit: '422'},
+        {  product_name:'l',total_rev: '1112',total_unit: '11%',total_order: '725',total_cus: '5%',total_profit: '422'},
+        {  product_name:'m',total_rev: '1112',total_unit: '11%',total_order: '725',total_cus: '5%',total_profit: '422'},
+        {  product_name:'n',total_rev: '1112',total_unit: '11%',total_order: '725',total_cus: '5%',total_profit: '422'},
+        {  product_name:'o',total_rev: '1112',total_unit: '11%',total_order: '725',total_cus: '5%',total_profit: '422'},
+    ]);
+
+    var rev_obj         = {
+        labels: ["Jan", "Feb", "Mar", "April", "May", "June", "July"],
+        datasets: [
+            {
+            label: "Sales",
+            tension: 0.4,
+            borderDash: [2, 2],
+            borderJoinStyle: 'round',
+            backgroundColor: "rgba(43, 206, 161, 1)",
+            borderColor: "rgba(43, 206, 161,1)",
+            borderWidth: 2,
+            hoverBackgroundColor: "rgba(255,99,132,0.4)",
+            hoverBorderColor: "rgba(255,99,132,1)",
+            data: [65, 59, 80, 81, 56, 55, 40],
+            },
+            {
+            label: "Expenses",     
+            tension: 0.4,
+            borderJoinStyle: 'round',
+            backgroundColor: "rgba(94, 114, 228, 1)",
+            pointBackgroundColor: "rgba(54,162,235,0.2)",
+            pointBackgroundColor: "rgba(94, 114, 228, 1)",
+            borderColor: "rgba(94, 114, 228, 1)",
+            borderWidth: 2,
+            hoverBackgroundColor: "red)",
+            hoverBorderColor: "rgba(54,162,235,1)",
+            data: [28, 48, 40, 19, 86, 27, 90],
+            },
+        ],
+    };
+    var order_obj       ={
+        labels: ["Jan", "Feb", "Mar", "April", "May", "June", "July"],
+        datasets: [
+            {
+            label: "Sales",
+            tension: 0.4,
+            borderDash: [2, 2],
+            borderJoinStyle: 'round',
+            backgroundColor: "rgba(43, 206, 161, 1)",
+            borderColor: "rgba(43, 206, 161,1)",
+            borderWidth: 2,
+            hoverBackgroundColor: "rgba(255,99,132,0.4)",
+            hoverBorderColor: "rgba(255,99,132,1)",
+            data: [65, 59, 80, 81, 56, 55, 40],
+            },
+            {
+            label: "Expenses",     
+            tension: 0.4,
+            borderJoinStyle: 'round',
+            backgroundColor: "rgba(94, 114, 228, 1)",
+            pointBackgroundColor: "rgba(54,162,235,0.2)",
+            pointBackgroundColor: "rgba(94, 114, 228, 1)",
+            borderColor: "rgba(94, 114, 228, 1)",
+            borderWidth: 2,
+            hoverBackgroundColor: "red)",
+            hoverBorderColor: "rgba(54,162,235,1)",
+            data: [28, 48, 40, 19, 86, 27, 90],
+            },
+        ],
+    };
+    var profit_obj      = {
+        labels: ["Jan", "Feb", "Mar", "April", "May", "June", "July"],
+        datasets: [
+            {
+            label: "Sales",
+            tension: 0.4,
+            borderDash: [2, 2],
+            borderJoinStyle: 'round',
+            backgroundColor: "rgba(43, 206, 161, 1)",
+            borderColor: "rgba(43, 206, 161,1)",
+            borderWidth: 2,
+            hoverBackgroundColor: "rgba(255,99,132,0.4)",
+            hoverBorderColor: "rgba(255,99,132,1)",
+            data: [65, 59, 80, 81, 56, 55, 40],
+            },
+            {
+            label: "Expenses",     
+            tension: 0.4,
+            borderJoinStyle: 'round',
+            backgroundColor: "rgba(94, 114, 228, 1)",
+            pointBackgroundColor: "rgba(54,162,235,0.2)",
+            pointBackgroundColor: "rgba(94, 114, 228, 1)",
+            borderColor: "rgba(94, 114, 228, 1)",
+            borderWidth: 2,
+            hoverBackgroundColor: "red)",
+            hoverBorderColor: "rgba(54,162,235,1)",
+            data: [28, 48, 40, 19, 86, 27, 90],
+            },
+        ],
+    };
+    var customer_obj         = {
+        labels: ["Jan", "Feb", "Mar", "April", "May", "June", "July"],
+        datasets: [
+            {
+            label: "Sales",
+            tension: 0.4,
+            borderDash: [2, 2],
+            borderJoinStyle: 'round',
+            backgroundColor: "rgba(43, 206, 161, 1)",
+            borderColor: "rgba(43, 206, 161,1)",
+            borderWidth: 2,
+            hoverBackgroundColor: "rgba(255,99,132,0.4)",
+            hoverBorderColor: "rgba(255,99,132,1)",
+            data: [65, 59, 80, 81, 56, 55, 40],
+            },
+            {
+            label: "Expenses",     
+            tension: 0.4,
+            borderJoinStyle: 'round',
+            backgroundColor: "rgba(94, 114, 228, 1)",
+            pointBackgroundColor: "rgba(54,162,235,0.2)",
+            pointBackgroundColor: "rgba(94, 114, 228, 1)",
+            borderColor: "rgba(94, 114, 228, 1)",
+            borderWidth: 2,
+            hoverBackgroundColor: "red)",
+            hoverBorderColor: "rgba(54,162,235,1)",
+            data: [28, 48, 40, 19, 86, 27, 90],
+            },
+        ],
+    };
+    var rcus_obj        = {
+        labels: ["Jan", "Feb", "Mar", "April", "May", "June", "July"],
+        datasets: [
+            {
+            label: "Sales",
+            tension: 0.4,
+            borderDash: [2, 2],
+            borderJoinStyle: 'round',
+            backgroundColor: "rgba(43, 206, 161, 1)",
+            borderColor: "rgba(43, 206, 161,1)",
+            borderWidth: 2,
+            hoverBackgroundColor: "rgba(255,99,132,0.4)",
+            hoverBorderColor: "rgba(255,99,132,1)",
+            data: [65, 59, 80, 81, 56, 55, 40],
+            },
+            {
+            label: "Expenses",     
+            tension: 0.4,
+            borderJoinStyle: 'round',
+            backgroundColor: "rgba(94, 114, 228, 1)",
+            pointBackgroundColor: "rgba(54,162,235,0.2)",
+            pointBackgroundColor: "rgba(94, 114, 228, 1)",
+            borderColor: "rgba(94, 114, 228, 1)",
+            borderWidth: 2,
+            hoverBackgroundColor: "red)",
+            hoverBorderColor: "rgba(54,162,235,1)",
+            data: [28, 48, 40, 19, 86, 27, 90],
+            },
+        ],
+    };
+    var unit_obj        = {
+        labels: ["Jan", "Feb", "Mar", "April", "May", "June", "July"],
+        datasets: [
+            {
+            label: "Sales",
+            tension: 0.4,
+            borderDash: [2, 2],
+            borderJoinStyle: 'round',
+            backgroundColor: "rgba(43, 206, 161, 1)",
+            borderColor: "rgba(43, 206, 161,1)",
+            borderWidth: 2,
+            hoverBackgroundColor: "rgba(255,99,132,0.4)",
+            hoverBorderColor: "rgba(255,99,132,1)",
+            data: [65, 59, 80, 81, 56, 55, 40],
+            },
+            {
+            label: "Expenses",     
+            tension: 0.4,
+            borderJoinStyle: 'round',
+            backgroundColor: "rgba(94, 114, 228, 1)",
+            pointBackgroundColor: "rgba(54,162,235,0.2)",
+            pointBackgroundColor: "rgba(94, 114, 228, 1)",
+            borderColor: "rgba(94, 114, 228, 1)",
+            borderWidth: 2,
+            hoverBackgroundColor: "red)",
+            hoverBorderColor: "rgba(54,162,235,1)",
+            data: [28, 48, 40, 19, 86, 27, 90],
+            },
+        ],
+    };
+
+
+    
+
 
     return (
 
@@ -217,60 +403,35 @@ function ProductOneCityPerform() {
                     <form onSubmit={dateSubmit}>
                         <Grid container>
                             <Grid item sm={6}>
-                                {Cus_scity &&
-                                    <Multiselect isObject={false}
-                                        placeholder="Shipping-City"
-                                        onRemove={(e) => { setscity(e[0]); }}
-                                        onSelect={(e) => { setscity(e[0]); }}
-                                        singleSelect={true}
-                                        options={Cus_scity}
-                                        selectedValues={[]}
-                                        showCheckbox />
+                                {
+                                    //Cus_scity &&
+                                    // <Multiselect isObject={false}
+                                    //     placeholder="Shipping-City"
+                                    //     onRemove={(e) => { setscity(e[0]); }}
+                                    //     onSelect={(e) => { setscity(e[0]); }}
+                                    //     singleSelect={true}
+                                    //     options={Cus_scity}
+                                    //     selectedValues={[]}
+                                    //     showCheckbox />
                                 }
                             </Grid>
 
                             <Grid item sm={3}>
-
                                 <DateRangePicker
-
                                     //placement='rightEnd'
                                     label="Timeline"
                                     value={daterange}
                                     onChange={setdrange}
                                     oneTap={false}
                                     ranges={[
-                                        {
-                                            label: 'Yesterday',
-                                            value: [addDays(new Date(), -1), addDays(new Date(), -1)]
-                                        },
-                                        {
-                                            label: 'Today',
-                                            value: [new Date(), new Date()]
-                                        },
-                                        {
-                                            label: 'Tomorrow',
-                                            value: [addDays(new Date(), 1), addDays(new Date(), 1)]
-                                        },
-                                        {
-                                            label: 'Last 7 days',
-                                            value: [subDays(new Date(), 6), new Date()]
-                                        },
-
-                                        {
-                                            label: 'This month',
-                                            value: [subDays(new Date(), getDate(new Date()) - 1), new Date()]
-                                        },
-
-                                        {
-                                            label: 'Last month',
-                                            value: [startOfMonth(subDays(new Date(), getDate(new Date()))), endOfMonth(subDays(new Date(), getDate(new Date())))]
-                                        },
-
-                                        {
-                                            label: 'Year To date',
-                                            value: [startOfYear(new Date()), new Date()]
-                                        }]}>
-
+                                        {label: 'Yesterday',value: [addDays(new Date(), -1), addDays(new Date(), -1)]},
+                                        {label: 'Today',value: [new Date(), new Date()]},
+                                        {label: 'Tomorrow',value: [addDays(new Date(), 1), addDays(new Date(), 1)]},
+                                        {label: 'Last 7 days', value: [subDays(new Date(), 6), new Date()]},
+                                        {label: 'This month', value: [subDays(new Date(), getDate(new Date()) - 1), new Date()]},
+                                        {label: 'Last month',value: [startOfMonth(subDays(new Date(), getDate(new Date()))), endOfMonth(subDays(new Date(), getDate(new Date())))]},
+                                        {label: 'Year To date',value: [startOfYear(new Date()), new Date()]}]}
+                                    >
                                 </DateRangePicker>
                             </Grid>
 
@@ -298,7 +459,9 @@ function ProductOneCityPerform() {
 
                         <Grid item sm={10} style={{ zIndex: 0 }}>
 
-                            {comparison_table && comparison_table.length > 0 &&
+                            {
+                            
+                            comparison_table && comparison_table.length > 0 &&
 
                                 <ThemeProvider theme={defaultMaterialTheme}>
 
@@ -439,7 +602,8 @@ function ProductOneCityPerform() {
                                     </TimelineSeparator>
 
                                     <TimelineContent>
-                                        {single_city_order_comparison && single_city_order_comparison.length > 0 &&
+                                        {
+                                            //single_city_order_comparison && single_city_order_comparison.length > 0 &&
                                             <Line data={order_obj}
                                                 options={option} />}
                                     </TimelineContent>
@@ -457,7 +621,8 @@ function ProductOneCityPerform() {
                                         <TimelineConnector />
                                     </TimelineSeparator>
                                     <TimelineContent>
-                                        {single_city_unit_comparison && single_city_unit_comparison.length > 0 &&
+                                        {
+                                            //single_city_unit_comparison && single_city_unit_comparison.length > 0 &&
                                             <Line data={unit_obj}
                                                 options={option} />}
                                     </TimelineContent>
@@ -476,7 +641,8 @@ function ProductOneCityPerform() {
                                         <TimelineConnector />
                                     </TimelineSeparator>
                                     <TimelineContent>
-                                        {single_city_rev_comparison && single_city_rev_comparison.length > 0 &&
+                                        {
+                                            //single_city_rev_comparison && single_city_rev_comparison.length > 0 &&
                                             <Line data={rev_obj} options={option} />}
 
                                     </TimelineContent>
@@ -495,7 +661,8 @@ function ProductOneCityPerform() {
                                         <TimelineConnector />
                                     </TimelineSeparator>
                                     <TimelineContent>
-                                        {single_city_cus_comparison && single_city_cus_comparison.length > 0 &&
+                                        {
+                                            //single_city_cus_comparison && single_city_cus_comparison.length > 0 &&
                                             <Line data={customer_obj} options={option} />}
                                     </TimelineContent>
                                 </TimelineItem>
@@ -513,7 +680,8 @@ function ProductOneCityPerform() {
                                         <TimelineConnector />
                                     </TimelineSeparator>
                                     <TimelineContent>
-                                        {single_city_profit_comparison && single_city_profit_comparison.length > 0 &&
+                                        {
+                                            //single_city_profit_comparison && single_city_profit_comparison.length > 0 &&
                                             <Line data={profit_obj} options={option} />}
                                     </TimelineContent>
                                 </TimelineItem>

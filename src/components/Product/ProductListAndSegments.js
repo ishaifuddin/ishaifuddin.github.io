@@ -50,55 +50,52 @@ function ProductListAndSegments() {
   var [segname, setSegname] = useState('Orders from last 6month/s');
 
 
-  var Product_list_seg = useSelector((state) => state.product_List_And_Segments);
+  // var Product_list_seg = useSelector((state) => state.product_List_And_Segments);
+  // useEffect(() => {
 
-  console.log(Product_list_seg);
+  //   var is_dispatched1 = () => {
+  //     ReactSession.get("get_product_and_catagory_and_sku_data");
+  //     if (ReactSession.get("get_product_and_catagory_and_sku_data")) {
+  //       return true;
+  //     } else {
+  //       ReactSession.set("get_product_and_catagory_and_sku_data", "1");
+  //       return false;
+  //     }
+  //   }
 
-  useEffect(() => {
+  //   var is_dispatched2 = () => {
+  //     ReactSession.get("get_product_segments");
+  //     if (ReactSession.get("get_product_segments")) {
+  //       return true;
+  //     } else {
+  //       ReactSession.set("get_product_segments", "1");
+  //       return false;
+  //     }
+  //   }
 
-    var is_dispatched1 = () => {
-      ReactSession.get("get_product_and_catagory_and_sku_data");
-      if (ReactSession.get("get_product_and_catagory_and_sku_data")) {
-        return true;
-      } else {
-        ReactSession.set("get_product_and_catagory_and_sku_data", "1");
-        return false;
-      }
-    }
-
-    var is_dispatched2 = () => {
-      ReactSession.get("get_product_segments");
-      if (ReactSession.get("get_product_segments")) {
-        return true;
-      } else {
-        ReactSession.set("get_product_segments", "1");
-        return false;
-      }
-    }
-
-    if (!(is_dispatched1())) {
-      dispatch(get_product_and_catagory_and_sku_data({ ajax_call: 2 }));
-    }
+  //   if (!(is_dispatched1())) {
+  //     dispatch(get_product_and_catagory_and_sku_data({ ajax_call: 2 }));
+  //   }
 
 
-    if (!(is_dispatched2())) {
-      dispatch(get_product_segments({ ajax_call: 2 }));
-    }
+  //   if (!(is_dispatched2())) {
+  //     dispatch(get_product_segments({ ajax_call: 2 }));
+  //   }
 
-  }, [])
+  // }, [])
 
 
 
 
 
-  var product_table = Product_list_seg.product_table_object;
-  if (product_table.length > 0)
-    var product_table_clone = structuredClone(product_table);
+  // var product_table = Product_list_seg.product_table_object;
+  // if (product_table.length > 0)
+  //   var product_table_clone = structuredClone(product_table);
 
 
-  var cat_table = Product_list_seg.product_cat_table_object;
-  if (cat_table.length > 0)
-    var cat_table_clone = structuredClone(cat_table);
+  // var cat_table = Product_list_seg.product_cat_table_object;
+  // if (cat_table.length > 0)
+  //   var cat_table_clone = structuredClone(cat_table);
 
 
   var Update_cog = (event) => {
@@ -114,12 +111,10 @@ function ProductListAndSegments() {
       .catch(function (error) {
           console.log(error);
       })
-
-      
   };
 
 
-  var [filterList, setfilterList] = useState([]);
+  var [filterList_, setfilterList] = useState([]);
   
   var [filts, setfils] = useState([
     'Products',
@@ -151,7 +146,7 @@ function ProductListAndSegments() {
       var removed_filter = prev_state.filter(x => !e.includes(x));
       var remfil = removed_filter[0];
 
-      var newfils = filterList.filter((item) => item.key !== remfil);
+      var newfils = filterList_.filter((item) => item.key !== remfil);
       setfilterList(newfils);
 
       // Update The latest selected's as previous state in local-Storage
@@ -163,28 +158,29 @@ function ProductListAndSegments() {
     if (arg !== 99) {
 
       localStorage.setItem('shopex_Product_filts', JSON.stringify(e));
+      //alert(arg);
 
-      if (arg === "Products") setfilterList(filterList.concat(<Products key={'Products'} />));
+      if (arg === "Products") setfilterList(filterList_.concat(<Products key={'Products'} />));
 
-      if (arg === "Catagory") setfilterList(filterList.concat(<ProductCatagory key={'Catagory'} />));
+      if (arg === "Catagory") setfilterList(filterList_.concat(<ProductCatagory key={'Catagory'} />));
 
-      if (arg === "SKU") setfilterList(filterList.concat(<ProductSKU key={'SKU'} />));
+      if (arg === "SKU") setfilterList(filterList_.concat(<ProductSKU key={'SKU'} />));
 
-      if (arg === "Current_Price") setfilterList(filterList.concat(<ProductCurrentPrice key={'Current_Price'} />));
+      if (arg === "Current_Price") setfilterList(filterList_.concat(<ProductCurrentPrice key={'Current_Price'} />));
 
-      if (arg === "Height") setfilterList(filterList.concat(<ProductHeight key={'Height'} />));
+      if (arg === "Height") setfilterList(filterList_.concat(<ProductHeight key={'Height'} />));
 
-      if (arg === "Width") setfilterList(filterList.concat(<ProductWidth key={'Width'} />));
+      if (arg === "Width") setfilterList(filterList_.concat(<ProductWidth key={'Width'} />));
 
-      if (arg === "Length") setfilterList(filterList.concat(<ProductLength key={'Length'} />));
+      if (arg === "Length") setfilterList(filterList_.concat(<ProductLength key={'Length'} />));
 
-      if (arg === "Weight") setfilterList(filterList.concat(<ProductWeight key={'Weight'} />));
+      if (arg === "Weight") setfilterList(filterList_.concat(<ProductWeight key={'Weight'} />));
 
-      if (arg === "Stock") setfilterList(filterList.concat(<ProductStock key={'Stock'} />));
+      if (arg === "Stock") setfilterList(filterList_.concat(<ProductStock key={'Stock'} />));
 
-      if (arg === "on_sale") setfilterList(filterList.concat(<ProductOnSale key={'on_sale'} />));
+      if (arg === "on_sale") setfilterList(filterList_.concat(<ProductOnSale key={'on_sale'} />));
 
-      if (arg === "Type") setfilterList(filterList.concat(<ProductType key={'Type'} />));
+      if (arg === "Type") setfilterList(filterList_.concat(<ProductType key={'Type'} />));
 
     }
 
@@ -256,6 +252,103 @@ function ProductListAndSegments() {
     dispatch(EditCost({"id":id,"cost":cost}));
   }
 
+
+
+
+  /////////////////// DUMMY DATA //////////////////////////
+  /////////////////// DUMMY DATA //////////////////////////
+  /////////////////// DUMMY DATA //////////////////////////
+  /////////////////// DUMMY DATA //////////////////////////
+
+ 
+  var [cat_table_clone, setTmnew] = useState([
+    {  catagory_name: 'spray_catagory' },
+    {  catagory_name: 'spray_catagory' },
+    {  catagory_name: 'spray_catagory' },
+    {  catagory_name: 'spray_catagory' },
+    {  catagory_name: 'spray_catagory' },
+    {  catagory_name: 'spray_catagory' },
+    {  catagory_name: 'spray_catagory' },
+    {  catagory_name: 'spray_catagory' },
+    {  catagory_name: 'spray_catagory' },
+    {  catagory_name: 'spray_catagory' },
+    {  catagory_name: 'spray_catagory' },
+    {  catagory_name: 'spray_catagory' },
+    {  catagory_name: 'spray_catagory' },
+    {  catagory_name: 'spray_catagory' },
+    {  catagory_name: 'spray_catagory' },
+    {  catagory_name: 'spray_catagory' },
+    {  catagory_name: 'spray_catagory' },
+    {  catagory_name: 'spray_catagory' },
+    {  catagory_name: 'spray_catagory' },
+    {  catagory_name: 'spray_catagory' },
+    {  catagory_name: 'spray_catagory' },
+    {  catagory_name: 'spray_catagory' },
+    {  catagory_name: 'spray_catagory' },
+    {  catagory_name: 'spray_catagory' },
+    {  catagory_name: 'spray_catagory' },
+    {  catagory_name: 'spray_catagory' },
+    {  catagory_name: 'spray_catagory' },
+    {  catagory_name: 'spray_catagory' },
+    {  catagory_name: 'spray_catagory' },
+    {  catagory_name: 'spray_catagory' },
+    {  catagory_name: 'spray_catagory' },
+    {  catagory_name: 'spray_catagory' },
+    {  catagory_name: 'spray_catagory' },
+    {  catagory_name: 'spray_catagory' },
+    {  catagory_name: 'spray_catagory' },
+    {  catagory_name: 'spray_catagory' },
+
+  ]);
+  
+  var [product_table_clone, setTmnew] = useState([
+    {  product_name: 'spray', reguler_price: 23, curr_price : 22 , stock_quantity: 6 , product_type : 'simple', cog : 18 },
+    {  product_name: 'spray', reguler_price: 23, curr_price : 22 , stock_quantity: 6 , product_type : 'simple', cog : 18 },
+    {  product_name: 'spray', reguler_price: 23, curr_price : 22 , stock_quantity: 6 , product_type : 'simple', cog : 18 },
+    {  product_name: 'spray', reguler_price: 23, curr_price : 22 , stock_quantity: 6 , product_type : 'simple', cog : 18 },
+    {  product_name: 'spray', reguler_price: 23, curr_price : 22 , stock_quantity: 6 , product_type : 'simple', cog : 18 },
+    {  product_name: 'spray', reguler_price: 23, curr_price : 22 , stock_quantity: 6 , product_type : 'simple', cog : 18 },
+    {  product_name: 'spray', reguler_price: 23, curr_price : 22 , stock_quantity: 6 , product_type : 'simple', cog : 18 },
+    {  product_name: 'spray', reguler_price: 23, curr_price : 22 , stock_quantity: 6 , product_type : 'simple', cog : 18 },
+    {  product_name: 'spray', reguler_price: 23, curr_price : 22 , stock_quantity: 6 , product_type : 'simple', cog : 18 },
+    {  product_name: 'spray', reguler_price: 23, curr_price : 22 , stock_quantity: 6 , product_type : 'simple', cog : 18 },
+    {  product_name: 'spray', reguler_price: 23, curr_price : 22 , stock_quantity: 6 , product_type : 'simple', cog : 18 },
+    {  product_name: 'spray', reguler_price: 23, curr_price : 22 , stock_quantity: 6 , product_type : 'simple', cog : 18 },
+    {  product_name: 'spray', reguler_price: 23, curr_price : 22 , stock_quantity: 6 , product_type : 'simple', cog : 18 },
+    {  product_name: 'spray', reguler_price: 23, curr_price : 22 , stock_quantity: 6 , product_type : 'simple', cog : 18 },
+    {  product_name: 'spray', reguler_price: 23, curr_price : 22 , stock_quantity: 6 , product_type : 'simple', cog : 18 },
+    {  product_name: 'spray', reguler_price: 23, curr_price : 22 , stock_quantity: 6 , product_type : 'simple', cog : 18 },
+    {  product_name: 'spray', reguler_price: 23, curr_price : 22 , stock_quantity: 6 , product_type : 'simple', cog : 18 },
+    {  product_name: 'spray', reguler_price: 23, curr_price : 22 , stock_quantity: 6 , product_type : 'simple', cog : 18 },
+    {  product_name: 'spray', reguler_price: 23, curr_price : 22 , stock_quantity: 6 , product_type : 'simple', cog : 18 },
+    {  product_name: 'spray', reguler_price: 23, curr_price : 22 , stock_quantity: 6 , product_type : 'simple', cog : 18 },
+    {  product_name: 'spray', reguler_price: 23, curr_price : 22 , stock_quantity: 6 , product_type : 'simple', cog : 18 },
+    {  product_name: 'spray', reguler_price: 23, curr_price : 22 , stock_quantity: 6 , product_type : 'simple', cog : 18 },
+    {  product_name: 'spray', reguler_price: 23, curr_price : 22 , stock_quantity: 6 , product_type : 'simple', cog : 18 },
+    {  product_name: 'spray', reguler_price: 23, curr_price : 22 , stock_quantity: 6 , product_type : 'simple', cog : 18 },
+    {  product_name: 'spray', reguler_price: 23, curr_price : 22 , stock_quantity: 6 , product_type : 'simple', cog : 18 },
+    {  product_name: 'spray', reguler_price: 23, curr_price : 22 , stock_quantity: 6 , product_type : 'simple', cog : 18 },
+    {  product_name: 'spray', reguler_price: 23, curr_price : 22 , stock_quantity: 6 , product_type : 'simple', cog : 18 },
+    {  product_name: 'spray', reguler_price: 23, curr_price : 22 , stock_quantity: 6 , product_type : 'simple', cog : 18 },
+    {  product_name: 'spray', reguler_price: 23, curr_price : 22 , stock_quantity: 6 , product_type : 'simple', cog : 18 },
+    {  product_name: 'spray', reguler_price: 23, curr_price : 22 , stock_quantity: 6 , product_type : 'simple', cog : 18 },
+    {  product_name: 'spray', reguler_price: 23, curr_price : 22 , stock_quantity: 6 , product_type : 'simple', cog : 18 },
+    {  product_name: 'spray', reguler_price: 23, curr_price : 22 , stock_quantity: 6 , product_type : 'simple', cog : 18 },
+    {  product_name: 'spray', reguler_price: 23, curr_price : 22 , stock_quantity: 6 , product_type : 'simple', cog : 18 },
+    {  product_name: 'spray', reguler_price: 23, curr_price : 22 , stock_quantity: 6 , product_type : 'simple', cog : 18 },
+    {  product_name: 'spray', reguler_price: 23, curr_price : 22 , stock_quantity: 6 , product_type : 'simple', cog : 18 },
+    {  product_name: 'spray', reguler_price: 23, curr_price : 22 , stock_quantity: 6 , product_type : 'simple', cog : 18 },
+    {  product_name: 'spray', reguler_price: 23, curr_price : 22 , stock_quantity: 6 , product_type : 'simple', cog : 18 },
+    {  product_name: 'spray', reguler_price: 23, curr_price : 22 , stock_quantity: 6 , product_type : 'simple', cog : 18 },
+    {  product_name: 'spray', reguler_price: 23, curr_price : 22 , stock_quantity: 6 , product_type : 'simple', cog : 18 },
+    {  product_name: 'spray', reguler_price: 23, curr_price : 22 , stock_quantity: 6 , product_type : 'simple', cog : 18 },
+    {  product_name: 'spray', reguler_price: 23, curr_price : 22 , stock_quantity: 6 , product_type : 'simple', cog : 18 },
+    {  product_name: 'spray', reguler_price: 23, curr_price : 22 , stock_quantity: 6 , product_type : 'simple', cog : 18 },
+    {  product_name: 'spray', reguler_price: 23, curr_price : 22 , stock_quantity: 6 , product_type : 'simple', cog : 18 },
+    {  product_name: 'spray', reguler_price: 23, curr_price : 22 , stock_quantity: 6 , product_type : 'simple', cog : 18 },
+    {  product_name: 'spray', reguler_price: 23, curr_price : 22 , stock_quantity: 6 , product_type : 'simple', cog : 18 },
+  ]);
+  
   
 
   return (
@@ -264,20 +357,29 @@ function ProductListAndSegments() {
 
       <Grid container>
 
-        <Grid container sm={10} style={{ background: 'mediumseagreen', position: 'fixed', color: 'white', top: 0, width: '100%', padding: '8px', paddingLeft: '2%', zIndex: 1, borderRadius: '5px'}}> 
+        <Grid item sm={10} style={{ background: 'mediumseagreen', position: 'fixed', color: 'white', top: 0, width: '100%', padding: '8px', paddingLeft: '2%', zIndex: 1, borderRadius: '5px'}}> 
             <h4> Product :: List and segments </h4> 
         </Grid>
 
         <Grid item sm={12}  style={{zIndex:'0',marginTop:'5%'}}>
           
           <Grid item sm={6}>
+
             <h4> Product Filter </h4>
-            <Multiselect isObject={false} placeholder=" + Add Filter" onRemove={(e) => { addfilter(e, 99) }} onSelect={(e) => { addfilter(e, e[e.length - 1]) }} options={filts} selectedValues={[]} showCheckbox />
-            {/* {Seglist && 
-            <Group position="left" style={{marginTop:'15px'}} >
-            <Button onClick={() => setOpened(true)}>Order Segments</Button>
-            </Group>
-          }*/}
+            
+            <Multiselect isObject={false} 
+              placeholder=" + Add Filter" 
+              onRemove={(e) => { addfilter(e, 99) }} onSelect={(e) => { addfilter(e, e[e.length - 1]) }} 
+              options={filts} 
+              selectedValues={[]} showCheckbox 
+            />
+            
+              {/* {Seglist && 
+              <Group position="left" style={{marginTop:'15px'}} >
+              <Button onClick={() => setOpened(true)}>Order Segments</Button>
+              </Group>
+              }*/}
+
           </Grid>
 
           <Grid container>
@@ -288,7 +390,7 @@ function ProductListAndSegments() {
 
                 <input style={{ display: 'none' }} defaultValue="1" type="number" name="ajax_call" />
 
-                {filterList.length > 0 &&
+                {filterList_.length > 0 &&
                   <>
                     <strong>Create Segment :</strong>
                     <input style={{ marginBottom: '15px', width: '65%', height: '40px', fontSize: '15px' }}
@@ -299,9 +401,9 @@ function ProductListAndSegments() {
                   </>
                 }
 
-                {filterList}
+                {filterList_}
 
-                {filterList.length > 0 && <input type="submit" value="Submit" />}
+                {filterList_.length > 0 && <input type="submit" value="Submit" />}
 
               </form>
 
@@ -316,7 +418,9 @@ function ProductListAndSegments() {
 
               <ThemeProvider theme={defaultMaterialTheme}>
 
-                {cat_table && cat_table.length > 0 &&
+                {
+                
+                //cat_table && cat_table.length > 0 &&
 
                   <MaterialTable style={{borderRadius:'14px'}}
 
@@ -328,7 +432,7 @@ function ProductListAndSegments() {
                     }}
 
                     data={cat_table_clone}
-                    title="Current Catgory"
+                    title=""
                     actions={[
                       {
                         icon: ListAltIcon,
@@ -383,12 +487,16 @@ function ProductListAndSegments() {
 
             </Grid>
 
+
+
             <Grid item sm={9}>
 
               <ThemeProvider theme={defaultMaterialTheme}>
-                {product_table && product_table.length > 0 &&
-                  <MaterialTable style={{borderRadius:'14px'}}
-
+                {
+                
+                //product_table && product_table.length > 0 &&
+                
+                <MaterialTable style={{borderRadius:'14px'}}
                     columns={[
                       {
                         title: 'Product',
@@ -397,10 +505,10 @@ function ProductListAndSegments() {
                           <a href={'/Products/'+ row.product_id}> {row.product_name}</a>
                         </div>
                       },
-                      { title: 'Regular Price', field: 'reguler_price', render: row => <div style={{background:'whitesmoke'}}>  {row.reguler_price} </div> },
-                      { title: 'Current Price', field: 'curr_price', render: row => <div style={{background:'ghostwhite'}}>  {row.curr_price} </div> },
-                      { title: 'On-Stock', field: 'stock_quantity', render: row => <div style={{background:'whitesmoke'}}>  {row.stock_quantity} </div> },
-                      { title: 'Type', field: 'product_type', render: row => <div style={{background:'ghostwhite'}}>  {row.product_type} </div> },
+                      { title: 'Regular Price', field: 'reguler_price',     render: row => <div style={{background:'whitesmoke'}}>  {row.reguler_price} </div> },
+                      { title: 'Current Price', field: 'curr_price',        render: row => <div style={{background:'ghostwhite'}}>  {row.curr_price} </div> },
+                      { title: 'On-Stock',      field: 'stock_quantity',    render: row => <div style={{background:'whitesmoke'}}>  {row.stock_quantity} </div> },
+                      { title: 'Type',          field: 'product_type',      render: row => <div style={{background:'ghostwhite'}}>  {row.product_type} </div> },
                       {
                         title: 'COG', field: 'cog',
                         render: (row) => <> {row.product_type == 'simple' && <input name={row.product_id} form='cogform' type="number" placeholder={row.cog} onChange={handleCogChange} />} </>

@@ -11,7 +11,7 @@ function ProductOnSale() {
     
         <div style={{margin:'15px'}}>
             
-            <strong > Product Type </strong>
+            <strong > Product On-sale </strong>
 
             <RadioGroup style={{display: 'inline-block'}} onChange={(e) => {setOS(e.target.value)}}>
                 <Radio value="1" name="onsale"/> Yes

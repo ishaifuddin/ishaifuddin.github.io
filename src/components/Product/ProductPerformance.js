@@ -69,18 +69,6 @@ function ProductPerformance() {
 
     const [duration, setDuration] = useState();
 
-    // const dateSubmit = (e) => {
-    //     e.preventDefault();
-    //     dispatch(get_performance_data({
-    //         from : format(daterange[0],'yyyy-MM-dd'), 
-    //         to : format(daterange[1],'yyyy-MM-dd'),
-    //         unit : duration, 
-    //         s : "scity",
-    //         ajax_call : 1
-    //     }));
-
-    // }
-
     var dateSubmit = (event) => {
         event.preventDefault();
         const fdata = new FormData(event.target);
@@ -91,75 +79,60 @@ function ProductPerformance() {
 
 
 
-    var selected_products = useSelector((state) => state.Product_performance);
-    if (selected_products.comparison_table_object !== undefined && selected_products.comparison_table_object.length > 0)
-        var comparison_table = structuredClone(selected_products.comparison_table_object);
+    // var selected_products = useSelector((state) => state.Product_performance);
+    // if (selected_products.comparison_table_object !== undefined && selected_products.comparison_table_object.length > 0)
+    //     var comparison_table = structuredClone(selected_products.comparison_table_object);
 
 
 
-    var label = useSelector((state) => state.Product_performance.comparison_chart_base_label);
-    var label = structuredClone(label);
+    // var label = useSelector((state) => state.Product_performance.comparison_chart_base_label);
+    // var label = structuredClone(label);
 
 
-    ////////////////
-    var rev_comparison = useSelector((state) => state.Product_performance.rev_comparison);
-    var rev_obj = {};
-    if (rev_comparison) {
-        rev_obj.labels = label;
-        rev_obj.datasets = structuredClone(rev_comparison);
-    }
-    ////////////////
-    var order_comparison = useSelector((state) => state.Product_performance.order_comparison);
-    var order_obj = {};
-    if (order_comparison) {
-        order_obj.labels = label;
-        order_obj.datasets = structuredClone(order_comparison);
-    }
-    ////////////////
-    var profit_comparison = useSelector((state) => state.Product_performance.profit_comparison);
-    var profit_obj = {};
-    if (profit_comparison) {
-        profit_obj.labels = label;
-        profit_obj.datasets = structuredClone(profit_comparison);
-    }
-    ////////////////
-    var cus_comparison = useSelector((state) => state.Product_performance.cus_comparison);
-    var cus_obj = {};
-    if (cus_comparison) {
-        cus_obj.labels = label;
-        cus_obj.datasets = structuredClone(cus_comparison);
-    }
+    // ////////////////
+    // var rev_comparison = useSelector((state) => state.Product_performance.rev_comparison);
+    // var rev_obj = {};
+    // if (rev_comparison) {
+    //     rev_obj.labels = label;
+    //     rev_obj.datasets = structuredClone(rev_comparison);
+    // }
+    // ////////////////
+    // var order_comparison = useSelector((state) => state.Product_performance.order_comparison);
+    // var order_obj = {};
+    // if (order_comparison) {
+    //     order_obj.labels = label;
+    //     order_obj.datasets = structuredClone(order_comparison);
+    // }
+    // ////////////////
+    // var profit_comparison = useSelector((state) => state.Product_performance.profit_comparison);
+    // var profit_obj = {};
+    // if (profit_comparison) {
+    //     profit_obj.labels = label;
+    //     profit_obj.datasets = structuredClone(profit_comparison);
+    // }
+    // ////////////////
+    // var cus_comparison = useSelector((state) => state.Product_performance.cus_comparison);
+    // var cus_obj = {};
+    // if (cus_comparison) {
+    //     cus_obj.labels = label;
+    //     cus_obj.datasets = structuredClone(cus_comparison);
+    // }
 
-    ////////////////
-    var rcus_comparison = useSelector((state) => state.Product_performance.rcus_comparison);
-    var rcus_obj = {};
-    if (rcus_comparison) {
-        rcus_obj.labels = label;
-        rcus_obj.datasets = structuredClone(rcus_comparison);
-    }
-    ////////////////
-    var unit_comparison = useSelector((state) => state.Product_performance.unit_comparison);
-    var unit_obj = {};
-    if (unit_comparison) {
-        unit_obj.labels = label;
-        unit_obj.datasets = structuredClone(unit_comparison);
-    }
+    // ////////////////
+    // var rcus_comparison = useSelector((state) => state.Product_performance.rcus_comparison);
+    // var rcus_obj = {};
+    // if (rcus_comparison) {
+    //     rcus_obj.labels = label;
+    //     rcus_obj.datasets = structuredClone(rcus_comparison);
+    // }
+    // ////////////////
+    // var unit_comparison = useSelector((state) => state.Product_performance.unit_comparison);
+    // var unit_obj = {};
+    // if (unit_comparison) {
+    //     unit_obj.labels = label;
+    //     unit_obj.datasets = structuredClone(unit_comparison);
+    // }
 
-
-
-
-
-    // const lineOptions = {
-
-    //     onClick: (e, element) => {
-    //         if (element.length > 0) {
-    //             var ind = element[0]._index;
-    //         }
-    //     },
-    //     scales: {},
-    //     legend: { display: false },
-    //     tooltips: { enabled: true }
-    // };
 
 
 
@@ -192,13 +165,217 @@ function ProductPerformance() {
 
 
 
+    /////////////////// DUMMY DATA ////////////////////////
+    /////////////////// DUMMY DATA ////////////////////////
+    /////////////////// DUMMY DATA ////////////////////////
+    /////////////////// DUMMY DATA ////////////////////////
+
+    var [comparison_table, setTmnew] = useState([
+        {  product_name:'a',total_cus: '1112',total_order: '11%',On_discount_buy: '725',total_unit: '5%',unit_per_order: '422',total_rev: '77',rev_per_order:'5%',total_profit: '77' },
+        {  product_name:'b',total_cus: '1112',total_order: '11%',On_discount_buy: '725',total_unit: '5%',unit_per_order: '422',total_rev: '77',rev_per_order:'5%',total_profit: '77' },
+        {  product_name:'c',total_cus: '1112',total_order: '11%',On_discount_buy: '725',total_unit: '5%',unit_per_order: '422',total_rev: '77',rev_per_order:'5%',total_profit: '77' },
+        {  product_name:'d',total_cus: '1112',total_order: '11%',On_discount_buy: '725',total_unit: '5%',unit_per_order: '422',total_rev: '77',rev_per_order:'5%',total_profit: '77' },
+        {  product_name:'e',total_cus: '1112',total_order: '11%',On_discount_buy: '725',total_unit: '5%',unit_per_order: '422',total_rev: '77',rev_per_order:'5%',total_profit: '77' },
+        {  product_name:'f',total_cus: '1112',total_order: '11%',On_discount_buy: '725',total_unit: '5%',unit_per_order: '422',total_rev: '77',rev_per_order:'5%',total_profit: '77' },
+        {  product_name:'g',total_cus: '1112',total_order: '11%',On_discount_buy: '725',total_unit: '5%',unit_per_order: '422',total_rev: '77',rev_per_order:'5%',total_profit: '77' },
+        {  product_name:'h',total_cus: '1112',total_order: '11%',On_discount_buy: '725',total_unit: '5%',unit_per_order: '422',total_rev: '77',rev_per_order:'5%',total_profit: '77' },
+        {  product_name:'i',total_cus: '1112',total_order: '11%',On_discount_buy: '725',total_unit: '5%',unit_per_order: '422',total_rev: '77',rev_per_order:'5%',total_profit: '77' },
+        {  product_name:'j',total_cus: '1112',total_order: '11%',On_discount_buy: '725',total_unit: '5%',unit_per_order: '422',total_rev: '77',rev_per_order:'5%',total_profit: '77' },
+        {  product_name:'k',total_cus: '1112',total_order: '11%',On_discount_buy: '725',total_unit: '5%',unit_per_order: '422',total_rev: '77',rev_per_order:'5%',total_profit: '77' },
+        {  product_name:'l',total_cus: '1112',total_order: '11%',On_discount_buy: '725',total_unit: '5%',unit_per_order: '422',total_rev: '77',rev_per_order:'5%',total_profit: '77' },
+        {  product_name:'m',total_cus: '1112',total_order: '11%',On_discount_buy: '725',total_unit: '5%',unit_per_order: '422',total_rev: '77',rev_per_order:'5%',total_profit: '77' },
+        {  product_name:'n',total_cus: '1112',total_order: '11%',On_discount_buy: '725',total_unit: '5%',unit_per_order: '422',total_rev: '77',rev_per_order:'5%',total_profit: '77' },
+        {  product_name:'o',total_cus: '1112',total_order: '11%',On_discount_buy: '725',total_unit: '5%',unit_per_order: '422',total_rev: '77',rev_per_order:'5%',total_profit: '77' },
+    ]);
+
+    var rev_obj         = {
+        labels: ["Jan", "Feb", "Mar", "April", "May", "June", "July"],
+        datasets: [
+            {
+            label: "Sales",
+            tension: 0.4,
+            borderDash: [2, 2],
+            borderJoinStyle: 'round',
+            backgroundColor: "rgba(43, 206, 161, 1)",
+            borderColor: "rgba(43, 206, 161,1)",
+            borderWidth: 2,
+            hoverBackgroundColor: "rgba(255,99,132,0.4)",
+            hoverBorderColor: "rgba(255,99,132,1)",
+            data: [65, 59, 80, 81, 56, 55, 40],
+            },
+            {
+            label: "Expenses",     
+            tension: 0.4,
+            borderJoinStyle: 'round',
+            backgroundColor: "rgba(94, 114, 228, 1)",
+            pointBackgroundColor: "rgba(54,162,235,0.2)",
+            pointBackgroundColor: "rgba(94, 114, 228, 1)",
+            borderColor: "rgba(94, 114, 228, 1)",
+            borderWidth: 2,
+            hoverBackgroundColor: "red)",
+            hoverBorderColor: "rgba(54,162,235,1)",
+            data: [28, 48, 40, 19, 86, 27, 90],
+            },
+        ],
+    };
+    var order_obj       ={
+        labels: ["Jan", "Feb", "Mar", "April", "May", "June", "July"],
+        datasets: [
+            {
+            label: "Sales",
+            tension: 0.4,
+            borderDash: [2, 2],
+            borderJoinStyle: 'round',
+            backgroundColor: "rgba(43, 206, 161, 1)",
+            borderColor: "rgba(43, 206, 161,1)",
+            borderWidth: 2,
+            hoverBackgroundColor: "rgba(255,99,132,0.4)",
+            hoverBorderColor: "rgba(255,99,132,1)",
+            data: [65, 59, 80, 81, 56, 55, 40],
+            },
+            {
+            label: "Expenses",     
+            tension: 0.4,
+            borderJoinStyle: 'round',
+            backgroundColor: "rgba(94, 114, 228, 1)",
+            pointBackgroundColor: "rgba(54,162,235,0.2)",
+            pointBackgroundColor: "rgba(94, 114, 228, 1)",
+            borderColor: "rgba(94, 114, 228, 1)",
+            borderWidth: 2,
+            hoverBackgroundColor: "red)",
+            hoverBorderColor: "rgba(54,162,235,1)",
+            data: [28, 48, 40, 19, 86, 27, 90],
+            },
+        ],
+    };
+    var profit_obj      = {
+        labels: ["Jan", "Feb", "Mar", "April", "May", "June", "July"],
+        datasets: [
+            {
+            label: "Sales",
+            tension: 0.4,
+            borderDash: [2, 2],
+            borderJoinStyle: 'round',
+            backgroundColor: "rgba(43, 206, 161, 1)",
+            borderColor: "rgba(43, 206, 161,1)",
+            borderWidth: 2,
+            hoverBackgroundColor: "rgba(255,99,132,0.4)",
+            hoverBorderColor: "rgba(255,99,132,1)",
+            data: [65, 59, 80, 81, 56, 55, 40],
+            },
+            {
+            label: "Expenses",     
+            tension: 0.4,
+            borderJoinStyle: 'round',
+            backgroundColor: "rgba(94, 114, 228, 1)",
+            pointBackgroundColor: "rgba(54,162,235,0.2)",
+            pointBackgroundColor: "rgba(94, 114, 228, 1)",
+            borderColor: "rgba(94, 114, 228, 1)",
+            borderWidth: 2,
+            hoverBackgroundColor: "red)",
+            hoverBorderColor: "rgba(54,162,235,1)",
+            data: [28, 48, 40, 19, 86, 27, 90],
+            },
+        ],
+    };
+    var cus_obj         = {
+        labels: ["Jan", "Feb", "Mar", "April", "May", "June", "July"],
+        datasets: [
+            {
+            label: "Sales",
+            tension: 0.4,
+            borderDash: [2, 2],
+            borderJoinStyle: 'round',
+            backgroundColor: "rgba(43, 206, 161, 1)",
+            borderColor: "rgba(43, 206, 161,1)",
+            borderWidth: 2,
+            hoverBackgroundColor: "rgba(255,99,132,0.4)",
+            hoverBorderColor: "rgba(255,99,132,1)",
+            data: [65, 59, 80, 81, 56, 55, 40],
+            },
+            {
+            label: "Expenses",     
+            tension: 0.4,
+            borderJoinStyle: 'round',
+            backgroundColor: "rgba(94, 114, 228, 1)",
+            pointBackgroundColor: "rgba(54,162,235,0.2)",
+            pointBackgroundColor: "rgba(94, 114, 228, 1)",
+            borderColor: "rgba(94, 114, 228, 1)",
+            borderWidth: 2,
+            hoverBackgroundColor: "red)",
+            hoverBorderColor: "rgba(54,162,235,1)",
+            data: [28, 48, 40, 19, 86, 27, 90],
+            },
+        ],
+    };
+    var rcus_obj        = {
+        labels: ["Jan", "Feb", "Mar", "April", "May", "June", "July"],
+        datasets: [
+            {
+            label: "Sales",
+            tension: 0.4,
+            borderDash: [2, 2],
+            borderJoinStyle: 'round',
+            backgroundColor: "rgba(43, 206, 161, 1)",
+            borderColor: "rgba(43, 206, 161,1)",
+            borderWidth: 2,
+            hoverBackgroundColor: "rgba(255,99,132,0.4)",
+            hoverBorderColor: "rgba(255,99,132,1)",
+            data: [65, 59, 80, 81, 56, 55, 40],
+            },
+            {
+            label: "Expenses",     
+            tension: 0.4,
+            borderJoinStyle: 'round',
+            backgroundColor: "rgba(94, 114, 228, 1)",
+            pointBackgroundColor: "rgba(54,162,235,0.2)",
+            pointBackgroundColor: "rgba(94, 114, 228, 1)",
+            borderColor: "rgba(94, 114, 228, 1)",
+            borderWidth: 2,
+            hoverBackgroundColor: "red)",
+            hoverBorderColor: "rgba(54,162,235,1)",
+            data: [28, 48, 40, 19, 86, 27, 90],
+            },
+        ],
+    };
+    var unit_obj        = {
+        labels: ["Jan", "Feb", "Mar", "April", "May", "June", "July"],
+        datasets: [
+            {
+            label: "Sales",
+            tension: 0.4,
+            borderDash: [2, 2],
+            borderJoinStyle: 'round',
+            backgroundColor: "rgba(43, 206, 161, 1)",
+            borderColor: "rgba(43, 206, 161,1)",
+            borderWidth: 2,
+            hoverBackgroundColor: "rgba(255,99,132,0.4)",
+            hoverBorderColor: "rgba(255,99,132,1)",
+            data: [65, 59, 80, 81, 56, 55, 40],
+            },
+            {
+            label: "Expenses",     
+            tension: 0.4,
+            borderJoinStyle: 'round',
+            backgroundColor: "rgba(94, 114, 228, 1)",
+            pointBackgroundColor: "rgba(54,162,235,0.2)",
+            pointBackgroundColor: "rgba(94, 114, 228, 1)",
+            borderColor: "rgba(94, 114, 228, 1)",
+            borderWidth: 2,
+            hoverBackgroundColor: "red)",
+            hoverBorderColor: "rgba(54,162,235,1)",
+            data: [28, 48, 40, 19, 86, 27, 90],
+            },
+        ],
+    };
+
     return (
 
         <>
 
             <Grid container>
 
-                <Grid container sm={10} style={{ background: 'mediumseagreen', position: 'fixed', color: 'white', top: 0, width: '100%', padding: '8px', paddingLeft: '2%', zIndex: 1, borderRadius: '5px' }}>
+                <Grid item sm={10} style={{ background: 'mediumseagreen', position: 'fixed', color: 'white', top: 0, width: '100%', padding: '8px', paddingLeft: '2%', zIndex: 1, borderRadius: '5px' }}>
                     <h4> Product :: Performance </h4>
                 </Grid>
 
@@ -210,46 +387,19 @@ function ProductPerformance() {
 
                             <form onSubmit={dateSubmit} style={{ boxShadow: 'rgb(65 69 88 / 10%) 0px 7px 14px 0px, rgb(0 0 0 / 7%) 0px 3px 6px 0px', marginBottom: '2%', padding: '10px' }}>
 
-                                
-
                                 <DateRangePicker
                                     label="Timeline"
                                     value={dr}
                                     onChange={setdr}
                                     oneTap={false}
                                     ranges={[
-                                        {
-                                            label: 'Yesterday',
-                                            value: [addDays(new Date(), -1), addDays(new Date(), -1)]
-                                        },
-                                        {
-                                            label: 'Today',
-                                            value: [new Date(), new Date()]
-                                        },
-                                        {
-                                            label: 'Tomorrow',
-                                            value: [addDays(new Date(), 1), addDays(new Date(), 1)]
-                                        },
-                                        {
-                                            label: 'Last 7 days',
-                                            value: [subDays(new Date(), 6), new Date()]
-                                        },
-
-                                        {
-                                            label: 'This month',
-                                            value: [subDays(new Date(), getDate(new Date()) - 1), new Date()]
-                                        },
-
-                                        //startOfMonth(new Date(2014, 8, 2, 11, 55, 0))
-                                        {
-                                            label: 'Last month',
-                                            value: [startOfMonth(subDays(new Date(), getDate(new Date()))), endOfMonth(subDays(new Date(), getDate(new Date())))]
-                                        },
-                                        {
-                                            label: 'Year To date',
-                                            value: [startOfYear(new Date()), new Date()]
-                                        }]}>
-
+                                        {label: 'Yesterday',value: [addDays(new Date(), -1), addDays(new Date(), -1)]},
+                                        {label: 'Today',value: [new Date(), new Date()]},
+                                        {label: 'Tomorrow',value: [addDays(new Date(), 1), addDays(new Date(), 1)] },
+                                        {label: 'Last 7 days',value: [subDays(new Date(), 6), new Date()] },
+                                        {label: 'This month',value: [subDays(new Date(), getDate(new Date()) - 1), new Date()]},
+                                        {label: 'Last month', value: [startOfMonth(subDays(new Date(), getDate(new Date()))), endOfMonth(subDays(new Date(), getDate(new Date())))]},
+                                        {label: 'Year To date',value: [startOfYear(new Date()), new Date()]}]}>
                                 </DateRangePicker>
 
                                 <Products />
@@ -283,84 +433,86 @@ function ProductPerformance() {
 
                         <Grid item sm={12}>
 
-                            {comparison_table && comparison_table.length > 0 && 
+                            {
                             
-                            <ThemeProvider theme={defaultMaterialTheme}>
+                                //comparison_table && comparison_table.length > 0 && 
+                            
+                                <ThemeProvider theme={defaultMaterialTheme}>
 
-                                <MaterialTable style={{borderRadius:'14px'}}
+                                    <MaterialTable style={{borderRadius:'14px'}}
 
-                                    columns={[
+                                        columns={[
 
-                                        { title: 'Product', field: 'product_name', render: row => <div style={{ background: 'whitesmoke' }}>  {row.product_name} </div> },
-                                        { title: 'Cus', field: 'total_cus', render: row => <div style={{ background: 'ghostwhite' }}>  {row.total_cus} </div> },
-                                        { title: 'Order', field: 'total_order', render: row => <div style={{ background: 'whitesmoke' }}>  {row.total_order} </div> },
-                                        { title: 'offer-Order', field: 'On_discount_buy', render: row => <div style={{ background: 'ghostwhite' }}>  {row.On_discount_buy} </div> },
-                                        { title: 'Unit', field: 'total_unit', render: row => <div style={{ background: 'whitesmoke' }}>  {row.total_unit} </div> },
-                                        { title: 'Unit/Order', field: 'unit_per_order', render: row => <div style={{ background: 'ghostwhite' }}>  {row.unit_per_order} </div> },
-                                        { title: 'Rev', field: 'total_rev', render: row => <div style={{ background: 'whitesmoke' }}>  {row.total_rev} </div> },
-                                        { title: 'Rev/Order', field: 'rev_per_order', render: row => <div style={{ background: 'ghostwhite' }}>  {row.rev_per_order} </div> },
-                                        { title: 'Rev/Cus', field: 'rev_per_cus', render: row => <div style={{ background: 'whitesmoke' }}>  {row.rev_per_cus} </div> },
-                                        { title: 'Profit', field: 'total_profit', render: row => <div style={{ background: 'ghostwhite' }}>  {row.total_profit} </div> },
+                                            { title: 'Product', field: 'product_name', render: row => <div style={{ background: 'whitesmoke' }}>  {row.product_name} </div> },
+                                            { title: 'Cus', field: 'total_cus', render: row => <div style={{ background: 'ghostwhite' }}>  {row.total_cus} </div> },
+                                            { title: 'Order', field: 'total_order', render: row => <div style={{ background: 'whitesmoke' }}>  {row.total_order} </div> },
+                                            { title: 'offer-Order', field: 'On_discount_buy', render: row => <div style={{ background: 'ghostwhite' }}>  {row.On_discount_buy} </div> },
+                                            { title: 'Unit', field: 'total_unit', render: row => <div style={{ background: 'whitesmoke' }}>  {row.total_unit} </div> },
+                                            { title: 'Unit/Order', field: 'unit_per_order', render: row => <div style={{ background: 'ghostwhite' }}>  {row.unit_per_order} </div> },
+                                            { title: 'Rev', field: 'total_rev', render: row => <div style={{ background: 'whitesmoke' }}>  {row.total_rev} </div> },
+                                            { title: 'Rev/Order', field: 'rev_per_order', render: row => <div style={{ background: 'ghostwhite' }}>  {row.rev_per_order} </div> },
+                                            { title: 'Rev/Cus', field: 'rev_per_cus', render: row => <div style={{ background: 'whitesmoke' }}>  {row.rev_per_cus} </div> },
+                                            { title: 'Profit', field: 'total_profit', render: row => <div style={{ background: 'ghostwhite' }}>  {row.total_profit} </div> },
 
-                                    ]}
+                                        ]}
 
-                                    data={comparison_table}
-                                    title="Sales Data :: Products"
-                                    icons={{
+                                        data={comparison_table}
+                                        title="Sales Data :: Products"
+                                        icons={{
 
-                                        Check: Check,
-                                        DetailPanel: ChevronRight,
-                                        Export: SaveAlt,
-                                        Filter: FilterList,
-                                        FirstPage: FirstPage,
-                                        LastPage: LastPage,
-                                        NextPage: ChevronRight,
-                                        PreviousPage: ChevronLeft,
-                                        Search: Search,
-                                        ResetSearch: CancelIcon
+                                            Check: Check,
+                                            DetailPanel: ChevronRight,
+                                            Export: SaveAlt,
+                                            Filter: FilterList,
+                                            FirstPage: FirstPage,
+                                            LastPage: LastPage,
+                                            NextPage: ChevronRight,
+                                            PreviousPage: ChevronLeft,
+                                            Search: Search,
+                                            ResetSearch: CancelIcon
 
-                                    }}
+                                        }}
 
-                                    options={
-                                        {
-                                            pageSize: 10,       // make initial page size
-                                            emptyRowsWhenPaging: false,   // To avoid of having empty rows
-                                            pageSizeOptions: [10, 15, 25, 40, 50],
-                                            search: true,
-                                            searchFieldAlignment: "right",
-                                            exportButton: true,
-                                            exportAllData: true,
-                                            cellStyle: {
-                                                padding: '4px',
-                                                lineHeight: 2,
-                                                fontFamily: 'Circular-Loom',
-                                                textAlign: 'center',
-                                                borderBottom: '2px solid rgb(246, 224, 224)'
-                                            },
-                                            headerStyle: {
-                                                background: 'mediumseagreen',
-                                                fontSize: '17px',
-                                                color: 'white',
-                                                padding: '2px',
-                                                height: '40px'
-                                            },
-                                            // rowStyle: {
-                                            //     backgroundColor: '#EEE',
-                                            // }
-                                            //rowStyle: (data, index) => index % 2 === 0 ? { background: "ghostwhite" } : {background:'white'},
+                                        options={
+                                            {
+                                                pageSize: 10,       // make initial page size
+                                                emptyRowsWhenPaging: false,   // To avoid of having empty rows
+                                                pageSizeOptions: [10, 15, 25, 40, 50],
+                                                search: true,
+                                                searchFieldAlignment: "right",
+                                                exportButton: true,
+                                                exportAllData: true,
+                                                cellStyle: {
+                                                    padding: '4px',
+                                                    lineHeight: 2,
+                                                    fontFamily: 'Circular-Loom',
+                                                    textAlign: 'center',
+                                                    borderBottom: '2px solid rgb(246, 224, 224)'
+                                                },
+                                                headerStyle: {
+                                                    background: 'mediumseagreen',
+                                                    fontSize: '17px',
+                                                    color: 'white',
+                                                    padding: '2px',
+                                                    height: '40px'
+                                                },
+                                                // rowStyle: {
+                                                //     backgroundColor: '#EEE',
+                                                // }
+                                                //rowStyle: (data, index) => index % 2 === 0 ? { background: "ghostwhite" } : {background:'white'},
 
+                                            }
                                         }
-                                    }
-                                    localization={{
-                                        pagination: {
-                                          labelRowsPerPage: '',
-                                          showFirstLastPageButtons: false,
-                                        }
-                                      }}
+                                        localization={{
+                                            pagination: {
+                                            labelRowsPerPage: '',
+                                            showFirstLastPageButtons: false,
+                                            }
+                                        }}
 
-                                />
+                                    />
 
-                            </ThemeProvider>}
+                                </ThemeProvider>}
 
                         </Grid>
 
@@ -392,7 +544,8 @@ function ProductPerformance() {
                                     </TimelineSeparator>
 
                                     <TimelineContent>
-                                        {order_comparison && order_comparison.length > 0 &&
+                                        {
+                                            //order_comparison && order_comparison.length > 0 &&
                                             <Line width={700} height={350} data={order_obj} options={option} />
                                         }
                                     </TimelineContent>
@@ -410,7 +563,8 @@ function ProductPerformance() {
                                         <TimelineConnector />
                                     </TimelineSeparator>
                                     <TimelineContent>
-                                        {unit_comparison && unit_comparison.length > 0 &&
+                                        {
+                                            //unit_comparison && unit_comparison.length > 0 &&
                                             <Line width={700} height={350} data={unit_obj} options={option} />
                                         }
                                     </TimelineContent>
@@ -429,7 +583,8 @@ function ProductPerformance() {
                                         <TimelineConnector />
                                     </TimelineSeparator>
                                     <TimelineContent>
-                                        {rev_comparison && rev_comparison.length > 0 &&
+                                        {
+                                            //rev_comparison && rev_comparison.length > 0 &&
                                             <Line width={700} height={350} data={rev_obj} options={option} />
                                         }
                                     </TimelineContent>
@@ -448,7 +603,8 @@ function ProductPerformance() {
                                         <TimelineConnector />
                                     </TimelineSeparator>
                                     <TimelineContent>
-                                        {cus_comparison && cus_comparison.length > 0 &&
+                                        {
+                                            //cus_comparison && cus_comparison.length > 0 &&
                                             <Line width={700} height={350} data={cus_obj} options={option} />
                                         }
                                     </TimelineContent>
@@ -467,7 +623,8 @@ function ProductPerformance() {
                                         <TimelineConnector />
                                     </TimelineSeparator>
                                     <TimelineContent>
-                                        {rcus_comparison && rcus_comparison.length > 0 &&
+                                        {
+                                            //rcus_comparison && rcus_comparison.length > 0 &&
                                             <Line width={700} height={350} data={rcus_obj} options={option} />
                                         }
                                     </TimelineContent>

@@ -61,19 +61,119 @@ function ProductSalesTable() {
     }
 
 
-    var Product_sales_table = useSelector((state) => state.Product_and_Catagory_sales);
-    var cat_sales_table = Product_sales_table.sales_table_product_catagory_object;
-    var cat_table = [];
-    if (cat_sales_table && cat_sales_table.length > 0) {
-        cat_table = structuredClone(cat_sales_table);
-    }
+    // var Product_sales_table = useSelector((state) => state.Product_and_Catagory_sales);
+    // var cat_sales_table = Product_sales_table.sales_table_product_catagory_object;
+    // var cat_table = [];
+    // if (cat_sales_table && cat_sales_table.length > 0) {
+    //     cat_table = structuredClone(cat_sales_table);
+    // }
 
-    var prod_sales_table = Product_sales_table.sales_table_product_object;
+    // var prod_sales_table = Product_sales_table.sales_table_product_object;
 
-    var prod_table = [];
-    if (prod_sales_table && prod_sales_table.length > 0) {
-        prod_table = structuredClone(prod_sales_table);
-    }
+    //var prod_table = [];
+    // if (prod_sales_table && prod_sales_table.length > 0) {
+    //     prod_table = structuredClone(prod_sales_table);
+    // }
+
+
+
+
+
+
+    
+
+    /////////////////// DUMMY DATA //////////////////////////
+    /////////////////// DUMMY DATA //////////////////////////
+    /////////////////// DUMMY DATA //////////////////////////
+    /////////////////// DUMMY DATA //////////////////////////
+
+    
+
+    var [cat_table, setTmnew] = useState([
+        {  catagory:'a',rev: '1112',rev_change: '11%',new_rev: '725',new_rev_change: '5%',ret_rev: '422',unit: '77',unit_change:'5%',order: '77',order_change: '3%',cus: '66',cus_change: '2%',new_cus: '43',new_cus_change: '23.99%', ret_cus: '32', ret_cus_change: '4%',profit: '768',  profit_change: '5%' },
+        {  catagory:'b',rev: '1112',rev_change: '11%',new_rev: '725',new_rev_change: '5%',ret_rev: '422',unit: '77',unit_change:'5%',order: '77',order_change: '3%',cus: '66',cus_change: '2%',new_cus: '43',new_cus_change: '23.99%', ret_cus: '32', ret_cus_change: '4%',profit: '768',  profit_change: '5%' },
+        {  catagory:'c',rev: '1112',rev_change: '11%',new_rev: '725',new_rev_change: '5%',ret_rev: '422',unit: '77',unit_change:'5%',order: '77',order_change: '3%',cus: '66',cus_change: '2%',new_cus: '43',new_cus_change: '23.99%', ret_cus: '32', ret_cus_change: '4%',profit: '768',  profit_change: '5%' },
+        {  catagory:'d',rev: '1112',rev_change: '11%',new_rev: '725',new_rev_change: '5%',ret_rev: '422',unit: '77',unit_change:'5%',order: '77',order_change: '3%',cus: '66',cus_change: '2%',new_cus: '43',new_cus_change: '23.99%', ret_cus: '32', ret_cus_change: '4%',profit: '768',  profit_change: '5%' },
+        {  catagory:'e',rev: '1112',rev_change: '11%',new_rev: '725',new_rev_change: '5%',ret_rev: '422',unit: '77',unit_change:'5%',order: '77',order_change: '3%',cus: '66',cus_change: '2%',new_cus: '43',new_cus_change: '23.99%', ret_cus: '32', ret_cus_change: '4%',profit: '768',  profit_change: '5%' },
+        {  catagory:'f',rev: '1112',rev_change: '11%',new_rev: '725',new_rev_change: '5%',ret_rev: '422',unit: '77',unit_change:'5%',order: '77',order_change: '3%',cus: '66',cus_change: '2%',new_cus: '43',new_cus_change: '23.99%', ret_cus: '32', ret_cus_change: '4%',profit: '768',  profit_change: '5%' },
+        {  catagory:'g',rev: '1112',rev_change: '11%',new_rev: '725',new_rev_change: '5%',ret_rev: '422',unit: '77',unit_change:'5%',order: '77',order_change: '3%',cus: '66',cus_change: '2%',new_cus: '43',new_cus_change: '23.99%', ret_cus: '32', ret_cus_change: '4%',profit: '768',  profit_change: '5%' },
+        {  catagory:'h',rev: '1112',rev_change: '11%',new_rev: '725',new_rev_change: '5%',ret_rev: '422',unit: '77',unit_change:'5%',order: '77',order_change: '3%',cus: '66',cus_change: '2%',new_cus: '43',new_cus_change: '23.99%', ret_cus: '32', ret_cus_change: '4%',profit: '768',  profit_change: '5%' },
+        {  catagory:'i',rev: '1112',rev_change: '11%',new_rev: '725',new_rev_change: '5%',ret_rev: '422',unit: '77',unit_change:'5%',order: '77',order_change: '3%',cus: '66',cus_change: '2%',new_cus: '43',new_cus_change: '23.99%', ret_cus: '32', ret_cus_change: '4%',profit: '768',  profit_change: '5%' },
+        {  catagory:'j',rev: '1112',rev_change: '11%',new_rev: '725',new_rev_change: '5%',ret_rev: '422',unit: '77',unit_change:'5%',order: '77',order_change: '3%',cus: '66',cus_change: '2%',new_cus: '43',new_cus_change: '23.99%', ret_cus: '32', ret_cus_change: '4%',profit: '768',  profit_change: '5%' },
+        {  catagory:'k',rev: '1112',rev_change: '11%',new_rev: '725',new_rev_change: '5%',ret_rev: '422',unit: '77',unit_change:'5%',order: '77',order_change: '3%',cus: '66',cus_change: '2%',new_cus: '43',new_cus_change: '23.99%', ret_cus: '32', ret_cus_change: '4%',profit: '768',  profit_change: '5%' },
+        {  catagory:'l',rev: '1112',rev_change: '11%',new_rev: '725',new_rev_change: '5%',ret_rev: '422',unit: '77',unit_change:'5%',order: '77',order_change: '3%',cus: '66',cus_change: '2%',new_cus: '43',new_cus_change: '23.99%', ret_cus: '32', ret_cus_change: '4%',profit: '768',  profit_change: '5%' },
+        {  catagory:'m',rev: '1112',rev_change: '11%',new_rev: '725',new_rev_change: '5%',ret_rev: '422',unit: '77',unit_change:'5%',order: '77',order_change: '3%',cus: '66',cus_change: '2%',new_cus: '43',new_cus_change: '23.99%', ret_cus: '32', ret_cus_change: '4%',profit: '768',  profit_change: '5%' },
+        {  catagory:'n',rev: '1112',rev_change: '11%',new_rev: '725',new_rev_change: '5%',ret_rev: '422',unit: '77',unit_change:'5%',order: '77',order_change: '3%',cus: '66',cus_change: '2%',new_cus: '43',new_cus_change: '23.99%', ret_cus: '32', ret_cus_change: '4%',profit: '768',  profit_change: '5%' },
+        {  catagory:'o',rev: '1112',rev_change: '11%',new_rev: '725',new_rev_change: '5%',ret_rev: '422',unit: '77',unit_change:'5%',order: '77',order_change: '3%',cus: '66',cus_change: '2%',new_cus: '43',new_cus_change: '23.99%', ret_cus: '32', ret_cus_change: '4%',profit: '768',  profit_change: '5%' },
+        {  catagory:'p',rev: '1112',rev_change: '11%',new_rev: '725',new_rev_change: '5%',ret_rev: '422',unit: '77',unit_change:'5%',order: '77',order_change: '3%',cus: '66',cus_change: '2%',new_cus: '43',new_cus_change: '23.99%', ret_cus: '32', ret_cus_change: '4%',profit: '768',  profit_change: '5%' },
+        {  catagory:'q',rev: '1112',rev_change: '11%',new_rev: '725',new_rev_change: '5%',ret_rev: '422',unit: '77',unit_change:'5%',order: '77',order_change: '3%',cus: '66',cus_change: '2%',new_cus: '43',new_cus_change: '23.99%', ret_cus: '32', ret_cus_change: '4%',profit: '768',  profit_change: '5%' },
+        {  catagory:'r',rev: '1112',rev_change: '11%',new_rev: '725',new_rev_change: '5%',ret_rev: '422',unit: '77',unit_change:'5%',order: '77',order_change: '3%',cus: '66',cus_change: '2%',new_cus: '43',new_cus_change: '23.99%', ret_cus: '32', ret_cus_change: '4%',profit: '768',  profit_change: '5%' },
+        {  catagory:'s',rev: '1112',rev_change: '11%',new_rev: '725',new_rev_change: '5%',ret_rev: '422',unit: '77',unit_change:'5%',order: '77',order_change: '3%',cus: '66',cus_change: '2%',new_cus: '43',new_cus_change: '23.99%', ret_cus: '32', ret_cus_change: '4%',profit: '768',  profit_change: '5%' },
+        {  catagory:'t',rev: '1112',rev_change: '11%',new_rev: '725',new_rev_change: '5%',ret_rev: '422',unit: '77',unit_change:'5%',order: '77',order_change: '3%',cus: '66',cus_change: '2%',new_cus: '43',new_cus_change: '23.99%', ret_cus: '32', ret_cus_change: '4%',profit: '768',  profit_change: '5%' },
+        {  catagory:'u',rev: '1112',rev_change: '11%',new_rev: '725',new_rev_change: '5%',ret_rev: '422',unit: '77',unit_change:'5%',order: '77',order_change: '3%',cus: '66',cus_change: '2%',new_cus: '43',new_cus_change: '23.99%', ret_cus: '32', ret_cus_change: '4%',profit: '768',  profit_change: '5%' },
+        {  catagory:'v',rev: '1112',rev_change: '11%',new_rev: '725',new_rev_change: '5%',ret_rev: '422',unit: '77',unit_change:'5%',order: '77',order_change: '3%',cus: '66',cus_change: '2%',new_cus: '43',new_cus_change: '23.99%', ret_cus: '32', ret_cus_change: '4%',profit: '768',  profit_change: '5%' },
+        {  catagory:'w',rev: '1112',rev_change: '11%',new_rev: '725',new_rev_change: '5%',ret_rev: '422',unit: '77',unit_change:'5%',order: '77',order_change: '3%',cus: '66',cus_change: '2%',new_cus: '43',new_cus_change: '23.99%', ret_cus: '32', ret_cus_change: '4%',profit: '768',  profit_change: '5%' },
+        {  catagory:'x',rev: '1112',rev_change: '11%',new_rev: '725',new_rev_change: '5%',ret_rev: '422',unit: '77',unit_change:'5%',order: '77',order_change: '3%',cus: '66',cus_change: '2%',new_cus: '43',new_cus_change: '23.99%', ret_cus: '32', ret_cus_change: '4%',profit: '768',  profit_change: '5%' },
+        {  catagory:'y',rev: '1112',rev_change: '11%',new_rev: '725',new_rev_change: '5%',ret_rev: '422',unit: '77',unit_change:'5%',order: '77',order_change: '3%',cus: '66',cus_change: '2%',new_cus: '43',new_cus_change: '23.99%', ret_cus: '32', ret_cus_change: '4%',profit: '768',  profit_change: '5%' },
+        {  catagory:'z',rev: '1112',rev_change: '11%',new_rev: '725',new_rev_change: '5%',ret_rev: '422',unit: '77',unit_change:'5%',order: '77',order_change: '3%',cus: '66',cus_change: '2%',new_cus: '43',new_cus_change: '23.99%', ret_cus: '32', ret_cus_change: '4%',profit: '768',  profit_change: '5%' },
+        {  catagory:'a1',rev: '1112',rev_change: '11%',new_rev: '725',new_rev_change: '5%',ret_rev: '422',unit: '77',unit_change:'5%',order: '77',order_change: '3%',cus: '66',cus_change: '2%',new_cus: '43',new_cus_change: '23.99%', ret_cus: '32', ret_cus_change: '4%',profit: '768',  profit_change: '5%' },
+        {  catagory:'b1',rev: '1112',rev_change: '11%',new_rev: '725',new_rev_change: '5%',ret_rev: '422',unit: '77',unit_change:'5%',order: '77',order_change: '3%',cus: '66',cus_change: '2%',new_cus: '43',new_cus_change: '23.99%', ret_cus: '32', ret_cus_change: '4%',profit: '768',  profit_change: '5%' },
+        {  catagory:'c1',rev: '1112',rev_change: '11%',new_rev: '725',new_rev_change: '5%',ret_rev: '422',unit: '77',unit_change:'5%',order: '77',order_change: '3%',cus: '66',cus_change: '2%',new_cus: '43',new_cus_change: '23.99%', ret_cus: '32', ret_cus_change: '4%',profit: '768',  profit_change: '5%' },
+        {  catagory:'d1',rev: '1112',rev_change: '11%',new_rev: '725',new_rev_change: '5%',ret_rev: '422',unit: '77',unit_change:'5%',order: '77',order_change: '3%',cus: '66',cus_change: '2%',new_cus: '43',new_cus_change: '23.99%', ret_cus: '32', ret_cus_change: '4%',profit: '768',  profit_change: '5%' },
+        {  catagory:'e1',rev: '1112',rev_change: '11%',new_rev: '725',new_rev_change: '5%',ret_rev: '422',unit: '77',unit_change:'5%',order: '77',order_change: '3%',cus: '66',cus_change: '2%',new_cus: '43',new_cus_change: '23.99%', ret_cus: '32', ret_cus_change: '4%',profit: '768',  profit_change: '5%' },
+        
+    ]);
+
+
+    var [prod_table, setTmnew] = useState([
+        {  product:'a',rev: '1112',rev_change: '11%',new_rev: '725',new_rev_change: '5%',ret_rev: '422',unit: '77',unit_change:'5%',order: '77',order_change: '3%',cus: '66',cus_change: '2%',new_cus: '43',new_cus_change: '23.99%', ret_cus: '32', ret_cus_change: '4%',profit: '768',  profit_change: '5%' },
+        {  product:'b',rev: '1112',rev_change: '11%',new_rev: '725',new_rev_change: '5%',ret_rev: '422',unit: '77',unit_change:'5%',order: '77',order_change: '3%',cus: '66',cus_change: '2%',new_cus: '43',new_cus_change: '23.99%', ret_cus: '32', ret_cus_change: '4%',profit: '768',  profit_change: '5%' },
+        {  product:'c',rev: '1112',rev_change: '11%',new_rev: '725',new_rev_change: '5%',ret_rev: '422',unit: '77',unit_change:'5%',order: '77',order_change: '3%',cus: '66',cus_change: '2%',new_cus: '43',new_cus_change: '23.99%', ret_cus: '32', ret_cus_change: '4%',profit: '768',  profit_change: '5%' },
+        {  product:'d',rev: '1112',rev_change: '11%',new_rev: '725',new_rev_change: '5%',ret_rev: '422',unit: '77',unit_change:'5%',order: '77',order_change: '3%',cus: '66',cus_change: '2%',new_cus: '43',new_cus_change: '23.99%', ret_cus: '32', ret_cus_change: '4%',profit: '768',  profit_change: '5%' },
+        {  product:'e',rev: '1112',rev_change: '11%',new_rev: '725',new_rev_change: '5%',ret_rev: '422',unit: '77',unit_change:'5%',order: '77',order_change: '3%',cus: '66',cus_change: '2%',new_cus: '43',new_cus_change: '23.99%', ret_cus: '32', ret_cus_change: '4%',profit: '768',  profit_change: '5%' },
+        {  product:'a',rev: '1112',rev_change: '11%',new_rev: '725',new_rev_change: '5%',ret_rev: '422',unit: '77',unit_change:'5%',order: '77',order_change: '3%',cus: '66',cus_change: '2%',new_cus: '43',new_cus_change: '23.99%', ret_cus: '32', ret_cus_change: '4%',profit: '768',  profit_change: '5%' },
+        {  product:'b',rev: '1112',rev_change: '11%',new_rev: '725',new_rev_change: '5%',ret_rev: '422',unit: '77',unit_change:'5%',order: '77',order_change: '3%',cus: '66',cus_change: '2%',new_cus: '43',new_cus_change: '23.99%', ret_cus: '32', ret_cus_change: '4%',profit: '768',  profit_change: '5%' },
+        {  product:'c',rev: '1112',rev_change: '11%',new_rev: '725',new_rev_change: '5%',ret_rev: '422',unit: '77',unit_change:'5%',order: '77',order_change: '3%',cus: '66',cus_change: '2%',new_cus: '43',new_cus_change: '23.99%', ret_cus: '32', ret_cus_change: '4%',profit: '768',  profit_change: '5%' },
+        {  product:'d',rev: '1112',rev_change: '11%',new_rev: '725',new_rev_change: '5%',ret_rev: '422',unit: '77',unit_change:'5%',order: '77',order_change: '3%',cus: '66',cus_change: '2%',new_cus: '43',new_cus_change: '23.99%', ret_cus: '32', ret_cus_change: '4%',profit: '768',  profit_change: '5%' },
+        {  product:'e',rev: '1112',rev_change: '11%',new_rev: '725',new_rev_change: '5%',ret_rev: '422',unit: '77',unit_change:'5%',order: '77',order_change: '3%',cus: '66',cus_change: '2%',new_cus: '43',new_cus_change: '23.99%', ret_cus: '32', ret_cus_change: '4%',profit: '768',  profit_change: '5%' },
+        {  product:'a',rev: '1112',rev_change: '11%',new_rev: '725',new_rev_change: '5%',ret_rev: '422',unit: '77',unit_change:'5%',order: '77',order_change: '3%',cus: '66',cus_change: '2%',new_cus: '43',new_cus_change: '23.99%', ret_cus: '32', ret_cus_change: '4%',profit: '768',  profit_change: '5%' },
+        {  product:'b',rev: '1112',rev_change: '11%',new_rev: '725',new_rev_change: '5%',ret_rev: '422',unit: '77',unit_change:'5%',order: '77',order_change: '3%',cus: '66',cus_change: '2%',new_cus: '43',new_cus_change: '23.99%', ret_cus: '32', ret_cus_change: '4%',profit: '768',  profit_change: '5%' },
+        {  product:'c',rev: '1112',rev_change: '11%',new_rev: '725',new_rev_change: '5%',ret_rev: '422',unit: '77',unit_change:'5%',order: '77',order_change: '3%',cus: '66',cus_change: '2%',new_cus: '43',new_cus_change: '23.99%', ret_cus: '32', ret_cus_change: '4%',profit: '768',  profit_change: '5%' },
+        {  product:'d',rev: '1112',rev_change: '11%',new_rev: '725',new_rev_change: '5%',ret_rev: '422',unit: '77',unit_change:'5%',order: '77',order_change: '3%',cus: '66',cus_change: '2%',new_cus: '43',new_cus_change: '23.99%', ret_cus: '32', ret_cus_change: '4%',profit: '768',  profit_change: '5%' },
+        {  product:'e',rev: '1112',rev_change: '11%',new_rev: '725',new_rev_change: '5%',ret_rev: '422',unit: '77',unit_change:'5%',order: '77',order_change: '3%',cus: '66',cus_change: '2%',new_cus: '43',new_cus_change: '23.99%', ret_cus: '32', ret_cus_change: '4%',profit: '768',  profit_change: '5%' },
+        {  product:'a',rev: '1112',rev_change: '11%',new_rev: '725',new_rev_change: '5%',ret_rev: '422',unit: '77',unit_change:'5%',order: '77',order_change: '3%',cus: '66',cus_change: '2%',new_cus: '43',new_cus_change: '23.99%', ret_cus: '32', ret_cus_change: '4%',profit: '768',  profit_change: '5%' },
+        {  product:'b',rev: '1112',rev_change: '11%',new_rev: '725',new_rev_change: '5%',ret_rev: '422',unit: '77',unit_change:'5%',order: '77',order_change: '3%',cus: '66',cus_change: '2%',new_cus: '43',new_cus_change: '23.99%', ret_cus: '32', ret_cus_change: '4%',profit: '768',  profit_change: '5%' },
+        {  product:'c',rev: '1112',rev_change: '11%',new_rev: '725',new_rev_change: '5%',ret_rev: '422',unit: '77',unit_change:'5%',order: '77',order_change: '3%',cus: '66',cus_change: '2%',new_cus: '43',new_cus_change: '23.99%', ret_cus: '32', ret_cus_change: '4%',profit: '768',  profit_change: '5%' },
+        {  product:'d',rev: '1112',rev_change: '11%',new_rev: '725',new_rev_change: '5%',ret_rev: '422',unit: '77',unit_change:'5%',order: '77',order_change: '3%',cus: '66',cus_change: '2%',new_cus: '43',new_cus_change: '23.99%', ret_cus: '32', ret_cus_change: '4%',profit: '768',  profit_change: '5%' },
+        {  product:'e',rev: '1112',rev_change: '11%',new_rev: '725',new_rev_change: '5%',ret_rev: '422',unit: '77',unit_change:'5%',order: '77',order_change: '3%',cus: '66',cus_change: '2%',new_cus: '43',new_cus_change: '23.99%', ret_cus: '32', ret_cus_change: '4%',profit: '768',  profit_change: '5%' },
+        {  product:'a',rev: '1112',rev_change: '11%',new_rev: '725',new_rev_change: '5%',ret_rev: '422',unit: '77',unit_change:'5%',order: '77',order_change: '3%',cus: '66',cus_change: '2%',new_cus: '43',new_cus_change: '23.99%', ret_cus: '32', ret_cus_change: '4%',profit: '768',  profit_change: '5%' },
+        {  product:'b',rev: '1112',rev_change: '11%',new_rev: '725',new_rev_change: '5%',ret_rev: '422',unit: '77',unit_change:'5%',order: '77',order_change: '3%',cus: '66',cus_change: '2%',new_cus: '43',new_cus_change: '23.99%', ret_cus: '32', ret_cus_change: '4%',profit: '768',  profit_change: '5%' },
+        {  product:'c',rev: '1112',rev_change: '11%',new_rev: '725',new_rev_change: '5%',ret_rev: '422',unit: '77',unit_change:'5%',order: '77',order_change: '3%',cus: '66',cus_change: '2%',new_cus: '43',new_cus_change: '23.99%', ret_cus: '32', ret_cus_change: '4%',profit: '768',  profit_change: '5%' },
+        {  product:'d',rev: '1112',rev_change: '11%',new_rev: '725',new_rev_change: '5%',ret_rev: '422',unit: '77',unit_change:'5%',order: '77',order_change: '3%',cus: '66',cus_change: '2%',new_cus: '43',new_cus_change: '23.99%', ret_cus: '32', ret_cus_change: '4%',profit: '768',  profit_change: '5%' },
+        {  product:'e',rev: '1112',rev_change: '11%',new_rev: '725',new_rev_change: '5%',ret_rev: '422',unit: '77',unit_change:'5%',order: '77',order_change: '3%',cus: '66',cus_change: '2%',new_cus: '43',new_cus_change: '23.99%', ret_cus: '32', ret_cus_change: '4%',profit: '768',  profit_change: '5%' },
+        {  product:'a',rev: '1112',rev_change: '11%',new_rev: '725',new_rev_change: '5%',ret_rev: '422',unit: '77',unit_change:'5%',order: '77',order_change: '3%',cus: '66',cus_change: '2%',new_cus: '43',new_cus_change: '23.99%', ret_cus: '32', ret_cus_change: '4%',profit: '768',  profit_change: '5%' },
+        {  product:'b',rev: '1112',rev_change: '11%',new_rev: '725',new_rev_change: '5%',ret_rev: '422',unit: '77',unit_change:'5%',order: '77',order_change: '3%',cus: '66',cus_change: '2%',new_cus: '43',new_cus_change: '23.99%', ret_cus: '32', ret_cus_change: '4%',profit: '768',  profit_change: '5%' },
+        {  product:'c',rev: '1112',rev_change: '11%',new_rev: '725',new_rev_change: '5%',ret_rev: '422',unit: '77',unit_change:'5%',order: '77',order_change: '3%',cus: '66',cus_change: '2%',new_cus: '43',new_cus_change: '23.99%', ret_cus: '32', ret_cus_change: '4%',profit: '768',  profit_change: '5%' },
+        {  product:'d',rev: '1112',rev_change: '11%',new_rev: '725',new_rev_change: '5%',ret_rev: '422',unit: '77',unit_change:'5%',order: '77',order_change: '3%',cus: '66',cus_change: '2%',new_cus: '43',new_cus_change: '23.99%', ret_cus: '32', ret_cus_change: '4%',profit: '768',  profit_change: '5%' },
+        {  product:'e',rev: '1112',rev_change: '11%',new_rev: '725',new_rev_change: '5%',ret_rev: '422',unit: '77',unit_change:'5%',order: '77',order_change: '3%',cus: '66',cus_change: '2%',new_cus: '43',new_cus_change: '23.99%', ret_cus: '32', ret_cus_change: '4%',profit: '768',  profit_change: '5%' },
+        {  product:'a',rev: '1112',rev_change: '11%',new_rev: '725',new_rev_change: '5%',ret_rev: '422',unit: '77',unit_change:'5%',order: '77',order_change: '3%',cus: '66',cus_change: '2%',new_cus: '43',new_cus_change: '23.99%', ret_cus: '32', ret_cus_change: '4%',profit: '768',  profit_change: '5%' },
+        {  product:'b',rev: '1112',rev_change: '11%',new_rev: '725',new_rev_change: '5%',ret_rev: '422',unit: '77',unit_change:'5%',order: '77',order_change: '3%',cus: '66',cus_change: '2%',new_cus: '43',new_cus_change: '23.99%', ret_cus: '32', ret_cus_change: '4%',profit: '768',  profit_change: '5%' },
+        {  product:'c',rev: '1112',rev_change: '11%',new_rev: '725',new_rev_change: '5%',ret_rev: '422',unit: '77',unit_change:'5%',order: '77',order_change: '3%',cus: '66',cus_change: '2%',new_cus: '43',new_cus_change: '23.99%', ret_cus: '32', ret_cus_change: '4%',profit: '768',  profit_change: '5%' },
+        {  product:'d',rev: '1112',rev_change: '11%',new_rev: '725',new_rev_change: '5%',ret_rev: '422',unit: '77',unit_change:'5%',order: '77',order_change: '3%',cus: '66',cus_change: '2%',new_cus: '43',new_cus_change: '23.99%', ret_cus: '32', ret_cus_change: '4%',profit: '768',  profit_change: '5%' },
+        {  product:'e',rev: '1112',rev_change: '11%',new_rev: '725',new_rev_change: '5%',ret_rev: '422',unit: '77',unit_change:'5%',order: '77',order_change: '3%',cus: '66',cus_change: '2%',new_cus: '43',new_cus_change: '23.99%', ret_cus: '32', ret_cus_change: '4%',profit: '768',  profit_change: '5%' },
+        {  product:'a',rev: '1112',rev_change: '11%',new_rev: '725',new_rev_change: '5%',ret_rev: '422',unit: '77',unit_change:'5%',order: '77',order_change: '3%',cus: '66',cus_change: '2%',new_cus: '43',new_cus_change: '23.99%', ret_cus: '32', ret_cus_change: '4%',profit: '768',  profit_change: '5%' },
+        {  product:'b',rev: '1112',rev_change: '11%',new_rev: '725',new_rev_change: '5%',ret_rev: '422',unit: '77',unit_change:'5%',order: '77',order_change: '3%',cus: '66',cus_change: '2%',new_cus: '43',new_cus_change: '23.99%', ret_cus: '32', ret_cus_change: '4%',profit: '768',  profit_change: '5%' },
+        {  product:'c',rev: '1112',rev_change: '11%',new_rev: '725',new_rev_change: '5%',ret_rev: '422',unit: '77',unit_change:'5%',order: '77',order_change: '3%',cus: '66',cus_change: '2%',new_cus: '43',new_cus_change: '23.99%', ret_cus: '32', ret_cus_change: '4%',profit: '768',  profit_change: '5%' },
+        {  product:'d',rev: '1112',rev_change: '11%',new_rev: '725',new_rev_change: '5%',ret_rev: '422',unit: '77',unit_change:'5%',order: '77',order_change: '3%',cus: '66',cus_change: '2%',new_cus: '43',new_cus_change: '23.99%', ret_cus: '32', ret_cus_change: '4%',profit: '768',  profit_change: '5%' },
+        {  product:'e',rev: '1112',rev_change: '11%',new_rev: '725',new_rev_change: '5%',ret_rev: '422',unit: '77',unit_change:'5%',order: '77',order_change: '3%',cus: '66',cus_change: '2%',new_cus: '43',new_cus_change: '23.99%', ret_cus: '32', ret_cus_change: '4%',profit: '768',  profit_change: '5%' },
+        {  product:'a',rev: '1112',rev_change: '11%',new_rev: '725',new_rev_change: '5%',ret_rev: '422',unit: '77',unit_change:'5%',order: '77',order_change: '3%',cus: '66',cus_change: '2%',new_cus: '43',new_cus_change: '23.99%', ret_cus: '32', ret_cus_change: '4%',profit: '768',  profit_change: '5%' },
+        {  product:'b',rev: '1112',rev_change: '11%',new_rev: '725',new_rev_change: '5%',ret_rev: '422',unit: '77',unit_change:'5%',order: '77',order_change: '3%',cus: '66',cus_change: '2%',new_cus: '43',new_cus_change: '23.99%', ret_cus: '32', ret_cus_change: '4%',profit: '768',  profit_change: '5%' },
+        {  product:'c',rev: '1112',rev_change: '11%',new_rev: '725',new_rev_change: '5%',ret_rev: '422',unit: '77',unit_change:'5%',order: '77',order_change: '3%',cus: '66',cus_change: '2%',new_cus: '43',new_cus_change: '23.99%', ret_cus: '32', ret_cus_change: '4%',profit: '768',  profit_change: '5%' },
+        {  product:'d',rev: '1112',rev_change: '11%',new_rev: '725',new_rev_change: '5%',ret_rev: '422',unit: '77',unit_change:'5%',order: '77',order_change: '3%',cus: '66',cus_change: '2%',new_cus: '43',new_cus_change: '23.99%', ret_cus: '32', ret_cus_change: '4%',profit: '768',  profit_change: '5%' },
+        {  product:'e',rev: '1112',rev_change: '11%',new_rev: '725',new_rev_change: '5%',ret_rev: '422',unit: '77',unit_change:'5%',order: '77',order_change: '3%',cus: '66',cus_change: '2%',new_cus: '43',new_cus_change: '23.99%', ret_cus: '32', ret_cus_change: '4%',profit: '768',  profit_change: '5%' },
+    ]);
+
+
 
     
     var handleCatClick = (id,event) => {
@@ -95,8 +195,8 @@ function ProductSalesTable() {
             <Grid container>
 
 
-                <Grid container sm={10} style={{ background: 'mediumseagreen', position: 'fixed', color: 'white', top: 0, width: '100%', padding: '8px', paddingLeft: '2%', zIndex: 1, borderRadius: '5px' }}>
-                    <h4> Product :: Seles data </h4>
+                <Grid item sm={10} style={{ background: 'mediumseagreen', position: 'fixed', color: 'white', top: 0, width: '100%', padding: '8px', paddingLeft: '2%', zIndex: 1, borderRadius: '5px' }}>
+                    <h4> Product :: Sales data </h4>
                 </Grid>
 
                 <Grid item sm={12} style={{ marginTop: '5%', zIndex: '0' }}>
@@ -115,38 +215,15 @@ function ProductSalesTable() {
                                     onChange={setdrange}
                                     oneTap={false}
                                     ranges={[
-                                        {
-                                            label: 'Yesterday',
-                                            value: [addDays(new Date(), -1), addDays(new Date(), -1)]
-                                        },
-                                        {
-                                            label: 'Today',
-                                            value: [new Date(), new Date()]
-                                        },
-                                        {
-                                            label: 'Tomorrow',
-                                            value: [addDays(new Date(), 1), addDays(new Date(), 1)]
-                                        },
-                                        {
-                                            label: 'Last 7 days',
-                                            value: [subDays(new Date(), 6), new Date()]
-                                        },
-
-                                        {
-                                            label: 'This month',
-                                            value: [subDays(new Date(), getDate(new Date()) - 1), new Date()]
-                                        },
-
+                                        {label: 'Yesterday',value: [addDays(new Date(), -1), addDays(new Date(), -1)]},
+                                        {label: 'Today',value: [new Date(), new Date()]},
+                                        {label: 'Tomorrow',value: [addDays(new Date(), 1), addDays(new Date(), 1)]},
+                                        {label: 'Last 7 days',value: [subDays(new Date(), 6), new Date()] },
+                                        {label: 'This month',value: [subDays(new Date(), getDate(new Date()) - 1), new Date()] },
                                         //startOfMonth(new Date(2014, 8, 2, 11, 55, 0))
-                                        {
-                                            label: 'Last month',
-                                            value: [startOfMonth(subDays(new Date(), getDate(new Date()))), endOfMonth(subDays(new Date(), getDate(new Date())))]
-                                        },
-                                        {
-                                            label: 'Year To date',
-                                            value: [startOfYear(new Date()), new Date()]
+                                        {label: 'Last month', value: [startOfMonth(subDays(new Date(), getDate(new Date()))), endOfMonth(subDays(new Date(), getDate(new Date())))] },
+                                        {label: 'Year To date',value: [startOfYear(new Date()), new Date()]
                                         }]}>
-
                                 </DateRangePicker>
 
                                 <DateRangePicker
@@ -201,7 +278,9 @@ function ProductSalesTable() {
 
                         <Grid item sm={12} style={{borderRadius: '14px', zIndex: 0, boxShadow: 'rgb(65 69 88 / 10%) 0px 7px 14px 0px, rgb(0 0 0 / 7%) 0px 3px 6px 0px' }}>
 
-                            {prod_table && prod_table.length > 0 &&
+                            {
+                            
+                            //prod_table && prod_table.length > 0 &&
 
                                 <ThemeProvider theme={defaultMaterialTheme} style={{ borderRadius: '14px' }}  >
 
@@ -299,8 +378,11 @@ function ProductSalesTable() {
 
                         <Grid item sm={12} style={{ borderRadius: '14px',zIndex: 0, boxShadow: 'rgb(65 69 88 / 10%) 0px 7px 14px 0px, rgb(0 0 0 / 7%) 0px 3px 6px 0px',marginTop:'2%' }}>
 
-                            {cat_table && cat_table.length > 0 &&
-                                <ThemeProvider theme={defaultMaterialTheme} style={{ borderRadius: '14px' }}>
+                            {
+                            
+                            //cat_table && cat_table.length > 0 &&
+                               
+                               <ThemeProvider theme={defaultMaterialTheme} style={{ borderRadius: '14px' }}>
 
                                     <MaterialTable style={{ borderRadius: '14px' }}
 

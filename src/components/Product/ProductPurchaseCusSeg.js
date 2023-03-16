@@ -159,14 +159,14 @@ function ProductPurchaseCusSeg() {
 
 
     var segs = [];
-    if ((customer_list_object.Product_Purchase_Based_Cus_Segment_Obj).length > 0) {
+    if ( customer_list_object.Product_Purchase_Based_Cus_Segment_Obj && (customer_list_object.Product_Purchase_Based_Cus_Segment_Obj).length > 0) {
         segs = structuredClone(customer_list_object.Product_Purchase_Based_Cus_Segment_Obj);
     }
 
     var [opened, setOpened] = useState(false);
 
     var consumers = [];
-    if ((customer_list_object.Product_Purchase_Based_Cus_List_Obj).length > 0) {
+    if (customer_list_object.Product_Purchase_Based_Cus_List_Obj && (customer_list_object.Product_Purchase_Based_Cus_List_Obj).length > 0) {
         consumers = structuredClone(customer_list_object.Product_Purchase_Based_Cus_List_Obj)
     }
 

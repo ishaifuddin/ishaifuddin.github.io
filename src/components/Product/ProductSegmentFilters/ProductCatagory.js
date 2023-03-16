@@ -46,7 +46,7 @@ function ProductCatagory({data}) {
     var cat_obj = useSelector((state) => state.product_List_And_Segments.product_cat_table_object);
 
     var ops = [];
-    if(cat_obj.length > 0){
+    if(cat_obj && cat_obj.length > 0){
         for (var i of cat_obj) {
             var label = i.catagory_name; var value = i.catagory_id;
             ops.push({value:value,label:label});

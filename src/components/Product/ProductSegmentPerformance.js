@@ -89,7 +89,7 @@ function ProductSegmentPerformance() {
 
     var Product_segs = useSelector((state) => state.product_List_And_Segments.product_segments);
     useEffect(() => {
-        if (!(Product_segs.length > 0)) {
+        if (Product_segs && !(Product_segs.length > 0)) {
             dispatch(get_product_segments({ ajax_call: 2 }));
         }
     }, [dispatch])
