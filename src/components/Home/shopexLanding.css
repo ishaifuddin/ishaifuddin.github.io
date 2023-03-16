@@ -8,12 +8,6 @@ p {
   color: #677788;
 }
 
-.dashboard {
-  position: relative;
-  padding-left: 0;
-  background: #fff;
-}
-
 .menus {
   background: transparent;
   position: sticky;

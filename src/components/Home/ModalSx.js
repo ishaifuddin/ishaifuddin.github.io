@@ -15,8 +15,8 @@ function ModalSx({ formType='', formTitle='', icon='', buttonText='Get Started',
         
         overlayProps={{
           color: theme.colorScheme === 'light' ? theme.colors.dark[9] : theme.colors.gray[2],
-          opacity: 0.7,
-          blur: 50}}
+          opacity: 0.55,
+          blur: 8}}
         opened={opened}
         onClose={() => setOpened(false)}
         title={formTitle === 'signup' ? "Sign Up Now" : "Sign In Now"}
