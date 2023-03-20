@@ -55,6 +55,7 @@ import ShoppingBasketIcon from '@mui/icons-material/ShoppingBasket';
 import LayersRoundedIcon from '@mui/icons-material/LayersRounded';
 import AttachMoneyIcon from '@mui/icons-material/AttachMoney';
 import MonetizationOnIcon from '@mui/icons-material/MonetizationOn';
+import { Card } from 'react-bootstrap';
 
 function ProductOneCityPerform() {
 
@@ -388,313 +389,218 @@ function ProductOneCityPerform() {
 
 
     return (
-
-        <>
-
-            {/* {JSON.stringify(rev_obj.length )} */}
-            <Grid container>
-
-                <Grid container sm={10} style={{ background: 'mediumseagreen', position: 'fixed', color: 'white', top: 0, width: '100%', padding: '8px', paddingLeft: '2%', zIndex: 1, borderRadius: '5px' }}>
-                    <h4> Product :: Single city performance </h4>
-                </Grid>
-
-                <Grid item sm={12} style={{ marginTop: '5%', zIndex: '0' }}>
-
-                    <form onSubmit={dateSubmit}>
-                        <Grid container>
-                            <Grid item sm={6}>
-                                {
-                                    //Cus_scity &&
-                                    // <Multiselect isObject={false}
-                                    //     placeholder="Shipping-City"
-                                    //     onRemove={(e) => { setscity(e[0]); }}
-                                    //     onSelect={(e) => { setscity(e[0]); }}
-                                    //     singleSelect={true}
-                                    //     options={Cus_scity}
-                                    //     selectedValues={[]}
-                                    //     showCheckbox />
-                                }
-                            </Grid>
-
-                            <Grid item sm={3}>
-                                <DateRangePicker
-                                    //placement='rightEnd'
-                                    label="Timeline"
-                                    value={daterange}
-                                    onChange={setdrange}
-                                    oneTap={false}
-                                    ranges={[
-                                        {label: 'Yesterday',value: [addDays(new Date(), -1), addDays(new Date(), -1)]},
-                                        {label: 'Today',value: [new Date(), new Date()]},
-                                        {label: 'Tomorrow',value: [addDays(new Date(), 1), addDays(new Date(), 1)]},
-                                        {label: 'Last 7 days', value: [subDays(new Date(), 6), new Date()]},
-                                        {label: 'This month', value: [subDays(new Date(), getDate(new Date()) - 1), new Date()]},
-                                        {label: 'Last month',value: [startOfMonth(subDays(new Date(), getDate(new Date()))), endOfMonth(subDays(new Date(), getDate(new Date())))]},
-                                        {label: 'Year To date',value: [startOfYear(new Date()), new Date()]}]}
-                                    >
-                                </DateRangePicker>
-                            </Grid>
-
-                            <Grid item sm={2}>
-                                {/* <div onChange={(e) => { setduration(e.target.value) }}>
-                                    <input type="radio" value="daily" name="unit" /> Daily
-                                    <input type="radio" value="weekly" name="unit" /> Weekly
-                                    <input selected type="radio" value="monthly" name="unit" /> Monthly
-                                </div> */}
-                                <RadioGroup style={{ display: 'inline-block' }} onChange={(e) => { setduration(e.target.value) }}>
-                                    <Radio checked={duration === 'daily'} value="daily" name="duration" /> Day
-                                    <Radio checked={duration === 'weekly'} value="weekly" name="duration" /> Week
-                                    <Radio checked={duration === 'monthly'} value="monthly" name="duration" /> Month
-                                </RadioGroup>
-                                <input type="submit" value="Submit" />
-                            </Grid>
-
-                        </Grid>
-
+        <Grid container spacing={3}>
+            <Grid item md={12}>
+                <div className="notifications">
+                    <h6>Product : Single city performance</h6>
+                </div>
+            </Grid>
+            <Grid item md={12}>
+                <form className="date-period" style={{marginBottom: '-15px'}} onSubmit={dateSubmit}>
+                    <DateRangePicker
+                        //placement='rightEnd'
+                        label="Timeline"
+                        value={daterange}
+                        onChange={setdrange}
+                        oneTap={false}
+                        ranges={[
+                            {label: 'Yesterday',value: [addDays(new Date(), -1), addDays(new Date(), -1)]},
+                            {label: 'Today',value: [new Date(), new Date()]},
+                            {label: 'Tomorrow',value: [addDays(new Date(), 1), addDays(new Date(), 1)]},
+                            {label: 'Last 7 days', value: [subDays(new Date(), 6), new Date()]},
+                            {label: 'This month', value: [subDays(new Date(), getDate(new Date()) - 1), new Date()]},
+                            {label: 'Last month',value: [startOfMonth(subDays(new Date(), getDate(new Date()))), endOfMonth(subDays(new Date(), getDate(new Date())))]},
+                            {label: 'Year To date',value: [startOfYear(new Date()), new Date()]}]}
+                        >
+                    </DateRangePicker>
+                        {/* <div onChange={(e) => { setduration(e.target.value) }}>
+                            <input type="radio" value="daily" name="unit" /> Daily
+                            <input type="radio" value="weekly" name="unit" /> Weekly
+                            <input selected type="radio" value="monthly" name="unit" /> Monthly
+                        </div> */}
+                        <RadioGroup style={{ display: 'inline-block', fontSize: '13px', color:'white  ', fontWeight: '500' }} onChange={(e) => { setduration(e.target.value) }}>
+                            <Radio checked={duration === 'daily'} value="daily" name="duration" /> Day
+                            <Radio checked={duration === 'weekly'} value="weekly" name="duration" /> Week
+                            <Radio checked={duration === 'monthly'} value="monthly" name="duration" /> Month
+                        </RadioGroup>
+                        <input className='period-btn' variant="contained" color="secondary" type="submit" value="Submit" />
                     </form>
+                </Grid>
+                
+                <Grid item md={12}>
+                    <Card className='dash-card'>
+                    {
+                    comparison_table && comparison_table.length > 0 &&
+                        <ThemeProvider theme={defaultMaterialTheme}>
+                            <MaterialTable style={{ borderRadius: '14px' }}
+                                columns={[
 
+                                    { title: 'Product', field: 'product_name', render: row => <div style={{ background: 'whitesmoke' }}>  {row.product_name} </div> },
+                                    { title: 'Revenue', field: 'total_rev', render: row => <div style={{ background: 'ghostwhite' }}>  {row.total_rev} </div> },
+                                    { title: 'Unit', field: 'total_unit', render: row => <div style={{ background: 'whitesmoke' }}>  {row.total_unit} </div> },
+                                    { title: 'Order', field: 'total_order', render: row => <div style={{ background: 'ghostwhite' }}>  {row.total_order} </div> },
+                                    { title: 'Customer', field: 'total_cus', render: row => <div style={{ background: 'whitesmoke' }}>  {row.total_cus} </div> },
+                                    { title: 'Profit', field: 'total_profit', render: row => <div style={{ background: 'ghostwhite' }}>  {row.total_profit} </div> },
 
+                                ]}
+                                data={comparison_table}
+                                title=""
+                                icons={{
 
-                    <Grid container>
+                                    Check: Check,
+                                    DetailPanel: ChevronRight,
+                                    Export: SaveAlt,
+                                    Filter: FilterList,
+                                    FirstPage: FirstPage,
+                                    LastPage: LastPage,
+                                    NextPage: ChevronRight,
+                                    PreviousPage: ChevronLeft,
+                                    Search: Search,
+                                    ResetSearch: CancelIcon
 
-                        <Grid item sm={10} style={{ zIndex: 0 }}>
-
-                            {
-                            
-                            comparison_table && comparison_table.length > 0 &&
-
-                                <ThemeProvider theme={defaultMaterialTheme}>
-
-                                    <MaterialTable style={{ borderRadius: '14px' }}
-
-                                        columns={[
-
-                                            { title: 'Product', field: 'product_name', render: row => <div style={{ background: 'whitesmoke' }}>  {row.product_name} </div> },
-                                            { title: 'Revenue', field: 'total_rev', render: row => <div style={{ background: 'ghostwhite' }}>  {row.total_rev} </div> },
-                                            { title: 'Unit', field: 'total_unit', render: row => <div style={{ background: 'whitesmoke' }}>  {row.total_unit} </div> },
-                                            { title: 'Order', field: 'total_order', render: row => <div style={{ background: 'ghostwhite' }}>  {row.total_order} </div> },
-                                            { title: 'Customer', field: 'total_cus', render: row => <div style={{ background: 'whitesmoke' }}>  {row.total_cus} </div> },
-                                            { title: 'Profit', field: 'total_profit', render: row => <div style={{ background: 'ghostwhite' }}>  {row.total_profit} </div> },
-
-                                        ]}
-
-                                        data={comparison_table}
-                                        title=""
-                                        icons={{
-
-                                            Check: Check,
-                                            DetailPanel: ChevronRight,
-                                            Export: SaveAlt,
-                                            Filter: FilterList,
-                                            FirstPage: FirstPage,
-                                            LastPage: LastPage,
-                                            NextPage: ChevronRight,
-                                            PreviousPage: ChevronLeft,
-                                            Search: Search,
-                                            ResetSearch: CancelIcon
-
-                                        }}
-
-                                        options={
-                                            {
-                                                pageSize: 10,       // make initial page size
-                                                emptyRowsWhenPaging: false,   // To avoid of having empty rows
-                                                pageSizeOptions: [10, 15, 25, 40, 50],
-                                                search: true,
-                                                searchFieldAlignment: "right",
-                                                exportButton: true,
-                                                exportAllData: true,
-                                                cellStyle: {
-                                                    padding: '4px',
-                                                    lineHeight: 2,
-                                                    fontFamily: 'Circular-Loom',
-                                                    textAlign: 'center',
-                                                    borderBottom: '2px solid rgb(246, 224, 224)'
-                                                },
-                                                headerStyle: {
-                                                    background: 'mediumseagreen',
-                                                    fontSize: '17px',
-                                                    color: 'white',
-                                                    padding: '2px',
-                                                    height: '40px'
-                                                },
-                                                // rowStyle: {
-                                                //     backgroundColor: '#EEE',
-                                                // }
-                                                //rowStyle: (data, index) => index % 2 === 0 ? { background: "ghostwhite" } : {background:'white'},
-
-                                            }
+                                }}
+                                options={
+                                    {
+                                        showFirstLastPageButtons: false,
+                                        pageSize: 10,       // make initial page size
+                                        emptyRowsWhenPaging: false,   // To avoid of having empty rows
+                                        pageSizeOptions: [10, 15, 25, 40, 50],
+                                        search: true,
+                                        searchFieldAlignment: "right",
+                                        exportButton: true,
+                                        exportAllData: true,
+                                        cellStyle: {
+                                            padding: '4px',
+                                            lineHeight: 2,
+                                            fontFamily: 'Circular-Loom',
+                                            textAlign: 'center',
+                                            borderBottom: '2px solid rgb(246, 224, 224)'
                                         }
-                                        localization={{
-                                            pagination: {
-                                                labelRowsPerPage: '',
-                                                showFirstLastPageButtons: false,
-                                            }
-                                        }}
 
-                                    />
+                                    }
+                                }
+                                localization={{
+                                    pagination: {
+                                        labelRowsPerPage: '',
+                                        showFirstLastPageButtons: false,
+                                    }
+                                }}
+                            />
+                        </ThemeProvider>
+                        }
+                    </Card>
+                </Grid>
+                <Grid item md={12}>
+                    <Card className='dash-card'>
+                    <Timeline
+                        sx={{
+                            [`& .${timelineOppositeContentClasses.root}`]: {
+                                flex: 0.2,
+                            },
+                        }}>
 
-                                </ThemeProvider>}
+                        <TimelineItem>
 
-                        </Grid>
+                            <TimelineOppositeContent color="textSecondary">
+                                Total order including each product
+                            </TimelineOppositeContent>
 
-                    </Grid>
+                            <TimelineSeparator>
+                                <TimelineDot>
+                                    <ShoppingBasketIcon />
+                                </TimelineDot>
+                                <TimelineConnector />
+                            </TimelineSeparator>
 
-
-
-                    <Grid container>
-
-                        <Grid item sm={10}>
-
-                            {/* <Grid item sm={8} >
-                            <h4>Total Unit sold from each product</h4>
-                            {single_city_unit_comparison && single_city_unit_comparison.length > 0 &&
-                                <Line data={unit_obj}
-                                    options={{ title: { display: true, text: 'Unit', fontSize: 20 }, lineTension: 0.3, legend: { display: true, position: 'right' }, }} />}
-                        </Grid>
-
-                        <Grid item sm={8} >
-                            <h4>Total revenue from each product</h4>
-                            {single_city_rev_comparison && single_city_rev_comparison.length > 0 &&
-                                <Line data={rev_obj}
-                                    options={{ title: { display: true, text: 'Revenue', fontSize: 20 }, lineTension: 0.3, legend: { display: true, position: 'right' } }} />}
-                        </Grid>
-
-                        <Grid item sm={8} >
-                            <h4>Total customer bought each product</h4>
-                            {single_city_cus_comparison && single_city_cus_comparison.length > 0 &&
-                                <Line data={customer_obj}
-                                    options={{ title: { display: true, text: 'Customer', fontSize: 20 }, lineTension: 0.3, legend: { display: true, position: 'right' } }} />}
-                        </Grid>
-
-                        <Grid item sm={8} >
-                            <h4>Total order placed </h4>
-                            {single_city_order_comparison && single_city_order_comparison.length > 0 &&
-                                <Line data={order_obj}
-                                    options={{ title: { display: true, text: 'Order', fontSize: 20 }, lineTension: 0.3, legend: { display: true, position: 'right' } }} />}
-                        </Grid>
-
-                        <Grid item sm={8} >
-                            <h4>Total profit from each product</h4>
-                            {single_city_profit_comparison && single_city_profit_comparison.length > 0 &&
-                                <Line data={profit_obj}
-                                    options={{ title: { display: true, text: 'Profit', fontSize: 20 }, lineTension: 0.3, legend: { display: true, position: 'right' } }} />}
-                        </Grid> */}
-
-                            <Timeline
-                                sx={{
-                                    [`& .${timelineOppositeContentClasses.root}`]: {
-                                        flex: 0.2,
-                                    },
-                                }}>
-
-                                <TimelineItem>
-
-                                    <TimelineOppositeContent color="textSecondary">
-                                        Total order including each product
-                                    </TimelineOppositeContent>
-
-                                    <TimelineSeparator>
-                                        <TimelineDot>
-                                            <ShoppingBasketIcon />
-                                        </TimelineDot>
-                                        <TimelineConnector />
-                                    </TimelineSeparator>
-
-                                    <TimelineContent>
-                                        {
-                                            //single_city_order_comparison && single_city_order_comparison.length > 0 &&
-                                            <Line data={order_obj}
-                                                options={option} />}
-                                    </TimelineContent>
-                                </TimelineItem>
+                            <TimelineContent>
+                                {
+                                    //single_city_order_comparison && single_city_order_comparison.length > 0 &&
+                                    <Line data={order_obj}
+                                        options={option} />}
+                            </TimelineContent>
+                        </TimelineItem>
 
 
-                                <TimelineItem>
-                                    <TimelineOppositeContent color="textSecondary">
-                                        Total unit sold from each product
-                                    </TimelineOppositeContent>
-                                    <TimelineSeparator>
-                                        <TimelineDot>
-                                            <LayersRoundedIcon />
-                                        </TimelineDot>
-                                        <TimelineConnector />
-                                    </TimelineSeparator>
-                                    <TimelineContent>
-                                        {
-                                            //single_city_unit_comparison && single_city_unit_comparison.length > 0 &&
-                                            <Line data={unit_obj}
-                                                options={option} />}
-                                    </TimelineContent>
-                                </TimelineItem>
+                        <TimelineItem>
+                            <TimelineOppositeContent color="textSecondary">
+                                Total unit sold from each product
+                            </TimelineOppositeContent>
+                            <TimelineSeparator>
+                                <TimelineDot>
+                                    <LayersRoundedIcon />
+                                </TimelineDot>
+                                <TimelineConnector />
+                            </TimelineSeparator>
+                            <TimelineContent>
+                                {
+                                    //single_city_unit_comparison && single_city_unit_comparison.length > 0 &&
+                                    <Line data={unit_obj}
+                                        options={option} />}
+                            </TimelineContent>
+                        </TimelineItem>
 
 
 
-                                <TimelineItem>
-                                    <TimelineOppositeContent color="textSecondary">
-                                        Total revenue generated from each product
-                                    </TimelineOppositeContent>
-                                    <TimelineSeparator>
-                                        <TimelineDot>
-                                            <AttachMoneyIcon />
-                                        </TimelineDot>
-                                        <TimelineConnector />
-                                    </TimelineSeparator>
-                                    <TimelineContent>
-                                        {
-                                            //single_city_rev_comparison && single_city_rev_comparison.length > 0 &&
-                                            <Line data={rev_obj} options={option} />}
+                        <TimelineItem>
+                            <TimelineOppositeContent color="textSecondary">
+                                Total revenue generated from each product
+                            </TimelineOppositeContent>
+                            <TimelineSeparator>
+                                <TimelineDot>
+                                    <AttachMoneyIcon />
+                                </TimelineDot>
+                                <TimelineConnector />
+                            </TimelineSeparator>
+                            <TimelineContent>
+                                {
+                                    //single_city_rev_comparison && single_city_rev_comparison.length > 0 &&
+                                    <Line data={rev_obj} options={option} />}
 
-                                    </TimelineContent>
-                                </TimelineItem>
-
-
-
-                                <TimelineItem>
-                                    <TimelineOppositeContent color="textSecondary">
-                                        Total Customer from each product
-                                    </TimelineOppositeContent>
-                                    <TimelineSeparator>
-                                        <TimelineDot>
-                                            <PeopleAltIcon />
-                                        </TimelineDot>
-                                        <TimelineConnector />
-                                    </TimelineSeparator>
-                                    <TimelineContent>
-                                        {
-                                            //single_city_cus_comparison && single_city_cus_comparison.length > 0 &&
-                                            <Line data={customer_obj} options={option} />}
-                                    </TimelineContent>
-                                </TimelineItem>
+                            </TimelineContent>
+                        </TimelineItem>
 
 
 
-                                <TimelineItem>
-                                    <TimelineOppositeContent color="textSecondary">
-                                        Total profit from each product
-                                    </TimelineOppositeContent>
-                                    <TimelineSeparator>
-                                        <TimelineDot>
-                                            <MonetizationOnIcon />
-                                        </TimelineDot>
-                                        <TimelineConnector />
-                                    </TimelineSeparator>
-                                    <TimelineContent>
-                                        {
-                                            //single_city_profit_comparison && single_city_profit_comparison.length > 0 &&
-                                            <Line data={profit_obj} options={option} />}
-                                    </TimelineContent>
-                                </TimelineItem>
-                            </Timeline>
+                        <TimelineItem>
+                            <TimelineOppositeContent color="textSecondary">
+                                Total Customer from each product
+                            </TimelineOppositeContent>
+                            <TimelineSeparator>
+                                <TimelineDot>
+                                    <PeopleAltIcon />
+                                </TimelineDot>
+                                <TimelineConnector />
+                            </TimelineSeparator>
+                            <TimelineContent>
+                                {
+                                    //single_city_cus_comparison && single_city_cus_comparison.length > 0 &&
+                                    <Line data={customer_obj} options={option} />}
+                            </TimelineContent>
+                        </TimelineItem>
 
-                        </Grid>
-                    </Grid>
 
+
+                        <TimelineItem>
+                            <TimelineOppositeContent color="textSecondary">
+                                Total profit from each product
+                            </TimelineOppositeContent>
+                            <TimelineSeparator>
+                                <TimelineDot>
+                                    <MonetizationOnIcon />
+                                </TimelineDot>
+                                <TimelineConnector />
+                            </TimelineSeparator>
+                            <TimelineContent>
+                                {
+                                    //single_city_profit_comparison && single_city_profit_comparison.length > 0 &&
+                                    <Line data={profit_obj} options={option} />}
+                            </TimelineContent>
+                        </TimelineItem>
+                    </Timeline>
+                    </Card>
                 </Grid>
 
             </Grid>
-
-        </>
     )
 }
 

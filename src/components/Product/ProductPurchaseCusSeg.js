@@ -28,6 +28,7 @@ import { Get_Product_Purchase_Based_Cus_List_Obj } from "../../features/product/
 import { Get_Product_Purchase_Based_Cus_Seg_Obj } from "../../features/product/ProductPurchaseBasedCusSeg";
 
 import { get_product_and_catagory_and_sku_data } from '../../features/product/ProductListAndSegment';
+import { Card } from 'react-bootstrap';
 // import OutlinedInput from '@mui/material/OutlinedInput';
 // import InputLabel from '@mui/material/InputLabel';
 // import MenuItem from '@mui/material/MenuItem';
@@ -171,246 +172,39 @@ function ProductPurchaseCusSeg() {
     }
 
     return (
+    <Grid container spacing={3}>
+        <Grid item md={12}>
+            <div className="notifications">
+                <h6>Product : Customer segment based on product purchase</h6>
+            </div>
+        </Grid>
+        <Grid item md={12}>
+            {/* Segment List Modal  */}
+            <Modal
+                overflow="inside"
+                overlayColor={theme.colorScheme === 'dark' ? theme.colors.dark[9] : theme.colors.gray[2]}
+                overlayOpacity={0.55}
+                overlayBlur={3}
+                size="70%"
+                opened={opened}
+                onClose={() => setOpened(false)}
+                title="Customer segments">
 
-        <>
+                <ThemeProvider theme={defaultMaterialTheme}>
 
-            <Grid container>
-
-
-                <Grid container sm={10} style={{ background: 'mediumseagreen', position: 'fixed', color: 'white', top: 0, width: '100%', padding: '8px', paddingLeft: '2%', zIndex: 1, borderRadius: '5px' }}>
-                    <h4> Product :: Customer segment based on product purchase </h4>
-                </Grid>
-
-                <Grid item sm={12} style={{marginTop:'5%',zIndex:'0'}}>
-
-
-                    {/* <InputLabel id="demo-multiple-checkbox-label">Segmnent's</InputLabel>
-                    <Select
-                        labelId="demo-multiple-checkbox-label"
-                        id="demo-multiple-checkbox"
-                        single
-                        value={SName}
-                        onChange={Select_purchase_Based_cus_segment}
-                        input={<OutlinedInput label="Segmnent's" />}
-                        MenuProps={MenuProps}
-                    >
-                        {segs.map((item) => (
-                            <MenuItem key={item.name} value={item.id}>
-                                <Checkbox checked={segs.indexOf(item) > -1} />
-                                <ListItemText primary={item.name} secondary={item.filter} />
-                            </MenuItem>
-                        ))}
-                    </Select> */}
-
-
-                    {/* Segment List Modal  */}
-
-
-                    <Modal
-                        overflow="inside"
-                        overlayColor={theme.colorScheme === 'dark' ? theme.colors.dark[9] : theme.colors.gray[2]}
-                        overlayOpacity={0.55}
-                        overlayBlur={3}
-                        size="70%"
-                        opened={opened}
-                        onClose={() => setOpened(false)}
-                        title="Customer segments">
-
-                        <ThemeProvider theme={defaultMaterialTheme}>
-
-                            {
-                                segs && <MaterialTable style={{borderRadius:'14px'}}
-                                    columns={[
-                                        {
-                                            title: 'Segment',
-                                            field: 'name',
-                                            render: row =>
-                                                <Button onClick={() => { setSegname(row.name); dispatch(Get_Product_Purchase_Based_Cus_List_Obj({ segid: row.id })) }}> {row.name} </Button>
-                                        },
-                                        { title: 'Filter', field: 'filter' ,render: row => <div style={{background:'whitesmoke'}}>  {row.filter} </div>},
-                                        { title: 'Created', field: 'created',render: row => <div style={{background:'ghostwhite'}}>  {row.created} </div> }
-                                    ]}
-                                    data={segs || []}
-                                    icons={{
-                                        Check: Check,
-                                        DetailPanel: ChevronRight,
-                                        Export: SaveAlt,
-                                        Filter: FilterList,
-                                        FirstPage: FirstPage,
-                                        LastPage: LastPage,
-                                        NextPage: ChevronRight,
-                                        PreviousPage: ChevronLeft,
-                                        Search: Search,
-                                       
-                  
-                                    }}
-                                    options={
-                                        {
-                                            pageSize: 10,       // make initial page size
-                                            emptyRowsWhenPaging: false,   // To avoid of having empty rows
-                                            pageSizeOptions: [10, 15, 25, 40, 50],
-                                            search: true,
-                                            searchFieldAlignment: "right",
-                                            exportButton: true,
-                                            exportAllData: true,
-                                            cellStyle: {
-                                                padding: '4px',
-                                                lineHeight: 2,
-                                                fontFamily: 'Circular-Loom',
-                                                textAlign: 'center',
-                                                borderBottom: '2px solid rgb(246, 224, 224)'
-                                            },
-                                            headerStyle: {
-                                                background:'mediumseagreen', 
-                                                fontSize: '17px', 
-                                                color:'white',
-                                                padding:'2px',
-                                                height:'40px'
-                                            },
-                                            // rowStyle: {
-                                            //     backgroundColor: '#EEE',
-                                            // }
-                                            //rowStyle: (data, index) => index % 2 === 0 ? { background: "ghostwhite" } : {background:'white'},
-                  
-                                        }
-                                    }
-                                    localization={{
-                                        pagination: {
-                                          labelRowsPerPage: '',
-                                          showFirstLastPageButtons: false,
-                                        }
-                                      }}
-                                />
-                            }
-
-                        </ThemeProvider>
-
-                    </Modal>
-
-
-                    {/* Customer filters Dropdown  */}
-                    <div>
-                        {structuredClone(customer_list_object.Product_Purchase_Based_Cus_Segment_Obj) &&
-                            <Group position="left" style={{ marginTop: '15px' }} >
-                                <Button onClick={() => setOpened(true)}>Customer Segments</Button>
-                            </Group>
-                        }
-                    </div>
-
-
-
-
-                    {/* Modal :: Customers List :: product purchase behavior  */}
-
-                    <div style={{ margin: '15px' }}>
-
-                        <form onSubmit={product_purchase_Submit}>
-
-                            <div style={{ width: '60%' }}>
-
-                                <input style={{ width: '400px', height: '41px', fontSize: '17px' }} name="proseg" type="text" placeholder="insert segment name to save " />
-
-                                {ops &&
-
-                                    <Multiselect
-                                        displayValue="label"
-                                        placeholder="Select-Product"
-                                        onRemove={
-                                            (e) => {
-                                                var arr = [];
-                                                for (var i of e) {
-                                                    var data = i.value + '_SHOPEX_' + i.label;
-                                                    arr.push(data);
-                                                }
-                                                setSeletedPros(JSON.stringify(arr));
-                                                product_selected_deselected(arr, 99);
-                                            }
-                                        }
-                                        onSelect={
-                                            (e) => {
-                                                var arr = [];
-                                                var data = "";
-                                                for (var i of e) {
-                                                    data = i.value + '_SHOPEX_' + i.label;
-                                                    arr.push(data);
-                                                }
-                                                setSeletedPros(JSON.stringify(arr));
-                                                product_selected_deselected(arr, data);
-                                            }
-                                        }
-                                        options={ops}
-                                        selectedValues={[]}
-                                        showCheckbox />
-                                }
-
-                            </div>
-
-
-                            <div style={{ display: 'inline-flex', width: '85%', marginTop: '2%' }}>
-
-                                <strong style={{ margin: '11px' }}> Location </strong>
-                                <RadioGroup style={{ display: 'inline-block' }}
-                                    onChange={(e) => {
-                                        if (e.target.value == 'Billing_City') {
-                                            setbillCity_(true);
-                                            setshipCity_(false);
-                                            setBillShip('Billing_City');
-                                        } else if (e.target.value == 'Shipping_City') {
-                                            setbillCity_(false);
-                                            setshipCity_(true);
-                                            setBillShip('Shipping_City');
-                                        }
-                                    }
-                                    }>
-                                    <Radio onClick={(e) => { if (e.target.value === BillShip) setbillCity_(false); }} value="Billing_City" name="onsale" /> Billing City
-                                    <Radio onClick={(e) => { if (e.target.value === BillShip) setshipCity_(false); }} value="Shipping_City" name="onsale" /> Shipping City
-                                </RadioGroup>
-
-                                {
-                                    billCity_ && <div style={{ width: '40%' }}>
-                                        <BillCity />
-                                    </div>
-                                }
-
-                                {
-                                    shipCity_ && <div style={{ width: '40%' }}>
-                                        <ShipCity />
-                                    </div>
-                                }
-
-                            </div>
-
-
-                            <div>
-                                {filterList1}
-                                {filterList1.length > 0 &&
-                                <input type="submit" value="Submit" />}
-                            </div>
-
-                            <input name="billship" type={'hidden'} value={BillShip} />
-                            <input name="prods" type={'hidden'} value={seletedpros} />
-
-                        </form>
-
-                    </div>
-
-
-                    <ThemeProvider theme={defaultMaterialTheme}>
-
-                        {consumers && <MaterialTable style={{borderRadius:'14px'}}
-
+                    {
+                        segs && <MaterialTable
                             columns={[
-                                { title: 'Customer', field: 'email' },
-                                { title: 'Spend', field: 'total_spend' },
-                                { title: 'Unit', field: 'total_unit' },
-                                { title: 'Order', field: 'total_order' },
-                                { title: 'On-Dis-Order', field: 'total_ondis' },
-                                { title: 'FirstBuy', field: 'first_purchase' },
-                                { title: 'LastBuy', field: 'last_purchase' },
-                                { title: 'AvgDayGapOfPurchase', field: 'avgDayGapOfPurchase' }
+                                {
+                                    title: 'Segment',
+                                    field: 'name',
+                                    render: row =>
+                                        <Button onClick={() => { setSegname(row.name); dispatch(Get_Product_Purchase_Based_Cus_List_Obj({ segid: row.id })) }}> {row.name} </Button>
+                                },
+                                { title: 'Filter', field: 'filter' ,render: row => <div style={{background:'whitesmoke'}}>  {row.filter} </div>},
+                                { title: 'Created', field: 'created',render: row => <div style={{background:'ghostwhite'}}>  {row.created} </div> }
                             ]}
-                            data={consumers}
-                            title={product_purchaseBasedSegment}
+                            data={segs || []}
                             icons={{
                                 Check: Check,
                                 DetailPanel: ChevronRight,
@@ -421,9 +215,12 @@ function ProductPurchaseCusSeg() {
                                 NextPage: ChevronRight,
                                 PreviousPage: ChevronLeft,
                                 Search: Search,
+                                
+            
                             }}
                             options={
                                 {
+                                    showFirstLastPageButtons: false,
                                     pageSize: 10,       // make initial page size
                                     emptyRowsWhenPaging: false,   // To avoid of having empty rows
                                     pageSizeOptions: [10, 15, 25, 40, 50],
@@ -437,38 +234,159 @@ function ProductPurchaseCusSeg() {
                                         fontFamily: 'Circular-Loom',
                                         textAlign: 'center',
                                         borderBottom: '2px solid rgb(246, 224, 224)'
-                                    },
-                                    headerStyle: {
-                                        background:'mediumseagreen', 
-                                        fontSize: '17px', 
-                                        color:'white',
-                                        padding:'2px',
-                                        height:'40px'
-                                    },
-                                    // rowStyle: {
-                                    //     backgroundColor: '#EEE',
-                                    // }
-                                    //rowStyle: (data, index) => index % 2 === 0 ? { background: "ghostwhite" } : {background:'white'},
-          
+                                    }
+            
                                 }
                             }
                             localization={{
                                 pagination: {
-                                  labelRowsPerPage: '',
-                                  showFirstLastPageButtons: false,
+                                    labelRowsPerPage: '',
+                                    showFirstLastPageButtons: false,
                                 }
-                              }}
-
+                                }}
                         />
+                    }
+
+                </ThemeProvider>
+            </Modal>
+
+            {/* Customer filters Dropdown  */}
+            {structuredClone(customer_list_object.Product_Purchase_Based_Cus_Segment_Obj) &&
+                <Group position="left">
+                    <Button onClick={() => setOpened(true)}>Customer Segments</Button>
+                </Group>
+            }
+            {/* Modal :: Customers List :: product purchase behavior  */}
+            <form onSubmit={product_purchase_Submit}>
+                <input name="proseg" type="text" placeholder="insert segment name to save" style={{padding: '15px 25px', marginBottom: '1rem', width: '100%'}} />
+
+                {ops &&
+
+                <Multiselect
+                    displayValue="label"
+                    placeholder="Select-Product"
+                    onRemove={
+                        (e) => {
+                            var arr = [];
+                            for (var i of e) {
+                                var data = i.value + '_SHOPEX_' + i.label;
+                                arr.push(data);
+                            }
+                            setSeletedPros(JSON.stringify(arr));
+                            product_selected_deselected(arr, 99);
                         }
+                    }
+                    onSelect={
+                        (e) => {
+                            var arr = [];
+                            var data = "";
+                            for (var i of e) {
+                                data = i.value + '_SHOPEX_' + i.label;
+                                arr.push(data);
+                            }
+                            setSeletedPros(JSON.stringify(arr));
+                            product_selected_deselected(arr, data);
+                        }
+                    }
+                    options={ops}
+                    selectedValues={[]}
+                    showCheckbox />
+                }
 
-                    </ThemeProvider>
+                <div className="date-period" style={{marginTop: '1rem'}}>
+                    <strong style={{color: '#fff'}}> Location </strong>
+                    <RadioGroup style={{ display: 'inline-block', fontSize: '13px', color:'white  ', fontWeight: '500' }}
+                        onChange={(e) => {
+                            if (e.target.value == 'Billing_City') {
+                                setbillCity_(true);
+                                setshipCity_(false);
+                                setBillShip('Billing_City');
+                            } else if (e.target.value == 'Shipping_City') {
+                                setbillCity_(false);
+                                setshipCity_(true);
+                                setBillShip('Shipping_City');
+                            }
+                        }
+                        }>
+                        <Radio onClick={(e) => { if (e.target.value === BillShip) setbillCity_(false); }} value="Billing_City" name="onsale" /> Billing City
+                        <Radio onClick={(e) => { if (e.target.value === BillShip) setshipCity_(false); }} value="Shipping_City" name="onsale" /> Shipping City
+                    </RadioGroup>
 
-                </Grid>
+                    {
+                        billCity_ && <BillCity />
+                    }
 
-            </Grid>
+                    {
+                        shipCity_ && <ShipCity />
+                    }
+                </div>
+                <div>
+                    {filterList1}
+                    {filterList1.length > 0 &&
+                    <input type="submit" value="Submit" />}
+                </div>
+                <input name="billship" type={'hidden'} value={BillShip} />
+                <input name="prods" type={'hidden'} value={seletedpros} />
+            </form>
+            
+            <Card className='dash-card'>
+                <ThemeProvider theme={defaultMaterialTheme}>
+                    {consumers && <MaterialTable style={{borderRadius:'14px'}}
+                        columns={[
+                            { title: 'Customer', field: 'email' },
+                            { title: 'Spend', field: 'total_spend' },
+                            { title: 'Unit', field: 'total_unit' },
+                            { title: 'Order', field: 'total_order' },
+                            { title: 'On-Dis-Order', field: 'total_ondis' },
+                            { title: 'FirstBuy', field: 'first_purchase' },
+                            { title: 'LastBuy', field: 'last_purchase' },
+                            { title: 'AvgDayGapOfPurchase', field: 'avgDayGapOfPurchase' }
+                        ]}
+                        data={consumers}
+                        title={product_purchaseBasedSegment}
+                        icons={{
+                            Check: Check,
+                            DetailPanel: ChevronRight,
+                            Export: SaveAlt,
+                            Filter: FilterList,
+                            FirstPage: FirstPage,
+                            LastPage: LastPage,
+                            NextPage: ChevronRight,
+                            PreviousPage: ChevronLeft,
+                            Search: Search,
+                        }}
+                        options={
+                            {
+                                showFirstLastPageButtons: false,
+                                pageSize: 10,       // make initial page size
+                                emptyRowsWhenPaging: false,   // To avoid of having empty rows
+                                pageSizeOptions: [10, 15, 25, 40, 50],
+                                search: true,
+                                searchFieldAlignment: "right",
+                                exportButton: true,
+                                exportAllData: true,
+                                cellStyle: {
+                                    padding: '4px',
+                                    lineHeight: 2,
+                                    fontFamily: 'Circular-Loom',
+                                    textAlign: 'center',
+                                    borderBottom: '2px solid rgb(246, 224, 224)'
+                                }
+                            }
+                        }
+                        localization={{
+                            pagination: {
+                            labelRowsPerPage: '',
+                            showFirstLastPageButtons: false,
+                            }
+                        }}
 
-        </>
+                    />
+                    }
+                </ThemeProvider>
+            </Card>
+        </Grid>
+    </Grid>
     )
 }
 

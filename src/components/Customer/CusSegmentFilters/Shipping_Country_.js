@@ -31,20 +31,16 @@ function Shipping_Country_() {
     
     
     return (
-
-        <>
-            <div>
-                <Multiselect isObject={false} 
-                    placeholder="Shipping-Country" 
-                    onRemove={(e) => {setscountry(JSON.stringify(e));}}
-                    onSelect={(e) => {setscountry(JSON.stringify(e));}}
-                    options={Cus_scountry}
-                    selectedValues={[]}
-                    showCheckbox/>
-
-            </div>
-            <input name="bcountrylist" style={{display:"none"}} defaultValue={scountry}/>
-        </>
+        <div className="input-filters" style={{display: 'block'}}>
+            <Multiselect isObject={false} 
+                placeholder="Shipping-Country" 
+                onRemove={(e) => {setscountry(JSON.stringify(e));}}
+                onSelect={(e) => {setscountry(JSON.stringify(e));}}
+                options={Cus_scountry}
+                selectedValues={[]}
+                showCheckbox/>
+            <input type='hidden' name="bcountrylist" style={{display:"none"}} defaultValue={scountry}/>
+        </div>
     )
 }
 export default Shipping_Country_

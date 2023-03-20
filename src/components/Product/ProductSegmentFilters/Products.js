@@ -49,46 +49,43 @@ function Products({data}) {
     return (
 
         <>
-            <div style={{margin:'15px'}}>
                 
-                {ops && ops.length > 0 && <Multiselect 
-                    displayValue="label"
-                    placeholder="Select-Product"
-                    onRemove={
-                        (e) => { 
-                            var aa=[];  
-                            for (var i of e){
-                                aa.push(i.value)
-                            };
-                            setProduct(JSON.stringify(aa));
+            {ops && ops.length > 0 && <Multiselect 
+                displayValue="label"
+                placeholder="Select-Product"
+                onRemove={
+                    (e) => { 
+                        var aa=[];  
+                        for (var i of e){
+                            aa.push(i.value)
+                        };
+                        setProduct(JSON.stringify(aa));
 
-                            var aa=[];  
-                            for (var i of e){
-                                aa.push(i.label)
-                            };
-                            setProductname(JSON.stringify(aa));
-                        }
+                        var aa=[];  
+                        for (var i of e){
+                            aa.push(i.label)
+                        };
+                        setProductname(JSON.stringify(aa));
                     }
-                    onSelect={
-                        (e) => { 
-                            var aa=[];  
-                            for (var i of e){
-                                aa.push(i.value)
-                            };
-                            setProduct(JSON.stringify(aa));
+                }
+                onSelect={
+                    (e) => { 
+                        var aa=[];  
+                        for (var i of e){
+                            aa.push(i.value)
+                        };
+                        setProduct(JSON.stringify(aa));
 
-                            var aa=[];  
-                            for (var i of e){
-                                aa.push(i.label)
-                            };
-                            setProductname(JSON.stringify(aa));
-                        }
+                        var aa=[];  
+                        for (var i of e){
+                            aa.push(i.label)
+                        };
+                        setProductname(JSON.stringify(aa));
                     }
-                    options={ops}
-                    selectedValues={GiftOnProduct}
-                    showCheckbox/>}
-
-            </div>
+                }
+                options={ops}
+                selectedValues={GiftOnProduct}
+                showCheckbox/>}
             <input name="productList" type={'hidden'} defaultValue={product} />
             <input name="productname" type={'hidden'} defaultValue={productname} />
         </>

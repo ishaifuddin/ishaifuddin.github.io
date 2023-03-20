@@ -34,19 +34,16 @@ function Billing_Country_() {
 
     return (
 
-        <>
-            <div>
-                <Multiselect isObject={false} 
-                    placeholder="Billing-Country"
-                    onRemove={(e) => {setbcountry(JSON.stringify(e));}}
-                    onSelect={(e) => {setbcountry(JSON.stringify(e));}}
-                    options={Cus_bcountry}
-                    selectedValues={[]}
-                    showCheckbox/>
-
-            </div>
+        <div className="input-filters" style={{display: 'block'}}>
+            <Multiselect isObject={false} 
+                placeholder="Billing-Country"
+                onRemove={(e) => {setbcountry(JSON.stringify(e));}}
+                onSelect={(e) => {setbcountry(JSON.stringify(e));}}
+                options={Cus_bcountry}
+                selectedValues={[]}
+                showCheckbox/>
             <input name="bcountrylist" style={{display:"none"}} defaultValue={bcountry}/>
-        </>
+        </div>
     )
 }
 export default Billing_Country_

@@ -27,44 +27,33 @@ function Aov_() {
 
     return (
         
-        <>
-            <Grid>
+        <div className="input-filters">
+            <strong> Avg. Order Value: </strong>
+            <Select className="multi"
+                placeholder="Less Than"
+                defaultValue={'aov_bellow'}
+                onChange={(e)=>{handleChange(e.value)}}
+                options={options}
+            />
 
-                <Grid.Col span={3} style={{display:'inline-flex'}}>
-                    <strong style={{padding: '9px'}}> Avg. Order Value: </strong>
-                    <Select
-                        placeholder="Less Than"
-                        defaultValue={'aov_bellow'}
-                        onChange={(e)=>{handleChange(e.value)}}
-                        options={options}
-                    />
-                </Grid.Col>
-    
-                <Grid.Col span={8} >
+            { aov_bellow && 
 
-                    { aov_bellow && 
+                <input type="number" id="11" name="aov_bellow" defaultValue="0" />  
+            }
 
-                        <input type="number" id="11" name="aov_bellow" style={{marginTop:'7px'}} defaultValue="0" />  
-                    }
+            { aov_above && 
+                <input type="number" id="12" name="aov_above" defaultValue="0"/>    
+            }
 
-
-                    { aov_above && 
-                        <input type="number" id="12" name="aov_above"  style={{marginTop:'7px'}} defaultValue="0"/>    
-                    }
-
-                    { aov_between && 
-                        
-                        <div style={{display:"inline-flex"}}>
-                            <input type="number" id="9" name="aov_from" style={{marginTop:'7px'}} defaultValue="0" />     
-                            <input type="number" id="10" name="aov_to"  style={{marginTop:'7px'}} defaultValue="0" /> 
-                        </div>
-                        
-                    }
-
-                </Grid.Col>
-
-            </Grid>
-        </>
+            { aov_between && 
+                
+                <div style={{display:"inline-flex"}}>
+                    <input type="number" id="9" name="aov_from" defaultValue="0" />     
+                    <input type="number" id="10" name="aov_to"  defaultValue="0" /> 
+                </div>
+                
+            }
+        </div>
     )
 }
 

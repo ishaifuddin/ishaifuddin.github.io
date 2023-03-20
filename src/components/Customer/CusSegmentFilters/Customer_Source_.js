@@ -32,19 +32,16 @@ function Customer_Source_() {
 
     return (
 
-        <>
-            <div>
-                <Multiselect isObject={false} 
-                    placeholder="Customer source"
-                    onRemove={(e) => {setsrc(JSON.stringify(e));}}
-                    onSelect={(e) => {setsrc(JSON.stringify(e));}}
-                    options={Cus_src}
-                    selectedValues={[]}
-                    showCheckbox/>
-
-            </div>
-            <input name="cus_source" style={{display:"none"}} defaultValue={src}/>
-        </>
+        <div className="input-filters" style={{display: 'block'}}>
+            <Multiselect isObject={false} 
+                placeholder="Customer source"
+                onRemove={(e) => {setsrc(JSON.stringify(e));}}
+                onSelect={(e) => {setsrc(JSON.stringify(e));}}
+                options={Cus_src}
+                selectedValues={[]}
+                showCheckbox/>
+            <input type='hidden' name="cus_source" defaultValue={src}/>
+        </div>
     )
 }
 export default Customer_Source_

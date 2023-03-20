@@ -28,19 +28,16 @@ function Billing_City_() {
 
     return (
 
-        <>
-            <div>
-                <Multiselect isObject={false} 
-                    placeholder="Billing-City"
-                    onRemove={(e) => {setbcity(JSON.stringify(e));}}
-                    onSelect={(e) => {setbcity(JSON.stringify(e));}}
-                    options={Cus_bcity}
-                    selectedValues={[]}
-                    showCheckbox/>
-
-            </div>
+        <div className="input-filters" style={{display: 'block'}}>
+            <Multiselect isObject={false} 
+                placeholder="Billing-City"
+                onRemove={(e) => {setbcity(JSON.stringify(e));}}
+                onSelect={(e) => {setbcity(JSON.stringify(e));}}
+                options={Cus_bcity}
+                selectedValues={[]}
+                showCheckbox/>
             <Input name="bcitylist" type={'hidden'} value={bcity}/>
-        </>
+        </div>
     )
 }
 export default Billing_City_

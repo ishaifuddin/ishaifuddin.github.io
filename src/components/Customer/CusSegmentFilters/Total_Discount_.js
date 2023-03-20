@@ -28,47 +28,29 @@ function Total_dis_() {
 
     
     return (
-    
-        <>
-            <Grid> 
+        <div className="input-filters">
+            <strong> Total Discount :  </strong>
+            <Select className="multi"
+                placeholder="Less than"
+                defaultValue={'dis_bellow'}
+                onChange={(e)=>{handleChange(e.value)}}
+                options={options}
+            />
+            { dis_bellow && 
+                <input defaultValue="0" type="number" id="pa" name="dis_max"  /> 
+            }
 
-                <Grid.Col span={3} style={{display:'inline-flex'}}>
-                    <strong style={{padding: '9px'}}> Total Discount :  </strong>
+            { dis_above && 
+                <input defaultValue="0" type="number" id="pa" name="dis_min"  /> 
+            }
 
-                    <Select
-                        placeholder="Less than"
-                        defaultValue={'dis_bellow'}
-                        onChange={(e)=>{handleChange(e.value)}}
-                        options={options}
-                    />
-                </Grid.Col>
-
-                <Grid.Col span={8} >
-                    
-                    { dis_bellow && 
-                        <input style={{marginTop:'7px'}} defaultValue="0" type="number" id="pa" name="dis_max"  /> 
-                    }
-                
-        
-                    { dis_above && 
-
-                        <input style={{marginTop:'7px'}} defaultValue="0" type="number" id="pa" name="dis_min"  /> 
-                    }
-
-                    { dis_between && 
-
-                        <>
-                            <div id="dis_betwn"  style={{display:'inline-flex',marginTop:'7px'}}>
-                                <input style={{marginTop:'7px'}} defaultValue="0" type="number" id="dismin" name="dis_amount_minval"  />   to
-                                <input style={{marginTop:'7px'}} defaultValue="0" type="number" id="dismax" name="dis_amount_maxval"  /> $ 
-                            </div>
-                        </>
-                    }
-
-                </Grid.Col>
-
-            </Grid>
-        </>
+            { dis_between && 
+                <div id="dis_betwn">
+                    <input defaultValue="0" type="number" id="dismin" name="dis_amount_minval"  />   to
+                    <input defaultValue="0" type="number" id="dismax" name="dis_amount_maxval" style={{marginLeft: '1rem'}}/> $ 
+                </div>
+            }
+        </div>
     )
 }
 

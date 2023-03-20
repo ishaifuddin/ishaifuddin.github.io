@@ -32,19 +32,16 @@ function Customer_Tag_() {
 
     return (
 
-        <>
-            <div>
-                <Multiselect isObject={false} 
-                    placeholder="Customer tag"
-                    onRemove={(e) => {settag(JSON.stringify(e));}}
-                    onSelect={(e) => {settag(JSON.stringify(e));}}
-                    options={Cus_tag}
-                    selectedValues={[]}
-                    showCheckbox/>
-
-            </div>
+        <div className="input-filters" style={{display: 'block'}}>
+            <Multiselect isObject={false} 
+                placeholder="Customer tag"
+                onRemove={(e) => {settag(JSON.stringify(e));}}
+                onSelect={(e) => {settag(JSON.stringify(e));}}
+                options={Cus_tag}
+                selectedValues={[]}
+                showCheckbox/>
             <input name="cus_tag" style={{display:"none"}} defaultValue={tag}/>
-        </>
+        </div>
     )
 }
 export default Customer_Tag_

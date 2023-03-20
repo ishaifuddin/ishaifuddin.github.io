@@ -337,11 +337,9 @@ function CusListAndSegment() {
                                     </div>
                                 }
                                 {filterList}
-                                {filterList.length > 0 && <input type="submit" value="Submit" />}
+                                {filterList.length > 0 && <input style={{marginTop: '.5rem'}} type="submit" value="Submit" />}
                             </form>
-
-
-                    {/* Customer List */}
+                        {/* Customer List */}
 
 
                     <Grid>

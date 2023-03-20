@@ -28,46 +28,32 @@ function Dbet_ret_() {
 
     return (
         
-        <>
-            <Grid>
+        <div className="input-filters">
+            <strong>Each-Order-Gap :  </strong>
+            <Select className="multi"
+                placeholder="Less than"
+                defaultValue={'daydiff_bellow'}
+                onChange={(e)=>{handleChange(e.value)}}
+                options={options}
+            />
 
-                <Grid.Col span={3} style={{display:'inline-flex'}}>
-                    <strong style={{padding: '9px'}}> Each-Order-Gap :  </strong>
-                    <Select
-                        placeholder="Less than"
-                        defaultValue={'daydiff_bellow'}
-                        onChange={(e)=>{handleChange(e.value)}}
-                        options={options}
-                    />
-                </Grid.Col>
-
-                <Grid.Col span={8} >
-
-                    { daydiff_bellow && 
-
-                        <input style={{marginTop:'7px'}} defaultValue="0" type="number" id="ddifb" name="daydiff_lessthan" />     
-                    }
+            { daydiff_bellow && 
+                <input defaultValue="0" type="number" id="ddifb" name="daydiff_lessthan" />     
+            }
 
 
-                    { daydiff_above && 
-                        <input style={{marginTop:'7px'}} defaultValue="0" type="number" id="ddifa" name="daydiff_morethan" />     
-                    }
+            { daydiff_above && 
+                <input defaultValue="0" type="number" id="ddifa" name="daydiff_morethan" />     
+            }
 
-                    { daydiff_between && 
-
-                        <>
-                            <div style={{display:'inline-flex'}}>
-                                <input style={{marginTop:'7px'}} defaultValue="0" type="number" id="ddiff" name="daydiff_from"  />    
-                                    
-                                <input style={{marginTop:'7px'}} defaultValue="0" type="number" id="ddift" name="daydiff_to"  />       
-                            </div>
-                        </>
-                    }
-
-                </Grid.Col>
-
-            </Grid>
-        </>
+            { daydiff_between && 
+                <div>
+                    <input defaultValue="0" type="number" id="ddiff" name="daydiff_from"  />    
+                        
+                    <input defaultValue="0" type="number" id="ddift" name="daydiff_to"  />       
+                </div>
+            }
+        </div>
     )
 }
 

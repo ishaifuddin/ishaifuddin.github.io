@@ -2,7 +2,7 @@ import React from 'react'
 
 function Avg_Shipping_Cost_() {
   return (
-    <div>Avg_Shipping_Cost_</div>
+    <div style={{display: 'none'}}>Avg_Shipping_Cost_</div>
   )
 }
 

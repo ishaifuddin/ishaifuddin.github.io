@@ -29,21 +29,16 @@ function ProductSKU() {
 
     return (
 
-        <>
-            <div style={{margin:'15px'}}>
-
-                <Multiselect 
-                    placeholder="Select-SKU"
-                    onRemove={(e) => {setSku(JSON.stringify(e));}}
-                    onSelect={(e) => {setSku(JSON.stringify(e));}}
-                    options={skus}
-                    selectedValues={[]}
-                    showCheckbox/>
-
-            </div>
-
+        <div className="input-filters" style={{display: 'block'}}>
+            <Multiselect 
+                placeholder="Select-SKU"
+                onRemove={(e) => {setSku(JSON.stringify(e));}}
+                onSelect={(e) => {setSku(JSON.stringify(e));}}
+                options={skus}
+                selectedValues={[]}
+                showCheckbox/>
             <Input name="sku" type={'hidden'} value={sku}/>
-        </>
+        </div>
     )
 }
 

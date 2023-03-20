@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Select from 'react-select';
 import { Grid } from '@mantine/core';
+import { Radio, RadioGroup } from "rsuite";
 
 function First_Ordered_() {
 
@@ -27,103 +28,54 @@ function First_Ordered_() {
       
     return (
         
-        <>
+        <div className="input-filters">
+            <strong> First Purchase :  </strong>
 
-            <Grid>
+            <Select className="multi"
+                placeholder="In the past"
+                defaultValue={'first_order_after'}
+                onChange={(e)=>{handleChange(e.value)}}
+                options={options}
+            />
+            { first_order_after && 
+                <>  
+                
+                    <input type="number" id="fod_af" name="fod_itp" value="" />   
 
-                <Grid.Col span={3} style={{display:'inline-flex'}}>
-                    <strong style={{padding: '9px'}}> First Purchase :  </strong>
+                    <RadioGroup>
+                        <label>day <Radio type="radio" name="foitp_unit" value="foitp_day"/></label>  
+                        <label>month <Radio type="radio" name="foitp_unit" value="foitp_month"/></label>  
+                        <label>year <Radio type="radio" name="foitp_unit" value="foitp_year"/></label>  
+                    </RadioGroup>
 
-                    <Select
-                        placeholder="In the past"
-                        defaultValue={'first_order_after'}
-                        onChange={(e)=>{handleChange(e.value)}}
-                        options={options}
-                    />
+                </>
+            }
 
-                </Grid.Col>
+            { first_order_before && 
+                <>  
+                    <input type="number"  id="fod_bif" name="fod_over" defaultValue="0" />   
+                    <RadioGroup>
+                    <label>day <Radio type="radio" name="foo_unit" value="foo_day"/></label>  
+                    <label>month <Radio type="radio" name="foo_unit" value="foo_month"/></label>  
+                    <label>year <Radio type="radio" name="foo_unit" value="foo_year"/></label>  
+                    </RadioGroup>
+                    <strong>Ago</strong> 
+                </> 
+        }
 
-
-                <Grid.Col span={8} >
-
-
-                    { first_order_after && 
-
-                        <>
-                            <div style={{display:'inline-flex'}}>  
-                            
-                                <input style={{marginTop:'7px'}} type="number" id="fod_af" name="fod_itp" value="" />   
-
-                                <label>  day    
-                                    <input type="radio" name="foitp_unit" value="foitp_day"/> 
-                                </label>  
-
-                                <label>  month    
-                                    <input type="radio" name="foitp_unit" value="foitp_month"/> 
-                                </label>  
-
-                                <label>  year    
-                                    <input type="radio" name="foitp_unit" value="foitp_year"/>  
-                                </label>  
-
-                            </div>
-                        </>
-                    }
-
-                    { first_order_before && 
-
-                        <>
-                            <div style={{display:'inline-flex'}}>  
-                        
-                                <input type="number"  id="fod_bif" name="fod_over" style={{marginTop:'7px'}} defaultValue="0" />   
-                                
-                                <label>  day  
-                                    <input type="radio" name="foo_unit" value="foo_day"/> 
-                                </label>  
-
-
-                                <label>  month  
-                                    <input type="radio" name="foo_unit" value="foo_month"/> 
-                                </label>  
-
-
-                                <label>  year    
-                                    <input type="radio" name="foo_unit" value="foo_year"/>  
-                                </label>  
-                                <strong>Ago</strong> 
-                            </div> 
-                        </>
-                    }
-
-                    { first_order_between && 
-
-                        <>
-                            <div style={{display:'inline-flex'}}>  
-                        
-                                <input type="number" id="fod_bitf" name="fod_from" style={{marginTop:'7px',display:'inline-flex'}} defaultValue="0"/>To    
-                                   
-                                <input type="number"  id="fod_bitt" name="fod_to"  style={{marginTop:'7px',display:'inline-flex'}} defaultValue="0"/>  
-
-                                <label>  day    
-                                    <input type="radio" name="fob_unit" value="fob_day"/> 
-                                </label>  
-
-                                <label>  month    
-                                    <input type="radio" name="fob_unit" value="fob_month"/> 
-                                </label>  
-
-                                <label>  year    
-                                    <input type="radio" name="fob_unit" value="fob_year"/> 
-                                </label>  
-                                <strong>Ago</strong>  
-                            </div> 
-                        </>
-                    }
-
-                </Grid.Col> 
-
-            </Grid>
-        </>
+            { first_order_between && 
+                <>  
+                    <input type="number" id="fod_bitf" name="fod_from" defaultValue="0"/>To    
+                    <input type="number"  id="fod_bitt" name="fod_to" defaultValue="0" style={{marginLeft: '1rem'}}/> 
+                    <RadioGroup>
+                    <label>day <Radio type="radio" name="fob_unit" value="fob_day"/></label>  
+                    <label>month <Radio type="radio" name="fob_unit" value="fob_month"/></label>  
+                    <label>year <Radio type="radio" name="fob_unit" value="fob_year"/></label>  
+                    </RadioGroup>
+                    <strong>Ago</strong>  
+                </> 
+            }
+        </div>
     )
 }
 

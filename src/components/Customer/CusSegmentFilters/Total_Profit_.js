@@ -29,46 +29,34 @@ function Total_Profit_() {
     
     return (
     
-        <>
+        <div className="input-filters">
+                <strong> Total Profit :  </strong>
+
+                <Select className="multi"
+                    placeholder="Less than"
+                    defaultValue={'profit_bellow'}
+                    onChange={(e)=>{handleChange(e.value)}}
+                    options={options}
+                />
+                {   
+                    profit_bellow && 
+                    <input defaultValue="0" type="number" id="pa" name="profit_amount_max"  /> 
+                }
+            
     
-            <Grid> 
+                { 
+                    profit_above && 
+                    <input defaultValue="0" type="number" id="pa" name="profit_amount_min"  /> 
+                }
 
-                <Grid.Col span={3} style={{display:'inline-flex'}}>
-                    <strong style={{padding: '9px'}}> Total Profit :  </strong>
+                { profit_between && 
 
-                    <Select
-                        placeholder="Less than"
-                        defaultValue={'profit_bellow'}
-                        onChange={(e)=>{handleChange(e.value)}}
-                        options={options}
-                    />
-                </Grid.Col>
-
-                <Grid.Col span={8} >
-                    
-                    {   
-                        profit_bellow && 
-                        <input style={{marginTop:'7px'}} defaultValue="0" type="number" id="pa" name="profit_amount_max"  /> 
-                    }
-                
-        
-                    { 
-                        profit_above && 
-                        <input style={{marginTop:'7px'}} defaultValue="0" type="number" id="pa" name="profit_amount_min"  /> 
-                    }
-
-                    { profit_between && 
-
-                        <div id="profit_betwn" style={{display:'inline-flex'}}>
-                            <input style={{marginTop:'7px'}} placeholder="From" type="number" id="pmin" name="profit_amount_minval"  />   
-                            <input style={{marginTop:'7px'}} placeholder="To" type="number" id="pmax" name="profit_amount_maxval"  /> 
-                        </div>
-                    }
-
-                </Grid.Col>
-
-            </Grid>
-        </>
+                    <div id="profit_betwn" style={{display:'inline-flex'}}>
+                        <input placeholder="From" type="number" id="pmin" name="profit_amount_minval"  />   
+                        <input placeholder="To" type="number" id="pmax" name="profit_amount_maxval"  /> 
+                    </div>
+                }
+        </div>
     )
 }
 

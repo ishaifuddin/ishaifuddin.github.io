@@ -57,50 +57,46 @@ function ProductCatagory({data}) {
     return (
 
         <>
-            <div style={{margin:'15px'}}>
-                {ops && ops.length > 0 && <Multiselect 
-                    displayValue="label"
-                    placeholder="Select-catagory"
-                    // onRemove={(e) => {setCatas(JSON.stringify(e.value));}}
-                    // onSelect={(e) => {setCatas(JSON.stringify(e.value));}}
-                    onRemove={
-                        (e) => { 
-                            var aa=[];  
-                            for (var i of e){
-                                aa.push(i.value)
-                            };
-                            setCatas(JSON.stringify(aa));
+            {ops && ops.length > 0 && <Multiselect 
+                displayValue="label"
+                placeholder="Select-catagory"
+                // onRemove={(e) => {setCatas(JSON.stringify(e.value));}}
+                // onSelect={(e) => {setCatas(JSON.stringify(e.value));}}
+                onRemove={
+                    (e) => { 
+                        var aa=[];  
+                        for (var i of e){
+                            aa.push(i.value)
+                        };
+                        setCatas(JSON.stringify(aa));
 
-                            // var aa=[];  
-                            // for (var i of e){
-                            //     aa.push(i.label)
-                            // };
-                            // setProductname(JSON.stringify(aa));
-                        }
+                        // var aa=[];  
+                        // for (var i of e){
+                        //     aa.push(i.label)
+                        // };
+                        // setProductname(JSON.stringify(aa));
                     }
+                }
 
-                    onSelect={
-                        (e) => { 
-                            var aa=[];  
-                            for (var i of e){
-                                aa.push(i.value)
-                            };
-                            setCatas(JSON.stringify(aa));
+                onSelect={
+                    (e) => { 
+                        var aa=[];  
+                        for (var i of e){
+                            aa.push(i.value)
+                        };
+                        setCatas(JSON.stringify(aa));
 
-                            // var aa=[];  
-                            // for (var i of e){
-                            //     aa.push(i.label)
-                            // };
-                            // setProductname(JSON.stringify(aa));
-                        }
+                        // var aa=[];  
+                        // for (var i of e){
+                        //     aa.push(i.label)
+                        // };
+                        // setProductname(JSON.stringify(aa));
                     }
-                    options={ops}
-                    selectedValues={GiftOnCategory}
-                    showCheckbox/>}
-
-            </div>
+                }
+                options={ops}
+                selectedValues={GiftOnCategory}
+                showCheckbox/>}
             <input name="productCatList" type={'hidden'} defaultValue={catas}/>
-            
         </>
     )
 }

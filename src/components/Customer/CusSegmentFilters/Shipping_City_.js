@@ -28,19 +28,16 @@ function Shipping_City_() {
     
     return (
 
-        <>
-            <div>
-                <Multiselect isObject={false}
-                    placeholder="Shipping-City" 
-                    onRemove={(e) => {setscity(JSON.stringify(e));}}
-                    onSelect={(e) => {setscity(JSON.stringify(e));}}
-                    options={Cus_scity}
-                    selectedValues={[]}
-                    showCheckbox/>
-
-            </div>
+        <div className="input-filters" style={{display: 'block'}}>
+            <Multiselect isObject={false}
+                placeholder="Shipping-City" 
+                onRemove={(e) => {setscity(JSON.stringify(e));}}
+                onSelect={(e) => {setscity(JSON.stringify(e));}}
+                options={Cus_scity}
+                selectedValues={[]}
+                showCheckbox/>
             <input name="scitylist" style={{display:"none"}} defaultValue={scity}/>
-        </>
+        </div>
     )
 }
 export default Shipping_City_

@@ -2,7 +2,7 @@ import React from 'react'
 
 function ProductStock() {
   return (
-    <div style={{display:'flex',margin:'15px'}}>
+    <div className="input-filters">
         <strong> Product Stock </strong>
         <input type="number" name="stock_f"  placeholder="Min"/>
         <input type="number" name="stock_t"    placeholder="Max"/>

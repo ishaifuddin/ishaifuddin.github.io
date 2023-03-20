@@ -8,18 +8,13 @@ function ProductOnSale() {
     var[onsale,setOS]=useState(0);
 
     return (
-    
-        <div style={{margin:'15px'}}>
-            
+        <div className="input-filters"> 
             <strong > Product On-sale </strong>
-
             <RadioGroup style={{display: 'inline-block'}} onChange={(e) => {setOS(e.target.value)}}>
                 <Radio value="1" name="onsale"/> Yes
                 <Radio value="0" name="onsale"/> No
             </RadioGroup>
-            <input name="os" style={{display:'none'}} value={onsale} />
-            
-
+            <input type='hidden' name="os" value={onsale} />
         </div>
     )
 }

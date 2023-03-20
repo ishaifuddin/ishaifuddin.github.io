@@ -47,7 +47,6 @@ function Item_Count_() {
             { numitem_between && 
                 <div id="num_item_between">
                     <input style={{marginTop:'7px'}} defaultValue="0" type="number" id="nibf" name="numitem_from"  />    
-                        
                     <input defaultValue="0" type="number" id="nibt" name="numitem_to"  />       
                 </div>
             }

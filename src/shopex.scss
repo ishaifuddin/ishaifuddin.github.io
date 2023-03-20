@@ -255,7 +255,8 @@ aside {
         color: rgb(255, 255, 255);
         font-size: 12px;
         margin-left: 1rem;
-        padding: 3px 15px;
+        margin-left: 1rem;
+        padding: 8px 20px;
     }
     .pediod-seg {
         display: inline-block;
@@ -303,6 +304,15 @@ aside {
         }
         input, .multi {
             margin-right: 1rem;
+            min-width: 172px;
+        }
+        .rs-radio-group-default {
+            display: inline-block;
+            font-size: 13px;
+            font-weight: 500;
+        }
+        .searchWrapper {
+            background: #eee;
         }
     }
     input {
@@ -313,6 +323,7 @@ aside {
     form.dash-card {
         margin-top: 1rem;
         height: unset;
+        overflow: unset;
 
         [type="submit"] {
             max-width: 500px;

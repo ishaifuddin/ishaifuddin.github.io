@@ -42,6 +42,7 @@ import SingleProduct from '../SinPro/SingleProduct';
 //import SideNav from '../../pages/SideNav';
 
 import { EditCost } from '../../features/product/ProductListAndSegment';
+import { Card } from 'react-bootstrap';
 
 function ProductListAndSegments() {
 
@@ -194,6 +195,7 @@ function ProductListAndSegments() {
     event.preventDefault();
     const fdata = new FormData(event.target);
     const data = Object.fromEntries(fdata.entries());
+    data["ajax_call"] = 1;
     setSegname('');
     dispatch(get_filtered_product_data(data));
 
@@ -352,240 +354,191 @@ function ProductListAndSegments() {
   
 
   return (
-
-    <>
-
-      <Grid container>
-
-        <Grid item sm={10} style={{ background: 'mediumseagreen', position: 'fixed', color: 'white', top: 0, width: '100%', padding: '8px', paddingLeft: '2%', zIndex: 1, borderRadius: '5px'}}> 
-            <h4> Product :: List and segments </h4> 
-        </Grid>
-
-        <Grid item sm={12}  style={{zIndex:'0',marginTop:'5%'}}>
-          
-          <Grid item sm={6}>
-
-            <h4> Product Filter </h4>
-            
-            <Multiselect isObject={false} 
-              placeholder=" + Add Filter" 
-              onRemove={(e) => { addfilter(e, 99) }} onSelect={(e) => { addfilter(e, e[e.length - 1]) }} 
-              options={filts} 
-              selectedValues={[]} showCheckbox 
-            />
-            
-              {/* {Seglist && 
-              <Group position="left" style={{marginTop:'15px'}} >
-              <Button onClick={() => setOpened(true)}>Order Segments</Button>
-              </Group>
-              }*/}
-
-          </Grid>
-
-          <Grid container>
-
-            <Grid item xs={6} md={8} sm={4}>
-
-              <form onSubmit={filterSubmit}>
-
-                <input style={{ display: 'none' }} defaultValue="1" type="number" name="ajax_call" />
-
-                {filterList_.length > 0 &&
-                  <>
-                    <strong>Create Segment :</strong>
-                    <input style={{ marginBottom: '15px', width: '65%', height: '40px', fontSize: '15px' }}
-                      type="text"
-                      name="segname"
-                      size="45"
-                      placeholder="Insert segment name" />
-                  </>
-                }
-
-                {filterList_}
-
-                {filterList_.length > 0 && <input type="submit" value="Submit" />}
-
-              </form>
-
-            </Grid>
-
-          </Grid>
-
-
-          <Grid container>
-
-            <Grid item sm={2} style={{ zIndex: 0,marginRight:'20px' }}>
-
-              <ThemeProvider theme={defaultMaterialTheme}>
-
-                {
-                
-                //cat_table && cat_table.length > 0 &&
-
-                  <MaterialTable style={{borderRadius:'14px'}}
-
-                    columns={[{ title: 'Catagory Name', field: 'catagory_name', },]}
-
-                    //product_show_segment.php
-                    onRowClick={(event, rowData) => {
-                      dispatch(get_products_from_selected_catagory({ id: rowData.catagory_id, see_sin_cat: 1 }))
-                    }}
-
-                    data={cat_table_clone}
-                    title=""
-                    actions={[
-                      {
-                        icon: ListAltIcon,
-                        tooltip: 'Fetch',
-                        // onClick: (event, rowData) => alert("You saved " + rowData.catagory_id)
-                      }
-                    ]}
-
-                    icons={{
-                      Check: Check,
-                      DetailPanel: ChevronRight,
-                      Export: SaveAlt,
-                      Filter: FilterList,
-                      FirstPage: FirstPage,
-                      LastPage: LastPage,
-                      NextPage: ChevronRight,
-                      PreviousPage: ChevronLeft,
-                      Search: Search,
-                      ResetSearch: CancelIcon,
-                      Clear: CancelIcon
-                    }}
-                    options={
-                      {
-                        pageSize: 10,       // make initial page size
-                        emptyRowsWhenPaging: false,   // To avoid of having empty rows
-                        pageSizeOptions: [10, 15, 25, 40, 50],
-                        search: true,
-                        searchFieldAlignment: "right",
-                        exportButton: true,
-                        exportAllData: true,
-                        cellStyle: {
-                          padding: '4px',
-                        },
-                        headerStyle: {
-                          backgrounor: '#01579b',
-                          or: '#FFF'
-                        },
-                      }
-                    }
-
-                    localization={{
-                      pagination: {
-                        labelRowsPerPage: ''
-                      },
-                      header: {
-                        actions: ''
-                      },
-                    }}
-                  />
-                }
-              </ThemeProvider>
-
-            </Grid>
-
-
-
-            <Grid item sm={9}>
-
-              <ThemeProvider theme={defaultMaterialTheme}>
-                {
-                
-                //product_table && product_table.length > 0 &&
-                
-                <MaterialTable style={{borderRadius:'14px'}}
-                    columns={[
-                      {
-                        title: 'Product',
-                        field: 'product_name',render: row => 
-                        <div style={{background:'mintcream',fontFamily: 'system-ui',fontSize: '16px',textAlign: 'left'}}>  
-                          <a href={'/Products/'+ row.product_id}> {row.product_name}</a>
-                        </div>
-                      },
-                      { title: 'Regular Price', field: 'reguler_price',     render: row => <div style={{background:'whitesmoke'}}>  {row.reguler_price} </div> },
-                      { title: 'Current Price', field: 'curr_price',        render: row => <div style={{background:'ghostwhite'}}>  {row.curr_price} </div> },
-                      { title: 'On-Stock',      field: 'stock_quantity',    render: row => <div style={{background:'whitesmoke'}}>  {row.stock_quantity} </div> },
-                      { title: 'Type',          field: 'product_type',      render: row => <div style={{background:'ghostwhite'}}>  {row.product_type} </div> },
-                      {
-                        title: 'COG', field: 'cog',
-                        render: (row) => <> {row.product_type == 'simple' && <input name={row.product_id} form='cogform' type="number" placeholder={row.cog} onChange={handleCogChange} />} </>
-                      },
-                      {
-                        title: '', field: '',
-                        render: (row) => <> <input form='cogform' type="submit" value="Save-COG" /> </>
-                      },
-                    ]}
-                    data={product_table_clone}
-                    title="Current Products"
-                    icons={{
-                      Check: Check,
-                      DetailPanel: ChevronRight,
-                      Export: SaveAlt,
-                      Filter: FilterList,
-                      FirstPage: FirstPage,
-                      LastPage: LastPage,
-                      NextPage: ChevronRight,
-                      PreviousPage: ChevronLeft,
-                      Search: Search,
-                      ResetSearch: CancelIcon
-
-                    }}
-                    options={
-                      {
-                          pageSize: 10,       // make initial page size
-                          emptyRowsWhenPaging: false,   // To avoid of having empty rows
-                          pageSizeOptions: [10, 15, 25, 40, 50],
-                          search: true,
-                          searchFieldAlignment: "right",
-                          exportButton: true,
-                          exportAllData: true,
-                          cellStyle: {
-                              padding: '4px',
-                              lineHeight: 2,
-                              fontFamily: 'system-ui',
-                              textAlign: 'center',
-                              borderBottom: '2px solid rgb(246, 224, 224)'
-                          },
-                          headerStyle: {
-                              background:'mediumseagreen', 
-                              fontSize: '17px', 
-                              color:'white',
-                              padding:'2px',
-                              height:'40px'
-                          },
-                          // rowStyle: {
-                          //     backgroundColor: '#EEE',
-                          // }
-                          //rowStyle: (data, index) => index % 2 === 0 ? { background: "ghostwhite" } : {background:'white'},
-
-                      }
-                    }
-                    localization={{
-                      pagination: {
-                        labelRowsPerPage: '',
-                        showFirstLastPageButtons: false,
-                      }
-                    }}
-                  />
-                }
-              </ThemeProvider>
-
-            </Grid>
-
-            <form onSubmit={Update_cog} id="cogform">  </form>
-
-          </Grid>
- 
-        </Grid>
-
+    <Grid container spacing={3}>
+      <Grid item md={12}>
+          <div className="notifications">
+              <h6>Product : List and segments</h6>
+          </div>
       </Grid>
+      <Grid item md={12}>
+          
+          <Multiselect isObject={false} 
+            placeholder=" + Add Filter" 
+            onRemove={(e) => { addfilter(e, 99) }} onSelect={(e) => { addfilter(e, e[e.length - 1]) }} 
+            options={filts} 
+            selectedValues={[]} showCheckbox 
+          />
+          
+            {/* {Seglist && 
+            <Group position="left" style={{marginTop:'15px'}} >
+            <Button onClick={() => setOpened(true)}>Order Segments</Button>
+            </Group>
+            }*/}
+        </Grid>
+        <Grid item md={12}>
+          <form className='dash-card' onSubmit={filterSubmit}>
+            {filterList_.length > 0 &&
+              <div className="input-filters">
+                <strong>Create Segment :</strong>
+                <input
+                  type="text"
+                  name="segname"
+                  size="45"
+                  placeholder="Insert segment name" />
+              </div>
+            }
+            {filterList_}
+            {filterList_.length > 0 && <input type="submit" style={{marginTop: '.5rem'}} value="Submit" />}
+          </form>
+        </Grid>
+        <Grid item md={3} >
+          <Card className='dash-card'>
+          <ThemeProvider theme={defaultMaterialTheme}>
+            {
+            //cat_table && cat_table.length > 0 &&
+              <MaterialTable style={{borderRadius:'14px'}}
 
+                columns={[{ title: 'Catagory Name', field: 'catagory_name', render: row => <div style={{color: '#5e72e4'}}>  {row.catagory_name} </div> }]}
 
-    </>
+                //product_show_segment.php
+                onRowClick={(event, rowData) => {
+                  dispatch(get_products_from_selected_catagory({ id: rowData.catagory_id, see_sin_cat: 1 }))
+                }}
 
+                data={cat_table_clone}
+                title=""
+                actions={[
+                  {
+                    icon: ListAltIcon,
+                    tooltip: 'Fetch',
+                    // onClick: (event, rowData) => alert("You saved " + rowData.catagory_id)
+                  }
+                ]}
+
+                icons={{
+                  Check: Check,
+                  DetailPanel: ChevronRight,
+                  Export: SaveAlt,
+                  Filter: FilterList,
+                  FirstPage: FirstPage,
+                  LastPage: LastPage,
+                  NextPage: ChevronRight,
+                  PreviousPage: ChevronLeft,
+                  Search: Search,
+                  ResetSearch: CancelIcon,
+                  Clear: CancelIcon
+                }}
+                options={
+                  {
+                    pageSize: 10,    
+                    showFirstLastPageButtons: false,    // make initial page size
+                    emptyRowsWhenPaging: false,   // To avoid of having empty rows
+                    pageSizeOptions: [10, 15, 25, 40, 50],
+                    search: true,
+                    searchFieldAlignment: "right",
+                    exportButton: true,
+                    exportAllData: true,
+                    cellStyle: {
+                      padding: '4px',
+                    }
+                  }
+                }
+
+                localization={{
+                  pagination: {
+                    labelRowsPerPage: ''
+                  },
+                  header: {
+                    actions: ''
+                  },
+                }}
+              />
+            }
+            </ThemeProvider>
+            </Card>
+        </Grid>
+        <Grid item md={9}>
+        <Card className='dash-card'>
+          <ThemeProvider theme={defaultMaterialTheme}>
+            {
+            
+            //product_table && product_table.length > 0 &&
+            //https://www.mountaingoatsoftware.com/uploads/blog/2016-09-06-what-is-a-product.png
+            <MaterialTable 
+                columns={[
+                  {
+                    title: 'Image',
+                    field: '',render: row => 
+                      <img style={{maxWidth: '80px'}} src='https://www.mountaingoatsoftware.com/uploads/blog/2016-09-06-what-is-a-product.png'/>
+                  },
+                  {
+                    title: 'Product',
+                    field: 'product_name',render: row => 
+                    <div style={{color:'#5e72e4', minWidth: '300px',fontFamily: 'system-ui',textAlign: 'center'}}>  
+                      <a style={{color:'#5e72e4'}} href={'/Products/'+ row.product_id}> {row.product_name}</a>
+                    </div>
+                  },
+                  { title: 'Regular Price', field: 'reguler_price',     render: row => <div style={{background:'whitesmoke'}}>  {row.reguler_price} </div> },
+                  { title: 'Current Price', field: 'curr_price',        render: row => <div style={{background:'ghostwhite'}}>  {row.curr_price} </div> },
+                  { title: 'On-Stock',      field: 'stock_quantity',    render: row => <div style={{background:'whitesmoke'}}>  {row.stock_quantity} </div> },
+                  { title: 'Type',          field: 'product_type',      render: row => <div style={{background:'ghostwhite'}}>  {row.product_type} </div> },
+                  {
+                    title: 'COG', field: 'cog',
+                    render: (row) => <> {row.product_type == 'simple' && <input name={row.product_id} form='cogform' type="number" placeholder={row.cog} style={{padding: '0 10px'}} onChange={handleCogChange} />} </>
+                  },
+                  {
+                    title: '', field: '',
+                    render: (row) => <> <input form='cogform' type="submit" style={{padding: '2px 12px', fontWeight: '600'}} value="Save-COG" /> </>
+                  },
+                ]}
+                data={product_table_clone}
+                title="Current Products"
+                icons={{
+                  Check: Check,
+                  DetailPanel: ChevronRight,
+                  Export: SaveAlt,
+                  Filter: FilterList,
+                  FirstPage: FirstPage,
+                  LastPage: LastPage,
+                  NextPage: ChevronRight,
+                  PreviousPage: ChevronLeft,
+                  Search: Search,
+                  ResetSearch: CancelIcon
+
+                }}
+                options={
+                  {
+                      pageSize: 10,   
+                      showFirstLastPageButtons: false,    // make initial page size
+                      emptyRowsWhenPaging: false,   // To avoid of having empty rows
+                      pageSizeOptions: [10, 15, 25, 40, 50],
+                      search: true,
+                      searchFieldAlignment: "right",
+                      exportButton: true,
+                      exportAllData: true,
+                      cellStyle: {
+                          padding: '4px',
+                          lineHeight: 2,
+                          fontFamily: 'system-ui',
+                          textAlign: 'center',
+                          borderBottom: '2px solid rgb(246, 224, 224)'
+                      }
+
+                  }
+                }
+                localization={{
+                  pagination: {
+                    labelRowsPerPage: '',
+                    showFirstLastPageButtons: false,
+                  }
+                }}
+              />
+            }
+          </ThemeProvider>
+          </Card>
+        </Grid>
+        <form onSubmit={Update_cog} id="cogform"></form>
+    </Grid>
   )
 
 }

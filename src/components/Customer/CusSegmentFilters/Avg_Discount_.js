@@ -2,7 +2,7 @@ import React from 'react'
 
 function Avg_Discount_() {
   return (
-    <div>Avg_Discount_</div>
+    <strong style={{display: 'none'}}>Avg_Discount_ : </strong>
   )
 }
 

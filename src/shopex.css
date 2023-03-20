@@ -242,7 +242,8 @@ aside .css-cveggr-MuiListItemIcon-root {
   color: rgb(255, 255, 255);
   font-size: 12px;
   margin-left: 1rem;
-  padding: 3px 15px;
+  margin-left: 1rem;
+  padding: 8px 20px;
 }
 .dashboard .pediod-seg {
   display: inline-block;
@@ -286,6 +287,15 @@ aside .css-cveggr-MuiListItemIcon-root {
 }
 .dashboard .input-filters input, .dashboard .input-filters .multi {
   margin-right: 1rem;
+  min-width: 172px;
+}
+.dashboard .input-filters .rs-radio-group-default {
+  display: inline-block;
+  font-size: 13px;
+  font-weight: 500;
+}
+.dashboard .input-filters .searchWrapper {
+  background: #eee;
 }
 .dashboard input {
   padding: 8px;
@@ -295,6 +305,7 @@ aside .css-cveggr-MuiListItemIcon-root {
 .dashboard form.dash-card {
   margin-top: 1rem;
   height: unset;
+  overflow: unset;
 }
 .dashboard form.dash-card [type=submit] {
   max-width: 500px;

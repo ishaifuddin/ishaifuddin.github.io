@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Select from 'react-select';
 import { Grid } from '@mantine/core';
+import { Radio, RadioGroup } from "rsuite";
 
 function Joined_() {
 
@@ -28,64 +29,52 @@ function Joined_() {
 
     return (
 
-        <>
-    
-            <Grid>
+        <div className="input-filters">
+                <strong> Registered :  </strong>
 
-                <Grid.Col span={3} style={{display:'inline-flex'}}>
-                    <strong style={{padding: '9px'}}> Registered :  </strong>
+                <Select className="multi"
+                    placeholder="In the past"
+                    defaultValue={'r_after'}
+                    onChange={(e)=>{handleChange(e.value)}}
+                    options={options}
+                />
 
-                    <Select
-                        placeholder="In the past"
-                        defaultValue={'r_after'}
-                        onChange={(e)=>{handleChange(e.value)}}
-                        options={options}
-                    />
+                { r_after && 
+                    <>
+                    <input type="number" name="ritp" defaultValue="0" />  
+                    <RadioGroup>
+                        <label>  Day <Radio   type="radio" name="ritpunit" value="ritpday"/> </label>  
+                        <label>  Month <Radio type="radio" name="ritpunit" value="ritpmonth"/> </label>  
+                        <label>  Year <Radio  type="radio" name="ritpunit" value="ritpyear"/> </label>  
+                    </RadioGroup>
+                    </>
+                }
 
-                </Grid.Col>
+                { r_between && 
+                    <>
+                        <input type="number"  id="rdf" name="rbf"/> To  
+                        <input type="number"  id="rdt" name="rbt" style={{marginLeft: '1rem'}}/> 
+                        <RadioGroup>
+                            <label>Day<Radio   type="radio" name="rbunit" value="rbday"/>  </label> 
+                            <label>Month<Radio type="radio" name="rbunit" value="rbmonth"/>  </label>  
+                            <label>Year<Radio  type="radio" name="rbunit" value="rbyear"/>  </label>  
+                        </RadioGroup>
+                        <strong>Ago</strong> 
+                    </>
+                }
 
-                <Grid.Col span={8} >
-
-                    { r_after && 
-                        <>
-                            <input type="number" name="ritp" style={{marginTop:'7px'}} defaultValue="0" />  
-
-                            <label>  Day <input   type="radio" name="ritpunit" value="ritpday"/> </label>  
-                            <label>  Month <input type="radio" name="ritpunit" value="ritpmonth"/> </label>  
-                            <label>  Year <input  type="radio" name="ritpunit" value="ritpyear"/> </label>  
-                        </>
-                    }
-
-
-                    { r_between && 
-                        <>
-                            <input type="number" style={{marginTop:'7px',display:'inline-flex'}}  id="rdf" name="rbf"/> To 
-                            <input type="number"  id="rdt" name="rbt"/> 
-
-                            <label>Day<input   type="radio" name="rbunit" value="rbday"/>  </label> 
-                            <label>Month<input type="radio" name="rbunit" value="rbmonth"/>  </label>  
-                            <label>Year<input  type="radio" name="rbunit" value="rbyear"/>  </label>  
-                            
-                            <strong>Ago</strong> 
-                        </>
-                    }
-
-                    { r_before &&
-                        <>
-                            <input type="number"  name="ro" style={{marginTop:'7px'}} defaultValue="0" /> 
-
-                            <label>  day <input  type="radio" name="rounit" value="roday"/>  </label>  
-                            <label> month <input type="radio" name="rounit" value="romonth"/> </label>  
-                            <label> year <input  type="radio" name="rounit" value="royear"/> </label>  
-                            <strong>Ago</strong> 
-                        </>
-                    }
-
-                </Grid.Col>
-
-            </Grid>
-
-        </>
+                { r_before &&
+                    <>
+                        <input type="number"  name="ro" defaultValue="0" /> 
+                        <RadioGroup>
+                            <label>  day <Radio  type="radio" name="rounit" value="roday"/>  </label>  
+                            <label> month <Radio type="radio" name="rounit" value="romonth"/> </label>  
+                            <label> year <Radio  type="radio" name="rounit" value="royear"/> </label>  
+                        </RadioGroup>
+                        <strong>Ago</strong> 
+                    </>
+                }
+            </div>
     )
 }
 

@@ -28,28 +28,28 @@ function Spends() {
     return (
         <div className="input-filters">
             <strong> Spent :  </strong>
-                <Select className="multi"
-                    placeholder="Less than"
-                    defaultValue={'spend_bellow'}
-                    onChange={(e)=>{handleChange(e.value)}}
-                    options={options}
-                />
-                
-                { spend_bellow && 
-                    <input defaultValue="0" type="number" id="4" name="order_amount_max"  /> 
-                }
+            <Select className="multi"
+                placeholder="Less than"
+                defaultValue={'spend_bellow'}
+                onChange={(e)=>{handleChange(e.value)}}
+                options={options}
+            />
             
-    
-                { spend_above && 
-                    <input defaultValue="0" type="number" id="3" name="order_amount_min"  /> 
-                }
+            { spend_bellow && 
+                <input defaultValue="0" type="number" id="4" name="order_amount_max"  /> 
+            }
+        
 
-                { spend_between && 
-                    <div id="spend_betwn"  style={{display:'inline-flex'}}>
-                        <input defaultValue="0" type="number" id="1" name="order_amount_minval"  />   
-                        <input defaultValue="0" type="number" id="2" name="order_amount_maxval"  /> 
-                    </div>
-                }
+            { spend_above && 
+                <input defaultValue="0" type="number" id="3" name="order_amount_min"  /> 
+            }
+
+            { spend_between && 
+                <div id="spend_betwn"  style={{display:'inline-flex'}}>
+                    <input defaultValue="0" type="number" id="1" name="order_amount_minval"  />   
+                    <input defaultValue="0" type="number" id="2" name="order_amount_maxval"  /> 
+                </div>
+            }
         </div>
     )
 }

@@ -30,54 +30,32 @@ function Coupon_Use_() {
 
     return (
 
-        <>
-
+        <div className="input-filters">
+            <strong>Coupon Used :  </strong>
+            <Select className="multi"
+                placeholder="Less than"
+                defaultValue={'coupon_bellow'}
+                onChange={(e)=>{handleChange(e.value)}}
+                options={options}
+            />
             
+            { coupon_bellow && 
 
-            <Grid> 
+                <input defaultValue="0" type="number" id="coupon_b" name="coupon_max"  /> 
+            }
 
-                <Grid.Col span={3} style={{display:'inline-flex'}}>
-                    <strong style={{padding: '9px'}}> Coupon Used :  </strong>
-                    <Select
-                        placeholder="Less than"
-                        defaultValue={'coupon_bellow'}
-                        onChange={(e)=>{handleChange(e.value)}}
-                        options={options}
-                    />
-                </Grid.Col>
+            { coupon_above && 
 
-                <Grid.Col span={8} >
-                    
-                    { coupon_bellow && 
+                <input defaultValue="0" type="number" id="coupon_a" name="coupon_min"  /> 
+            }
 
-                        <input style={{marginTop:'7px'}} defaultValue="0" type="number" id="coupon_b" name="coupon_max"  /> 
-                    }
-                
-        
-                    { coupon_above && 
-
-                        <input style={{marginTop:'7px'}} defaultValue="0" type="number" id="coupon_a" name="coupon_min"  /> 
-                    }
-
-                    { coupon_between && 
-
-                        <>
-                            <div id="coupon_betwn" style={{display:'inline-flex'}}>
-                                <input style={{marginTop:'7px'}} defaultValue="0" type="number" id="coupon_min" name="coupon_minval"  />    
-                                <input style={{marginTop:'7px'}} defaultValue="0" type="number" id="coupon_max" name="coupon_maxval"  /> 
-                            </div>
-                        </>
-                    }
-
-                </Grid.Col>
-
-                
-
-            </Grid>
-            
-            
-
-        </>
+            { coupon_between && 
+                <div id="coupon_betwn" style={{display:'inline-flex'}}>
+                    <input defaultValue="0" type="number" id="coupon_min" name="coupon_minval"  />    
+                    <input defaultValue="0" type="number" id="coupon_max" name="coupon_maxval"  /> 
+                </div>
+            }
+        </div>
     )
 }
 

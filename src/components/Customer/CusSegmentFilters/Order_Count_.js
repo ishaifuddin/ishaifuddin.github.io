@@ -43,11 +43,10 @@ function Order_Count_() {
                 <input defaultValue="0" type="number" id="7" name="minimum_num_order" />  
             }
             { order_between && 
-                <div>
+                <>
                     <input defaultValue="0" type="number" id="5" name="order_num_minval"  />    
-                        
                     <input defaultValue="0" type="number" id="6" name="order_num_maxval"  />       
-                </div>
+                </>
             }
         </div>
     )
