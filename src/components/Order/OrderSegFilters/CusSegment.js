@@ -33,7 +33,7 @@ function CusSegment() {
  
 
     let ops = [];
-    if(Seglist.length > 0){
+    if(Seglist && Seglist.length > 0){
         for (var i of Seglist) {
             var lbl = i.name; var vlu = i.id;
             ops.push({value:vlu,label:lbl});
@@ -42,23 +42,16 @@ function CusSegment() {
     var [seg, setSeg] = useState('');
     
     return (
-
-        <Grid>
-
-            <Grid.Col span={8} style={{display:'inline-flex'}}>
-                <strong style={{marginTop: '9px'}}> Customer Segment :  </strong>
-
-                {ops && <Select
-                    placeholder="Select segment"
-                    defaultValue={''}
-                    onChange={(e)=>{setSeg(e.value)}}
-                    options={ops}
-                />}
-            </Grid.Col>
-
-            <input name="seg" style={{display:"none"}} defaultValue={seg}/>
-
-        </Grid>
+        <div className="input-filters">
+            <strong> Customer Segment :  </strong>
+            {ops && <Select className='multi'
+                placeholder="Select segment"
+                defaultValue={''}
+                onChange={(e)=>{setSeg(e.value)}}
+                options={ops}
+            />}
+            <input name="seg" defaultValue={seg}/>
+        </div>
 
   )
 

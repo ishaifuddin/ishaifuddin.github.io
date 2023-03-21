@@ -35,23 +35,17 @@ function ShipPostCode() {
     }
 
     return (
-
-        <Grid>
-            
-            <Grid.Col span={8} style={{}}>
-                {shippostcode_ && <Multiselect isObject={false} 
-                    placeholder="Shipping PostCode"
-                    onRemove={(e) => {setshippostcode(JSON.stringify(e));}}
-                    onSelect={(e) => {setshippostcode(JSON.stringify(e));}}
-                    options={shippostcode_}
-                    selectedValues={[]}
-                    showCheckbox/>}
-
-            </Grid.Col>
-
+        <div className="input-filters">
+            <strong> shiping post code : </strong>
+            {shippostcode_ && <Multiselect className='multi' isObject={false} 
+                placeholder="Shipping PostCode"
+                onRemove={(e) => {setshippostcode(JSON.stringify(e));}}
+                onSelect={(e) => {setshippostcode(JSON.stringify(e));}}
+                options={shippostcode_}
+                selectedValues={[]}
+                showCheckbox/>}
             <Input name="spc" type={'hidden'} value={shippostcode}/>
-            
-        </Grid>
+        </div>
     )
 }
 export default ShipPostCode

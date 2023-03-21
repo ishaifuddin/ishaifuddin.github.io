@@ -33,7 +33,7 @@ function Shipal1() {
     return (
 
         
-        <Grid style={{marginTop:'20px'}}>
+        <Grid >
 
             <Grid.Col span={8} style={{}}>
                 { Cus_Sa1 && <Multiselect isObject={false} 

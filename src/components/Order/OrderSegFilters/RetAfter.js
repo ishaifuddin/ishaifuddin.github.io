@@ -30,48 +30,27 @@ function RetAfter() {
 
 
     return (
-
-        
-        <Grid style={{marginTop: '9px'}}>
-
-            <Grid.Col span={3} style={{display:'inline-flex'}}>
-
-                <strong style={{marginTop: '9px'}}> Returned After   </strong>
-
-                <Select
-                    placeholder="Less than"
-                    defaultValue={'RetAfter_bellow'}
-                    onChange={(e)=>{handleChange(e.value)}}
-                    options={options}
-                />
-            </Grid.Col>
-
-            <Grid.Col span={8} >
-                
-                { RetAfter_bellow && 
-                    <input style={{marginTop:'7px'}} defaultValue="0" type="number"  name="ret_after_max"  /> 
-                }
-            
-    
-                { RetAfter_above && 
-                    <input style={{marginTop:'7px'}} defaultValue="0" type="number"  name="ret_after_min"  /> 
-                }
-
-                { RetAfter_between && 
-
-                    <>
-                        <div id="RetAfter_betwn"  style={{display:'inline-flex'}}>
-                            <input style={{marginTop:'7px'}} defaultValue="0" type="number"  name="ret_after_minval"  />   
-                            <input style={{marginTop:'7px'}} defaultValue="0" type="number"  name="ret_after_maxval"  /> 
-                        </div>
-                    </>
-                }
-
-            </Grid.Col>
-
-        </Grid>
-            
-        
+        <div className="input-filters">
+            <strong> Returned After   </strong>
+            <Select className="multi"
+                placeholder="Less than"
+                defaultValue={'RetAfter_bellow'}
+                onChange={(e)=>{handleChange(e.value)}}
+                options={options}
+            />
+            { RetAfter_bellow && 
+                <input defaultValue="0" type="number"  name="ret_after_max"  /> 
+            }
+            { RetAfter_above && 
+                <input defaultValue="0" type="number"  name="ret_after_min"  /> 
+            }
+            { RetAfter_between &&  
+                <div id="RetAfter_betwn">
+                    <input defaultValue="0" type="number"  name="ret_after_minval"  />   
+                    <input defaultValue="0" type="number"  name="ret_after_maxval"  /> 
+                </div>
+            }
+        </div>
     )
 }
 

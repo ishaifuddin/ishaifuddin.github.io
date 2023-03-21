@@ -30,47 +30,30 @@ function ProductUnit() {
 
 
     return (
+        <div className="input-filters">
+            <strong > Product Unit :  </strong>
+            <Select className="multi"
+                placeholder="Less than"
+                defaultValue={'ProductUnit_bellow'}
+                onChange={(e)=>{handleChange(e.value)}}
+                options={options}
+            />
+            { ProductUnit_bellow && 
+                <input defaultValue="0" type="number" id="4" name="order_unit_max"  /> 
+            }
+            { ProductUnit_above && 
+                <input defaultValue="0" type="number" id="3" name="order_unit_min"  /> 
+            }
+            { ProductUnit_between && 
 
-        <>
-            <Grid>
-
-                <Grid.Col span={3} style={{display:'inline-flex'}}>
-                    <strong style={{marginTop: '9px'}}> Product Unit   </strong>
-
-                    <Select
-                        placeholder="Less than"
-                        defaultValue={'ProductUnit_bellow'}
-                        onChange={(e)=>{handleChange(e.value)}}
-                        options={options}
-                    />
-                </Grid.Col>
-
-                <Grid.Col span={8} >
-                    
-                    { ProductUnit_bellow && 
-                        <input style={{marginTop:'7px'}} defaultValue="0" type="number" id="4" name="order_unit_max"  /> 
-                    }
-                
-        
-                    { ProductUnit_above && 
-                        <input style={{marginTop:'7px'}} defaultValue="0" type="number" id="3" name="order_unit_min"  /> 
-                    }
-
-                    { ProductUnit_between && 
-
-                        <>
-                            <div id="ProductUnit_betwn"  style={{display:'inline-flex'}}>
-                                <input style={{marginTop:'7px'}} defaultValue="0" type="number" id="1" name="order_unit_minval"  />   
-                                <input style={{marginTop:'7px'}} defaultValue="0" type="number" id="2" name="order_unit_maxval"  /> 
-                            </div>
-                        </>
-                    }
-
-                </Grid.Col>
-
-            </Grid>
-            
-        </>
+                <>
+                    <div id="ProductUnit_betwn" >
+                        <input defaultValue="0" type="number" id="1" name="order_unit_minval"  />   
+                        <input defaultValue="0" type="number" id="2" name="order_unit_maxval"  /> 
+                    </div>
+                </>
+            }
+        </div>
     )
 }
 

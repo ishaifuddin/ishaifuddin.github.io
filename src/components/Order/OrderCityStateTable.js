@@ -17,6 +17,7 @@ import Remove from '@material-ui/icons/Remove'
 import MaterialTable from 'material-table';
 import { ThemeProvider, createTheme } from '@mui/material';
 import { useSelector } from "react-redux";
+import { Card } from 'react-bootstrap';
 
 
 function OrderCityStateTable() {
@@ -134,13 +135,10 @@ function OrderCityStateTable() {
     ];
 
     return (
-        
-        <Grid container>
-
-            <Grid  item sm={11} style={{ marginTop:'20px', boxShadow: "rgb(65 69 88 / 10%) 0px 7px 14px 0px, rgb(0 0 0 / 7%) 0px 3px 6px 0px" }}>
-                
+        <>
+            <Grid  item md={12}>
+                <Card className='dash-card'>
                 {billcitycloneData &&
-
                     <ThemeProvider theme={defaultMaterialTheme}>
                         <MaterialTable style={{borderRadius:'14px'}}
                             columns={city_columns}
@@ -161,6 +159,7 @@ function OrderCityStateTable() {
                             }}
                             options={
                                 {
+                                    showFirstLastPageButtons: false,
                                     pageSize: 10,       // make initial page size
                                     emptyRowsWhenPaging: false,   // To avoid of having empty rows
                                     pageSizeOptions: [10, 15, 25, 40, 50],
@@ -174,18 +173,7 @@ function OrderCityStateTable() {
                                         fontFamily: 'Circular-Loom',
                                         textAlign: 'center',
                                         borderBottom: '2px solid rgb(246, 224, 224)'
-                                    },
-                                    headerStyle: {
-                                        background: 'mediumseagreen',
-                                        fontSize: '17px',
-                                        color: 'white',
-                                        padding: '2px',
-                                        height: '40px'
-                                    },
-                                    // rowStyle: {
-                                    //     backgroundColor: '#EEE',
-                                    // }
-                                    //rowStyle: (data, index) => index % 2 === 0 ? { background: "ghostwhite" } : {background:'white'},
+                                    }
 
                                 }
                             }
@@ -196,13 +184,12 @@ function OrderCityStateTable() {
                                 }
                             }}
                         />
-                    </ThemeProvider>
-                }
+                    </ThemeProvider>}
+                    </Card>
             </Grid>
 
-
-            <Grid item sm={11} style={{ marginTop:'20px', boxShadow: "rgb(65 69 88 / 10%) 0px 7px 14px 0px, rgb(0 0 0 / 7%) 0px 3px 6px 0px" }}>
-
+            <Grid  item md={12}>
+                <Card className='dash-card'>
                 {billstatecloneData &&
                     <ThemeProvider theme={defaultMaterialTheme}>
                         <MaterialTable style={{borderRadius:'14px'}}
@@ -224,6 +211,7 @@ function OrderCityStateTable() {
                             }}
                             options={
                                 {
+                                    showFirstLastPageButtons: false,
                                     pageSize: 10,       // make initial page size
                                     emptyRowsWhenPaging: false,   // To avoid of having empty rows
                                     pageSizeOptions: [10, 15, 25, 40, 50],
@@ -237,19 +225,7 @@ function OrderCityStateTable() {
                                         fontFamily: 'Circular-Loom',
                                         textAlign: 'center',
                                         borderBottom: '2px solid rgb(246, 224, 224)'
-                                    },
-                                    headerStyle: {
-                                        background: 'mediumseagreen',
-                                        fontSize: '17px',
-                                        color: 'white',
-                                        padding: '2px',
-                                        height: '40px'
-                                    },
-                                    // rowStyle: {
-                                    //     backgroundColor: '#EEE',
-                                    // }
-                                    //rowStyle: (data, index) => index % 2 === 0 ? { background: "ghostwhite" } : {background:'white'},
-
+                                    }
                                 }
                             }
                             localization={{
@@ -259,13 +235,12 @@ function OrderCityStateTable() {
                                 }
                             }}
                         />
-                    </ThemeProvider>
-                }
+                    </ThemeProvider>}
+                </Card>
             </Grid>
 
-
-            <Grid  item sm={11} style={{ marginTop:'20px', boxShadow: "rgb(65 69 88 / 10%) 0px 7px 14px 0px, rgb(0 0 0 / 7%) 0px 3px 6px 0px" }}>
-
+            <Grid  item md={12}>
+                <Card className='dash-card'>
                 {shipcitycloneData &&
                     <ThemeProvider theme={defaultMaterialTheme}>
                         <MaterialTable style={{borderRadius:'14px'}}
@@ -287,6 +262,7 @@ function OrderCityStateTable() {
                             }}
                             options={
                                 {
+                                    showFirstLastPageButtons: false,
                                     pageSize: 10,       // make initial page size
                                     emptyRowsWhenPaging: false,   // To avoid of having empty rows
                                     pageSizeOptions: [10, 15, 25, 40, 50],
@@ -300,19 +276,7 @@ function OrderCityStateTable() {
                                         fontFamily: 'Circular-Loom',
                                         textAlign: 'center',
                                         borderBottom: '2px solid rgb(246, 224, 224)'
-                                    },
-                                    headerStyle: {
-                                        background: 'mediumseagreen',
-                                        fontSize: '17px',
-                                        color: 'white',
-                                        padding: '2px',
-                                        height: '40px'
-                                    },
-                                    // rowStyle: {
-                                    //     backgroundColor: '#EEE',
-                                    // }
-                                    //rowStyle: (data, index) => index % 2 === 0 ? { background: "ghostwhite" } : {background:'white'},
-
+                                    }
                                 }
                             }
                             localization={{
@@ -322,13 +286,12 @@ function OrderCityStateTable() {
                                 }
                             }}
                         />
-                    </ThemeProvider>
-                }
+                    </ThemeProvider>}
+                </Card>
             </Grid>
 
-
-            <Grid item sm={11} style={{ marginTop:'20px', boxShadow: "rgb(65 69 88 / 10%) 0px 7px 14px 0px, rgb(0 0 0 / 7%) 0px 3px 6px 0px" }}>
-                
+            <Grid  item md={12}>
+                <Card className='dash-card'>
                 {shipstatecloneData &&
                     <ThemeProvider theme={defaultMaterialTheme}>
                         <MaterialTable style={{borderRadius:'14px'}}
@@ -350,6 +313,7 @@ function OrderCityStateTable() {
                             }}
                             options={
                                 {
+                                    showFirstLastPageButtons: false,
                                     pageSize: 10,       // make initial page size
                                     emptyRowsWhenPaging: false,   // To avoid of having empty rows
                                     pageSizeOptions: [10, 15, 25, 40, 50],
@@ -363,19 +327,7 @@ function OrderCityStateTable() {
                                         fontFamily: 'Circular-Loom',
                                         textAlign: 'center',
                                         borderBottom: '2px solid rgb(246, 224, 224)'
-                                    },
-                                    headerStyle: {
-                                        background: 'mediumseagreen',
-                                        fontSize: '17px',
-                                        color: 'white',
-                                        padding: '2px',
-                                        height: '40px'
-                                    },
-                                    // rowStyle: {
-                                    //     backgroundColor: '#EEE',
-                                    // }
-                                    //rowStyle: (data, index) => index % 2 === 0 ? { background: "ghostwhite" } : {background:'white'},
-
+                                    }
                                 }
                             }
                             localization={{
@@ -385,12 +337,10 @@ function OrderCityStateTable() {
                                 }
                             }}
                         />
-                    </ThemeProvider>
-                }
-
+                    </ThemeProvider>}
+                </Card>
             </Grid>
-
-        </Grid>
+        </>
     )
 }
 

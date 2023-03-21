@@ -30,47 +30,31 @@ function ShipCost() {
 
 
     return (
-
-        <>
-            <Grid style={{marginTop: '9px'}}>
-
-                <Grid.Col span={3} style={{display:'inline-flex'}}>
-                    <strong style={{marginTop: '9px'}}> Shipping-Cost   </strong>
-
-                    <Select
-                        placeholder="Less than"
-                        defaultValue={'ShipCost_bellow'}
-                        onChange={(e)=>{handleChange(e.value)}}
-                        options={options}
-                    />
-                </Grid.Col>
-
-                <Grid.Col span={8} >
-                    
-                    { ShipCost_bellow && 
-                        <input style={{marginTop:'7px'}} defaultValue="0" type="number" id="4" name="order_shipcost_max"  /> 
-                    }
-                
-        
-                    { ShipCost_above && 
-                        <input style={{marginTop:'7px'}} defaultValue="0" type="number" id="3" name="order_shipcost_min"  /> 
-                    }
-
-                    { ShipCost_between && 
-
-                        <>
-                            <div id="ShipCost_betwn"  style={{display:'inline-flex'}}>
-                                <input style={{marginTop:'7px'}} defaultValue="0" type="number" id="1" name="order_shipcost_minval"  />   
-                                <input style={{marginTop:'7px'}} defaultValue="0" type="number" id="2" name="order_shipcost_maxval"  /> 
-                            </div>
-                        </>
-                    }
-
-                </Grid.Col>
-
-            </Grid>
+        <div className="input-filters">
+            <strong> Shipping-Cost :  </strong>
+            <Select className="multi"
+                placeholder="Less than"
+                defaultValue={'ShipCost_bellow'}
+                onChange={(e)=>{handleChange(e.value)}}
+                options={options}
+            />
             
-        </>
+            { ShipCost_bellow && 
+                <input defaultValue="0" type="number" id="4" name="order_shipcost_max"  /> 
+            }
+        
+
+            { ShipCost_above && 
+                <input defaultValue="0" type="number" id="3" name="order_shipcost_min"  /> 
+            }
+
+            { ShipCost_between && 
+                <div id="ShipCost_betwn">
+                    <input defaultValue="0" type="number" id="1" name="order_shipcost_minval"  />   
+                    <input defaultValue="0" type="number" id="2" name="order_shipcost_maxval"  /> 
+                </div>
+            }
+        </div>
     )
 }
 

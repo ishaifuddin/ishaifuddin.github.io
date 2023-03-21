@@ -49,6 +49,7 @@ aside {
         a {
             @extend .nav-list;
             text-decoration: none;
+            display: block;
         }
 
         .MuiListItemButton-root {
@@ -82,7 +83,7 @@ aside {
 
             &:hover {
                 background-color: transparent;
-                color: red;
+                color: #5e72e4;
             }
         }
         .MuiListItemIcon-root {
@@ -193,6 +194,7 @@ aside {
                 font-weight: 600;
                 border-color: #f1f1f1;
                 font-family: 'Montserrat', sans-serif;
+                z-index: 1;
             }
             td {
                 font-weight: 500;

@@ -22,13 +22,10 @@ function OrderFromC() {
     //console.log(dr1);
 
     return (
-    
-        <div>
-
-            <strong> Order From Specific Date-Range </strong>
-            
+        <div className="input-filters">
+            <strong>Order From Specific Date-Range : </strong>
+            <div className="date-period">
             <DateRangePicker 
-        
                 //placement='rightEnd'
                 label="Timeline" 
                 value={dr} 
@@ -66,11 +63,9 @@ function OrderFromC() {
                     label: 'Year To date',
                     value: [startOfYear(new Date()), new Date()]
                 }]}>
-                
             </DateRangePicker>
-
+            </div>
             <Input name="order_table_dr" type={'hidden'} value={ format(dr[0],'yyyy-MM-dd')+'To'+format(dr[1],'yyyy-MM-dd')}/>
-
         </div>
     )
 }

@@ -4,9 +4,9 @@ function OrderID() {
 
     return (
         
-        <div>
-            <strong> Order-ID </strong>
-            <input style={{marginTop:'7px',width:'250px',height:'30px',fontSize:'16px'}} defaultValue="" type="text" name="o_id"  /> 
+        <div className="input-filters">
+            <strong> Order-ID :</strong>
+            <input className='multi' defaultValue="" type="text" name="o_id"  /> 
         </div>
     )
 }

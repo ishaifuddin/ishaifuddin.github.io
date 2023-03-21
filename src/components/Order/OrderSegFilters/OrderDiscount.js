@@ -30,47 +30,27 @@ function OrderDiscount() {
 
 
     return (
-
-        <>
-            <Grid>
-
-                <Grid.Col span={3} style={{display:'inline-flex'}}>
-                    <strong style={{marginTop: '9px'}}> Order-Discount :  </strong>
-
-                    {options && <Select
-                        placeholder="Less than"
-                        defaultValue={'OrderDiscount_bellow'}
-                        onChange={(e)=>{handleChange(e.value)}}
-                        options={options}
-                    />}
-                </Grid.Col>
-
-                <Grid.Col span={8} >
-                    
-                    { OrderDiscount_bellow && 
-                        <input style={{marginTop:'7px'}} defaultValue="0" type="number" id="4" name="order_dis_max"  /> 
-                    }
-                
-        
-                    { OrderDiscount_above && 
-                        <input style={{marginTop:'7px'}} defaultValue="0" type="number" id="3" name="order_dis_min"  /> 
-                    }
-
-                    { OrderDiscount_between && 
-
-                        <>
-                            <div id="OrderDiscount_betwn"  style={{display:'inline-flex'}}>
-                                <input style={{marginTop:'7px'}} defaultValue="0" type="number" id="1" name="order_dis_minval"  />   
-                                <input style={{marginTop:'7px'}} defaultValue="0" type="number" id="2" name="order_dis_maxval"  /> 
-                            </div>
-                        </>
-                    }
-
-                </Grid.Col>
-
-            </Grid>
-            
-        </>
+        <div className="input-filters">
+            <strong> Order-Discount :  </strong>
+            {options && <Select className="multi"
+                placeholder="Less than"
+                defaultValue={'OrderDiscount_bellow'}
+                onChange={(e)=>{handleChange(e.value)}}
+                options={options}
+            />}
+            { OrderDiscount_bellow && 
+                <input defaultValue="0" type="number" id="4" name="order_dis_max"  /> 
+            }
+            { OrderDiscount_above && 
+                <input defaultValue="0" type="number" id="3" name="order_dis_min"  /> 
+            }
+            { OrderDiscount_between && 
+                <div id="OrderDiscount_betwn">
+                    <input defaultValue="0" type="number" id="1" name="order_dis_minval"  />   
+                    <input defaultValue="0" type="number" id="2" name="order_dis_maxval"  /> 
+                </div>
+            }
+        </div>
     )
 }
 

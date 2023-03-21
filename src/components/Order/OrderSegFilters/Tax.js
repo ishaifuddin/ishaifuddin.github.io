@@ -30,49 +30,27 @@ function Tax() {
 
 
     return (
-
-        <>
-            <Grid style={{marginTop: '19px'}}>
-               
-                <strong style={{marginTop: '15px',marginLeft:'10px'}}> Tax </strong>
-               
-                <Grid.Col span={3} style={{display:'inline-flex'}}>
-                    
-
-                    <Select
-                        placeholder="Less than"
-                        defaultValue={'Tax_bellow'}
-                        onChange={(e)=>{handleChange(e.value)}}
-                        options={options}
-                    />
-                </Grid.Col>
-
-                <Grid.Col span={8} >
-                    
-                    { Tax_bellow && 
-                        <input style={{marginTop:'7px'}} defaultValue="0" type="number" id="4" name="order_tot_tax_min_max"  /> 
-                    }
-                
-        
-                    { Tax_above && 
-                        <input style={{marginTop:'7px'}} defaultValue="0" type="number" id="3" name="order_tot_tax_min"  /> 
-                    }
-
-                    { Tax_between && 
-
-                        <>
-                            <div id="Tax_betwn"  style={{display:'inline-flex'}}>
-                                <input style={{marginTop:'7px'}} defaultValue="0" type="number" id="1" name="order_tot_tax_minval"  />   
-                                <input style={{marginTop:'7px'}} defaultValue="0" type="number" id="2" name="order_tax_tot_maxval"  /> 
-                            </div>
-                        </>
-                    }
-
-                </Grid.Col>
-
-            </Grid>
-            
-        </>
+        <div className="input-filters">
+            <strong> Tax : </strong>
+            <Select className="multi"
+                placeholder="Less than"
+                defaultValue={'Tax_bellow'}
+                onChange={(e)=>{handleChange(e.value)}}
+                options={options}
+            />
+            { Tax_bellow && 
+                <input style={{marginTop:'7px'}} defaultValue="0" type="number" id="4" name="order_tot_tax_min_max"  /> 
+            }
+            { Tax_above && 
+                <input style={{marginTop:'7px'}} defaultValue="0" type="number" id="3" name="order_tot_tax_min"  /> 
+            }
+            { Tax_between && 
+                <div id="Tax_betwn"  style={{display:'inline-flex'}}>
+                    <input style={{marginTop:'7px'}} defaultValue="0" type="number" id="1" name="order_tot_tax_minval"  />   
+                    <input style={{marginTop:'7px'}} defaultValue="0" type="number" id="2" name="order_tax_tot_maxval"  /> 
+                </div>
+            }
+        </div>
     )
 }
 

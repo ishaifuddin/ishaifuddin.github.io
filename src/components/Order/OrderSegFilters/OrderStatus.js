@@ -7,27 +7,17 @@ function OrderStatus() {
     var osop = ['processing','cancelled','pending','completed','failed'];
     
     return (
-
-        <Grid style={{marginTop:'7px'}}>
-            
-            <Grid.Col span={2} style={{marginTop:'7px'}}>
-                <strong> Order Status </strong>
-            </Grid.Col>
-
-            <Grid.Col span={8} style={{}}>
-                <Multiselect isObject={false} 
-                    placeholder="Select Status"
-                    onRemove={(e) => {setOs(JSON.stringify(e));}}
-                    onSelect={(e) => {setOs(JSON.stringify(e));}}
-                    options={osop}
-                    selectedValues={[]}
-                    showCheckbox/>
-
-            </Grid.Col>
-
+        <div className="input-filters">
+            <strong> Order Status :</strong>
+            <Multiselect isObject={false}  style={{}}
+                placeholder="Select Status"
+                onRemove={(e) => {setOs(JSON.stringify(e));}}
+                onSelect={(e) => {setOs(JSON.stringify(e));}}
+                options={osop}
+                selectedValues={[]}
+                showCheckbox/>
             <Input name="o_status_list" type={'hidden'} value={os}/>
-
-        </Grid>
+        </div>
     )
 }
 export default OrderStatus

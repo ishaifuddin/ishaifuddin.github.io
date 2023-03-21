@@ -31,27 +31,17 @@ function OrderSrc() {
     var Cus_src = useSelector((state) => state.CusRetSC.src);
 
     return (
-
-        <Grid>
-            
-            <Grid.Col span={2} style={{marginTop:'7px'}}>
-                <strong> Order Source</strong>
-            </Grid.Col>
-
-            <Grid.Col span={8} style={{}}>
-                {Cus_src && <Multiselect isObject={false} 
-                    placeholder="Order source"
-                    onRemove={(e) => {setsrc(JSON.stringify(e));}}
-                    onSelect={(e) => {setsrc(JSON.stringify(e));}}
-                    options={Cus_src}
-                    selectedValues={[]}
-                    showCheckbox/>}
-
-            </Grid.Col>
-
+        <div className="input-filters">
+            <strong>Order Source :</strong>
+            {Cus_src && <Multiselect className='multi' isObject={false} 
+                placeholder="Order source"
+                onRemove={(e) => {setsrc(JSON.stringify(e));}}
+                onSelect={(e) => {setsrc(JSON.stringify(e));}}
+                options={Cus_src}
+                selectedValues={[]}
+                showCheckbox/>}
             <input name="src" style={{display:"none"}} defaultValue={src}/>
-            
-        </Grid>
+        </div>
     )
 }
 export default OrderSrc

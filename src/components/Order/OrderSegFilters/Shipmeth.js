@@ -33,7 +33,7 @@ function Shipmeth() {
 
     return (
 
-        <Grid style={{marginTop:'20px'}}>
+        <Grid>
 
            
             <Grid.Col span={8} style={{}}>

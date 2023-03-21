@@ -46,6 +46,8 @@ import {
     Legend,
 } from 'chart.js';
 import { Line } from 'react-chartjs-2';
+import { Card } from 'react-bootstrap';
+import { IconH6 } from '@tabler/icons';
 ChartJS.register(
     CategoryScale,
     LinearScale,
@@ -480,728 +482,562 @@ function OrderReport() {
     };
 
 
-    var chartStyle = { "background": "white", "boxShadow": "rgba(65, 69, 88, 0.1) 0px 7px 14px 0px, rgba(0, 0, 0, 0.07) 0px 3px 6px 0px", "padding": "0px", "borderRadius": "10px" }
+
 
 
     return (
-
-        <>
-
-            <Grid container style={{ background: 'ghostwhite' }}>
-
-                <Grid container style={{ background: 'mediumseagreen', position: 'fixed', color: 'white', top: 0, width: '100%', padding: '8px', paddingLeft: '2%', zIndex: 1, borderRadius: '5px' }}>
-                    <h4>Orders Report</h4>
-                </Grid>
-
-                <Grid container style={{ "padding": "20px", background: 'ghostwhite', zIndex: '0', marginTop: '3%' }}>
-
-                    <form onSubmit={dateSubmit} style={{ display: 'inline-flex' }}>
-
-                        <Grid item sm={10} style={{ display: 'inline-flex' }}>
-
-                            <DateRangePicker
-                                label="Timeline"
-                                value={dateRange}
-                                onChange={setDateRange}
-                                oneTap={false}
-                                ranges={[
-                                    { label: 'Yesterday', value: [addDays(new Date(), -1), addDays(new Date(), -1)] },
-                                    { label: 'Today', value: [new Date(), new Date()] },
-                                    { label: 'Tomorrow', value: [addDays(new Date(), 1), addDays(new Date(), 1)] },
-                                    { label: 'Last 7 days', value: [subDays(new Date(), 6), new Date()] },
-                                    { label: 'This month', value: [subDays(new Date(), getDate(new Date()) - 1), new Date()] },
-                                    { label: 'Last month', value: [startOfMonth(subDays(new Date(), getDate(new Date()))), endOfMonth(subDays(new Date(), getDate(new Date())))] },
-                                    { label: 'Year To date', value: [startOfYear(new Date()), new Date()] }]}>
-
-                            </DateRangePicker>
-
-                            <input name="from" type={'hidden'} value={format(dateRange[0], 'yyyy-MM-dd')} />
-                            <input name="to" type={'hidden'} value={format(dateRange[1], 'yyyy-MM-dd')} />
-
-
-                            <h4> VS </h4>
-
-                            <DateRangePicker
-                                label="Timeline"
-                                value={dateRange1}
-                                onChange={setDateRange1}
-                                oneTap={false}
-                                ranges={[
-                                    { label: 'Yesterday', value: [addDays(new Date(), -1), addDays(new Date(), -1)] },
-                                    { label: 'Today', value: [new Date(), new Date()] },
-                                    { label: 'Tomorrow', value: [addDays(new Date(), 1), addDays(new Date(), 1)] },
-                                    { label: 'Last 7 days', value: [subDays(new Date(), 6), new Date()] },
-                                    { label: 'This month', value: [subDays(new Date(), getDate(new Date()) - 1), new Date()] },
-                                    { label: 'Last month', value: [startOfMonth(subDays(new Date(), getDate(new Date()))), endOfMonth(subDays(new Date(), getDate(new Date())))] },
-                                    { label: 'Year To date', value: [startOfYear(new Date()), new Date()] }]}>
-                            </DateRangePicker>
-
-                            <input name="from1" type={'hidden'} value={format(dateRange1[0], 'yyyy-MM-dd')} />
-                            <input name="to1" type={'hidden'} value={format(dateRange1[1], 'yyyy-MM-dd')} />
-
-
-                        </Grid>
-
-                        <Grid item sm={10}>
-
-                            <RadioGroup style={{ display: 'inline-block' }} onChange={(e) => { setduration(e.target.value) }}>
-                                <Radio checked={duration === 'daily'} value="daily" name="duration" /> Day
-                                <Radio checked={duration === 'weekly'} value="weekly" name="duration" /> Week
-                                <Radio checked={duration === 'monthly'} value="monthly" name="duration" /> Month
-                            </RadioGroup>
-
-                            <input type="hidden" value="1" name="ajax_call" />
-
-                        </Grid>
-
-                        <Grid item sm={2}>
-                            <input type="submit" value="Submit" />
-                        </Grid>
-
-                    </form>
-
-                </Grid>
-
-
-                <Grid container style={{ zIndex: "0", marginBottom: '30px' }}>
-
-                    <Grid item sm={5} style={{marginRight:'8%'}}>
-                        
-                        <h4 style={{  padding: '10px', background: "mediumseagreen", color: "white", borderRadius: "4px" }}>Total Order</h4>
-                        
-                        <Grid style={{ display: 'inline-flex' }}>
-                        
-                            
-                            <Timeline style={{padding:'0px',width:'180px'}}>
-
-                                <TimelineItem style={{minHeight:'30px',width:'200px'}}>
-                                    <TimelineOppositeContent style={{display:'none'}}></TimelineOppositeContent>
-                                    <TimelineSeparator> <TimelineDot style={{background:'mediumseagreen',boxShadow:'none'}} /><TimelineConnector style={{background:'teal'}} /></TimelineSeparator>
-                                    <TimelineContent style={{padding:'10px 5px',fontSize:'10px'}} > Total                 :: {total_order_note && total_order_note[0].order} </TimelineContent>
-                                </TimelineItem>
-                                <TimelineItem style={{minHeight:'30px',width:'200px'}}>
-                                    <TimelineOppositeContent style={{display:'none'}}></TimelineOppositeContent>
-                                    <TimelineSeparator> <TimelineDot style={{background:'mediumseagreen',boxShadow:'none'}} /><TimelineConnector style={{background:'teal'}} /></TimelineSeparator>
-                                    <TimelineContent style={{padding:'10px 5px',fontSize:'10px'}} > Min                   :: {total_order_note && total_order_note[0].min_order} </TimelineContent>
-                                </TimelineItem>
-
-                                <TimelineItem style={{minHeight:'30px',width:'200px'}}>
-                                    <TimelineOppositeContent style={{display:'none'}}></TimelineOppositeContent>
-                                    <TimelineSeparator> <TimelineDot style={{background:'mediumseagreen',boxShadow:'none'}} /><TimelineConnector style={{background:'teal'}} /></TimelineSeparator>
-                                    <TimelineContent style={{padding:'10px 5px',fontSize:'10px'}} > Max                  :: {total_order_note && total_order_note[0].max_order} </TimelineContent>
-                                </TimelineItem>
-
-                                <TimelineItem style={{minHeight:'30px',width:'200px'}}>
-                                    <TimelineOppositeContent style={{display:'none'}}></TimelineOppositeContent>
-                                    <TimelineSeparator> <TimelineDot style={{background:'mediumseagreen',boxShadow:'none'}} /><TimelineConnector style={{background:'teal'}} /></TimelineSeparator>
-                                    <TimelineContent style={{padding:'10px 5px',fontSize:'10px'}} >Avg                  :: {total_order_note && total_order_note[0].avg_order} </TimelineContent>
-                                </TimelineItem>
-
-                                <TimelineItem style={{minHeight:'30px',width:'200px'}}>
-                                    <TimelineOppositeContent style={{display:'none'}}></TimelineOppositeContent>
-                                    <TimelineSeparator> <TimelineDot style={{background:'mediumseagreen',boxShadow:'none'}} /><TimelineConnector style={{background:'teal'}} /></TimelineSeparator>
-                                    <TimelineContent style={{padding:'10px 5px',fontSize:'10px'}} >Total Point          :: {total_order_note && total_order_note[0].total_point}</TimelineContent>
-                                </TimelineItem>
-                                <TimelineItem style={{minHeight:'30px',width:'200px'}}>
-                                    <TimelineOppositeContent style={{display:'none'}}></TimelineOppositeContent>
-                                    <TimelineSeparator> <TimelineDot style={{background:'mediumseagreen',boxShadow:'none'}} /><TimelineConnector style={{background:'teal'}} /></TimelineSeparator>
-                                    <TimelineContent style={{padding:'10px 5px',fontSize:'10px'}} >Point Bellow Avg     :: {total_order_note && total_order_note[0].bellow_avg} </TimelineContent>
-                                </TimelineItem>
-                                <TimelineItem style={{minHeight:'30px',width:'200px'}}>
-                                    <TimelineOppositeContent style={{display:'none'}}></TimelineOppositeContent>
-                                    <TimelineSeparator> <TimelineDot style={{background:'mediumseagreen',boxShadow:'none'}} /><TimelineConnector style={{background:'teal'}} /></TimelineSeparator>
-                                    <TimelineContent style={{padding:'10px 5px',fontSize:'10px'}} > Point Above Avg      :: {total_order_note && total_order_note[0].above_avg} </TimelineContent>
-                                </TimelineItem>
-                                <TimelineItem style={{minHeight:'30px',width:'200px'}}>
-                                    <TimelineOppositeContent style={{display:'none'}}></TimelineOppositeContent>
-                                    <TimelineSeparator> <TimelineDot style={{background:'mediumseagreen',boxShadow:'none'}} /><TimelineConnector style={{background:'teal'}} /></TimelineSeparator>
-                                    <TimelineContent style={{padding:'10px 5px',fontSize:'10px'}} >Change               :: {total_order_note && total_order_note[0].change} </TimelineContent>
-                                </TimelineItem>
-                                <TimelineItem style={{minHeight:'30px',width:'200px'}}>
-                                    <TimelineOppositeContent style={{display:'none'}}></TimelineOppositeContent>
-                                    <TimelineSeparator> <TimelineDot style={{background:'mediumseagreen',boxShadow:'none'}} /><TimelineConnector style={{background:'teal'}} /></TimelineSeparator>
-                                    <TimelineContent style={{padding:'10px 5px',fontSize:'10px'}} >Avg Change           :: {total_order_note && total_order_note[0].avg_change}</TimelineContent>
-                                </TimelineItem>
-
-
-                            </Timeline>
-
-
-                            <Grid style={{ ...chartStyle,  width: "520px" }}>
-                                {to_order && typeof to_order === "object" &&
-                                    <Line data={to_order} options={lineOptions} />
-                                }
-                            </Grid>
-
-                        </Grid>
-
-                    </Grid>
-
-
-                    <Grid item sm={5}>
-
-                        <h4 style={{  padding: '10px', background: "mediumseagreen", color: "white", borderRadius: "4px" }}>Total Revenue</h4>
-                        
-                        <Grid style={{ display: 'inline-flex' }}>
-
-                            <Timeline style={{padding:'0px',width:'180px'}}>
-
-                                <TimelineItem style={{ minHeight: '30px', width: '200px', }}>
-                                    <TimelineOppositeContent style={{ display: 'none' }}></TimelineOppositeContent>
-                                    <TimelineSeparator> <TimelineDot style={{ background: 'mediumseagreen', boxShadow: 'none' }} /><TimelineConnector style={{ background: 'teal' }} /></TimelineSeparator>
-                                    <TimelineContent style={{ padding: '10px 5px', fontSize: '10px' }} > Total                 :: {total_rev_note && total_rev_note[0].amount} </TimelineContent>
-                                </TimelineItem>
-                                <TimelineItem style={{ minHeight: '30px', width: '200px' }}>
-                                    <TimelineOppositeContent style={{ display: 'none' }}></TimelineOppositeContent>
-                                    <TimelineSeparator> <TimelineDot style={{ background: 'mediumseagreen', boxShadow: 'none' }} /><TimelineConnector style={{ background: 'teal' }} /></TimelineSeparator>
-                                    <TimelineContent style={{ padding: '10px 5px', fontSize: '10px' }} > Min                   :: {total_rev_note && total_rev_note[0].min_amount} </TimelineContent>
-                                </TimelineItem>
-
-                                <TimelineItem style={{ minHeight: '30px', width: '200px' }}>
-                                    <TimelineOppositeContent style={{ display: 'none' }}></TimelineOppositeContent>
-                                    <TimelineSeparator> <TimelineDot style={{ background: 'mediumseagreen', boxShadow: 'none' }} /><TimelineConnector style={{ background: 'teal' }} /></TimelineSeparator>
-                                    <TimelineContent style={{ padding: '10px 5px', fontSize: '10px' }} > Max                  :: {total_rev_note && total_rev_note[0].max_amount} </TimelineContent>
-                                </TimelineItem>
-
-                                <TimelineItem style={{ minHeight: '30px', width: '200px' }}>
-                                    <TimelineOppositeContent style={{ display: 'none' }}></TimelineOppositeContent>
-                                    <TimelineSeparator> <TimelineDot style={{ background: 'mediumseagreen', boxShadow: 'none' }} /><TimelineConnector style={{ background: 'teal' }} /></TimelineSeparator>
-                                    <TimelineContent style={{ padding: '10px 5px', fontSize: '10px' }} >Avg                  ::  {total_rev_note && total_rev_note[0].avg_amount} </TimelineContent>
-                                </TimelineItem>
-
-                                <TimelineItem style={{ minHeight: '30px', width: '200px' }}>
-                                    <TimelineOppositeContent style={{ display: 'none' }}></TimelineOppositeContent>
-                                    <TimelineSeparator> <TimelineDot style={{ background: 'mediumseagreen', boxShadow: 'none' }} /><TimelineConnector style={{ background: 'teal' }} /></TimelineSeparator>
-                                    <TimelineContent style={{ padding: '10px 5px', fontSize: '10px' }} >Total Point          ::  {total_rev_note && total_rev_note[0].total_point}</TimelineContent>
-                                </TimelineItem>
-                                <TimelineItem style={{ minHeight: '30px', width: '200px', }}>
-                                    <TimelineOppositeContent style={{ display: 'none' }}></TimelineOppositeContent>
-                                    <TimelineSeparator> <TimelineDot style={{ background: 'mediumseagreen', boxShadow: 'none' }} /><TimelineConnector style={{ background: 'teal' }} /></TimelineSeparator>
-                                    <TimelineContent style={{ padding: '10px 5px', fontSize: '10px' }} >Point Bellow Avg     :: {total_rev_note && total_rev_note[0].bellow_avg} </TimelineContent>
-                                </TimelineItem>
-                                <TimelineItem style={{ minHeight: '30px', width: '200px' }}>
-                                    <TimelineOppositeContent style={{ display: 'none' }}></TimelineOppositeContent>
-                                    <TimelineSeparator> <TimelineDot style={{ background: 'mediumseagreen', boxShadow: 'none' }} /><TimelineConnector style={{ background: 'teal' }} /></TimelineSeparator>
-                                    <TimelineContent style={{ padding: '10px 5px', fontSize: '10px' }} > Point Above Avg      :: {total_rev_note && total_rev_note[0].above_avg} </TimelineContent>
-                                </TimelineItem>
-                                <TimelineItem style={{ minHeight: '30px', width: '200px' }}>
-                                    <TimelineOppositeContent style={{ display: 'none' }}></TimelineOppositeContent>
-                                    <TimelineSeparator> <TimelineDot style={{ background: 'mediumseagreen', boxShadow: 'none' }} /><TimelineConnector style={{ background: 'teal' }} /></TimelineSeparator>
-                                    <TimelineContent style={{ padding: '10px 5px', fontSize: '10px' }} >Change               ::  {total_rev_note && total_rev_note[0].change} </TimelineContent>
-                                </TimelineItem>
-                                <TimelineItem style={{ minHeight: '30px', width: '200px' }}>
-                                    <TimelineOppositeContent style={{ display: 'none' }}></TimelineOppositeContent>
-                                    <TimelineSeparator> <TimelineDot style={{ background: 'mediumseagreen', boxShadow: 'none' }} /><TimelineConnector style={{ background: 'teal' }} /></TimelineSeparator>
-                                    <TimelineContent style={{ padding: '10px 5px', fontSize: '10px' }} >Avg Change           :: {total_rev_note && total_rev_note[0].avg_change}</TimelineContent>
-                                </TimelineItem>
-
-
-                            </Timeline>
-
-                            <Grid style={{ ...chartStyle,  width: "520px" }}>
-                                {to_revenue && typeof to_revenue === "object" &&
-                                    <Line data={to_revenue} options={lineOptions} />
-                                }
-                            </Grid>
-                        
-                        </Grid>
-
-                    </Grid>
-
-                </Grid>
-
-
-
-
-                <Grid container style={{ zIndex: "0", marginBottom: '30px' }}>
-
-                    <Grid item sm={10}>
-                        
-                        <h4 style={{ width: '600px', padding: '10px', background: "mediumseagreen", color: "white", borderRadius: "4px" }}> Order from New and Returning Customer </h4>
-
-                        <Grid style={{ display: 'inline-flex' }}>
-                        
-
-                            <Timeline style={{padding:'0px'}}>
-
-                                <TimelineItem style={{minHeight:'30px',width:'200px',width:'185px'}}>
-                                    <TimelineOppositeContent style={{display:'none'}}></TimelineOppositeContent>
-                                    <TimelineSeparator> <TimelineDot style={{background:'mediumseagreen',boxShadow:'none'}} /> <TimelineConnector style={{background:'teal'}} /> </TimelineSeparator>
-                                    <TimelineContent style={{padding:'10px 5px',fontSize:'10px'}} > Total                 :: {new_order_note && new_order_note[0].order} </TimelineContent>
-                                </TimelineItem>
-                                <TimelineItem style={{minHeight:'30px',width:'200px'}}>
-                                    <TimelineOppositeContent style={{display:'none'}}></TimelineOppositeContent>
-                                    <TimelineSeparator> <TimelineDot style={{background:'mediumseagreen',boxShadow:'none'}} /><TimelineConnector style={{background:'teal'}} /></TimelineSeparator>
-                                    <TimelineContent style={{padding:'10px 5px',fontSize:'10px'}} > Min                   :: {new_order_note && new_order_note[0].min_order} </TimelineContent>
-                                </TimelineItem>
-
-                                <TimelineItem style={{minHeight:'30px',width:'200px'}}>
-                                    <TimelineOppositeContent style={{display:'none'}}></TimelineOppositeContent>
-                                    <TimelineSeparator> <TimelineDot style={{background:'mediumseagreen',boxShadow:'none'}} /><TimelineConnector style={{background:'teal'}} /></TimelineSeparator>
-                                    <TimelineContent style={{padding:'10px 5px',fontSize:'10px'}} > Max                  :: {new_order_note && new_order_note[0].max_order} </TimelineContent>
-                                </TimelineItem>
-
-                                <TimelineItem style={{minHeight:'30px',width:'200px'}}>
-                                    <TimelineOppositeContent style={{display:'none'}}></TimelineOppositeContent>
-                                    <TimelineSeparator> <TimelineDot style={{background:'mediumseagreen',boxShadow:'none'}} /> <TimelineConnector style={{background:'teal'}} /></TimelineSeparator>
-                                    <TimelineContent style={{padding:'10px 5px',fontSize:'10px'}} >Avg                  ::  {new_order_note && new_order_note[0].avg_order} </TimelineContent>
-                                </TimelineItem>
-
-                                <TimelineItem style={{minHeight:'30px',width:'200px'}}>
-                                    <TimelineOppositeContent style={{display:'none'}}></TimelineOppositeContent>
-                                    <TimelineSeparator> <TimelineDot style={{background:'mediumseagreen',boxShadow:'none'}} /><TimelineConnector style={{background:'teal'}} /></TimelineSeparator>
-                                    <TimelineContent style={{padding:'10px 5px',fontSize:'10px'}} >Total Point          ::  {new_order_note && new_order_note[0].total_point}</TimelineContent>
-                                </TimelineItem>
-                                <TimelineItem style={{minHeight:'30px',width:'200px',width:'200'}}>
-                                    <TimelineOppositeContent style={{display:'none'}}></TimelineOppositeContent>
-                                    <TimelineSeparator> <TimelineDot style={{background:'mediumseagreen',boxShadow:'none'}} /><TimelineConnector style={{background:'teal'}} /></TimelineSeparator>
-                                    <TimelineContent style={{padding:'10px 5px',fontSize:'10px'}} >Point Bellow Avg     :: {new_order_note && new_order_note[0].bellow_avg} </TimelineContent>
-                                </TimelineItem>
-                                <TimelineItem style={{minHeight:'30px',width:'200px'}}>
-                                    <TimelineOppositeContent style={{display:'none'}}></TimelineOppositeContent>
-                                    <TimelineSeparator> <TimelineDot style={{background:'mediumseagreen',boxShadow:'none'}} /><TimelineConnector style={{background:'teal'}} /></TimelineSeparator>
-                                    <TimelineContent style={{padding:'10px 5px',fontSize:'10px'}} > Point Above Avg      :: {new_order_note && new_order_note[0].above_avg} </TimelineContent>
-                                </TimelineItem>
-                                <TimelineItem style={{minHeight:'30px',width:'200px'}}>
-                                    <TimelineOppositeContent style={{display:'none'}}></TimelineOppositeContent>
-                                    <TimelineSeparator> <TimelineDot style={{background:'mediumseagreen',boxShadow:'none'}} /><TimelineConnector style={{background:'teal'}} /></TimelineSeparator>
-                                    <TimelineContent style={{padding:'10px 5px',fontSize:'10px'}} >Change               ::  {new_order_note && new_order_note[0].change} </TimelineContent>
-                                </TimelineItem>
-                                <TimelineItem style={{minHeight:'30px',width:'200px'}}>
-                                    <TimelineOppositeContent style={{display:'none'}}></TimelineOppositeContent>
-                                    <TimelineSeparator> <TimelineDot style={{background:'mediumseagreen',boxShadow:'none'}} /><TimelineConnector style={{background:'teal'}} /></TimelineSeparator>
-                                    <TimelineContent style={{padding:'10px 5px',fontSize:'10px'}} >Avg Change           :: {new_order_note && new_order_note[0].avg_change}</TimelineContent>
-                                </TimelineItem>
-
-
-                            </Timeline>
-
-                            <Grid style={{ ...chartStyle, width: '700px', marginRight:'2%' }}>
-                                {new_ret_order && typeof new_ret_order === "object" &&
-                                    <Line data={new_ret_order} options={lineOptions} />
-                                }
-                            </Grid>
-
-                            <Timeline style={{padding:'0px'}}>
-
-                                <TimelineItem style={{minHeight:'30px',width:'200px',width:'185px'}}>
-                                    <TimelineOppositeContent style={{display:'none'}}></TimelineOppositeContent>
-                                    <TimelineSeparator> <TimelineDot style={{background:'mediumseagreen',boxShadow:'none'}} /><TimelineConnector style={{background:'teal'}} /></TimelineSeparator>
-                                    <TimelineContent style={{padding:'10px 5px',fontSize:'10px'}} > Total                 :: {repeat_order_note && repeat_order_note[0].order} </TimelineContent>
-                                </TimelineItem>
-                                <TimelineItem style={{minHeight:'30px',width:'200px'}}>
-                                    <TimelineOppositeContent style={{display:'none'}}></TimelineOppositeContent>
-                                    <TimelineSeparator> <TimelineDot style={{background:'mediumseagreen',boxShadow:'none'}} /><TimelineConnector style={{background:'teal'}} /></TimelineSeparator>
-                                    <TimelineContent style={{padding:'10px 5px',fontSize:'10px'}} > Min                   :: {repeat_order_note && repeat_order_note[0].min_order} </TimelineContent>
-                                </TimelineItem>
-
-                                <TimelineItem style={{minHeight:'30px',width:'200px'}}>
-                                    <TimelineOppositeContent style={{display:'none'}}></TimelineOppositeContent>
-                                    <TimelineSeparator> <TimelineDot style={{background:'mediumseagreen',boxShadow:'none'}} /><TimelineConnector style={{background:'teal'}} /></TimelineSeparator>
-                                    <TimelineContent style={{padding:'10px 5px',fontSize:'10px'}} > Max                  :: {repeat_order_note && repeat_order_note[0].max_order} </TimelineContent>
-                                </TimelineItem>
-
-                                <TimelineItem style={{minHeight:'30px',width:'200px'}}>
-                                    <TimelineOppositeContent style={{display:'none'}}></TimelineOppositeContent>
-                                    <TimelineSeparator> <TimelineDot style={{background:'mediumseagreen',boxShadow:'none'}} /><TimelineConnector style={{background:'teal'}} /></TimelineSeparator>
-                                    <TimelineContent style={{padding:'10px 5px',fontSize:'10px'}} >Avg                  ::  {repeat_order_note && repeat_order_note[0].avg_order} </TimelineContent>
-                                </TimelineItem>
-
-                                <TimelineItem style={{minHeight:'30px',width:'200px'}}>
-                                    <TimelineOppositeContent style={{display:'none'}}></TimelineOppositeContent>
-                                    <TimelineSeparator> <TimelineDot style={{background:'mediumseagreen',boxShadow:'none'}} /><TimelineConnector style={{background:'teal'}} /></TimelineSeparator>
-                                    <TimelineContent style={{padding:'10px 5px',fontSize:'10px'}} >Total Point          ::  {repeat_order_note && repeat_order_note[0].total_point}</TimelineContent>
-                                </TimelineItem>
-                                <TimelineItem style={{minHeight:'30px',width:'200px',width:'200'}}>
-                                    <TimelineOppositeContent style={{display:'none'}}></TimelineOppositeContent>
-                                    <TimelineSeparator> <TimelineDot style={{background:'mediumseagreen',boxShadow:'none'}} /><TimelineConnector style={{background:'teal'}} /></TimelineSeparator>
-                                    <TimelineContent style={{padding:'10px 5px',fontSize:'10px'}} >Point Bellow Avg     :: {repeat_order_note && repeat_order_note[0].bellow_avg} </TimelineContent>
-                                </TimelineItem>
-                                <TimelineItem style={{minHeight:'30px',width:'200px'}}>
-                                    <TimelineOppositeContent style={{display:'none'}}></TimelineOppositeContent>
-                                    <TimelineSeparator> <TimelineDot style={{background:'mediumseagreen',boxShadow:'none'}} /><TimelineConnector style={{background:'teal'}} /></TimelineSeparator>
-                                    <TimelineContent style={{padding:'10px 5px',fontSize:'10px'}} > Point Above Avg      :: {repeat_order_note && repeat_order_note[0].above_avg} </TimelineContent>
-                                </TimelineItem>
-                                <TimelineItem style={{minHeight:'30px',width:'200px'}}>
-                                    <TimelineOppositeContent style={{display:'none'}}></TimelineOppositeContent>
-                                    <TimelineSeparator> <TimelineDot style={{background:'mediumseagreen',boxShadow:'none'}} /><TimelineConnector style={{background:'teal'}} /></TimelineSeparator>
-                                    <TimelineContent style={{padding:'10px 5px',fontSize:'10px'}} >Change               ::  {repeat_order_note && repeat_order_note[0].change} </TimelineContent>
-                                </TimelineItem>
-                                <TimelineItem style={{minHeight:'30px',width:'200px'}}>
-                                    <TimelineOppositeContent style={{display:'none'}}></TimelineOppositeContent>
-                                    <TimelineSeparator> <TimelineDot style={{background:'mediumseagreen',boxShadow:'none'}} /><TimelineConnector style={{background:'teal'}} /></TimelineSeparator>
-                                    <TimelineContent style={{padding:'10px 5px',fontSize:'10px'}} >Avg Change           :: {repeat_order_note && repeat_order_note[0].avg_change}</TimelineContent>
-                                </TimelineItem>
-
-
-                            </Timeline>
-
-                        </Grid>
-
-                    </Grid>
-
-
-                    <Grid item sm={10}>
-
-                        <h4 style={{ width: '600px', padding: '10px', background: "mediumseagreen", color: "white", borderRadius: "4px" }}> Revenue from New and Returning Customer </h4>
-
-                        <Grid style={{ display: 'inline-flex' }}>
-
-                            <Grid >
-
-                                <Timeline style={{padding:'0px'}}>
-
-                                    <TimelineItem style={{minHeight:'30px',width:'200px',width:'185px'}}>
-                                        <TimelineOppositeContent style={{display:'none'}}></TimelineOppositeContent>
-                                        <TimelineSeparator> <TimelineDot style={{background:'mediumseagreen',boxShadow:'none'}} /><TimelineConnector style={{background:'teal'}} /></TimelineSeparator>
-                                        <TimelineContent style={{padding:'10px 5px',fontSize:'10px'}} > Total                 :: {new_rev_note && new_rev_note[0].amount} </TimelineContent>
-                                    </TimelineItem>
-                                    <TimelineItem style={{minHeight:'30px',width:'200px'}}>
-                                        <TimelineOppositeContent style={{display:'none'}}></TimelineOppositeContent>
-                                        <TimelineSeparator> <TimelineDot style={{background:'mediumseagreen',boxShadow:'none'}} /><TimelineConnector style={{background:'teal'}} /></TimelineSeparator>
-                                        <TimelineContent style={{padding:'10px 5px',fontSize:'10px'}} > Min                   :: {new_rev_note && new_rev_note[0].min_amount} </TimelineContent>
-                                    </TimelineItem>
-
-                                    <TimelineItem style={{minHeight:'30px',width:'200px'}}>
-                                        <TimelineOppositeContent style={{display:'none'}}></TimelineOppositeContent>
-                                        <TimelineSeparator> <TimelineDot style={{background:'mediumseagreen',boxShadow:'none'}} /><TimelineConnector style={{background:'teal'}} /></TimelineSeparator>
-                                        <TimelineContent style={{padding:'10px 5px',fontSize:'10px'}} > Max                  :: {new_rev_note && new_rev_note[0].max_amount} </TimelineContent>
-                                    </TimelineItem>
-
-                                    <TimelineItem style={{minHeight:'30px',width:'200px'}}>
-                                        <TimelineOppositeContent style={{display:'none'}}></TimelineOppositeContent>
-                                        <TimelineSeparator> <TimelineDot style={{background:'mediumseagreen',boxShadow:'none'}} /><TimelineConnector style={{background:'teal'}} /></TimelineSeparator>
-                                        <TimelineContent style={{padding:'10px 5px',fontSize:'10px'}} >Avg                  ::  {new_rev_note && new_rev_note[0].avg_amount} </TimelineContent>
-                                    </TimelineItem>
-
-                                    <TimelineItem style={{minHeight:'30px',width:'200px'}}>
-                                        <TimelineOppositeContent style={{display:'none'}}></TimelineOppositeContent>
-                                        <TimelineSeparator> <TimelineDot style={{background:'mediumseagreen',boxShadow:'none'}} /><TimelineConnector style={{background:'teal'}} /></TimelineSeparator>
-                                        <TimelineContent style={{padding:'10px 5px',fontSize:'10px'}} >Total Point          ::  {new_rev_note && new_rev_note[0].total_point}</TimelineContent>
-                                    </TimelineItem>
-                                    <TimelineItem style={{minHeight:'30px',width:'200px',width:'200'}}>
-                                        <TimelineOppositeContent style={{display:'none'}}></TimelineOppositeContent>
-                                        <TimelineSeparator> <TimelineDot style={{background:'mediumseagreen',boxShadow:'none'}} /><TimelineConnector style={{background:'teal'}} /></TimelineSeparator>
-                                        <TimelineContent style={{padding:'10px 5px',fontSize:'10px'}} >Point Bellow Avg     :: {new_rev_note && new_rev_note[0].bellow_avg} </TimelineContent>
-                                    </TimelineItem>
-                                    <TimelineItem style={{minHeight:'30px',width:'200px'}}>
-                                        <TimelineOppositeContent style={{display:'none'}}></TimelineOppositeContent>
-                                        <TimelineSeparator> <TimelineDot style={{background:'mediumseagreen',boxShadow:'none'}} /><TimelineConnector style={{background:'teal'}} /></TimelineSeparator>
-                                        <TimelineContent style={{padding:'10px 5px',fontSize:'10px'}} > Point Above Avg      :: {new_rev_note && new_rev_note[0].above_avg} </TimelineContent>
-                                    </TimelineItem>
-                                    <TimelineItem style={{minHeight:'30px',width:'200px'}}>
-                                        <TimelineOppositeContent style={{display:'none'}}></TimelineOppositeContent>
-                                        <TimelineSeparator> <TimelineDot style={{background:'mediumseagreen',boxShadow:'none'}} /><TimelineConnector style={{background:'teal'}} /></TimelineSeparator>
-                                        <TimelineContent style={{padding:'10px 5px',fontSize:'10px'}} >Change               ::  {new_rev_note && new_rev_note[0].change} </TimelineContent>
-                                    </TimelineItem>
-                                    <TimelineItem style={{minHeight:'30px',width:'200px'}}>
-                                        <TimelineOppositeContent style={{display:'none'}}></TimelineOppositeContent>
-                                        <TimelineSeparator> <TimelineDot style={{background:'mediumseagreen',boxShadow:'none'}} /><TimelineConnector style={{background:'teal'}} /></TimelineSeparator>
-                                        <TimelineContent style={{padding:'10px 5px',fontSize:'10px'}} >Avg Change           :: {new_rev_note && new_rev_note[0].avg_change}</TimelineContent>
-                                    </TimelineItem>
-
-
-                                </Timeline>
-
-                            </Grid>
-
-                            <Grid style={{ ...chartStyle,  width: '700px', marginRight:'2%' }}>
-                                {new_ret_revenue && typeof new_ret_revenue === "object" &&
-                                    <Line data={new_ret_revenue} options={lineOptions} />
-                                }
-                            </Grid>
-
-                            <Timeline style={{padding:'0px'}}>
-
-                                <TimelineItem style={{minHeight:'30px',width:'200px',width:'185px'}}>
-
-                                    <TimelineOppositeContent style={{display:'none'}}></TimelineOppositeContent>
-                                    <TimelineSeparator> <TimelineDot style={{background:'mediumseagreen',boxShadow:'none'}} /><TimelineConnector style={{background:'teal'}} /></TimelineSeparator>
-                                    <TimelineContent style={{padding:'10px 5px',fontSize:'10px'}} > Total                 :: {repeat_rev_note && repeat_rev_note[0].amount} </TimelineContent>
-                                </TimelineItem>
-                                <TimelineItem style={{minHeight:'30px',width:'200px'}}>
-                                    <TimelineOppositeContent style={{display:'none'}}></TimelineOppositeContent>
-                                    <TimelineSeparator> <TimelineDot style={{background:'mediumseagreen',boxShadow:'none'}} /><TimelineConnector style={{background:'teal'}} /></TimelineSeparator>
-                                    <TimelineContent style={{padding:'10px 5px',fontSize:'10px'}} > Min                   :: {repeat_rev_note && repeat_rev_note[0].min_amount} </TimelineContent>
-                                </TimelineItem>
-
-                                <TimelineItem style={{minHeight:'30px',width:'200px'}}>
-                                    <TimelineOppositeContent style={{display:'none'}}></TimelineOppositeContent>
-                                    <TimelineSeparator> <TimelineDot style={{background:'mediumseagreen',boxShadow:'none'}} /><TimelineConnector style={{background:'teal'}} /></TimelineSeparator>
-                                    <TimelineContent style={{padding:'10px 5px',fontSize:'10px'}} > Max                  :: {repeat_rev_note && repeat_rev_note[0].max_amount} </TimelineContent>
-                                </TimelineItem>
-
-                                <TimelineItem style={{minHeight:'30px',width:'200px'}}>
-                                    <TimelineOppositeContent style={{display:'none'}}></TimelineOppositeContent>
-                                    <TimelineSeparator> <TimelineDot style={{background:'mediumseagreen',boxShadow:'none'}} /><TimelineConnector style={{background:'teal'}} /></TimelineSeparator>
-                                    <TimelineContent style={{padding:'10px 5px',fontSize:'10px'}} >Avg                  ::  {repeat_rev_note && repeat_rev_note[0].avg_amount} </TimelineContent>
-                                </TimelineItem>
-
-                                <TimelineItem style={{minHeight:'30px',width:'200px'}}>
-                                    <TimelineOppositeContent style={{display:'none'}}></TimelineOppositeContent>
-                                    <TimelineSeparator> <TimelineDot style={{background:'mediumseagreen',boxShadow:'none'}} /><TimelineConnector style={{background:'teal'}} /></TimelineSeparator>
-                                    <TimelineContent style={{padding:'10px 5px',fontSize:'10px'}} >Total Point          ::  {repeat_rev_note && repeat_rev_note[0].total_point}</TimelineContent>
-                                </TimelineItem>
-                                <TimelineItem style={{minHeight:'30px',width:'200px',width:'200'}}>
-                                    <TimelineOppositeContent style={{display:'none'}}></TimelineOppositeContent>
-                                    <TimelineSeparator> <TimelineDot style={{background:'mediumseagreen',boxShadow:'none'}} /><TimelineConnector style={{background:'teal'}} /></TimelineSeparator>
-                                    <TimelineContent style={{padding:'10px 5px',fontSize:'10px'}} >Point Bellow Avg     :: {repeat_rev_note && repeat_rev_note[0].bellow_avg} </TimelineContent>
-                                </TimelineItem>
-                                <TimelineItem style={{minHeight:'30px',width:'200px'}}>
-                                    <TimelineOppositeContent style={{display:'none'}}></TimelineOppositeContent>
-                                    <TimelineSeparator> <TimelineDot style={{background:'mediumseagreen',boxShadow:'none'}} /><TimelineConnector style={{background:'teal'}} /></TimelineSeparator>
-                                    <TimelineContent style={{padding:'10px 5px',fontSize:'10px'}} > Point Above Avg      :: {repeat_rev_note && repeat_rev_note[0].above_avg} </TimelineContent>
-                                </TimelineItem>
-                                <TimelineItem style={{minHeight:'30px',width:'200px'}}>
-                                    <TimelineOppositeContent style={{display:'none'}}></TimelineOppositeContent>
-                                    <TimelineSeparator> <TimelineDot style={{background:'mediumseagreen',boxShadow:'none'}} /><TimelineConnector style={{background:'teal'}} /></TimelineSeparator>
-                                    <TimelineContent style={{padding:'10px 5px',fontSize:'10px'}} >Change               ::  {repeat_rev_note && repeat_rev_note[0].change} </TimelineContent>
-                                </TimelineItem>
-                                <TimelineItem style={{minHeight:'30px',width:'200px'}}>
-                                    <TimelineOppositeContent style={{display:'none'}}></TimelineOppositeContent>
-                                    <TimelineSeparator> <TimelineDot style={{background:'mediumseagreen',boxShadow:'none'}} /><TimelineConnector style={{background:'teal'}} /></TimelineSeparator>
-                                    <TimelineContent style={{padding:'10px 5px',fontSize:'10px'}} >Avg Change           :: {repeat_rev_note && repeat_rev_note[0].avg_change}</TimelineContent>
-                                </TimelineItem>
-
-
-                            </Timeline>
-
-                        </Grid>
-
-                    </Grid>
-
-                </Grid>
-
-
-
-                <Grid container style={{ zIndex: "0", marginBottom: '30px' }}>
-                    
-                    <Grid item sm={6}>
-                        <h4 style={{ width: '600px', padding: '10px', background: "mediumseagreen", color: "white", borderRadius: "4px" }}> Order from different weekdays </h4>
-
-                        <Grid style={{ ...chartStyle, height: '300px', width: '600px' }}>
-                            {wd_order && typeof wd_order === "object" &&
-                                <Line data={wd_order} options={lineOptions} />
-                            }
-                        </Grid>
-                    </Grid>
-
-                    <Grid item sm={6}>
-                        <h4 style={{ width: '600px', padding: '10px', background: "mediumseagreen", color: "white", borderRadius: "4px" }}> Revenue from different weekdays </h4>
-
-                        <Grid style={{ ...chartStyle, height: '300px', width: '600px' }}>
-                            {wd_revenue && typeof wd_revenue === "object" &&
-                                <Line data={wd_revenue} options={lineOptions} />
-                            }
-                        </Grid>
-                    </Grid>
-
-                </Grid>
-
-
-
-                <Grid container style={{ zIndex: "0", marginBottom: '30px' }}>
-                    
-                    <Grid item sm={6}>
-                        <h4 style={{ width: '600px', padding: '10px', background: "mediumseagreen", color: "white", borderRadius: "4px" }}> Order from different Payment method </h4>
-
-                        <Grid style={{ ...chartStyle, height: '300px', width: '600px' }}>
-                            {pm_order && typeof pm_order === "object" &&
-                                <Line data={pm_order} options={lineOptions} />
-                            }
-                        </Grid>
-                    </Grid>
-
-                    <Grid item sm={6}>
-                        <h4 style={{ width: '600px', padding: '10px', background: "mediumseagreen", color: "white", borderRadius: "4px" }}> Revenue from different Payment method </h4>
-
-                        <Grid style={{ ...chartStyle, height: '300px', width: '600px' }}>
-                            {pm_revenue && typeof pm_revenue === "object" &&
-                                <Line data={pm_revenue} options={lineOptions} />
-                            }
-                        </Grid>
-                    </Grid>
-
-                </Grid>
-
-
-                <Grid container style={{ zIndex: '0' }}>
-                    <OrderCityStateTable />
-                </Grid>
-
-
-
-
-                {/* Order Shipping City Charts And Tables */}
-                <form onSubmit={dateSubmit1} style={{ marginTop: '4%' }}>
-
-                    <Grid container style={{ zIndex: '0' }}>
-
-                        {/* Form Including Two Timeline , Order Type, Time Period */}
-                        <Grid item sm={10} style={{ margin: "1%" }}>
-
-                            <Grid item style={{ display: 'inline-flex' }}>
-
-
-                                <DateRangePicker
-                                    label="Timeline"
-                                    value={dr}
-                                    onChange={setdr}
-                                    oneTap={false}
-                                    ranges={[
-                                        { label: 'Yesterday', value: [addDays(new Date(), -1), addDays(new Date(), -1)] },
-                                        { label: 'Today', value: [new Date(), new Date()] },
-                                        { label: 'Tomorrow', value: [addDays(new Date(), 1), addDays(new Date(), 1)] },
-                                        { label: 'Last 7 days', value: [subDays(new Date(), 6), new Date()] },
-                                        { label: 'This month', value: [subDays(new Date(), getDate(new Date()) - 1), new Date()] },
-                                        { label: 'Last month', value: [startOfMonth(subDays(new Date(), getDate(new Date()))), endOfMonth(subDays(new Date(), getDate(new Date())))] },
-                                        { label: 'Year To date', value: [startOfYear(new Date()), new Date()] }]}>
-
-                                </DateRangePicker>
-
-                                <input name="from" type={'hidden'} value={format(dr[0], 'yyyy-MM-dd')} />
-                                <input name="to" type={'hidden'} value={format(dr[1], 'yyyy-MM-dd')} />
-
-
-                                <h4> VS </h4>
-
-                                <DateRangePicker
-                                    label="Timeline"
-                                    value={dr1}
-                                    onChange={setdr1}
-                                    oneTap={false}
-                                    ranges={[
-                                        { label: 'Yesterday', value: [addDays(new Date(), -1), addDays(new Date(), -1)] },
-                                        { label: 'Today', value: [new Date(), new Date()] },
-                                        { label: 'Tomorrow', value: [addDays(new Date(), 1), addDays(new Date(), 1)] },
-                                        { label: 'Last 7 days', value: [subDays(new Date(), 6), new Date()] },
-                                        { label: 'This month', value: [subDays(new Date(), getDate(new Date()) - 1), new Date()] },
-                                        { label: 'Last month', value: [startOfMonth(subDays(new Date(), getDate(new Date()))), endOfMonth(subDays(new Date(), getDate(new Date())))] },
-                                        { label: 'Year To date', value: [startOfYear(new Date()), new Date()] }]}>
-                                </DateRangePicker>
-
-                                <input name="from1" type={'hidden'} value={format(dr1[0], 'yyyy-MM-dd')} />
-                                <input name="to1" type={'hidden'} value={format(dr1[1], 'yyyy-MM-dd')} />
-
-
-                            </Grid>
-
-
-                            <Grid item style={{ display: 'inline-flex', fontSize: '17px' }}>
-
-                                {/* <div style={{ display: 'inline-flex', margin: '7px' }} onChange={(e) => { setgroup1(e.target.value) }}>
-                                    <input type="radio" value="daily" name="group1" /> Daily
-                                    <input type="radio" value="weekly" name="group1" /> Weekly
-                                    <input type="radio" value="monthly" name="group1" /> Monthly
-                                </div> */}
-                                <RadioGroup style={{ display: 'inline-block' }} onChange={(e) => { setgroup1(e.target.value) }}>
-                                    <Radio checked={group1 === 'daily'} value="daily" name="group1" /> Day
-                                    <Radio checked={group1 === 'weekly'} value="weekly" name="group1" /> Week
-                                    <Radio checked={group1 === 'monthly'} value="monthly" name="group1" /> Month
-                                </RadioGroup>
-
-                                {/* <div style={{ display: 'inline-flex', margin: '7px' }} onChange={(e) => { setgroup2(e.target.value) }}>
-                                    <input type="radio" value="0" name="group2" /> All order
-                                    <input type="radio" value="1" name="group2" />New-Cus order
-                                    <input type="radio" value="2" name="group2" />Ret-Cus order
-                                </div> */}
-                                <RadioGroup style={{ display: 'inline-block' }} onChange={(e) => { setgroup2(e.target.value) }}>
-                                    <Radio checked={group2 === '0'} value="0" name="group2" /> Day
-                                    <Radio checked={group2 === '1'} value="1" name="group2" /> Week
-                                    <Radio checked={group2 === '2'} value="2" name="group2" /> Month
-                                </RadioGroup>
-
-                                <input type="submit" value="Submit" />
-
-                            </Grid>
-
-                            <input type="hidden" value="1" name="ajax_call" />
-
-                        </Grid>
-
-                    </Grid>
-
-                    <Grid container style={{ display: 'grid', zIndex: '1', margin: '20px' }}>
-
-                        <strong> Shipping City to show in Chart </strong>
-                        <ShipCity />
-
-                    </Grid>
-
+        <Grid container spacing={3}>
+            <Grid item md={12}>
+                <div className="notifications">
+                    <h6>Orders Report</h6>
+                </div>
+            </Grid>
+            <Grid item md={12}>
+                <form className="date-period" onSubmit={dateSubmit} style={{marginBottom: '-15px'}}>
+                    <DateRangePicker
+                        label="Timeline"
+                        value={dateRange}
+                        onChange={setDateRange}
+                        oneTap={false}
+                        ranges={[
+                            { label: 'Yesterday', value: [addDays(new Date(), -1), addDays(new Date(), -1)] },
+                            { label: 'Today', value: [new Date(), new Date()] },
+                            { label: 'Tomorrow', value: [addDays(new Date(), 1), addDays(new Date(), 1)] },
+                            { label: 'Last 7 days', value: [subDays(new Date(), 6), new Date()] },
+                            { label: 'This month', value: [subDays(new Date(), getDate(new Date()) - 1), new Date()] },
+                            { label: 'Last month', value: [startOfMonth(subDays(new Date(), getDate(new Date()))), endOfMonth(subDays(new Date(), getDate(new Date())))] },
+                            { label: 'Year To date', value: [startOfYear(new Date()), new Date()] }]}>
+                    </DateRangePicker>
+                    <input name="from" type={'hidden'} value={format(dateRange[0], 'yyyy-MM-dd')} />
+                    <input name="to" type={'hidden'} value={format(dateRange[1], 'yyyy-MM-dd')} />
+                    <DateRangePicker
+                        label="Timeline"
+                        value={dateRange1}
+                        onChange={setDateRange1}
+                        oneTap={false}
+                        ranges={[
+                            { label: 'Yesterday', value: [addDays(new Date(), -1), addDays(new Date(), -1)] },
+                            { label: 'Today', value: [new Date(), new Date()] },
+                            { label: 'Tomorrow', value: [addDays(new Date(), 1), addDays(new Date(), 1)] },
+                            { label: 'Last 7 days', value: [subDays(new Date(), 6), new Date()] },
+                            { label: 'This month', value: [subDays(new Date(), getDate(new Date()) - 1), new Date()] },
+                            { label: 'Last month', value: [startOfMonth(subDays(new Date(), getDate(new Date()))), endOfMonth(subDays(new Date(), getDate(new Date())))] },
+                            { label: 'Year To date', value: [startOfYear(new Date()), new Date()] }]}>
+                    </DateRangePicker>
+                    <input name="from1" type={'hidden'} value={format(dateRange1[0], 'yyyy-MM-dd')} />
+                    <input name="to1" type={'hidden'} value={format(dateRange1[1], 'yyyy-MM-dd')} />
+                    <RadioGroup  style={{ display: 'inline-block', fontSize: '13px', color:'white  ', fontWeight: '500' }} onChange={(e) => { setduration(e.target.value) }}>
+                        <Radio checked={duration === 'daily'} value="daily" name="duration" /> Day
+                        <Radio checked={duration === 'weekly'} value="weekly" name="duration" /> Week
+                        <Radio checked={duration === 'monthly'} value="monthly" name="duration" /> Month
+                    </RadioGroup>
+                    <input type="hidden" value="1" name="ajax_call" />
+                    <input className='period-btn' variant="contained" color="secondary"  type="submit" value="Submit" />
                 </form>
-
-
-
-
-
-                <Grid container style={{ margin: '1%', zIndex: '0' }}>
-
-                    <Grid item sm={10} style={{ "borderRadius": "10px", "background": "white", "boxShadow": "rgba(65, 69, 88, 0.1) 0px 7px 14px 0px, rgba(0, 0, 0, 0.07) 0px 3px 6px 0px", "borderRadius": "10px" }}>
-
-                        <Timeline
-                            sx={{
-                                [`& .${timelineOppositeContentClasses.root}`]: {
-                                    flex: 0.2,
-                                },
-                            }}>
-
-                            <TimelineItem>
-
-                                <TimelineOppositeContent color="textSecondary">
-                                    Revenue :: shipping city
-                                </TimelineOppositeContent>
-
-                                <TimelineSeparator>
-                                    <TimelineDot>
-                                        <AttachMoneyIcon />
-                                    </TimelineDot>
-                                    <TimelineConnector style={{background:'teal'}} />
-                                </TimelineSeparator>
-
-                                <TimelineContent>
-                                    {Order_shipcity_revenue && Order_shipcity_revenue.length > 0 &&
-                                        <Grid style={{height: '400px', width: '800px' }}> 
-                                            <Line data={shipcity_rev_obj} options={lineOptions} />
-                                        </Grid>
-                                    }
-                                </TimelineContent>
-
-                            </TimelineItem>
-
-
-                            <TimelineItem>
-                                <TimelineOppositeContent color="textSecondary">
-                                    Order :: shipping city
-                                </TimelineOppositeContent>
-                                <TimelineSeparator>
-                                    <TimelineDot>
-                                        <ShoppingBasketIcon />
-                                    </TimelineDot>
-                                    <TimelineConnector style={{background:'teal'}} />
-                                </TimelineSeparator>
-                                <TimelineContent>
-                                    {Order_shipcity_order && Order_shipcity_order.length > 0 &&
-                                        <Grid style={{height: '400px', width: '800px' }}> 
-                                            <Line data={shipcity_order_obj} options={lineOptions} />
-                                        </Grid>
-                                        
-                                    }
-                                </TimelineContent>
-                            </TimelineItem>
-
-                        </Timeline>
-
-                    </Grid>
-
-                </Grid>
-
-
-
-
-
             </Grid>
 
-        </>
+            <Grid item md={6}>
+                <Card className='dash-card'>
+                <h6>Total Order</h6>
+                <Timeline style={{padding:'0px',width:'180px'}}>
+                    <TimelineItem style={{minHeight:'30px',width:'200px'}}>
+                        <TimelineOppositeContent style={{display:'none'}}></TimelineOppositeContent>
+                        <TimelineSeparator> <TimelineDot style={{background:'mediumseagreen',boxShadow:'none'}} /><TimelineConnector style={{background:'teal'}} /></TimelineSeparator>
+                        <TimelineContent style={{padding:'10px 5px',fontSize:'10px'}} > Total                 :: {total_order_note && total_order_note[0].order} </TimelineContent>
+                    </TimelineItem>
+                    <TimelineItem style={{minHeight:'30px',width:'200px'}}>
+                        <TimelineOppositeContent style={{display:'none'}}></TimelineOppositeContent>
+                        <TimelineSeparator> <TimelineDot style={{background:'mediumseagreen',boxShadow:'none'}} /><TimelineConnector style={{background:'teal'}} /></TimelineSeparator>
+                        <TimelineContent style={{padding:'10px 5px',fontSize:'10px'}} > Min                   :: {total_order_note && total_order_note[0].min_order} </TimelineContent>
+                    </TimelineItem>
+
+                    <TimelineItem style={{minHeight:'30px',width:'200px'}}>
+                        <TimelineOppositeContent style={{display:'none'}}></TimelineOppositeContent>
+                        <TimelineSeparator> <TimelineDot style={{background:'mediumseagreen',boxShadow:'none'}} /><TimelineConnector style={{background:'teal'}} /></TimelineSeparator>
+                        <TimelineContent style={{padding:'10px 5px',fontSize:'10px'}} > Max                  :: {total_order_note && total_order_note[0].max_order} </TimelineContent>
+                    </TimelineItem>
+
+                    <TimelineItem style={{minHeight:'30px',width:'200px'}}>
+                        <TimelineOppositeContent style={{display:'none'}}></TimelineOppositeContent>
+                        <TimelineSeparator> <TimelineDot style={{background:'mediumseagreen',boxShadow:'none'}} /><TimelineConnector style={{background:'teal'}} /></TimelineSeparator>
+                        <TimelineContent style={{padding:'10px 5px',fontSize:'10px'}} >Avg                  :: {total_order_note && total_order_note[0].avg_order} </TimelineContent>
+                    </TimelineItem>
+
+                    <TimelineItem style={{minHeight:'30px',width:'200px'}}>
+                        <TimelineOppositeContent style={{display:'none'}}></TimelineOppositeContent>
+                        <TimelineSeparator> <TimelineDot style={{background:'mediumseagreen',boxShadow:'none'}} /><TimelineConnector style={{background:'teal'}} /></TimelineSeparator>
+                        <TimelineContent style={{padding:'10px 5px',fontSize:'10px'}} >Total Point          :: {total_order_note && total_order_note[0].total_point}</TimelineContent>
+                    </TimelineItem>
+                    <TimelineItem style={{minHeight:'30px',width:'200px'}}>
+                        <TimelineOppositeContent style={{display:'none'}}></TimelineOppositeContent>
+                        <TimelineSeparator> <TimelineDot style={{background:'mediumseagreen',boxShadow:'none'}} /><TimelineConnector style={{background:'teal'}} /></TimelineSeparator>
+                        <TimelineContent style={{padding:'10px 5px',fontSize:'10px'}} >Point Bellow Avg     :: {total_order_note && total_order_note[0].bellow_avg} </TimelineContent>
+                    </TimelineItem>
+                    <TimelineItem style={{minHeight:'30px',width:'200px'}}>
+                        <TimelineOppositeContent style={{display:'none'}}></TimelineOppositeContent>
+                        <TimelineSeparator> <TimelineDot style={{background:'mediumseagreen',boxShadow:'none'}} /><TimelineConnector style={{background:'teal'}} /></TimelineSeparator>
+                        <TimelineContent style={{padding:'10px 5px',fontSize:'10px'}} > Point Above Avg      :: {total_order_note && total_order_note[0].above_avg} </TimelineContent>
+                    </TimelineItem>
+                    <TimelineItem style={{minHeight:'30px',width:'200px'}}>
+                        <TimelineOppositeContent style={{display:'none'}}></TimelineOppositeContent>
+                        <TimelineSeparator> <TimelineDot style={{background:'mediumseagreen',boxShadow:'none'}} /><TimelineConnector style={{background:'teal'}} /></TimelineSeparator>
+                        <TimelineContent style={{padding:'10px 5px',fontSize:'10px'}} >Change               :: {total_order_note && total_order_note[0].change} </TimelineContent>
+                    </TimelineItem>
+                    <TimelineItem style={{minHeight:'30px',width:'200px'}}>
+                        <TimelineOppositeContent style={{display:'none'}}></TimelineOppositeContent>
+                        <TimelineSeparator> <TimelineDot style={{background:'mediumseagreen',boxShadow:'none'}} /><TimelineConnector style={{background:'teal'}} /></TimelineSeparator>
+                        <TimelineContent style={{padding:'10px 5px',fontSize:'10px'}} >Avg Change           :: {total_order_note && total_order_note[0].avg_change}</TimelineContent>
+                    </TimelineItem>
+
+
+                </Timeline>
+                <div>
+                    {to_revenue && typeof to_revenue === "object" &&
+                        <Line data={to_revenue} options={lineOptions} />
+                    }
+                </div>
+                </Card>
+            </Grid>
+            <Grid item md={6}>
+                <Card className='dash-card'>
+                    <h6>Total Revenue</h6>
+                    <Timeline style={{padding:'0px',width:'180px'}}>
+                        <TimelineItem style={{ minHeight: '30px', width: '200px', }}>
+                        <TimelineOppositeContent style={{ display: 'none' }}></TimelineOppositeContent>
+                        <TimelineSeparator> <TimelineDot style={{ background: 'mediumseagreen', boxShadow: 'none' }} /><TimelineConnector style={{ background: 'teal' }} /></TimelineSeparator>
+                        <TimelineContent style={{ padding: '10px 5px', fontSize: '10px' }} > Total                 :: {total_rev_note && total_rev_note[0].amount} </TimelineContent>
+                    </TimelineItem>
+                    <TimelineItem style={{ minHeight: '30px', width: '200px' }}>
+                        <TimelineOppositeContent style={{ display: 'none' }}></TimelineOppositeContent>
+                        <TimelineSeparator> <TimelineDot style={{ background: 'mediumseagreen', boxShadow: 'none' }} /><TimelineConnector style={{ background: 'teal' }} /></TimelineSeparator>
+                        <TimelineContent style={{ padding: '10px 5px', fontSize: '10px' }} > Min                   :: {total_rev_note && total_rev_note[0].min_amount} </TimelineContent>
+                    </TimelineItem>
+
+                    <TimelineItem style={{ minHeight: '30px', width: '200px' }}>
+                        <TimelineOppositeContent style={{ display: 'none' }}></TimelineOppositeContent>
+                        <TimelineSeparator> <TimelineDot style={{ background: 'mediumseagreen', boxShadow: 'none' }} /><TimelineConnector style={{ background: 'teal' }} /></TimelineSeparator>
+                        <TimelineContent style={{ padding: '10px 5px', fontSize: '10px' }} > Max                  :: {total_rev_note && total_rev_note[0].max_amount} </TimelineContent>
+                    </TimelineItem>
+
+                    <TimelineItem style={{ minHeight: '30px', width: '200px' }}>
+                        <TimelineOppositeContent style={{ display: 'none' }}></TimelineOppositeContent>
+                        <TimelineSeparator> <TimelineDot style={{ background: 'mediumseagreen', boxShadow: 'none' }} /><TimelineConnector style={{ background: 'teal' }} /></TimelineSeparator>
+                        <TimelineContent style={{ padding: '10px 5px', fontSize: '10px' }} >Avg                  ::  {total_rev_note && total_rev_note[0].avg_amount} </TimelineContent>
+                    </TimelineItem>
+
+                    <TimelineItem style={{ minHeight: '30px', width: '200px' }}>
+                        <TimelineOppositeContent style={{ display: 'none' }}></TimelineOppositeContent>
+                        <TimelineSeparator> <TimelineDot style={{ background: 'mediumseagreen', boxShadow: 'none' }} /><TimelineConnector style={{ background: 'teal' }} /></TimelineSeparator>
+                        <TimelineContent style={{ padding: '10px 5px', fontSize: '10px' }} >Total Point          ::  {total_rev_note && total_rev_note[0].total_point}</TimelineContent>
+                    </TimelineItem>
+                    <TimelineItem style={{ minHeight: '30px', width: '200px', }}>
+                        <TimelineOppositeContent style={{ display: 'none' }}></TimelineOppositeContent>
+                        <TimelineSeparator> <TimelineDot style={{ background: 'mediumseagreen', boxShadow: 'none' }} /><TimelineConnector style={{ background: 'teal' }} /></TimelineSeparator>
+                        <TimelineContent style={{ padding: '10px 5px', fontSize: '10px' }} >Point Bellow Avg     :: {total_rev_note && total_rev_note[0].bellow_avg} </TimelineContent>
+                    </TimelineItem>
+                    <TimelineItem style={{ minHeight: '30px', width: '200px' }}>
+                        <TimelineOppositeContent style={{ display: 'none' }}></TimelineOppositeContent>
+                        <TimelineSeparator> <TimelineDot style={{ background: 'mediumseagreen', boxShadow: 'none' }} /><TimelineConnector style={{ background: 'teal' }} /></TimelineSeparator>
+                        <TimelineContent style={{ padding: '10px 5px', fontSize: '10px' }} > Point Above Avg      :: {total_rev_note && total_rev_note[0].above_avg} </TimelineContent>
+                    </TimelineItem>
+                    <TimelineItem style={{ minHeight: '30px', width: '200px' }}>
+                        <TimelineOppositeContent style={{ display: 'none' }}></TimelineOppositeContent>
+                        <TimelineSeparator> <TimelineDot style={{ background: 'mediumseagreen', boxShadow: 'none' }} /><TimelineConnector style={{ background: 'teal' }} /></TimelineSeparator>
+                        <TimelineContent style={{ padding: '10px 5px', fontSize: '10px' }} >Change               ::  {total_rev_note && total_rev_note[0].change} </TimelineContent>
+                    </TimelineItem>
+                    <TimelineItem style={{ minHeight: '30px', width: '200px' }}>
+                        <TimelineOppositeContent style={{ display: 'none' }}></TimelineOppositeContent>
+                        <TimelineSeparator> <TimelineDot style={{ background: 'mediumseagreen', boxShadow: 'none' }} /><TimelineConnector style={{ background: 'teal' }} /></TimelineSeparator>
+                        <TimelineContent style={{ padding: '10px 5px', fontSize: '10px' }} >Avg Change           :: {total_rev_note && total_rev_note[0].avg_change}</TimelineContent>
+                    </TimelineItem>
+                </Timeline>
+                <div>
+                    {to_revenue && typeof to_revenue === "object" &&
+                        <Line data={to_revenue} options={lineOptions} />
+                    }
+                </div>
+                </Card>
+            </Grid>
+            <Grid item md={6}>
+                <Card className='dash-card'>
+                    <h6>Order from New and Returning Customer</h6>
+                    <Timeline style={{padding:'0px'}}>
+                    <TimelineItem style={{minHeight:'30px',width:'200px',width:'185px'}}>
+                        <TimelineOppositeContent style={{display:'none'}}></TimelineOppositeContent>
+                        <TimelineSeparator> <TimelineDot style={{background:'mediumseagreen',boxShadow:'none'}} /> <TimelineConnector style={{background:'teal'}} /> </TimelineSeparator>
+                        <TimelineContent style={{padding:'10px 5px',fontSize:'10px'}} > Total                 :: {new_order_note && new_order_note[0].order} </TimelineContent>
+                    </TimelineItem>
+                    <TimelineItem style={{minHeight:'30px',width:'200px'}}>
+                        <TimelineOppositeContent style={{display:'none'}}></TimelineOppositeContent>
+                        <TimelineSeparator> <TimelineDot style={{background:'mediumseagreen',boxShadow:'none'}} /><TimelineConnector style={{background:'teal'}} /></TimelineSeparator>
+                        <TimelineContent style={{padding:'10px 5px',fontSize:'10px'}} > Min                   :: {new_order_note && new_order_note[0].min_order} </TimelineContent>
+                    </TimelineItem>
+
+                    <TimelineItem style={{minHeight:'30px',width:'200px'}}>
+                        <TimelineOppositeContent style={{display:'none'}}></TimelineOppositeContent>
+                        <TimelineSeparator> <TimelineDot style={{background:'mediumseagreen',boxShadow:'none'}} /><TimelineConnector style={{background:'teal'}} /></TimelineSeparator>
+                        <TimelineContent style={{padding:'10px 5px',fontSize:'10px'}} > Max                  :: {new_order_note && new_order_note[0].max_order} </TimelineContent>
+                    </TimelineItem>
+
+                    <TimelineItem style={{minHeight:'30px',width:'200px'}}>
+                        <TimelineOppositeContent style={{display:'none'}}></TimelineOppositeContent>
+                        <TimelineSeparator> <TimelineDot style={{background:'mediumseagreen',boxShadow:'none'}} /> <TimelineConnector style={{background:'teal'}} /></TimelineSeparator>
+                        <TimelineContent style={{padding:'10px 5px',fontSize:'10px'}} >Avg                  ::  {new_order_note && new_order_note[0].avg_order} </TimelineContent>
+                    </TimelineItem>
+
+                    <TimelineItem style={{minHeight:'30px',width:'200px'}}>
+                        <TimelineOppositeContent style={{display:'none'}}></TimelineOppositeContent>
+                        <TimelineSeparator> <TimelineDot style={{background:'mediumseagreen',boxShadow:'none'}} /><TimelineConnector style={{background:'teal'}} /></TimelineSeparator>
+                        <TimelineContent style={{padding:'10px 5px',fontSize:'10px'}} >Total Point          ::  {new_order_note && new_order_note[0].total_point}</TimelineContent>
+                    </TimelineItem>
+                    <TimelineItem style={{minHeight:'30px',width:'200px',width:'200'}}>
+                        <TimelineOppositeContent style={{display:'none'}}></TimelineOppositeContent>
+                        <TimelineSeparator> <TimelineDot style={{background:'mediumseagreen',boxShadow:'none'}} /><TimelineConnector style={{background:'teal'}} /></TimelineSeparator>
+                        <TimelineContent style={{padding:'10px 5px',fontSize:'10px'}} >Point Bellow Avg     :: {new_order_note && new_order_note[0].bellow_avg} </TimelineContent>
+                    </TimelineItem>
+                    <TimelineItem style={{minHeight:'30px',width:'200px'}}>
+                        <TimelineOppositeContent style={{display:'none'}}></TimelineOppositeContent>
+                        <TimelineSeparator> <TimelineDot style={{background:'mediumseagreen',boxShadow:'none'}} /><TimelineConnector style={{background:'teal'}} /></TimelineSeparator>
+                        <TimelineContent style={{padding:'10px 5px',fontSize:'10px'}} > Point Above Avg      :: {new_order_note && new_order_note[0].above_avg} </TimelineContent>
+                    </TimelineItem>
+                    <TimelineItem style={{minHeight:'30px',width:'200px'}}>
+                        <TimelineOppositeContent style={{display:'none'}}></TimelineOppositeContent>
+                        <TimelineSeparator> <TimelineDot style={{background:'mediumseagreen',boxShadow:'none'}} /><TimelineConnector style={{background:'teal'}} /></TimelineSeparator>
+                        <TimelineContent style={{padding:'10px 5px',fontSize:'10px'}} >Change               ::  {new_order_note && new_order_note[0].change} </TimelineContent>
+                    </TimelineItem>
+                    <TimelineItem style={{minHeight:'30px',width:'200px'}}>
+                        <TimelineOppositeContent style={{display:'none'}}></TimelineOppositeContent>
+                        <TimelineSeparator> <TimelineDot style={{background:'mediumseagreen',boxShadow:'none'}} /><TimelineConnector style={{background:'teal'}} /></TimelineSeparator>
+                        <TimelineContent style={{padding:'10px 5px',fontSize:'10px'}} >Avg Change           :: {new_order_note && new_order_note[0].avg_change}</TimelineContent>
+                    </TimelineItem>
+                </Timeline>
+                <div>
+                    {new_ret_order && typeof new_ret_order === "object" &&
+                        <Line data={new_ret_order} options={lineOptions} />
+                    }
+                </div>
+                <Timeline style={{padding:'0px'}}>
+                    <TimelineItem style={{minHeight:'30px',width:'200px',width:'185px'}}>
+                    <TimelineOppositeContent style={{display:'none'}}></TimelineOppositeContent>
+                    <TimelineSeparator> <TimelineDot style={{background:'mediumseagreen',boxShadow:'none'}} /><TimelineConnector style={{background:'teal'}} /></TimelineSeparator>
+                    <TimelineContent style={{padding:'10px 5px',fontSize:'10px'}} > Total                 :: {repeat_order_note && repeat_order_note[0].order} </TimelineContent>
+                </TimelineItem>
+                <TimelineItem style={{minHeight:'30px',width:'200px'}}>
+                    <TimelineOppositeContent style={{display:'none'}}></TimelineOppositeContent>
+                    <TimelineSeparator> <TimelineDot style={{background:'mediumseagreen',boxShadow:'none'}} /><TimelineConnector style={{background:'teal'}} /></TimelineSeparator>
+                    <TimelineContent style={{padding:'10px 5px',fontSize:'10px'}} > Min                   :: {repeat_order_note && repeat_order_note[0].min_order} </TimelineContent>
+                </TimelineItem>
+
+                <TimelineItem style={{minHeight:'30px',width:'200px'}}>
+                    <TimelineOppositeContent style={{display:'none'}}></TimelineOppositeContent>
+                    <TimelineSeparator> <TimelineDot style={{background:'mediumseagreen',boxShadow:'none'}} /><TimelineConnector style={{background:'teal'}} /></TimelineSeparator>
+                    <TimelineContent style={{padding:'10px 5px',fontSize:'10px'}} > Max                  :: {repeat_order_note && repeat_order_note[0].max_order} </TimelineContent>
+                </TimelineItem>
+
+                <TimelineItem style={{minHeight:'30px',width:'200px'}}>
+                    <TimelineOppositeContent style={{display:'none'}}></TimelineOppositeContent>
+                    <TimelineSeparator> <TimelineDot style={{background:'mediumseagreen',boxShadow:'none'}} /><TimelineConnector style={{background:'teal'}} /></TimelineSeparator>
+                    <TimelineContent style={{padding:'10px 5px',fontSize:'10px'}} >Avg                  ::  {repeat_order_note && repeat_order_note[0].avg_order} </TimelineContent>
+                </TimelineItem>
+
+                <TimelineItem style={{minHeight:'30px',width:'200px'}}>
+                    <TimelineOppositeContent style={{display:'none'}}></TimelineOppositeContent>
+                    <TimelineSeparator> <TimelineDot style={{background:'mediumseagreen',boxShadow:'none'}} /><TimelineConnector style={{background:'teal'}} /></TimelineSeparator>
+                    <TimelineContent style={{padding:'10px 5px',fontSize:'10px'}} >Total Point          ::  {repeat_order_note && repeat_order_note[0].total_point}</TimelineContent>
+                </TimelineItem>
+                <TimelineItem style={{minHeight:'30px',width:'200px',width:'200'}}>
+                    <TimelineOppositeContent style={{display:'none'}}></TimelineOppositeContent>
+                    <TimelineSeparator> <TimelineDot style={{background:'mediumseagreen',boxShadow:'none'}} /><TimelineConnector style={{background:'teal'}} /></TimelineSeparator>
+                    <TimelineContent style={{padding:'10px 5px',fontSize:'10px'}} >Point Bellow Avg     :: {repeat_order_note && repeat_order_note[0].bellow_avg} </TimelineContent>
+                </TimelineItem>
+                <TimelineItem style={{minHeight:'30px',width:'200px'}}>
+                    <TimelineOppositeContent style={{display:'none'}}></TimelineOppositeContent>
+                    <TimelineSeparator> <TimelineDot style={{background:'mediumseagreen',boxShadow:'none'}} /><TimelineConnector style={{background:'teal'}} /></TimelineSeparator>
+                    <TimelineContent style={{padding:'10px 5px',fontSize:'10px'}} > Point Above Avg      :: {repeat_order_note && repeat_order_note[0].above_avg} </TimelineContent>
+                </TimelineItem>
+                <TimelineItem style={{minHeight:'30px',width:'200px'}}>
+                    <TimelineOppositeContent style={{display:'none'}}></TimelineOppositeContent>
+                    <TimelineSeparator> <TimelineDot style={{background:'mediumseagreen',boxShadow:'none'}} /><TimelineConnector style={{background:'teal'}} /></TimelineSeparator>
+                    <TimelineContent style={{padding:'10px 5px',fontSize:'10px'}} >Change               ::  {repeat_order_note && repeat_order_note[0].change} </TimelineContent>
+                </TimelineItem>
+                <TimelineItem style={{minHeight:'30px',width:'200px'}}>
+                    <TimelineOppositeContent style={{display:'none'}}></TimelineOppositeContent>
+                    <TimelineSeparator> <TimelineDot style={{background:'mediumseagreen',boxShadow:'none'}} /><TimelineConnector style={{background:'teal'}} /></TimelineSeparator>
+                    <TimelineContent style={{padding:'10px 5px',fontSize:'10px'}} >Avg Change           :: {repeat_order_note && repeat_order_note[0].avg_change}</TimelineContent>
+                </TimelineItem>
+                </Timeline>
+                </Card>
+            </Grid>
+            <Grid item md={6}>
+                <Card className='dash-card'>
+                <h6>Revenue from New and Returning Customer</h6>
+                <Timeline style={{padding:'0px'}}>
+                    <TimelineItem style={{minHeight:'30px',width:'200px',width:'185px'}}>
+                    <TimelineOppositeContent style={{display:'none'}}></TimelineOppositeContent>
+                    <TimelineSeparator> <TimelineDot style={{background:'mediumseagreen',boxShadow:'none'}} /><TimelineConnector style={{background:'teal'}} /></TimelineSeparator>
+                    <TimelineContent style={{padding:'10px 5px',fontSize:'10px'}} > Total                 :: {new_rev_note && new_rev_note[0].amount} </TimelineContent>
+                </TimelineItem>
+                <TimelineItem style={{minHeight:'30px',width:'200px'}}>
+                    <TimelineOppositeContent style={{display:'none'}}></TimelineOppositeContent>
+                    <TimelineSeparator> <TimelineDot style={{background:'mediumseagreen',boxShadow:'none'}} /><TimelineConnector style={{background:'teal'}} /></TimelineSeparator>
+                    <TimelineContent style={{padding:'10px 5px',fontSize:'10px'}} > Min                   :: {new_rev_note && new_rev_note[0].min_amount} </TimelineContent>
+                </TimelineItem>
+
+                <TimelineItem style={{minHeight:'30px',width:'200px'}}>
+                    <TimelineOppositeContent style={{display:'none'}}></TimelineOppositeContent>
+                    <TimelineSeparator> <TimelineDot style={{background:'mediumseagreen',boxShadow:'none'}} /><TimelineConnector style={{background:'teal'}} /></TimelineSeparator>
+                    <TimelineContent style={{padding:'10px 5px',fontSize:'10px'}} > Max                  :: {new_rev_note && new_rev_note[0].max_amount} </TimelineContent>
+                </TimelineItem>
+
+                <TimelineItem style={{minHeight:'30px',width:'200px'}}>
+                    <TimelineOppositeContent style={{display:'none'}}></TimelineOppositeContent>
+                    <TimelineSeparator> <TimelineDot style={{background:'mediumseagreen',boxShadow:'none'}} /><TimelineConnector style={{background:'teal'}} /></TimelineSeparator>
+                    <TimelineContent style={{padding:'10px 5px',fontSize:'10px'}} >Avg                  ::  {new_rev_note && new_rev_note[0].avg_amount} </TimelineContent>
+                </TimelineItem>
+
+                <TimelineItem style={{minHeight:'30px',width:'200px'}}>
+                    <TimelineOppositeContent style={{display:'none'}}></TimelineOppositeContent>
+                    <TimelineSeparator> <TimelineDot style={{background:'mediumseagreen',boxShadow:'none'}} /><TimelineConnector style={{background:'teal'}} /></TimelineSeparator>
+                    <TimelineContent style={{padding:'10px 5px',fontSize:'10px'}} >Total Point          ::  {new_rev_note && new_rev_note[0].total_point}</TimelineContent>
+                </TimelineItem>
+                <TimelineItem style={{minHeight:'30px',width:'200px',width:'200'}}>
+                    <TimelineOppositeContent style={{display:'none'}}></TimelineOppositeContent>
+                    <TimelineSeparator> <TimelineDot style={{background:'mediumseagreen',boxShadow:'none'}} /><TimelineConnector style={{background:'teal'}} /></TimelineSeparator>
+                    <TimelineContent style={{padding:'10px 5px',fontSize:'10px'}} >Point Bellow Avg     :: {new_rev_note && new_rev_note[0].bellow_avg} </TimelineContent>
+                </TimelineItem>
+                <TimelineItem style={{minHeight:'30px',width:'200px'}}>
+                    <TimelineOppositeContent style={{display:'none'}}></TimelineOppositeContent>
+                    <TimelineSeparator> <TimelineDot style={{background:'mediumseagreen',boxShadow:'none'}} /><TimelineConnector style={{background:'teal'}} /></TimelineSeparator>
+                    <TimelineContent style={{padding:'10px 5px',fontSize:'10px'}} > Point Above Avg      :: {new_rev_note && new_rev_note[0].above_avg} </TimelineContent>
+                </TimelineItem>
+                <TimelineItem style={{minHeight:'30px',width:'200px'}}>
+                    <TimelineOppositeContent style={{display:'none'}}></TimelineOppositeContent>
+                    <TimelineSeparator> <TimelineDot style={{background:'mediumseagreen',boxShadow:'none'}} /><TimelineConnector style={{background:'teal'}} /></TimelineSeparator>
+                    <TimelineContent style={{padding:'10px 5px',fontSize:'10px'}} >Change               ::  {new_rev_note && new_rev_note[0].change} </TimelineContent>
+                </TimelineItem>
+                <TimelineItem style={{minHeight:'30px',width:'200px'}}>
+                    <TimelineOppositeContent style={{display:'none'}}></TimelineOppositeContent>
+                    <TimelineSeparator> <TimelineDot style={{background:'mediumseagreen',boxShadow:'none'}} /><TimelineConnector style={{background:'teal'}} /></TimelineSeparator>
+                    <TimelineContent style={{padding:'10px 5px',fontSize:'10px'}} >Avg Change           :: {new_rev_note && new_rev_note[0].avg_change}</TimelineContent>
+                </TimelineItem>
+            </Timeline>
+            <div>
+                {new_ret_revenue && typeof new_ret_revenue === "object" &&
+                    <Line data={new_ret_revenue} options={lineOptions} />
+                }
+            </div>
+            <Timeline style={{padding:'0px'}}>
+                <TimelineItem style={{minHeight:'30px',width:'200px',width:'185px'}}>
+                    <TimelineOppositeContent style={{display:'none'}}></TimelineOppositeContent>
+                    <TimelineSeparator> <TimelineDot style={{background:'mediumseagreen',boxShadow:'none'}} /><TimelineConnector style={{background:'teal'}} /></TimelineSeparator>
+                    <TimelineContent style={{padding:'10px 5px',fontSize:'10px'}} > Total                 :: {repeat_rev_note && repeat_rev_note[0].amount} </TimelineContent>
+                </TimelineItem>
+                <TimelineItem style={{minHeight:'30px',width:'200px'}}>
+                    <TimelineOppositeContent style={{display:'none'}}></TimelineOppositeContent>
+                    <TimelineSeparator> <TimelineDot style={{background:'mediumseagreen',boxShadow:'none'}} /><TimelineConnector style={{background:'teal'}} /></TimelineSeparator>
+                    <TimelineContent style={{padding:'10px 5px',fontSize:'10px'}} > Min                   :: {repeat_rev_note && repeat_rev_note[0].min_amount} </TimelineContent>
+                </TimelineItem>
+
+                <TimelineItem style={{minHeight:'30px',width:'200px'}}>
+                    <TimelineOppositeContent style={{display:'none'}}></TimelineOppositeContent>
+                    <TimelineSeparator> <TimelineDot style={{background:'mediumseagreen',boxShadow:'none'}} /><TimelineConnector style={{background:'teal'}} /></TimelineSeparator>
+                    <TimelineContent style={{padding:'10px 5px',fontSize:'10px'}} > Max                  :: {repeat_rev_note && repeat_rev_note[0].max_amount} </TimelineContent>
+                </TimelineItem>
+
+                <TimelineItem style={{minHeight:'30px',width:'200px'}}>
+                    <TimelineOppositeContent style={{display:'none'}}></TimelineOppositeContent>
+                    <TimelineSeparator> <TimelineDot style={{background:'mediumseagreen',boxShadow:'none'}} /><TimelineConnector style={{background:'teal'}} /></TimelineSeparator>
+                    <TimelineContent style={{padding:'10px 5px',fontSize:'10px'}} >Avg                  ::  {repeat_rev_note && repeat_rev_note[0].avg_amount} </TimelineContent>
+                </TimelineItem>
+
+                <TimelineItem style={{minHeight:'30px',width:'200px'}}>
+                    <TimelineOppositeContent style={{display:'none'}}></TimelineOppositeContent>
+                    <TimelineSeparator> <TimelineDot style={{background:'mediumseagreen',boxShadow:'none'}} /><TimelineConnector style={{background:'teal'}} /></TimelineSeparator>
+                    <TimelineContent style={{padding:'10px 5px',fontSize:'10px'}} >Total Point          ::  {repeat_rev_note && repeat_rev_note[0].total_point}</TimelineContent>
+                </TimelineItem>
+                <TimelineItem style={{minHeight:'30px',width:'200px',width:'200'}}>
+                    <TimelineOppositeContent style={{display:'none'}}></TimelineOppositeContent>
+                    <TimelineSeparator> <TimelineDot style={{background:'mediumseagreen',boxShadow:'none'}} /><TimelineConnector style={{background:'teal'}} /></TimelineSeparator>
+                    <TimelineContent style={{padding:'10px 5px',fontSize:'10px'}} >Point Bellow Avg     :: {repeat_rev_note && repeat_rev_note[0].bellow_avg} </TimelineContent>
+                </TimelineItem>
+                <TimelineItem style={{minHeight:'30px',width:'200px'}}>
+                    <TimelineOppositeContent style={{display:'none'}}></TimelineOppositeContent>
+                    <TimelineSeparator> <TimelineDot style={{background:'mediumseagreen',boxShadow:'none'}} /><TimelineConnector style={{background:'teal'}} /></TimelineSeparator>
+                    <TimelineContent style={{padding:'10px 5px',fontSize:'10px'}} > Point Above Avg      :: {repeat_rev_note && repeat_rev_note[0].above_avg} </TimelineContent>
+                </TimelineItem>
+                <TimelineItem style={{minHeight:'30px',width:'200px'}}>
+                    <TimelineOppositeContent style={{display:'none'}}></TimelineOppositeContent>
+                    <TimelineSeparator> <TimelineDot style={{background:'mediumseagreen',boxShadow:'none'}} /><TimelineConnector style={{background:'teal'}} /></TimelineSeparator>
+                    <TimelineContent style={{padding:'10px 5px',fontSize:'10px'}} >Change               ::  {repeat_rev_note && repeat_rev_note[0].change} </TimelineContent>
+                </TimelineItem>
+                <TimelineItem style={{minHeight:'30px',width:'200px'}}>
+                    <TimelineOppositeContent style={{display:'none'}}></TimelineOppositeContent>
+                    <TimelineSeparator> <TimelineDot style={{background:'mediumseagreen',boxShadow:'none'}} /><TimelineConnector style={{background:'teal'}} /></TimelineSeparator>
+                    <TimelineContent style={{padding:'10px 5px',fontSize:'10px'}} >Avg Change           :: {repeat_rev_note && repeat_rev_note[0].avg_change}</TimelineContent>
+                </TimelineItem>
+            </Timeline>
+                </Card>
+            </Grid>
+            <Grid item md={3}>
+                <Card className='dash-card'>
+                <h6>Order from different weekdays</h6>
+                <div>
+                    {wd_order && typeof wd_order === "object" &&
+                        <Line data={wd_order} options={lineOptions} />
+                    }
+                </div>
+                </Card>
+            </Grid>
+            <Grid item md={3}>
+                <Card className='dash-card'>
+                <h6> Revenue from different weekdays </h6>
+                <div>
+                    {wd_revenue && typeof wd_revenue === "object" &&
+                        <Line data={wd_revenue} options={lineOptions} />
+                    }
+                </div>
+                </Card>
+            </Grid>
+            <Grid item md={3}>
+                <Card className='dash-card'>
+                    <h6>Order from different Payment method</h6>
+                    <div>
+                        {pm_order && typeof pm_order === "object" &&
+                            <Line data={pm_order} options={lineOptions} />
+                        }
+                    </div>
+                </Card>
+            </Grid>
+            <Grid item md={3}>
+                <Card className='dash-card'>
+                    <h6>Revenue from different Payment method</h6>
+                    <div>
+                        {pm_revenue && typeof pm_revenue === "object" &&
+                            <Line data={pm_revenue} options={lineOptions} />
+                        }
+                    </div>
+                </Card>
+            </Grid>
+
+            <OrderCityStateTable />
+
+            <Grid item md={12}>
+                {/* Order Shipping City Charts And Tables */}
+                <form className="date-period" onSubmit={dateSubmit1} style={{marginBottom: '-15px'}}>
+                    {/* Form Including Two Timeline , Order Type, Time Period */}
+                    <DateRangePicker
+                        label="Timeline"
+                        value={dr}
+                        onChange={setdr}
+                        oneTap={false}
+                        ranges={[
+                            { label: 'Yesterday', value: [addDays(new Date(), -1), addDays(new Date(), -1)] },
+                            { label: 'Today', value: [new Date(), new Date()] },
+                            { label: 'Tomorrow', value: [addDays(new Date(), 1), addDays(new Date(), 1)] },
+                            { label: 'Last 7 days', value: [subDays(new Date(), 6), new Date()] },
+                            { label: 'This month', value: [subDays(new Date(), getDate(new Date()) - 1), new Date()] },
+                            { label: 'Last month', value: [startOfMonth(subDays(new Date(), getDate(new Date()))), endOfMonth(subDays(new Date(), getDate(new Date())))] },
+                            { label: 'Year To date', value: [startOfYear(new Date()), new Date()] }]}>
+
+                    </DateRangePicker>
+
+                    <input name="from" type={'hidden'} value={format(dr[0], 'yyyy-MM-dd')} />
+                    <input name="to" type={'hidden'} value={format(dr[1], 'yyyy-MM-dd')} />
+
+                    <DateRangePicker
+                        label="Timeline"
+                        value={dr1}
+                        onChange={setdr1}
+                        oneTap={false}
+                        ranges={[
+                            { label: 'Yesterday', value: [addDays(new Date(), -1), addDays(new Date(), -1)] },
+                            { label: 'Today', value: [new Date(), new Date()] },
+                            { label: 'Tomorrow', value: [addDays(new Date(), 1), addDays(new Date(), 1)] },
+                            { label: 'Last 7 days', value: [subDays(new Date(), 6), new Date()] },
+                            { label: 'This month', value: [subDays(new Date(), getDate(new Date()) - 1), new Date()] },
+                            { label: 'Last month', value: [startOfMonth(subDays(new Date(), getDate(new Date()))), endOfMonth(subDays(new Date(), getDate(new Date())))] },
+                            { label: 'Year To date', value: [startOfYear(new Date()), new Date()] }]}>
+                    </DateRangePicker>
+
+                    <input name="from1" type={'hidden'} value={format(dr1[0], 'yyyy-MM-dd')} />
+                    <input name="to1" type={'hidden'} value={format(dr1[1], 'yyyy-MM-dd')} />
+
+                    {/* <div style={{ display: 'inline-flex', margin: '7px' }} onChange={(e) => { setgroup1(e.target.value) }}>
+                        <input type="radio" value="daily" name="group1" /> Daily
+                        <input type="radio" value="weekly" name="group1" /> Weekly
+                        <input type="radio" value="monthly" name="group1" /> Monthly
+                    </div> */}
+                    <RadioGroup style={{ display: 'inline-block', fontSize: '13px', fontWeight: '500' }} onChange={(e) => { setgroup1(e.target.value) }}>
+                        <Radio checked={group1 === 'daily'} value="daily" name="group1" /> Day
+                        <Radio checked={group1 === 'weekly'} value="weekly" name="group1" /> Week
+                        <Radio checked={group1 === 'monthly'} value="monthly" name="group1" /> Month
+                    </RadioGroup>
+
+                    {/* <div style={{ display: 'inline-flex', margin: '7px' }} onChange={(e) => { setgroup2(e.target.value) }}>
+                        <input type="radio" value="0" name="group2" /> All order
+                        <input type="radio" value="1" name="group2" />New-Cus order
+                        <input type="radio" value="2" name="group2" />Ret-Cus order
+                    </div> */}
+                    <RadioGroup style={{ display: 'inline-block', fontSize: '13px', fontWeight: '500' }} onChange={(e) => { setgroup2(e.target.value) }}>
+                        <Radio checked={group2 === '0'} value="0" name="group2" /> Day
+                        <Radio checked={group2 === '1'} value="1" name="group2" /> Week
+                        <Radio checked={group2 === '2'} value="2" name="group2" /> Month
+                    </RadioGroup>
+                    <input className='period-btn' variant="contained" color="secondary" type="submit" value="Submit" />
+                    <input type="hidden" value="1" name="ajax_call" />
+                    <strong> Shipping City to show in Chart </strong>
+                    <ShipCity />
+                </form>
+            </Grid>
+            <Grid item md={12}>
+                <Card className='dash-card'>
+                <Timeline
+                sx={{
+                    [`& .${timelineOppositeContentClasses.root}`]: {
+                        flex: 0.2,
+                    },
+                }}>
+                <TimelineItem>
+                    <TimelineOppositeContent color="textSecondary">
+                        Revenue :: shipping city
+                    </TimelineOppositeContent>
+                    <TimelineSeparator>
+                        <TimelineDot>
+                            <AttachMoneyIcon />
+                        </TimelineDot>
+                        <TimelineConnector style={{background:'teal'}} />
+                    </TimelineSeparator>
+                    <TimelineContent>
+                        {Order_shipcity_revenue && Order_shipcity_revenue.length > 0 &&
+                            <Grid style={{height: '400px', width: '800px' }}> 
+                                <Line data={shipcity_rev_obj} options={lineOptions} />
+                            </Grid>
+                        }
+                    </TimelineContent>
+                </TimelineItem>
+                <TimelineItem>
+                    <TimelineOppositeContent color="textSecondary">
+                        Order :: shipping city
+                    </TimelineOppositeContent>
+                    <TimelineSeparator>
+                        <TimelineDot>
+                            <ShoppingBasketIcon />
+                        </TimelineDot>
+                        <TimelineConnector style={{background:'teal'}} />
+                    </TimelineSeparator>
+                    <TimelineContent>
+                        {Order_shipcity_order && Order_shipcity_order.length > 0 &&
+                            <Grid style={{height: '400px', width: '800px' }}> 
+                                <Line data={shipcity_order_obj} options={lineOptions} />
+                            </Grid>
+                            
+                        }
+                    </TimelineContent>
+                </TimelineItem>
+                </Timeline>
+                </Card>
+            </Grid>
+        </Grid>
     )
 }
 

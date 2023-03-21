@@ -30,47 +30,28 @@ function ProductCount() {
 
 
     return (
+        <div className="input-filters">
+            <strong> Product Count :  </strong>
 
-        <>
-            <Grid>
-
-                <Grid.Col span={3} style={{display:'inline-flex'}}>
-                    <strong style={{marginTop: '9px'}}> Product Count   </strong>
-
-                    <Select
-                        placeholder="Less than"
-                        defaultValue={'ProductCount_bellow'}
-                        onChange={(e)=>{handleChange(e.value)}}
-                        options={options}
-                    />
-                </Grid.Col>
-
-                <Grid.Col span={8} >
-                    
-                    { ProductCount_bellow && 
-                        <input style={{marginTop:'7px'}} defaultValue="0" type="number" id="4" name="order_prod_max"  /> 
-                    }
-                
-        
-                    { ProductCount_above && 
-                        <input style={{marginTop:'7px'}} defaultValue="0" type="number" id="3" name="order_prod_min"  /> 
-                    }
-
-                    { ProductCount_between && 
-
-                        <>
-                            <div id="ProductCount_betwn"  style={{display:'inline-flex'}}>
-                                <input style={{marginTop:'7px'}} defaultValue="0" type="number" id="1" name="order_prod_minval"  />   
-                                <input style={{marginTop:'7px'}} defaultValue="0" type="number" id="2" name="order_prod_maxval"  /> 
-                            </div>
-                        </>
-                    }
-
-                </Grid.Col>
-
-            </Grid>
-            
-        </>
+            <Select className="multi"
+                placeholder="Less than"
+                defaultValue={'ProductCount_bellow'}
+                onChange={(e)=>{handleChange(e.value)}}
+                options={options}
+            />
+            { ProductCount_bellow && 
+                <input defaultValue="0" type="number" id="4" name="order_prod_max"  /> 
+            }
+            { ProductCount_above && 
+                <input defaultValue="0" type="number" id="3" name="order_prod_min"  /> 
+            }
+            { ProductCount_between && 
+                <div id="ProductCount_betwn">
+                    <input defaultValue="0" type="number" id="1" name="order_prod_minval"  />   
+                    <input defaultValue="0" type="number" id="2" name="order_prod_maxval"  /> 
+                </div>
+            }
+        </div>
     )
 }
 

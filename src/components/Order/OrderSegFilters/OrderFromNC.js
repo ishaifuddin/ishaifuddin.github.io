@@ -3,6 +3,7 @@ import Select from 'react-select';
 import { Grid,Input } from '@mantine/core';
 import { useSelector, useDispatch } from "react-redux";
 import Multiselect from 'multiselect-react-dropdown';
+import { Radio, RadioGroup } from "rsuite";
 
 function OrderFromNC() {
 
@@ -31,65 +32,46 @@ function OrderFromNC() {
 
   
     return (
-        
-        
-
-        <Grid>
-
-            <Grid.Col span={3} style={{display:'inline-flex'}}>
-
-                <strong style={{marginTop: '9px'}}> Order Created :  </strong>
-
-                <Select
-                    placeholder="Past"
-                    defaultValue={'orders_from_itp'}
-                    onChange={(e)=>{handleChange(e.value)}}
-                    options={options}
-                />
-
-            </Grid.Col>
-
-            <Grid.Col span={8} >
-                
-                { Order_between && 
-                    
-                    <>
-                        <input  type="number" name="lod_from"/> to   &nbsp; 
-                        <input  type="number" name="lod_to"/> 
-                    
-                        <input  type="radio" name="lob_unit" value="lob_day"/> D  &nbsp; 
-                        <input  type="radio" name="lob_unit" value="lob_month"/> M  &nbsp;
-                        <input  type="radio" name="lob_unit" value="lob_year"/> Y  &nbsp; 
-                        <p>Ago</p> 
-                    </>
-                    
-                }
-
-
-                { Order_itp && 
-                    <>
-                        <input  type="number" name="lod_itp"/> 
-                        <input  type="radio"  name="loitp_unit" value="loitp_day"/> &nbsp; D &nbsp; 
-                        <input  type="radio"  name="loitp_unit" value="loitp_month"/> &nbsp; M &nbsp;
-                        <input  type="radio"  name="loitp_unit" value="loitp_year"/> &nbsp;  Y  &nbsp;
-                    </>
-                    
-                }
-
-                { Order_before && 
-
-                    <>
-                        <input  type="number" name="lod_over"/> 
-                        <input  type="radio"  name="loo_unit" value="loo_day"/> &nbsp; D  &nbsp;
-                        <input  type="radio"  name="loo_unit" value="loo_month"/> &nbsp; M  &nbsp;
-                        <input  type="radio"  name="loo_unit" value="loo_year"/>  &nbsp; Y  &nbsp;
-                        <p> Ago </p> 
-                    </>
-                }
-
-            </Grid.Col>
-
-        </Grid>
+        <div className="input-filters">
+            <strong> Order Created :  </strong>
+            <Select className="multi"
+                placeholder="Past"
+                defaultValue={'orders_from_itp'}
+                onChange={(e)=>{handleChange(e.value)}}
+                options={options}
+            />
+            { Order_between && 
+                <>
+                    <input  type="number" name="lod_from"/>
+                    <input  type="number" name="lod_to"/> 
+                    <RadioGroup>
+                        <Radio  type="radio" name="lob_unit" value="lob_day"/> D
+                        <Radio  type="radio" name="lob_unit" value="lob_month"/> M
+                        <Radio  type="radio" name="lob_unit" value="lob_year"/> Y    
+                    </RadioGroup>  <span style={{paddingLeft: '1rem'}}>Ago</span> 
+                </>
+            }
+            { Order_itp && 
+                <>
+                    <input  type="number" name="lod_itp"/> 
+                    <RadioGroup>
+                        <Radio  type="radio"  name="loitp_unit" value="loitp_day"/>D
+                        <Radio  type="radio"  name="loitp_unit" value="loitp_month"/>M
+                        <Radio  type="radio"  name="loitp_unit" value="loitp_year"/>Y
+                    </RadioGroup>
+                </>
+            }
+            { Order_before && 
+                <>
+                    <input  type="number" name="lod_over"/> 
+                    <RadioGroup>
+                        <Radio  type="radio"  name="loo_unit" value="loo_day"/>D
+                        <Radio  type="radio"  name="loo_unit" value="loo_month"/>M
+                        <Radio  type="radio"  name="loo_unit" value="loo_year"/>Y
+                    </RadioGroup>
+                </>
+            }
+        </div>
         
     )
 }

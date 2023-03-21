@@ -59,6 +59,7 @@ import { get_order_segs } from "../../features/order/OrderListAndSegs";
 import { get_order_filtered_List } from "../../features/order/OrderListAndSegs";
 import { get_selseg_List } from "../../features/order/OrderListAndSegs";
 import CusSegment from "./OrderSegFilters/CusSegment";
+import { Card } from 'react-bootstrap';
 
 
 //import SideNav from '../../pages/SideNav';
@@ -78,6 +79,7 @@ function OrderList() {
     event.preventDefault();
     const fdata = new FormData(event.target);
     const data = Object.fromEntries(fdata.entries());
+    data["ajax_call"] = 1;
     setSegname('');
     dispatch(get_order_filtered_List(data));
   };
@@ -263,170 +265,81 @@ function OrderList() {
 
 
   return (
-
-    <Grid container>
-
-
-      <Grid container sm={10} style={{ background: 'mediumseagreen', position: 'fixed', color: 'white', top: 0, width: '100%', padding: '8px', paddingLeft: '2%', zIndex: 1, borderRadius: '5px'}}> 
-          <h4> Order :: List and segments </h4> 
+    <Grid container spacing={3}>
+      <Grid item md={12}>
+          <div className="notifications">
+              <h6>Order : List and segments</h6>
+          </div>
       </Grid>
-
-      {/* Order Segment List Modal  */}
-      <Modal
-
-        overflow="inside"
-        overlayColor={theme.colorScheme === 'dark' ? theme.colors.dark[9] : theme.colors.gray[2]}
-        overlayOpacity={0.55}
-        overlayBlur={3}
-        size="70%"
-        opened={opened}
-        onClose={() => setOpened(false)}
-        title="Order segments">
-
-        {Seglist &&
-          <ThemeProvider theme={defaultMaterialTheme}>
-
-            <MaterialTable
-
-              columns={[
-                {
-                  title: 'Segment',
-                  field: 'name',
-                  render: row => <div style={{ "cursor": "pointer", "background": "cornflowerblue", "color": "aliceblue", "padding": "4px", "borderRadius": "7px" }}
-                    onClick={() => { setSegname(row.name); dispatch(get_selseg_List({ segid: row.id })) }}> {row.name}
-                  </div>
-                },
-                { title: 'Filter', field: 'filter' },
-                { title: 'Created', field: 'created' }
-              ]}
-              data={Seglist}
-              title=""
-              icons={{
-                Check: Check,
-                DetailPanel: ChevronRight,
-                Export: SaveAlt,
-                Filter: FilterList,
-                FirstPage: FirstPage,
-                LastPage: LastPage,
-                NextPage: ChevronRight,
-                PreviousPage: ChevronLeft,
-                Search: Search,
-                ThirdStateCheck: Remove,
-                Clear: Remove
-              }}
-              options={
-                {
-                  search: true,
-                  searchFieldAlignment: "right",
-                  selection: true,
-                  exportButton: true,
-                  exportAllData: true
-                }
-              }
-
-            />
-
-          </ThemeProvider>
-        }
-
-      </Modal>
-
-      <Grid item sm={12} style={{zIndex:'0',marginTop:'5%' }}>
-
+      <Grid item sm={12}>
         {/* Order filters Dropdown  */}
+          {
+            filts &&
+            <Multiselect isObject={false}
+              placeholder=" + Add Filter"
+              onRemove={(e) => { addfilter(e, 99) }}
+              onSelect={(e) => { addfilter(e, e[e.length - 1]) }}
+              options={filts}
+              selectedValues={[]}
+              showCheckbox />
+          }
 
-        <Grid container>
+          {Seglist &&
 
-          <Grid item sm={3} style={{ zIndex: '1' }}>
-
-            {
-              filts &&
-              <Multiselect isObject={false}
-                placeholder=" + Add Filter"
-                onRemove={(e) => { addfilter(e, 99) }}
-                onSelect={(e) => { addfilter(e, e[e.length - 1]) }}
-                options={filts}
-                selectedValues={[]}
-                showCheckbox />
-            }
-
-            {Seglist &&
-
-              <Group position="left" style={{ marginTop: '15px' }} >
-                <Button onClick={() => setOpened(true)}>Order Segments</Button>
-              </Group>
-            }
-
-          </Grid>
-
+            <Group position="left" style={{ marginTop: '1rem' }} >
+              <Button style={{backgroundColor: 'rgb(5, 175, 197)'}} onClick={() => setOpened(true)}>Order Segments</Button>
+            </Group>
+          }
 
           {/* Order filters  */}
+          <form className='dash-card' onSubmit={filterSubmit}>
+            {/* <input style={{ display: 'none' }} defaultValue="1" type="number" name="ajax_call" /> */}
+            {filterList.length > 0 &&
+              <div className="input-filters">
+                <strong>Create Segment :</strong>
+                <input
+                  type="text"
+                  name="order_seg_name"
+                  size="100%"
+                  placeholder="Insert segment name...Ex: Loyal Customer" />
+              </div>
+            }
+            {filterList}
+            {filterList.length > 0 && <input type="submit" value="Submit" />}
+          </form>
+      </Grid>
 
-          <Grid item sm={8} style={{ padding: '1%' }}>
+      <Grid item md={12}>
+        {/* Order Segment List Modal  */}
+        <Modal className='dashboard' style={{padding: '0'}}
+          overflow="inside"
+          overlayColor={theme.colorScheme === 'dark' ? theme.colors.dark[9] : theme.colors.gray[2]}
+          overlayOpacity={0.55}
+          overlayBlur={3}
+          size="70%"
+          opened={opened}
+          onClose={() => setOpened(false)}
+          title="Order segments">
 
-            <form onSubmit={filterSubmit}>
-
-              <input style={{ display: 'none' }} defaultValue="1" type="number" name="ajax_call" />
-
-              {filterList.length > 0 &&
-                <>
-                  <strong>Create Segment :</strong>
-                  <input style={{ marginBottom: '15px', width: '65%', height: '40px', fontSize: '15px' }}
-                    type="text"
-                    name="order_seg_name"
-                    size="45"
-                    placeholder="Insert segment name...Ex: Loyal Customer" />
-                </>
-              }
-
-              {filterList}
-
-              {filterList.length > 0 && <input type="submit" value="Submit" />}
-
-            </form>
-
-          </Grid>
-
-        </Grid>
-
-        {/* Orders List */}
-        <Grid container>
-
-          <Grid item sm={12} style={{ zIndex: '0', marginRight: '20px', marginTop: '20px', boxShadow: 'rgb(65 69 88 / 10%) 0px 7px 14px 0px, rgb(0 0 0 / 7%) 0px 3px 6px 0px' }}>
-
+          {Seglist &&
+          <Card className='dash-card'>
             <ThemeProvider theme={defaultMaterialTheme}>
 
               <MaterialTable
-                
+
                 columns={[
-                  { title: 'Order', render: (row) => 
-                    <div style={{ background: 'whitesmoke' }}>  
-                      <strong>  <a href={'/Orders/' + row.orderid}> {row.orderid} </a> </strong> {"\n"} 
-                      <p> <a href={'/Customers/profile/' + row.chc}> {row.cusname} </a>   </p> 
-                      <span>{row.paymeth}</span> 
-                    </div> 
+                  {
+                    title: 'Segment',
+                    field: 'name',
+                    render: row => <div 
+                      onClick={() => { setSegname(row.name); dispatch(get_selseg_List({ segid: row.id })) }}> {row.name}
+                    </div>
                   },
-
-                  { title: '1st/Nth', field: 'foro', render: row => <div style={{ background: 'whitesmoke' }}>  {row.foro} </div> },
-
-                  { title: 'RetAfter', field: 'ret_after', render: row => <div style={{ background: 'ghostwhite' }}>  {row.ret_after} </div> },
-
-                  { title: 'Date', field: 'created', render: row => <div style={{ background: 'whitesmoke' }}>  {row.created} </div> },
-
-                  { title: 'Status', field: 'status', render: row => <div style={{ background: 'ghostwhite' }}>  {row.status} </div> },
-
-                  { title: 'Amount', field: 'amount', render: row => <div style={{ background: 'whitesmoke' }}>  {row.amount} </div> },
-
-                  { title: 'Ship.City', field: 'scity', render: row => <div style={{ background: 'ghostwhite' }}>  {row.scity} </div> },
-
-                  { title: 'Item', field: 'total_prod', render: row => <div style={{ background: 'whitesmoke' }}>  {row.total_prod} </div> },
-
-                  { title: 'Unit', field: 'total_unit', render: row => <div style={{ background: 'ghostwhite' }}>  {row.total_unit} </div> }
-
+                  { title: 'Filter', field: 'filter' },
+                  { title: 'Created', field: 'created' }
                 ]}
-
-                data={OListCloneData}
-                title={segname}
+                data={Seglist}
+                title=""
                 icons={{
                   Check: Check,
                   DetailPanel: ChevronRight,
@@ -438,61 +351,100 @@ function OrderList() {
                   PreviousPage: ChevronLeft,
                   Search: Search,
                   ThirdStateCheck: Remove,
-                }}
-
-                onSelectionChange={(data) => {
-                  for (const key in data) {
-                    //console.log(data[key].cusname);
-                  }
+                  Clear: Remove
                 }}
                 options={
                   {
-                    pageSize: 10,       // make initial page size
-                    emptyRowsWhenPaging: false,   // To avoid of having empty rows
-                    pageSizeOptions: [10, 15, 25, 40, 50],
+                    showFirstLastPageButtons: false,
                     search: true,
                     searchFieldAlignment: "right",
+                    selection: true,
                     exportButton: true,
-                    exportAllData: true,
-                    cellStyle: {
-                      padding: '0px',
-                      lineHeight: 2,
-                      fontFamily: 'Circular-Loom',
-                      textAlign: 'center',
-                      borderBottom: '2px solid rgb(246, 224, 224)'
-                    },
-                    headerStyle: {
-                      background: 'mediumseagreen',
-                      fontSize: '17px',
-                      color: 'white',
-                      padding: '2px',
-                      height: '40px'
-                    },
-                    // rowStyle: {
-                    //     backgroundColor: '#EEE',
-                    // }
-                    //rowStyle: (data, index) => index % 2 === 0 ? { background: "ghostwhite" } : {background:'white'},
-
+                    exportAllData: true
                   }
                 }
-                localization={{
-                  pagination: {
-                    labelRowsPerPage: '',
-                    showFirstLastPageButtons: false,
-                  }
-                }}
-
               />
-
-
             </ThemeProvider>
+            </Card>
+          }
+          </Modal>
+        <Card className='dash-card'>
+          {/* Orders List */}
+          <ThemeProvider theme={defaultMaterialTheme}>
+            <MaterialTable
+              columns={[
+                { title: 'Order', render: (row) => 
+                  <div style={{ background: 'whitesmoke' }}>  
+                    <strong>  <a href={'/Orders/' + row.orderid}> {row.orderid} </a> </strong> {"\n"} 
+                    <p> <a href={'/Customers/profile/' + row.chc}> {row.cusname} </a>   </p> 
+                    <span>{row.paymeth}</span> 
+                  </div> 
+                },
+                { title: '1st/Nth', field: 'foro', render: row => <div style={{ background: 'whitesmoke' }}>  {row.foro} </div> },
 
-          </Grid>
+                { title: 'RetAfter', field: 'ret_after', render: row => <div style={{ background: 'ghostwhite' }}>  {row.ret_after} </div> },
 
-        </Grid>
+                { title: 'Date', field: 'created', render: row => <div style={{ background: 'whitesmoke' }}>  {row.created} </div> },
 
+                { title: 'Status', field: 'status', render: row => <div style={{ background: 'ghostwhite' }}>  {row.status} </div> },
+
+                { title: 'Amount', field: 'amount', render: row => <div style={{ background: 'whitesmoke' }}>  {row.amount} </div> },
+
+                { title: 'Ship.City', field: 'scity', render: row => <div style={{ background: 'ghostwhite' }}>  {row.scity} </div> },
+
+                { title: 'Item', field: 'total_prod', render: row => <div style={{ background: 'whitesmoke' }}>  {row.total_prod} </div> },
+
+                { title: 'Unit', field: 'total_unit', render: row => <div style={{ background: 'ghostwhite' }}>  {row.total_unit} </div> }
+
+              ]}
+              data={OListCloneData}
+              title={segname}
+              icons={{
+                Check: Check,
+                DetailPanel: ChevronRight,
+                Export: SaveAlt,
+                Filter: FilterList,
+                FirstPage: FirstPage,
+                LastPage: LastPage,
+                NextPage: ChevronRight,
+                PreviousPage: ChevronLeft,
+                Search: Search,
+                ThirdStateCheck: Remove,
+              }}
+              onSelectionChange={(data) => {
+                for (const key in data) {
+                  //console.log(data[key].cusname);
+                }
+              }}
+              options={
+                {
+                  showFirstLastPageButtons: false,
+                  pageSize: 10,       // make initial page size
+                  emptyRowsWhenPaging: false,   // To avoid of having empty rows
+                  pageSizeOptions: [10, 15, 25, 40, 50],
+                  search: true,
+                  searchFieldAlignment: "right",
+                  exportButton: true,
+                  exportAllData: true,
+                  cellStyle: {
+                    padding: '0px',
+                    lineHeight: 2,
+                    fontFamily: 'Circular-Loom',
+                    textAlign: 'center',
+                    borderBottom: '2px solid rgb(246, 224, 224)'
+                  }
+                }
+              }
+              localization={{
+                pagination: {
+                  labelRowsPerPage: '',
+                  showFirstLastPageButtons: false,
+                }
+              }}
+            />
+          </ThemeProvider>
+        </Card>
       </Grid>
-
     </Grid>
 
   )

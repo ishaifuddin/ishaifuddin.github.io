@@ -31,7 +31,7 @@ function ShipCity() {
 
     return (
 
-        <Grid style={{marginTop:'20px'}}>
+        <Grid>
 
             <Grid.Col span={8} style={{}}>
                 {Cus_country && <Multiselect isObject={false}

@@ -31,7 +31,7 @@ function Products() {
     var product_obj = useSelector((state) => state.product_List_And_Segments.all_product_object);
 
     var ops = [];
-    if(product_obj.length > 0){
+    if(product_obj && product_obj.length > 0){
         for (var i of product_obj) {
             var label = i.product_name; var value = i.product_id;
             ops.push({value:value,label:label});

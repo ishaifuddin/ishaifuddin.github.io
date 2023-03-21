@@ -30,47 +30,27 @@ function NthOrder() {
 
 
     return (
-
-        
-        <Grid>
-
-            <Grid.Col span={3} style={{display:'inline-flex'}}>
-                <strong style={{marginTop: '9px'}}> Nth-Order :  </strong>
-
-                {options && <Select
-                    placeholder="Less than"
-                    defaultValue={'NthOrder_bellow'}
-                    onChange={(e)=>{handleChange(e.value)}}
-                    options={options}
-                />}
-            </Grid.Col>
-
-            <Grid.Col span={8} >
-                
-                { NthOrder_bellow && 
-                    <input style={{marginTop:'7px'}} defaultValue="0" type="number" id="4" name="nth_order_max"  /> 
-                }
-            
-    
-                { NthOrder_above && 
-                    <input style={{marginTop:'7px'}} defaultValue="0" type="number" id="3" name="nth_order_min"  /> 
-                }
-
-                { NthOrder_between && 
-
-                    <>
-                        <div id="NthOrder_betwn"  style={{display:'inline-flex'}}>
-                            <input style={{marginTop:'7px'}} defaultValue="0" type="number" id="1" name="nth_order_minval"  />   
-                            <input style={{marginTop:'7px'}} defaultValue="0" type="number" id="2" name="nth_order_maxval"  /> 
-                        </div>
-                    </>
-                }
-
-            </Grid.Col>
-
-        </Grid>
-        
-       
+        <div className="input-filters">
+            <strong> Nth-Order :  </strong>
+            {options && <Select className="multi"
+                placeholder="Less than"
+                defaultValue={'NthOrder_bellow'}
+                onChange={(e)=>{handleChange(e.value)}}
+                options={options}
+            />}
+            { NthOrder_bellow && 
+                <input defaultValue="0" type="number" id="4" name="nth_order_max"  /> 
+            }
+            { NthOrder_above && 
+                <input defaultValue="0" type="number" id="3" name="nth_order_min"  /> 
+            }
+            { NthOrder_between && 
+                <div id="NthOrder_betwn">
+                    <input defaultValue="0" type="number" id="1" name="nth_order_minval"  />   
+                    <input defaultValue="0" type="number" id="2" name="nth_order_maxval"  /> 
+                </div>
+            }
+        </div>
     )
 }
 

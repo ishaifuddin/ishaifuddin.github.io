@@ -30,47 +30,28 @@ function Amount() {
 
 
     return (
+        <div className="input-filters">
+            <strong> Amount :  </strong>
 
-        <>
-            <Grid>
-
-                <Grid.Col span={3} style={{display:'inline-flex'}}>
-                    <strong style={{marginTop: '9px'}}> Amount :  </strong>
-
-                    <Select
-                        placeholder="Less than"
-                        defaultValue={'amount_bellow'}
-                        onChange={(e)=>{handleChange(e.value)}}
-                        options={options}
-                    />
-                </Grid.Col>
-
-                <Grid.Col span={8} >
-                    
-                    { amount_bellow && 
-                        <input style={{marginTop:'7px'}} defaultValue="0" type="number" id="4" name="order_amount_max"  /> 
-                    }
-                
-        
-                    { amount_above && 
-                        <input style={{marginTop:'7px'}} defaultValue="0" type="number" id="3" name="order_amount_min"  /> 
-                    }
-
-                    { amount_between && 
-
-                        <>
-                            <div id="amount_betwn"  style={{display:'inline-flex'}}>
-                                <input style={{marginTop:'7px'}} defaultValue="0" type="number" id="1" name="order_amount_minval"  />   
-                                <input style={{marginTop:'7px'}} defaultValue="0" type="number" id="2" name="order_amount_maxval"  /> 
-                            </div>
-                        </>
-                    }
-
-                </Grid.Col>
-
-            </Grid>
-            
-        </>
+            <Select className="multi"
+                placeholder="Less than"
+                defaultValue={'amount_bellow'}
+                onChange={(e)=>{handleChange(e.value)}}
+                options={options}
+            />
+            { amount_bellow && 
+                <input style={{marginTop:'7px'}} defaultValue="0" type="number" id="4" name="order_amount_max"  /> 
+            }
+            { amount_above && 
+                <input style={{marginTop:'7px'}} defaultValue="0" type="number" id="3" name="order_amount_min"  /> 
+            }
+            { amount_between && 
+                <div id="amount_betwn"  style={{display:'inline-flex'}}>
+                    <input style={{marginTop:'7px'}} defaultValue="0" type="number" id="1" name="order_amount_minval"  />   
+                    <input style={{marginTop:'7px'}} defaultValue="0" type="number" id="2" name="order_amount_maxval"  /> 
+                </div>
+            }
+        </div>
     )
 }
 
