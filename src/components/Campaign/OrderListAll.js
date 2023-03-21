@@ -15,6 +15,7 @@ import MaterialTable from 'material-table';
 import { ThemeProvider, createTheme } from '@mui/material';
 
 import { get_all_orders_from_campaign } from '../../features/campaign/OrderListAndGroupByCam';
+import { Card } from 'react-bootstrap';
 
 function OrderListAll() {
     
@@ -39,27 +40,33 @@ function OrderListAll() {
     Allorder = structuredClone(Allorder);
 
     return (
-
-        <Grid style={{margin:'3%'}}>
-            <h4> Orders From campaign </h4>
-            {
+        <Grid className='campaign' container spacing={3}>
+            <Grid item md={12}>
+                <div className="notifications">
+                    <h6>Orders From campaign</h6>
+                </div>
+            </Grid>
+            <Grid item md={12}>
+                {
                 Allorder &&  Allorder.length > 0 && 
-                <ThemeProvider theme={defaultMaterialTheme}>
-                <MaterialTable
-                    columns={[
-                        { title: 'Camapign', field: 'Camapign' },
-                        { title: 'Medium', field: 'Medium' },
-                        { title: 'Source', field: 'Source' },
-                        { title: 'OrderId', field: 'OrderId'},
-                        { title: 'Amount', field: 'Amount' },
-                        { title: 'Date', field: 'Date'},
-                    ]}
-                    data={Allorder}
-                    title="Orders from Campaign"
-                />
-                </ThemeProvider>
-            }
-            
+                <Card className='dash-card'>
+                    <ThemeProvider theme={defaultMaterialTheme}>
+                    <MaterialTable
+                        columns={[
+                            { title: 'Camapign', field: 'Camapign' },
+                            { title: 'Medium', field: 'Medium' },
+                            { title: 'Source', field: 'Source' },
+                            { title: 'OrderId', field: 'OrderId'},
+                            { title: 'Amount', field: 'Amount' },
+                            { title: 'Date', field: 'Date'},
+                        ]}
+                        data={Allorder}
+                        title="Orders from Campaign"
+                    />
+                    </ThemeProvider>
+                </Card>
+                }
+            </Grid>
         </Grid>
     )
 }

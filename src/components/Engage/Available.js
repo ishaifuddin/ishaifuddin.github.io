@@ -16,6 +16,7 @@ import MaterialTable from 'material-table';
 import { ThemeProvider, createTheme } from '@mui/material';
 
 import { get_all_engage_automation_performance } from '../../features/engage/PerformanceCompare';
+import { Card } from '@material-ui/core';
 
 function Available() {
 
@@ -36,99 +37,76 @@ function Available() {
         return false;
       }
     }
-
-
     if (!(is_dispatched1())) {
       console.log("disptacing");
       dispatch(get_all_engage_automation_performance({ ajax_call: 2 }));
     }
 
-
   }, [])
-
 
   var auto_table_clone="";
   if (autolist && autolist.length > 0){
     auto_table_clone = structuredClone(autolist);
   }
 
-
-  
   return (
-
-    <Grid container>
-      
-      <Grid container style={{ background: 'rgb(52, 195, 255)', position: 'fixed', color: 'white', top: 0, width: '100%', padding: '8px', paddingLeft: '2%', zIndex: 1, borderRadius: '5px'}}> 
-          <h4> Engage ::  automation performance </h4> 
+    <Grid className='campaign' container spacing={3}>
+        <Grid item md={12}>
+            <div className="notifications">
+                <h6>Engage : automation performance</h6>
+            </div>
+        </Grid>
+        <Grid item md={12}>
+          {auto_table_clone  &&
+            <Card className='dash-card'>
+                <ThemeProvider theme={defaultMaterialTheme}>
+                  <MaterialTable
+                    columns={[
+                      { title: 'Name', field: 'name' },
+                      { title: 'MailSend', field: 'mailSend' },
+                      { title: 'Visitor', field: 'visitor' },
+                      { title: 'Order', field: 'order' },
+                      { title: 'Amount', field: 'amount' },
+                      { title: 'Created', field: 'auto_created' },
+                    ]}
+                    data={auto_table_clone}
+                    title="Created Automations"
+                    icons={{
+                      Check: Check,
+                      DetailPanel: ChevronRight,
+                      Export: SaveAlt,
+                      Filter: FilterList,
+                      FirstPage: FirstPage,
+                      LastPage: LastPage,
+                      NextPage: ChevronRight,
+                      PreviousPage: ChevronLeft,
+                      Search: Search,
+                    }}
+                    options={
+                      {
+                        showFirstLastPageButtons: false,
+                        pageSize: 10,       // make initial page size
+                        emptyRowsWhenPaging: false,   // To avoid of having empty rows
+                        pageSizeOptions: [10, 15, 25, 40, 50],
+                        search: true,
+                        searchFieldAlignment: "right",
+                        exportButton: true,
+                        exportAllData: true,
+                        cellStyle: {
+                          padding: '4px',
+                          lineHeight: 2,
+                          fontFamily: 'system-ui',
+                          textAlign: 'center',
+                          borderBottom: '2px solid rgb(246, 224, 224)'
+                        }
+                      }
+                    }
+                  />
+                </ThemeProvider>
+            </Card>
+          }
       </Grid>
-      
-      <Grid item sm={12} style={{marginLeft:'2%',zIndex:'0',marginTop:'5%'}}>
-
-        <ThemeProvider theme={defaultMaterialTheme}>
-
-          {auto_table_clone  && <MaterialTable
-
-            columns={[
-              { title: 'Name', field: 'name' },
-              { title: 'MailSend', field: 'mailSend' },
-              { title: 'Visitor', field: 'visitor' },
-              { title: 'Order', field: 'order' },
-              { title: 'Amount', field: 'amount' },
-              { title: 'Created', field: 'auto_created' },
-            ]}
-
-            data={auto_table_clone}
-            title="Created Automations"
-            icons={{
-              Check: Check,
-              DetailPanel: ChevronRight,
-              Export: SaveAlt,
-              Filter: FilterList,
-              FirstPage: FirstPage,
-              LastPage: LastPage,
-              NextPage: ChevronRight,
-              PreviousPage: ChevronLeft,
-              Search: Search,
-            }}
-
-            options={
-              {
-                pageSize: 10,       // make initial page size
-                emptyRowsWhenPaging: false,   // To avoid of having empty rows
-                pageSizeOptions: [10, 15, 25, 40, 50],
-                search: true,
-                searchFieldAlignment: "right",
-                exportButton: true,
-                exportAllData: true,
-                cellStyle: {
-                  padding: '4px',
-                  lineHeight: 2,
-                  fontFamily: 'system-ui',
-                  textAlign: 'center',
-                  borderBottom: '2px solid rgb(246, 224, 224)'
-                },
-                headerStyle: {
-                  background: 'rgb(52, 195, 255)',
-                  fontSize: '17px',
-                  color: 'white',
-                  padding: '2px',
-                  height: '40px'
-                },
-                // rowStyle: {
-                //     backgroundColor: '#EEE',
-                // }
-                //rowStyle: (data, index) => index % 2 === 0 ? { background: "ghostwhite" } : {background:'white'},
-
-              }
-            }
-          />}
-
-        </ThemeProvider>
-
-      </Grid>
-
     </Grid>
-
   )
 
 }

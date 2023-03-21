@@ -17,23 +17,23 @@ function AddNewCampaign() {
 
     
     return (
-        
-        <Grid style={{margin:'3%'}}>
-
-            <form onSubmit={handleSubmit} >
-            
-                <h4> Insert Campaign source  </h4> 
-                <input type="text" id="src_name" style={{height:'50px',width:'300px',fontSize:'16px'}} />
-
-                <h4> Insert Ad URL   </h4> 
-                <input type="text" id="addurl" style={{height:'50px',width:'300px',fontSize:'16px'}} /> 
-                
-                <Button type="submit">Save</Button>
-            
-            </form>
-            
+        <Grid className='campaign' container spacing={3}>
+            <Grid item md={12}>
+                <div className="notifications">
+                    <h6>Campaign</h6>
+                </div>
+            </Grid>
+            <Grid item md={12}>
+                <form onSubmit={handleSubmit}>
+                    <label sty>Insert Campaign source : </label> 
+                    <input type="text" id="src_name"/><br/><br/>
+                    <label> Insert Ad URL :  </label> 
+                    <input type="text" id="addurl" /> 
+                    <Button type="submit">Save</Button>
+                </form>
+            </Grid>
         </Grid>
-  )
+    )
 }
 
 export default AddNewCampaign

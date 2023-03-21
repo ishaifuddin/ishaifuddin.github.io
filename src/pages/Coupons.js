@@ -6,6 +6,7 @@ import MaterialTable from 'material-table';
 import { ThemeProvider, createTheme } from '@mui/material';
 import { get_all_coupons } from '../features/Coupons/Get_coupon_list';
 import SideNav from './SideNav';
+import { Card } from 'react-bootstrap';
 
 function Coupons() {
     
@@ -31,31 +32,32 @@ function Coupons() {
 
     
     return (
-
-        <Grid container>
-
-            <Grid item sm={10}>
-
-                <h4> Available coupons </h4>
-                <ThemeProvider theme={defaultMaterialTheme}>
+        <Grid className='campaign' container spacing={3}>
+            <Grid item md={12}>
+                <div className="notifications">
+                    <h6>Available coupons</h6>
+                </div>
+            </Grid>
+            <Grid item md={12}>
                 {    
                 All_coupons &&  All_coupons.length > 0 && 
-                <MaterialTable
-                    columns={[
-                        { title: 'ID', field: 'ID' },
-                        { title: 'CODE', field: 'CODE' },
-                        { title: 'AMOUNT', field: 'AMOUNT' },
-                        { title: 'TYPE', field: 'TYPE'},
-                        { title: 'TOTAL-USER', field: 'TOTAL-USER' }
-                    ]}
-                    data={All_coupons}
-                    title="Created coupons"
-                />
-                }
-                </ThemeProvider>
-
+                <Card className='dash-card'>
+                    <ThemeProvider theme={defaultMaterialTheme}>
+                    <MaterialTable
+                        columns={[
+                            { title: 'ID', field: 'ID' },
+                            { title: 'CODE', field: 'CODE' },
+                            { title: 'AMOUNT', field: 'AMOUNT' },
+                            { title: 'TYPE', field: 'TYPE'},
+                            { title: 'TOTAL-USER', field: 'TOTAL-USER' }
+                        ]}
+                        data={All_coupons}
+                        title="Created coupons"
+                    />
+                    </ThemeProvider>
+                </Card>
+                }            
             </Grid>
-
         </Grid>
     )
 }

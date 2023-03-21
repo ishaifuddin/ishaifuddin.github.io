@@ -317,4 +317,9 @@ aside .css-cveggr-MuiListItemIcon-root {
 }
 .dashboard form.dash-card:empty {
   display: none;
+}
+.dashboard .campaign form label {
+  min-width: 180px;
+  display: inline-block;
+  color: #fff;
 }/*# sourceMappingURL=shopex.css.map */

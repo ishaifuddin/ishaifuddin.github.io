@@ -14,6 +14,7 @@ import MaterialTable from 'material-table';
 import { ThemeProvider, createTheme } from '@mui/material';
 
 import { get_all_orders_group_by_campaign } from '../../features/campaign/OrderListAndGroupByCam';
+import { Card } from 'react-bootstrap';
 
 function OrderListGroupbyCamSrc() {
     
@@ -41,28 +42,32 @@ function OrderListGroupbyCamSrc() {
     group_by_campaign_source = structuredClone(group_by_campaign_source);
     			
     return (
-        
-        <Grid style={{margin:'3%'}}>
-
-            <h4> Camapign comparison </h4>
-
-            {
+        <Grid className='campaign' container spacing={3}>
+            <Grid item md={12}>
+                <div className="notifications">
+                    <h6>Camapign comparison</h6>
+                </div>
+            </Grid>
+            <Grid item md={12}>
+                {
                 group_by_campaign_source &&  group_by_campaign_source.length > 0 && 
-                <ThemeProvider theme={defaultMaterialTheme}>
-                <MaterialTable
-                    columns={[
-                        { title: 'Source', field: 'Source' },
-                        { title: 'Traffic', field: 'Traffic' },
-                        { title: 'Orders', field: 'Orders' },
-                        { title: 'Revenue', field: 'Revenue'},
-                        { title: 'Average_order_Rev', field: 'Average_order_Rev' }
-                    ]}
-                    data={group_by_campaign_source}
-                    title="Group By Campaign Source"
-                />
-                </ThemeProvider>
-            }
-
+                <Card className='dash-card'>
+                    <ThemeProvider theme={defaultMaterialTheme}>
+                    <MaterialTable
+                        columns={[
+                            { title: 'Source', field: 'Source' },
+                            { title: 'Traffic', field: 'Traffic' },
+                            { title: 'Orders', field: 'Orders' },
+                            { title: 'Revenue', field: 'Revenue'},
+                            { title: 'Average_order_Rev', field: 'Average_order_Rev' }
+                        ]}
+                        data={group_by_campaign_source}
+                        title="Group By Campaign Source"
+                    />
+                    </ThemeProvider>
+                </Card>
+                }
+            </Grid>
         </Grid>
     )
 }

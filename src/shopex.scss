@@ -337,5 +337,14 @@ aside {
 
         &:empty {display: none;}
     }
+    .campaign {
+        form {
+            label {
+                min-width: 180px;
+                display: inline-block;
+                color: #fff;
+            }
+        }
+    }
 }
 

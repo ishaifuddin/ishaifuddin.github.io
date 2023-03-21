@@ -78,23 +78,25 @@ function PricingCreate() {
     const defaultMaterialTheme = createTheme();
 
     return (
-
-        <> 
-            <Grid style={{margin:'3%'}}>
-                <h5> Select Discount type </h5>
-                <RadioGroup style={{display: 'inline-block'}} onChange={discount_type_change}>
+        <Grid className='campaign' container spacing={3}>
+            <Grid item md={12}>
+                <div className="notifications">
+                    <h6>Select Discount type</h6>
+                </div>
+            </Grid>
+            <Grid item md={12}>
+                <div className='date-period'>
+                <RadioGroup style={{ display: 'inline-block', fontSize: '13px', color:'white  ', fontWeight: '500' }} onChange={discount_type_change}>
                     <Radio value="Quantity" name="Discount"/> Quantity 
                     <Radio value="GiftProduct" name="Discount"/> Gift-Product
                     <Radio value="CategoryDiscount" name="Discount"/> Category-Discount
                     <Radio value="DiscountOnEntireShop" name="Discount"/> Discount-On-Entire-Shop
                 </RadioGroup>
+                </div>
+                <br/>
+                {filterList} 
             </Grid>
-
-            
-            <Grid container  style={{margin:'3%'}} >
-                <Grid> {filterList} </Grid>
-            </Grid>
-        </>
+        </Grid>
     )
 }
 
