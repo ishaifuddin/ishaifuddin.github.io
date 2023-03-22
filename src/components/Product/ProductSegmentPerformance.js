@@ -391,126 +391,98 @@ function ProductSegmentPerformance() {
             </Grid>
             <Grid item sm={12}>
                 <Card className='dash-card'>
-                    <Timeline
-                    sx={{
-                        [`& .${timelineOppositeContentClasses.root}`]: {
-                            flex: 0.2,
-                        },
-                    }}>
+                    <Timeline className="timeline">
+                        <TimelineItem>
+                            <TimelineSeparator>
+                                <TimelineDot className="tml-title-icon">
+                                    <span>Total order including each product</span>
+                                    <ShoppingBasketIcon />
+                                </TimelineDot>
+                                <TimelineConnector />
+                            </TimelineSeparator>
+                            <TimelineContent className="tml-chart">
+                                {order_comparison && order_comparison.length > 0 &&
+                                    <Line width={700} height={350} data={order_obj} options={option} />
+                                }
+                            </TimelineContent>
+                        </TimelineItem>
 
-                    <TimelineItem>
-                        <TimelineOppositeContent color="textSecondary">
-                            Total order including each product
-                        </TimelineOppositeContent>
+                        <TimelineItem>
+                            <TimelineSeparator>
+                                <TimelineDot className="tml-title-icon">
+                                    <span>Total unit sold from each product</span>
+                                    <LayersRoundedIcon />
+                                </TimelineDot>
+                                <TimelineConnector />
+                            </TimelineSeparator>
+                            <TimelineContent className="tml-chart">
+                                {unit_comparison && unit_comparison.length > 0 &&
+                                    <Line width={700} height={350} data={unit_obj} options={option} />
+                                }
+                            </TimelineContent>
+                        </TimelineItem>
 
-                        <TimelineSeparator>
-                            <TimelineDot>
-                                <ShoppingBasketIcon />
-                            </TimelineDot>
-                            <TimelineConnector />
-                        </TimelineSeparator>
+                        <TimelineItem>
+                            <TimelineSeparator>
+                                <TimelineDot className="tml-title-icon">
+                                    <span>Total revenue generated from each product</span>
+                                    <AttachMoneyIcon />
+                                </TimelineDot>
+                                <TimelineConnector />
+                            </TimelineSeparator>
+                            <TimelineContent className="tml-chart">
+                                {rev_comparison && rev_comparison.length > 0 &&
+                                    <Line width={700} height={350} data={rev_obj} options={option} />
+                                }
+                            </TimelineContent>
+                        </TimelineItem>
 
-                        <TimelineContent>
-                            {order_comparison && order_comparison.length > 0 &&
-                                <Line width={700} height={350} data={order_obj} options={option} />
-                            }
-                        </TimelineContent>
-                    </TimelineItem>
+                        <TimelineItem>
+                            <TimelineSeparator>
+                                <TimelineDot className="tml-title-icon">
+                                    <span>Total Customer from each product</span>
+                                    <PeopleAltIcon />
+                                </TimelineDot>
+                                <TimelineConnector />
+                            </TimelineSeparator>
+                            <TimelineContent className="tml-chart">
+                                {cus_comparison && cus_comparison.length > 0 &&
+                                    <Line width={700} height={350} data={cus_obj} options={option} />
+                                }
+                            </TimelineContent>
+                        </TimelineItem>
 
+                        <TimelineItem>
+                            <TimelineSeparator>
+                                <TimelineDot className="tml-title-icon">
+                                    <span>Total Repeat Customer from each product</span>
+                                    <RepeatIcon />
+                                </TimelineDot>
+                                <TimelineConnector />
+                            </TimelineSeparator>
+                            <TimelineContent className="tml-chart">
+                                {rcus_comparison && rcus_comparison.length > 0 &&
+                                    <Line width={700} height={350} data={rcus_obj} options={option} />
+                                }
+                            </TimelineContent>
+                        </TimelineItem>
 
-                    <TimelineItem>
-                        <TimelineOppositeContent color="textSecondary">
-                            Total unit sold from each product
-                        </TimelineOppositeContent>
-                        <TimelineSeparator>
-                            <TimelineDot>
-                                <LayersRoundedIcon />
-                            </TimelineDot>
-                            <TimelineConnector />
-                        </TimelineSeparator>
-                        <TimelineContent>
-                            {unit_comparison && unit_comparison.length > 0 &&
-                                <Line width={700} height={350} data={unit_obj} options={option} />
-                            }
-                        </TimelineContent>
-                    </TimelineItem>
+                        <TimelineItem>
+                            <TimelineSeparator>
+                                <TimelineDot className="tml-title-icon">
+                                    <span>Total profit from each product</span>
+                                    <MonetizationOnIcon />
+                                </TimelineDot>
+                                <TimelineConnector />
+                            </TimelineSeparator>
+                            <TimelineContent className="tml-chart">
+                                {profit_comparison && profit_comparison.length > 0 &&
+                                    <Line width={700} height={350} data={profit_obj} options={option} />
+                                }
+                            </TimelineContent>
+                        </TimelineItem>
 
-
-
-                    <TimelineItem>
-                        <TimelineOppositeContent color="textSecondary">
-                            Total revenue generated from each product
-                        </TimelineOppositeContent>
-                        <TimelineSeparator>
-                            <TimelineDot>
-                                <AttachMoneyIcon />
-                            </TimelineDot>
-                            <TimelineConnector />
-                        </TimelineSeparator>
-                        <TimelineContent>
-                            {rev_comparison && rev_comparison.length > 0 &&
-                                <Line width={700} height={350} data={rev_obj} options={option} />
-                            }
-                        </TimelineContent>
-                    </TimelineItem>
-
-
-
-                    <TimelineItem>
-                        <TimelineOppositeContent color="textSecondary">
-                            Total Customer from each product
-                        </TimelineOppositeContent>
-                        <TimelineSeparator>
-                            <TimelineDot>
-                                <PeopleAltIcon />
-                            </TimelineDot>
-                            <TimelineConnector />
-                        </TimelineSeparator>
-                        <TimelineContent>
-                            {cus_comparison && cus_comparison.length > 0 &&
-                                <Line width={700} height={350} data={cus_obj} options={option} />
-                            }
-                        </TimelineContent>
-                    </TimelineItem>
-
-
-
-                    <TimelineItem>
-                        <TimelineOppositeContent color="textSecondary">
-                            Total Repeat Customer from each product
-                        </TimelineOppositeContent>
-                        <TimelineSeparator>
-                            <TimelineDot>
-                                <RepeatIcon />
-                            </TimelineDot>
-                            <TimelineConnector />
-                        </TimelineSeparator>
-                        <TimelineContent>
-                            {rcus_comparison && rcus_comparison.length > 0 &&
-                                <Line width={700} height={350} data={rcus_obj} options={option} />
-                            }
-                        </TimelineContent>
-                    </TimelineItem>
-
-
-                    <TimelineItem>
-                        <TimelineOppositeContent color="textSecondary">
-                            Total profit from each product
-                        </TimelineOppositeContent>
-                        <TimelineSeparator>
-                            <TimelineDot>
-                                <MonetizationOnIcon />
-                            </TimelineDot>
-                            <TimelineConnector />
-                        </TimelineSeparator>
-                        <TimelineContent>
-                            {profit_comparison && profit_comparison.length > 0 &&
-                                <Line width={700} height={350} data={profit_obj} options={option} />
-                            }
-                        </TimelineContent>
-                    </TimelineItem>
-
-                </Timeline>
+                    </Timeline>
                 </Card>
             </Grid>
         </Grid>

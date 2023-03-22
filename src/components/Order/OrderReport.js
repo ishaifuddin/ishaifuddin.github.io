@@ -991,50 +991,37 @@ function OrderReport() {
             </Grid>
             <Grid item md={12}>
                 <Card className='dash-card'>
-                <Timeline
-                sx={{
-                    [`& .${timelineOppositeContentClasses.root}`]: {
-                        flex: 0.2,
-                    },
-                }}>
-                <TimelineItem>
-                    <TimelineOppositeContent color="textSecondary">
-                        Revenue :: shipping city
-                    </TimelineOppositeContent>
-                    <TimelineSeparator>
-                        <TimelineDot>
-                            <AttachMoneyIcon />
-                        </TimelineDot>
-                        <TimelineConnector style={{background:'teal'}} />
-                    </TimelineSeparator>
-                    <TimelineContent>
-                        {Order_shipcity_revenue && Order_shipcity_revenue.length > 0 &&
-                            <Grid style={{height: '400px', width: '800px' }}> 
-                                <Line data={shipcity_rev_obj} options={lineOptions} />
-                            </Grid>
-                        }
-                    </TimelineContent>
-                </TimelineItem>
-                <TimelineItem>
-                    <TimelineOppositeContent color="textSecondary">
-                        Order :: shipping city
-                    </TimelineOppositeContent>
-                    <TimelineSeparator>
-                        <TimelineDot>
-                            <ShoppingBasketIcon />
-                        </TimelineDot>
-                        <TimelineConnector style={{background:'teal'}} />
-                    </TimelineSeparator>
-                    <TimelineContent>
-                        {Order_shipcity_order && Order_shipcity_order.length > 0 &&
-                            <Grid style={{height: '400px', width: '800px' }}> 
-                                <Line data={shipcity_order_obj} options={lineOptions} />
-                            </Grid>
-                            
-                        }
-                    </TimelineContent>
-                </TimelineItem>
-                </Timeline>
+                    <Timeline className='timeline'>
+                        <TimelineItem>
+                            <TimelineSeparator>
+                                <TimelineDot className="tml-title-icon">
+                                    <span>Revenue :: shipping city</span>
+                                    <AttachMoneyIcon />
+                                </TimelineDot>
+                                <TimelineConnector style={{background:'teal'}} />
+                            </TimelineSeparator>
+                            <TimelineContent className="tml-chart">
+                                {Order_shipcity_revenue && Order_shipcity_revenue.length > 0 &&
+                                    <Line data={shipcity_rev_obj} options={lineOptions} />
+                                }
+                            </TimelineContent>
+                        </TimelineItem>
+
+                        <TimelineItem>
+                            <TimelineSeparator>
+                                <TimelineDot className="tml-title-icon">
+                                    <span>Order :: shipping city</span>
+                                    <ShoppingBasketIcon />
+                                </TimelineDot>
+                                <TimelineConnector style={{background:'teal'}} />
+                            </TimelineSeparator>
+                            <TimelineContent className="tml-chart">
+                                {Order_shipcity_order && Order_shipcity_order.length > 0 &&
+                                    <Line data={shipcity_order_obj} options={lineOptions} />
+                                }
+                            </TimelineContent>
+                        </TimelineItem>
+                    </Timeline>
                 </Card>
             </Grid>
         </Grid>

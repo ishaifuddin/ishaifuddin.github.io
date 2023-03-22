@@ -322,4 +322,33 @@ aside .css-cveggr-MuiListItemIcon-root {
   min-width: 180px;
   display: inline-block;
   color: #fff;
+}
+.dashboard .timeline {
+  padding: 0;
+}
+.dashboard .timeline .MuiTimelineItem-root::before {
+  display: none;
+}
+.dashboard .timeline .tml-title-icon {
+  position: relative;
+  background-color: #5e72e4;
+}
+.dashboard .timeline .tml-title-icon span {
+  position: absolute;
+  left: 3.5rem;
+  color: #5e72e4;
+  width: 500px;
+  line-height: 1.8rem;
+  font-weight: 600;
+}
+.dashboard .timeline .tml-title-icon svg {
+  padding: 2px;
+}
+.dashboard .timeline .MuiTimelineConnector-root {
+  background-color: #5e72e4;
+  width: 1px;
+}
+.dashboard .timeline .tml-chart canvas {
+  padding-top: 2rem;
+  max-height: 500px;
 }/*# sourceMappingURL=shopex.css.map */

@@ -479,27 +479,16 @@ function ProductPerformance() {
             </Grid>
             <Grid item md={12}>
                 <Card className='dash-card'>
-                    <Timeline
-                    sx={{
-                        [`& .${timelineOppositeContentClasses.root}`]: {
-                            flex: 0.2,
-                        },
-                    }}>
-
+                    <Timeline className="timeline">
                     <TimelineItem>
-
-                        <TimelineOppositeContent color="textSecondary">
-                            Total order including each product
-                        </TimelineOppositeContent>
-
                         <TimelineSeparator>
-                            <TimelineDot>
+                            <TimelineDot className="tml-title-icon">
+                                <span>Total order including each product</span>
                                 <ShoppingBasketIcon />
                             </TimelineDot>
                             <TimelineConnector />
                         </TimelineSeparator>
-
-                        <TimelineContent>
+                        <TimelineContent className="tml-chart">
                             {
                                 //order_comparison && order_comparison.length > 0 &&
                                 <Line width={700} height={350} data={order_obj} options={option} />
@@ -507,18 +496,15 @@ function ProductPerformance() {
                         </TimelineContent>
                     </TimelineItem>
 
-
                     <TimelineItem>
-                        <TimelineOppositeContent color="textSecondary">
-                            Total unit sold from each product
-                        </TimelineOppositeContent>
                         <TimelineSeparator>
-                            <TimelineDot>
+                            <TimelineDot className="tml-title-icon">
+                                <span>Total unit sold from each product</span>
                                 <LayersRoundedIcon />
                             </TimelineDot>
                             <TimelineConnector />
                         </TimelineSeparator>
-                        <TimelineContent>
+                        <TimelineContent className="tml-chart">
                             {
                                 //unit_comparison && unit_comparison.length > 0 &&
                                 <Line width={700} height={350} data={unit_obj} options={option} />
@@ -526,19 +512,15 @@ function ProductPerformance() {
                         </TimelineContent>
                     </TimelineItem>
 
-
-
                     <TimelineItem>
-                        <TimelineOppositeContent color="textSecondary">
-                            Total revenue generated from each product
-                        </TimelineOppositeContent>
                         <TimelineSeparator>
-                            <TimelineDot>
+                            <TimelineDot className="tml-title-icon">
+                                <span>Total revenue generated from each product</span>
                                 <AttachMoneyIcon />
                             </TimelineDot>
                             <TimelineConnector />
                         </TimelineSeparator>
-                        <TimelineContent>
+                        <TimelineContent className="tml-chart">
                             {
                                 //rev_comparison && rev_comparison.length > 0 &&
                                 <Line width={700} height={350} data={rev_obj} options={option} />
@@ -546,19 +528,15 @@ function ProductPerformance() {
                         </TimelineContent>
                     </TimelineItem>
 
-
-
                     <TimelineItem>
-                        <TimelineOppositeContent color="textSecondary">
-                            Total Customer from each product
-                        </TimelineOppositeContent>
                         <TimelineSeparator>
-                            <TimelineDot>
+                            <TimelineDot className="tml-title-icon">
+                                <span>Total Customer from each product</span>
                                 <PeopleAltIcon />
                             </TimelineDot>
                             <TimelineConnector />
                         </TimelineSeparator>
-                        <TimelineContent>
+                        <TimelineContent className="tml-chart">
                             {
                                 //cus_comparison && cus_comparison.length > 0 &&
                                 <Line width={700} height={350} data={cus_obj} options={option} />
@@ -566,19 +544,15 @@ function ProductPerformance() {
                         </TimelineContent>
                     </TimelineItem>
 
-
-
                     <TimelineItem>
-                        <TimelineOppositeContent color="textSecondary">
-                            Total Repeat Customer from each product
-                        </TimelineOppositeContent>
                         <TimelineSeparator>
-                            <TimelineDot>
+                            <TimelineDot className="tml-title-icon">
+                                <span>Total Repeat Customer from each product</span>
                                 <RepeatIcon />
                             </TimelineDot>
                             <TimelineConnector />
                         </TimelineSeparator>
-                        <TimelineContent>
+                        <TimelineContent className="tml-chart">
                             {
                                 //rcus_comparison && rcus_comparison.length > 0 &&
                                 <Line width={700} height={350} data={rcus_obj} options={option} />

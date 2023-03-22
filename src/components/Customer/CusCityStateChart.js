@@ -230,91 +230,68 @@ function CusCityStateChart() {
     return (
 
         <Card className="dash-card"> 
-            <h6>Customer City State Chart</h6>
+            <h6>Customer City State Chart</h6><br/>
             
-            <Timeline
-                sx={{
-                    [`& .${timelineOppositeContentClasses.root}`]: {
-                        flex: 0.2,
-                    },
-                }}>
-
+            <Timeline className='timeline'>
                 <TimelineItem>
-
-                    <TimelineOppositeContent color="textSecondary">
-                        Customer :: Billing city
-                    </TimelineOppositeContent>
-
                     <TimelineSeparator>
-                        <TimelineDot>
+                        <TimelineDot className='tml-title-icon'>
+                            <span>Customer :: Billing city</span>
                             <ShoppingBasketIcon />
                         </TimelineDot>
                         <TimelineConnector />
                     </TimelineSeparator>
-
-                    <TimelineContent>
+                    <TimelineContent className='tml-chart'>
                         {billcity_cus_obj.labels && billcity_cus_obj.datasets &&
-                            <Line data={billcity_cus_obj} options={option} />
+                            <Line data={billcity_cus_obj} options={option}/>
                         }
                     </TimelineContent>
                 </TimelineItem>
 
-
                 <TimelineItem>
-                    <TimelineOppositeContent color="textSecondary">
-                        Customer :: Shipping city
-                    </TimelineOppositeContent>
                     <TimelineSeparator>
-                        <TimelineDot>
+                        <TimelineDot className='tml-title-icon'>
+                            <span>Customer :: Shipping city</span>
                             <LayersRoundedIcon />
                         </TimelineDot>
                         <TimelineConnector />
                     </TimelineSeparator>
-                    <TimelineContent>
+                    <TimelineContent className='tml-chart'>
                         {shipcity_cus_obj.labels && shipcity_cus_obj.datasets &&
-                            <Line data={shipcity_cus_obj} options={option} />
+                            <Line data={shipcity_cus_obj} options={option}/>
                         }
                     </TimelineContent>
                 </TimelineItem>
 
-
-
                 <TimelineItem>
-                    <TimelineOppositeContent color="textSecondary">
-                        Revenue :: Billing city
-                    </TimelineOppositeContent>
                     <TimelineSeparator>
-                        <TimelineDot>
+                        <TimelineDot className='tml-title-icon'>
+                            <span>Revenue :: Billing city</span>
                             <AttachMoneyIcon />
                         </TimelineDot>
                         <TimelineConnector />
                     </TimelineSeparator>
-                    <TimelineContent>
+                    <TimelineContent className='tml-chart'>
                         {billcity_rev_obj.labels && billcity_rev_obj.datasets &&
                             <Line data={billcity_rev_obj} options={option} />
                         }
                     </TimelineContent>
                 </TimelineItem>
-
-
-
+                
                 <TimelineItem>
-                    <TimelineOppositeContent color="textSecondary">
-                        Revenue :: Shipping City
-                    </TimelineOppositeContent>
                     <TimelineSeparator>
-                        <TimelineDot>
+                        <TimelineDot className='tml-title-icon'>
+                            <span>Revenue :: Shipping City</span>
                             <PeopleAltIcon />
                         </TimelineDot>
                         <TimelineConnector />
                     </TimelineSeparator>
-                    <TimelineContent>
+                    <TimelineContent className='tml-chart'>
                         {shipcity_rev_obj.labels && shipcity_rev_obj.datasets &&
                             <Line data={shipcity_rev_obj} options={option} />
                         }
                     </TimelineContent>
                 </TimelineItem>
-
             </Timeline>
         </Card>
     )

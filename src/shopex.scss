@@ -346,5 +346,34 @@ aside {
             }
         }
     }
+    
+    .timeline {
+        padding: 0;
+        .MuiTimelineItem-root::before {display: none;}
+        .tml-title-icon {
+            position: relative;
+            background-color: #5e72e4;
+    
+            span {
+                position: absolute;
+                left: 3.5rem;
+                color: #5e72e4;
+                width: 500px;
+                line-height: 1.8rem;
+                font-weight: 600;
+            }
+            svg {
+                padding: 2px;
+            }
+        }
+        .MuiTimelineConnector-root {
+            background-color: #5e72e4;
+            width: 1px;
+        }
+        .tml-chart canvas {
+            padding-top: 2rem;
+            max-height: 500px;
+        }
+    }
 }
 

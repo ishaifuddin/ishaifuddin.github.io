@@ -492,46 +492,31 @@ function ProductOneCityPerform() {
                 </Grid>
                 <Grid item md={12}>
                     <Card className='dash-card'>
-                    <Timeline
-                        sx={{
-                            [`& .${timelineOppositeContentClasses.root}`]: {
-                                flex: 0.2,
-                            },
-                        }}>
-
+                    <Timeline className='timeline'>
                         <TimelineItem>
-
-                            <TimelineOppositeContent color="textSecondary">
-                                Total order including each product
-                            </TimelineOppositeContent>
-
                             <TimelineSeparator>
-                                <TimelineDot>
+                                <TimelineDot className="tml-title-icon">
+                                    <span></span>
                                     <ShoppingBasketIcon />
                                 </TimelineDot>
                                 <TimelineConnector />
                             </TimelineSeparator>
-
-                            <TimelineContent>
+                            <TimelineContent className="tml-chart">
                                 {
                                     //single_city_order_comparison && single_city_order_comparison.length > 0 &&
-                                    <Line data={order_obj}
-                                        options={option} />}
+                                    <Line data={order_obj} options={option} />}
                             </TimelineContent>
                         </TimelineItem>
 
-
                         <TimelineItem>
-                            <TimelineOppositeContent color="textSecondary">
-                                Total unit sold from each product
-                            </TimelineOppositeContent>
                             <TimelineSeparator>
-                                <TimelineDot>
+                                <TimelineDot className="tml-title-icon">
+                                    <span>Total unit sold from each product</span>
                                     <LayersRoundedIcon />
                                 </TimelineDot>
                                 <TimelineConnector />
                             </TimelineSeparator>
-                            <TimelineContent>
+                            <TimelineContent className="tml-chart">
                                 {
                                     //single_city_unit_comparison && single_city_unit_comparison.length > 0 &&
                                     <Line data={unit_obj}
@@ -539,19 +524,15 @@ function ProductOneCityPerform() {
                             </TimelineContent>
                         </TimelineItem>
 
-
-
                         <TimelineItem>
-                            <TimelineOppositeContent color="textSecondary">
-                                Total revenue generated from each product
-                            </TimelineOppositeContent>
                             <TimelineSeparator>
-                                <TimelineDot>
+                                <TimelineDot className="tml-title-icon">
+                                    <span>Total revenue generated from each product</span>
                                     <AttachMoneyIcon />
                                 </TimelineDot>
                                 <TimelineConnector />
                             </TimelineSeparator>
-                            <TimelineContent>
+                            <TimelineContent className="tml-chart">
                                 {
                                     //single_city_rev_comparison && single_city_rev_comparison.length > 0 &&
                                     <Line data={rev_obj} options={option} />}
@@ -559,19 +540,15 @@ function ProductOneCityPerform() {
                             </TimelineContent>
                         </TimelineItem>
 
-
-
                         <TimelineItem>
-                            <TimelineOppositeContent color="textSecondary">
-                                Total Customer from each product
-                            </TimelineOppositeContent>
                             <TimelineSeparator>
-                                <TimelineDot>
+                                <TimelineDot className="tml-title-icon">
+                                    <span>Total Customer from each product</span>
                                     <PeopleAltIcon />
                                 </TimelineDot>
                                 <TimelineConnector />
                             </TimelineSeparator>
-                            <TimelineContent>
+                            <TimelineContent className="tml-chart">
                                 {
                                     //single_city_cus_comparison && single_city_cus_comparison.length > 0 &&
                                     <Line data={customer_obj} options={option} />}
@@ -581,16 +558,14 @@ function ProductOneCityPerform() {
 
 
                         <TimelineItem>
-                            <TimelineOppositeContent color="textSecondary">
-                                Total profit from each product
-                            </TimelineOppositeContent>
                             <TimelineSeparator>
-                                <TimelineDot>
+                                <TimelineDot className="tml-title-icon">
+                                    <span>Total profit from each product</span>
                                     <MonetizationOnIcon />
                                 </TimelineDot>
                                 <TimelineConnector />
                             </TimelineSeparator>
-                            <TimelineContent>
+                            <TimelineContent className="tml-chart">
                                 {
                                     //single_city_profit_comparison && single_city_profit_comparison.length > 0 &&
                                     <Line data={profit_obj} options={option} />}
