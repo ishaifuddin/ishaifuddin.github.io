@@ -25,8 +25,9 @@ function Plan() {
       
     },[])
 
-    var Profile_plan = useSelector((state) => state.Profile_plan.profile_plan);
-   
+    //var Profile_plan = useSelector((state) => state.Profile_plan.profile_plan);
+    var Profile_plan = "";
+    
     return (
 
         <div>

@@ -29,39 +29,39 @@ function Team() {
     
     const defaultMaterialTheme = createTheme();
 
-    useEffect(() => {
+    // useEffect(() => {
       
-        var is_dispatched1 = () => {
-          ReactSession.get("get_profile_team");
-          if(ReactSession.get("get_profile_team")) {
-              return true;
-          }else {
-              ReactSession.set("get_profile_team", "1");
-              return false;
-          }
-        }
+    //     var is_dispatched1 = () => {
+    //       ReactSession.get("get_profile_team");
+    //       if(ReactSession.get("get_profile_team")) {
+    //           return true;
+    //       }else {
+    //           ReactSession.set("get_profile_team", "1");
+    //           return false;
+    //       }
+    //     }
         
-        if(!(is_dispatched1())) {
-          dispatch(team_({ajax_call:2}));
-        }
+    //     if(!(is_dispatched1())) {
+    //       dispatch(team_({ajax_call:2}));
+    //     }
 
 
 
-        var is_dispatched = () => {
-            ReactSession.get("get_connected_shops");
-            if(ReactSession.get("get_connected_shops")) {
-                return true;
-            }else {
-                ReactSession.set("get_connected_shops", "1");
-                return false;
-            }
-          }
+    //     var is_dispatched = () => {
+    //         ReactSession.get("get_connected_shops");
+    //         if(ReactSession.get("get_connected_shops")) {
+    //             return true;
+    //         }else {
+    //             ReactSession.set("get_connected_shops", "1");
+    //             return false;
+    //         }
+    //       }
           
-        if(!(is_dispatched())) {
-            dispatch1(shops_({ajax_call:2}));
-        }
+    //     if(!(is_dispatched())) {
+    //         dispatch1(shops_({ajax_call:2}));
+    //     }
       
-    },[])
+    // },[])
 
 
      
@@ -71,7 +71,7 @@ function Team() {
 
     var ops = [];
     var Profile_shops = useSelector((state) => state.Profile_shops.profile_shops);
-    if(Profile_shops.length > 0){
+    if(Profile_shops && Profile_shops.length > 0){
         for (var i of Profile_shops) {
             var label = i.shopurl; 
             var value = i.shopid;

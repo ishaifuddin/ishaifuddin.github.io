@@ -7,31 +7,44 @@ function PersonalData() {
 
     var dispatch = useDispatch();
 
-    useEffect(() => {
+    // useEffect(() => {
       
-        var is_dispatched = () => {
-          ReactSession.get("dis_profile_personal_data");
-          if(ReactSession.get("dis_profile_personal_data")) {
-              return true;
-          }else {
-              ReactSession.set("dis_profile_personal_data", "1");
-              return false;
-          }
-        }
+    //     var is_dispatched = () => {
+    //       ReactSession.get("dis_profile_personal_data");
+    //       if(ReactSession.get("dis_profile_personal_data")) {
+    //           return true;
+    //       }else {
+    //           ReactSession.set("dis_profile_personal_data", "1");
+    //           return false;
+    //       }
+    //     }
         
-        if(!(is_dispatched())) {
-          dispatch(personaldata_({type:1}));
-        }
+    //     if(!(is_dispatched())) {
+    //       dispatch(personaldata_({type:1}));
+    //     }
       
-    },[])
+    // },[])
 
 
-    var personal_data = useSelector((state) => state.Profile_personal_data.personal_data);
-    console.log(personal_data);
-    console.log(personal_data[0]);
+    // var personal_data = useSelector((state) => state.Profile_personal_data.personal_data);
+    // console.log(personal_data);
+    // console.log(personal_data[0]);
 
 
 
+    const personal_data = [
+        {
+          name: "John Doe",
+          email: "johndoe@example.com",
+          phone: "123-456-7890",
+          country: "United States",
+          city: "New York",
+          state: "NY",
+          zip: "10001"
+        },
+        // Additional objects can be added here for more personal data
+      ];
+      
 
     var personalDataUpdate = (event) => {
         event.preventDefault();
