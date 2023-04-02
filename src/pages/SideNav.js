@@ -22,6 +22,7 @@ import ManageAccountsIcon from '@mui/icons-material/ManageAccounts';
 import AnalyticsIcon from '@mui/icons-material/Analytics';
 
 
+
 function SideNav() {
 
   var [open1, setOpen1] = useState(false);
@@ -31,15 +32,20 @@ function SideNav() {
   var [open5, setOpen5] = useState(false);
   var [open6, setOpen6] = useState(false);
 
-  const handleClick1 = () => { setOpen1(!open1); };
-  const handleClick2 = () => { setOpen2(!open2); };
-  const handleClick3 = () => { setOpen3(!open3); };
-  const handleClick4 = () => { setOpen4(!open4); };
-  const handleClick5 = () => { setOpen5(!open5); };
-  const handleClick6 = () => { setOpen6(!open6); };
+  const [selectedIndex, setSelectedIndex] = useState(0);
+
+  const handleClick1 = () => { setSelectedIndex(1);setOpen1(!open1); };
+  const handleClick2 = () => { setSelectedIndex(2);setOpen2(!open2); };
+  const handleClick3 = () => { setSelectedIndex(3);setOpen3(!open3); };
+  const handleClick4 = () => { setSelectedIndex(4);setOpen4(!open4); };
+  const handleClick5 = () => { setSelectedIndex(5);setOpen5(!open5); };
+  const handleClick6 = () => { setSelectedIndex(6);setOpen6(!open6); };
 
 
 
+  const handleListItemClick = (event, index) => {
+    setSelectedIndex(index);
+  };
   return (
 
     <>
@@ -133,9 +139,13 @@ function SideNav() {
             </Grid> */}
 
         
-        <List className="nav-list" component="nav" aria-labelledby="nested-list-subheader" subheader={<img className="logo" src='/images/shopex.png'/>}>
+        <List className="nav-list" component="nav" aria-labelledby="nested-list-subheader" subheader={<img className="logo" src='/images/shopex.png'/>}
+        >
             <hr/>
-          <ListItemButton>
+          <ListItemButton
+          selected={selectedIndex === 0}
+          onClick={(event) => handleListItemClick(event, 0)}
+          >
             <ListItemIcon>
               <AnalyticsIcon style={{color:'#7366E3'}}/>
             </ListItemIcon>
@@ -144,7 +154,7 @@ function SideNav() {
             </ListItemText>
           </ListItemButton>
 
-          <ListItemButton onClick={handleClick1}>
+          <ListItemButton selected={selectedIndex === 1} onClick={handleClick1}>
             <ListItemIcon>
               <PeopleIcon style={{color:'#F44D48'}}/>
             </ListItemIcon>
@@ -169,9 +179,7 @@ function SideNav() {
               <ListItemText >  <Link to="/Customers/CustomerAndSegemnt">List And Segemnt</Link></ListItemText>
             </ListItemButton>
           </Collapse>
-
-         
-
+          
           <Collapse in={open1} timeout="auto" unmountOnExit>
             <ListItemButton  sx={{ pl: 4 }}>
               <ListItemIcon>
@@ -180,7 +188,6 @@ function SideNav() {
               <ListItemText > <Link to="/Customers/retention">Retention</Link> </ListItemText>
             </ListItemButton>
           </Collapse>
-
 
           <Collapse in={open1} timeout="auto" unmountOnExit>
             <ListItemButton  sx={{ pl: 4 }}>
@@ -191,10 +198,7 @@ function SideNav() {
             </ListItemButton>
           </Collapse>
 
-
-
-
-          <ListItemButton onClick={handleClick2}>
+          <ListItemButton selected={selectedIndex === 2} onClick={handleClick2}>
             <ListItemIcon>
               <WidgetsIcon style={{color:'#2BCEA1'}}/>
             </ListItemIcon>
@@ -251,10 +255,7 @@ function SideNav() {
             </ListItemButton>
           </Collapse>
 
-
-
-
-          <ListItemButton onClick={handleClick3}>
+          <ListItemButton  selected={selectedIndex === 2} onClick={handleClick3}>
             <ListItemIcon>
               <ShoppingBasketIcon style={{color:'#FB7A40'}}/>
             </ListItemIcon>
@@ -279,10 +280,7 @@ function SideNav() {
             </ListItemButton>
           </Collapse>
 
-
-
-
-          <ListItemButton onClick={handleClick4}>
+          <ListItemButton  selected={selectedIndex === 2} onClick={handleClick4}>
             <ListItemIcon>
               <CampaignIcon style={{color:'#2C7AE5'}}/>
             </ListItemIcon>
@@ -315,9 +313,7 @@ function SideNav() {
             </ListItemButton>
           </Collapse>
 
-
-
-          <ListItemButton onClick={handleClick5}>
+          <ListItemButton  selected={selectedIndex === 2} onClick={handleClick5}>
             <ListItemIcon>
               <DiscountRoundedIcon style={{color:'#ECA13B'}}/>
             </ListItemIcon>
@@ -342,9 +338,10 @@ function SideNav() {
             </ListItemButton>
           </Collapse>
 
-
-
-          <ListItemButton>
+          <ListItemButton
+          selected={selectedIndex === 7}
+          onClick={(event) => handleListItemClick(event, 7)}
+          >
             <ListItemIcon>
               <LocalOfferIcon style={{color:'#DE2868'}}/>
             </ListItemIcon>
@@ -353,10 +350,7 @@ function SideNav() {
             </ListItemText>
           </ListItemButton>
 
-
-
-
-          <ListItemButton onClick={handleClick6}>
+          <ListItemButton  selected={selectedIndex === 2} onClick={handleClick6}>
             <ListItemIcon>
               <ScheduleSendIcon style={{color:'#05AFC5'}}/>
             </ListItemIcon>
@@ -381,9 +375,9 @@ function SideNav() {
             </ListItemButton>
           </Collapse>
 
-
-
-          <ListItemButton>
+          <ListItemButton
+          selected={selectedIndex === 8}
+          onClick={(event) => handleListItemClick(event, 8)}>
             <ListItemIcon>
               <ManageAccountsIcon  style={{color:'#4FA953'}}/>
             </ListItemIcon>

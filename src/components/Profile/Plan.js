@@ -29,13 +29,11 @@ function Plan() {
     var Profile_plan = "";
     
     return (
-
-        <div>
-
-            <h3>Current Plan :: </h3>
-            <h5>{Profile_plan}</h5>
-
-        </div>
+        <>
+            <h6>Current Plan :: </h6><br/>
+            <strong>Plan for : </strong>
+            {/* <h5>{Profile_plan}</h5> */}
+        </>
     )
 }
 

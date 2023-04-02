@@ -106,7 +106,7 @@ function Dashboard() {
                     <h4>$55,000.00</h4>
                     <p><span>+55%</span>Since Yesterday</p>
                   </div>
-                  <ShoppingBasketIcon/>
+                  <ShoppingBasketIcon style={{background: 'linear-gradient(310deg,#f5365c,#f56036)'}}/>
                 </Card>
               </Grid>
               <Grid item md={3}>
@@ -116,7 +116,7 @@ function Dashboard() {
                     <h4>$55,000.00</h4>
                     <p><span>+55%</span>Since Yesterday</p>
                   </div>
-                  <UnarchiveIcon/>
+                  <UnarchiveIcon style={{background: 'linear-gradient(310deg,#2dce89,#2dcecc)'}}/>
                 </Card>
               </Grid>
               <Grid item md={3}>
@@ -126,7 +126,7 @@ function Dashboard() {
                     <h4>$55,000.00</h4>
                     <p><span>+55%</span>Since Yesterday</p>
                   </div>
-                  <WidgetsIcon/>
+                  <WidgetsIcon style={{background: 'linear-gradient(310deg,#fb6340,#fbb140)'}}/>
                 </Card>
               </Grid>
               <DashTops />

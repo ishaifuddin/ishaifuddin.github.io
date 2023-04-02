@@ -5,9 +5,8 @@ import { IconBrandTwitter, IconBrandYoutube, IconBrandInstagram, IconChevronUp }
 
 const useStyles = createStyles((theme) => ({
   footer: {
-    borderTop: `1px solid ${
-      theme.colorScheme === 'dark' ? theme.colors.dark[5] : theme.colors.gray[2]
-    }`,
+    backgroundColor: '#fff',
+    borderTop: '1px solid #eee',
   },
 
   inner: {
@@ -34,7 +33,7 @@ const useStyles = createStyles((theme) => ({
   const [scroll, scrollTo] = useWindowScroll();
 
   return (
-    <div className={`${classes.footer} footer`}>
+    <footer className={`${classes.footer} footer`}>
       <Container size="lg" className={classes.inner}>
         <div>
           <small style={{color: '#777'}}>Shopex - 2023. All rights reserved.</small>
@@ -52,7 +51,7 @@ const useStyles = createStyles((theme) => ({
         </Group> */}
         {/* <Button className='scroll-top' onClick={() => scrollTo({ y: 0 })} variant='light' radius={4} p={0}  color='pink' style={{width: '50px', transform: 'rotate(45deg)', height: '50px', position: 'absolute', bottom: '15px', right: 'calc(50% - 25px)'}}><IconChevronUp size={30} /></Button> */}
       </Container>
-    </div>
+    </footer>
   );
 }
 export default FooterSx;

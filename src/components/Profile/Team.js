@@ -5,10 +5,10 @@ import axios from "axios";
    
 import { team_ } from '../../features/profile/Team';
 import { shops_ } from '../../features/profile/Shops';
-
+import Grid from '@mui/material/Grid';
 import Multiselect from 'multiselect-react-dropdown';
 import MaterialTable from 'material-table';
-import { ThemeProvider, createTheme } from '@mui/material';
+import { ThemeProvider, createTheme, RadioGroup, Radio } from '@mui/material';
 
 import Search from '@material-ui/icons/Search'
 import SaveAlt from '@material-ui/icons/SaveAlt'
@@ -100,36 +100,33 @@ function Team() {
 
     return (
         
-        <div style={{ display: 'flex' }}>
-    
-            <form onSubmit={teamUpdate} style={{marginLeft: '5%'}}>
-    
-                <h3> Add team member :: </h3>
-                
-                <h4> Select Role :: </h4>
-                <div onChange={ (e) => {setrole(e.target.value)} }>
-                    <input type="radio" value="2" name="power" /> Analyst
-                    <input type="radio" value="3" name="power" /> Shop-Assistant
-                </div>
+        <Grid container spacing={5} style={{padding: 0}}>
+            <Grid item md={6}>
+            <h6> Add team member :: </h6><br/>
+            <form className='date-period' onSubmit={teamUpdate}>
+                <strong> Select Role : </strong>
+                <RadioGroup style={{ display: 'inline-block', fontSize: '13px', fontWeight: '500' }} onChange={ (e) => {setrole(e.target.value)} }>
+                    <Radio type="radio" value="2" name="power" /> Analyst
+                    <Radio type="radio" value="3" name="power" /> Shop-Assistant
+                </RadioGroup>
 
-
-                <div className="raccess" style={{ marginTop: '15px', marginBottom: '15px', background: 'snow', padding: '28px', width: 'max-content' }}>
+                <div className="raccess">
                     
-                    <h3 style={{ color: 'tomato' }}> Only Owner </h3>
-                        <h6> Add / Delete shop </h6>
-                        <h6> Add / Delete Team member</h6>
-                        <h6> Create / Update / Cancel subscription</h6>
+                    <h6 style={{ color: 'rgb(43, 206, 161)' }}> Only Owner </h6>
+                        <span> Add / Delete shop </span><br/>
+                        <span> Add / Delete Team member</span><br/>
+                        <span> Create / Update / Cancel subscription</span><br/><br/>
                     
-                    <h3 style={{ color: 'tomato' }}> Owner & Analyst</h3>
-                        <h6>Create/Edit/Delete Dynamic product pricing</h6>
-                        <h6>Create cart recovery automation</h6>
-                        <h6>Create engage email automation</h6>
-                        <h6>Create segments</h6>
-                        <h6>Download CSV </h6>
-                        <h6>Create product group in Performance</h6>
+                    <h6 style={{ color: 'rgb(115, 102, 227)' }}> Owner & Analyst</h6>
+                        <span>Create/Edit/Delete Dynamic product pricing</span><br/>
+                        <span>Create cart recovery automation</span><br/>
+                        <span>Create engage email automation</span><br/>
+                        <span>Create segments</span><br/>
+                        <span>Download CSV </span><br/>
+                        <span>Create product group in Performance</span><br/><br/>
                     
-                    <h3 style={{ color: 'tomato' }}> Shop-Assistant</h3>
-                        <h6> Data View and Order status change </h6>
+                    <h6 style={{ color: 'rgb(5, 175, 197)' }}> Shop-Assistant</h6>
+                        <span> Data View and Order status change </span><br/><br/>
 
                 </div>
                 
@@ -172,13 +169,16 @@ function Team() {
 
                 <input name="shops" type={'hidden'} defaultValue={setAccessToID} />
                 
-                <input placeholder="Type email address.." type="email" name="email" style={{ width: '300px', height: '40px', fontSize: '20px', padding: '10px' }} />
-                <button type="submit"> Send </button>
+                <div style={{position: 'relative'}}>
+                <input placeholder="Type email address.." type="email" name="email"/>
+                <button className='send-mail' type="submit"> Send </button>
+                </div>
             
             </form>
-
-            <div style={{ width: '-webkit-fill-available', marginLeft: '10%' }}>
-                <h3 className="cplanh3"> Current members :: </h3>
+            </Grid>
+            <Grid item md={6}>
+            <div>
+                <h6> Current members :: </h6><br/>
                 { Profile_team && Profile_team.length > 0 && 
                 <ThemeProvider theme={defaultMaterialTheme}>
 
@@ -254,10 +254,22 @@ function Team() {
                 </ThemeProvider>  
                 }
 
+                <span>Analyst Email List: </span><br/>
+                <ol className='mail-list'>
+                    <li>sample@email.com</li>
+                    <li>sample@email.com</li>
+                    <li>sample@email.com</li>
+                    <li>sample@email.com</li>
+                    <li>sample@email.com</li>
+                    <li>sample@email.com</li>
+                    <li>sample@email.com</li>
+                    <li>sample@email.com</li>
+                </ol>
+
             </div>
+            </Grid>
 
-
-        </div>
+        </Grid>
 
     )
 }

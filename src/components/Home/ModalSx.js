@@ -25,7 +25,7 @@ function ModalSx({ formType='', formTitle='', icon='', buttonText='Get Started',
         {/* <Button onClick={() => setSignIn(false)} fullWidth mt='xl' px='xl' size="md" color="indigo">Submitd</Button> */}
       </Modal>
       
-      <Button onClick={() => setOpened(true)} variant="filled" color={buttonColor} rightIcon={icon === 'basket' ?  <IconBasket size={18} /> : <IconArrowRight size={18} />} size='lg'>{buttonText}</Button>
+      <Button onClick={() => setOpened(true)} variant="filled" color={buttonColor} rightIcon={icon === 'basket' ? <IconBasket size={18} /> : <IconArrowRight size={18} />} size='lg'>{buttonText}</Button>
       
       {/* <Button onClick={() => setOpened(true)} variant="filled" color='green' size="lg" rightIcon={<IconArrowRight size={18} />}>{buttonText}</Button> */}
       {/* <Button onClick={handleButtonClick} variant="filled" color={buttonColor} rightIcon={<IconArrowRight size={18} />} size='lg'>{buttonText}</Button> */}

@@ -16,7 +16,7 @@ p {
 //     background: #fff;
 // }
 .menus {
-    background: transparent;
+    background: #fff;
     position: sticky;
     z-index: 99;
     width: 100%;
@@ -24,7 +24,7 @@ p {
     transition: all ease-in-out 0.3s;
     a {
         cursor: pointer;
-        text-decoration: none;
+        text-decoration: none !important;
     }
 
     &.active {
@@ -52,6 +52,7 @@ p {
     & + .footer {
         padding-top: calc(100vh - 100px);
         border: none;
+        background-color: #fff;
     }
 
 }
@@ -133,6 +134,7 @@ p {
     }
 }
 .facts {
+    background-color: #fff;
 
     img {
         @extend .app-screen;
@@ -147,6 +149,7 @@ p {
     }
 }
 .pricing-list {
+    background-color: #fff;
 
     .select-plan {
         max-width: 700px;
@@ -227,6 +230,43 @@ p {
     }
 }
 
+.blog-page {
+    background: #fff;
+    img {
+        border-radius: 8px;
+    }
+    .post-item {height: 100%;}
+    .more-link {display: none;}
+    h4 {
+        padding-top: 10px;
+
+        a {
+            font-size: 22px;
+            line-height: 34px;
+            text-decoration: none;
+            color: #000 !important;
+        }
+    }
+}
+.blog-post {
+    h1, .post-details {
+        max-width: 700px;
+        text-align: left;
+    }
+    h1 {
+        font-weight: 800;
+        color: #000;
+        line-height: 50px;
+        margin: 40px 0;
+    }
+    img {
+        border-radius: 10px;
+    }
+    .post-details {
+        padding: 30px 0;
+    }
+}
+
 .modal {
     .mantine-Modal-title {
         font-size: 20px;
@@ -237,3 +277,8 @@ p {
         padding: 1rem;
     }
 }
+.pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}   

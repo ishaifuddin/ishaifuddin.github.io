@@ -1,6 +1,8 @@
 import React from "react";
 import axios from "axios";
-import Grid from "@mui/material/Grid";
+
+import Button from '@material-ui/core/Button';
+import TextField from '@material-ui/core/TextField';
 
 function ReportIssue() {
 
@@ -18,18 +20,14 @@ function ReportIssue() {
 
   return (
 
-    <>
-
-      <Grid item sm={10} style={{ display: 'grid' }}>
-        <form onSubmit={Submit} style={{ marginLeft: '40%' }}>
-          <h4>Submit issue</h4>
-          <textarea type="text" name="text" required placeholder="" />
-
-          <button type="submit">Submit</button>
+    <div style={{maxWidth: '800px'}}>
+        <form onSubmit={Submit} >
+          <h6>Submit issue</h6><br/><br/>
+          <input type="text" name="title" required placeholder="Enter Title Here" style={{width: '100%'}}/><br/><br/>
+          <textarea type="text" rows={5} name="message" required placeholder="Write Something..." style={{width: '100%'}}/><br/><br/>
+          <Button type='submit' size="large" variant="contained" color="secondary">Submit Message</Button>
         </form>
-      </Grid>
-    
-    </>
+    </div>
 
   )
 

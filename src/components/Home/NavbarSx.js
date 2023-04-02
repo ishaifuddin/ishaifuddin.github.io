@@ -202,7 +202,8 @@ import ModalSx from './ModalSx';
                 <ScrollLink to={'features'} spy={true} smooth={true} offset={-80} duration={500} className={classes.link}>Features</ScrollLink>
                 <ScrollLink to={'why'} spy={true} smooth={true} offset={-80} duration={500} className={classes.link}>Why</ScrollLink>
                 <ScrollLink to={'pricing'} spy={true} smooth={true} offset={-80} duration={500} className={classes.link}>Pricing</ScrollLink>
-                <RouterLink to={'./blog'} spy={true} smooth={true} offset={-80} duration={500} className={classes.link}>Blog</RouterLink>
+                <RouterLink to={'/blog'} className={classes.link}>Blog</RouterLink>
+                {/* <RouterLink to={'/post/:id'} className={classes.link}/> */}
                 <RouterLink to={'./demo'} spy={true} smooth={true} offset={-80} duration={500} className={classes.link}>Demo</RouterLink>
               </Group>
     
@@ -233,12 +234,12 @@ import ModalSx from './ModalSx';
           </RouterLink>
           <ScrollArea sx={{ height: 'calc(100vh - 60px)' }} mx="-md">
             <Divider my="sm" color={theme.colorScheme === 'dark' ? 'dark.5' : 'gray.1'} />
-                <a href='home' className={classes.link}>Home</a>
-                <ScrollLink to={'/FeatureSX'} className={classes.link}>Features</ScrollLink>
-                <ScrollLink to={'/whySx'} className={classes.link}>Why</ScrollLink>
-                <ScrollLink to={'/pricingSx'} className={classes.link}>Pricing</ScrollLink>
-                <ScrollLink to={'/blogSx'} className={classes.link}>Blog</ScrollLink>
-                <RouterLink to={'/demoSx'} className={classes.link}>Demo</RouterLink>
+                <ScrollLink to={'home'} className={classes.link}>Home</ScrollLink>
+                <ScrollLink to={'features'} className={classes.link}>Features</ScrollLink>
+                <ScrollLink to={'why'} className={classes.link}>Why</ScrollLink>
+                <ScrollLink to={'pricing'} className={classes.link}>Pricing</ScrollLink>
+                <RouterLink to={'/blog'} className={classes.link}>Blog</RouterLink>
+                <RouterLink to={'./demo'} className={classes.link}>Demo</RouterLink>
   
             <Divider my="sm" color={theme.colorScheme === 'dark' ? 'dark.5' : 'gray.1'} />
   

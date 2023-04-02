@@ -9,7 +9,7 @@ p {
 }
 
 .menus {
-  background: transparent;
+  background: #fff;
   position: sticky;
   z-index: 99;
   width: 100%;
@@ -18,7 +18,7 @@ p {
 }
 .menus a {
   cursor: pointer;
-  text-decoration: none;
+  text-decoration: none !important;
 }
 .menus.active {
   background: #fff;
@@ -42,6 +42,7 @@ p {
 .menus + .footer {
   padding-top: calc(100vh - 100px);
   border: none;
+  background-color: #fff;
 }
 
 .home {
@@ -114,6 +115,9 @@ p {
   box-shadow: 0 2.75rem 3.5rem 1.5rem rgba(189, 197, 209, 0.2), 0 2rem 4rem -2rem rgba(33, 50, 91, 0.2);
 }
 
+.facts {
+  background-color: #fff;
+}
 .facts img {
   box-shadow: 0 2.75rem 5.5rem -3.5rem rgba(189, 197, 209, 0.5), 0 2rem 1.5rem -2rem rgba(33, 50, 91, 0.01), inset 0 -0.1875rem 0.3125rem 0 rgba(151, 164, 175, 0.5);
   width: 100% !important;
@@ -123,6 +127,9 @@ p {
   box-shadow: 0 2px 5px rgba(18, 25, 97, 0.05);
 }
 
+.pricing-list {
+  background-color: #fff;
+}
 .pricing-list .select-plan {
   max-width: 700px;
   display: flex;
@@ -193,6 +200,45 @@ p {
   display: inline;
 }
 
+.blog-page {
+  background: #fff;
+}
+.blog-page img {
+  border-radius: 8px;
+}
+.blog-page .post-item {
+  height: 100%;
+}
+.blog-page .more-link {
+  display: none;
+}
+.blog-page h4 {
+  padding-top: 10px;
+}
+.blog-page h4 a {
+  font-size: 22px;
+  line-height: 34px;
+  text-decoration: none;
+  color: #000 !important;
+}
+
+.blog-post h1, .blog-post .post-details {
+  max-width: 700px;
+  text-align: left;
+}
+.blog-post h1 {
+  font-weight: 800;
+  color: #000;
+  line-height: 50px;
+  margin: 40px 0;
+}
+.blog-post img {
+  border-radius: 10px;
+}
+.blog-post .post-details {
+  padding: 30px 0;
+}
+
 .modal .mantine-Modal-title {
   font-size: 20px;
   font-weight: 600;
@@ -200,4 +246,10 @@ p {
 }
 .modal .mantine-Modal-content {
   padding: 1rem;
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }/*# sourceMappingURL=shopexLanding.css.map */

@@ -68,6 +68,9 @@ aside .nav-list > .MuiButtonBase-root:hover, aside .nav-list a > .MuiButtonBase-
 aside .nav-list > .MuiButtonBase-root .MuiListItemText-root + svg, aside .nav-list a > .MuiButtonBase-root .MuiListItemText-root + svg {
   font-size: 1.2rem;
 }
+aside .nav-list > .MuiButtonBase-root.Mui-selected, aside .nav-list a > .MuiButtonBase-root.Mui-selected {
+  background-color: rgba(25, 118, 210, 0.08) !important;
+}
 aside .MuiCollapse-vertical .MuiListItemButton-root {
   padding-left: 65px;
   opacity: 0.75;
@@ -299,10 +302,14 @@ aside .css-cveggr-MuiListItemIcon-root {
 .dashboard .input-filters .searchWrapper {
   background: #eee;
 }
-.dashboard input {
+.dashboard input, .dashboard textarea {
   padding: 8px;
   border: 1px solid #ccc;
   border-radius: 4px;
+}
+.dashboard input[placeholder=Search] {
+  margin: 0 !important;
+  border: none !important;
 }
 .dashboard form.dash-card {
   margin-top: 1rem;
@@ -351,4 +358,55 @@ aside .css-cveggr-MuiListItemIcon-root {
 .dashboard .timeline .tml-chart canvas {
   padding-top: 2rem;
   max-height: 500px;
+}
+.dashboard .profile .tabs {
+  background-color: #fff;
+  display: inline-block;
+  border-radius: 4px;
+  padding: 10px 6px;
+  margin-top: 1rem;
+}
+.dashboard .profile .tabs button {
+  background-color: #edf2f9;
+  color: #67748e;
+  font-weight: 600;
+  margin: 0 5px;
+  padding: 4px 10px;
+  text-transform: capitalize;
+}
+.dashboard .profile .tabs button.active {
+  background-color: rgb(43, 206, 161);
+  color: #fff;
+}
+.dashboard .profile .overlay {
+  background: #fff;
+  border-radius: 6px;
+  margin-top: 1rem;
+  padding: 1.5rem;
+}
+.dashboard .profile .overlay input {
+  width: 100%;
+  padding: 10px 14px;
+  margin-top: 0.5rem;
+}
+.dashboard .profile .overlay .send-mail {
+  position: absolute;
+  right: 6px;
+  bottom: 5px;
+  padding: 6px 20px;
+  border-radius: 4px;
+  background: rgb(222, 40, 104);
+  color: #fff;
+}
+.dashboard .profile .overlay .mail-list {
+  padding: 0;
+  margin-top: 0.5rem;
+  list-style: inside decimal;
+}
+.dashboard .profile .overlay .mail-list li {
+  padding: 1rem;
+}
+.dashboard .profile .overlay .mail-list li:nth-child(odd) {
+  background-color: rgba(25, 118, 210, 0.09);
+  border-radius: 4px;
 }/*# sourceMappingURL=shopex.css.map */

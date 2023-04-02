@@ -469,7 +469,7 @@ function ProductListAndSegments() {
                   {
                     title: 'Image',
                     field: '',render: row => 
-                      <img style={{maxWidth: '80px'}} src='https://www.mountaingoatsoftware.com/uploads/blog/2016-09-06-what-is-a-product.png'/>
+                      <img style={{maxWidth: '80px', borderRadius: '4px'}} src='https://www.mountaingoatsoftware.com/uploads/blog/2016-09-06-what-is-a-product.png'/>
                   },
                   {
                     title: 'Product',

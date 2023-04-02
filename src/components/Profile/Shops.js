@@ -15,6 +15,7 @@ import FirstPage from '@material-ui/icons/FirstPage'
 import LastPage from '@material-ui/icons/LastPage'
 import Check from '@material-ui/icons/Check'
 import FilterList from '@material-ui/icons/FilterList'
+import { Card } from 'react-bootstrap';
 
 
 function Shops() {
@@ -47,15 +48,10 @@ function Shops() {
 
 
     return (
-
         <>
-            
-            <div id="shops" style={{ display: 'block', padding: '38px' }}>
-            
-                <div id="shopindiv" style={{ height: 'fit-content', margin: '0px 0px 0px 30px' }}>
-                
-                    <h3> Connected shops </h3>
-                    
+            <div id="shops">
+                <div id="shopindiv">
+                    <Card className="dash-card">
                     <ThemeProvider theme={defaultMaterialTheme}>
 
                         <MaterialTable
@@ -101,6 +97,7 @@ function Shops() {
                             }}
 
                             options={{
+                                showFirstLastPageButtons: false,
                                 paging: false,
                                 pageSize:10,       // make initial page size
                                 emptyRowsWhenPaging: false,   // To avoid of having empty rows
@@ -109,12 +106,7 @@ function Shops() {
                                 cellStyle: {
                                     padding: '5px',
                                     textAlign:"left"
-                                },
-                                headerStyle: {
-                                    backgroundColor: '#01579b',
-                                    color: '#FFF',
-                                    textAlign:"left"
-                                },
+                                }
                             }}
 
                             // localization={{
@@ -128,6 +120,7 @@ function Shops() {
                         />
                     
                     </ThemeProvider>  
+                    </Card><br/>
 
                     <a title="my title text" href="insert_shop_url1.php">ADD NEW SHOP</a>
                 

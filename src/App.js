@@ -1,8 +1,10 @@
 import { ReactSession } from 'react-client-session';
 import React, { useState } from "react";
 
-import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
+import { BrowserRouter, Routes, Route,Switch } from "react-router-dom";
 
+import BlogPage from './components/Home/BlogPage';
+import SinglePost from './components/Home/SinglePost';
 import Dashboard from './pages/Dashboard';
 import SingleCustomer from "./pages/SingleCustomer";
 
@@ -68,6 +70,8 @@ function App() {
   return (
 
       <BrowserRouter>
+
+      
         
         <div className='wrapper'>
 
@@ -80,7 +84,8 @@ function App() {
           <main className='dashboard'>
 
             <Routes>
-
+              <Route path='/blog' element={<BlogPage/>} />
+              <Route path='/post/:id' element={<SinglePost/>} />
               { status!=='success' && <Route exact path="/" element={<Home />} />}
 
               {/* Campaign */}

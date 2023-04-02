@@ -5,7 +5,6 @@ import Plan from '../components/Profile/Plan'
 import ReportIssue from '../components/Profile/ReportIssue'
 import Shops from '../components/Profile/Shops'
 
-
 import Grid from '@mui/material/Grid';
 import Button from '@mui/material/Button';
 import Team from "../components/Profile/Team";
@@ -23,7 +22,6 @@ function Profile() {
 
                 setPersonalData(false);
                 setPlan(false);
-
                 setReportIssue(false);
                 setShops(false);
                 setTeam(false);
@@ -31,58 +29,52 @@ function Profile() {
                 if (section === 'PersonalData1') { setPersonalData(true); }
                 if (section === 'Team1') { setTeam(true); }
                 else if (section === 'Plan1') { setPlan(true); }
-
                 else if (section === 'ReportIssue1') { setReportIssue(true); }
                 else if (section === 'Shops1') { setShops(true); }
 
         }
 
         return (
+        <Grid container className="profile">
+                <Grid item md={12}>
+                <div className="notifications">
+                        <h6>Profile</h6>
+                </div>
+                </Grid>
+                <Grid item md={12}>
+                        <Grid item md={12}>
+                                <div className='tabs'>
+                                <Button className={PersonalData1 === true ? 'active' : null} value='PersonalData1' onClick={(e) => { product_sections(e.target.value); }}>Personal data
+                                </Button>
 
-                <>
+                                <Button className={Plan1 === true ? 'active' : null} value='Plan1' onClick={(e) => { product_sections(e.target.value); }}>Plan
+                                </Button>
 
-                        <Grid container>
+                                <Button className={Team1 === true ? 'active' : null} value='Team1' onClick={(e) => { product_sections(e.target.value); }}>Team
+                                </Button>
 
-                                <Grid item sm={12}>
+                                <Button className={ReportIssue1 === true ? 'active' : null} value='ReportIssue1' onClick={(e) => { product_sections(e.target.value); }}>Report Issue
+                                </Button>
 
-                                        <Grid container style={{ margin: '2%' }}>
-
-                                                <Button value='PersonalData1' onClick={(e) => { product_sections(e.target.value); }}
-                                                        color={PersonalData1 ? "primary" : "secondary"}>Personal data
-                                                </Button>
-
-                                                <Button value='Plan1' onClick={(e) => { product_sections(e.target.value); }}
-                                                        color={Plan1 ? "primary" : "secondary"}>Plan
-                                                </Button>
-
-                                                <Button value='Team1' onClick={(e) => { product_sections(e.target.value); }}
-                                                        color={Team1 ? "primary" : "secondary"}>Team
-                                                </Button>
-
-                                                <Button value='ReportIssue1' onClick={(e) => { product_sections(e.target.value); }}
-                                                        color={ReportIssue1 ? "primary" : "secondary"} >Report Issue
-                                                </Button>
-
-                                                <Button value='Shops1' onClick={(e) => { product_sections(e.target.value); }}
-                                                        color={Shops1 ? "primary" : "secondary"} >Shops
-                                                </Button>
-
-                                        </Grid>
-
-                                        {PersonalData1 && <PersonalData />}
-
-                                        {Plan1 && <Plan />}
-
-                                        {Team1 && <Team />}
-
-                                        {ReportIssue1 && <ReportIssue />}
-
-                                        {Shops1 && <Shops />}
-                                </Grid>
-
+                                <Button className={Shops1 === true ? 'active' : null} value='Shops1' onClick={(e) => { product_sections(e.target.value); }} >Shops
+                                </Button>
+                                </div>
                         </Grid>
 
-                </>
+                        <div className="overlay">
+                        {PersonalData1 && <PersonalData />}
+
+                        {Plan1 && <Plan />}
+
+                        {Team1 && <Team />}
+
+                        {ReportIssue1 && <ReportIssue />}
+
+                        {Shops1 && <Shops />}
+                        </div>
+                </Grid>
+
+        </Grid>
         )
 }
 

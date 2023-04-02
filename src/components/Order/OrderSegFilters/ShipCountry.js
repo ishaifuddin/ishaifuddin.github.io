@@ -30,9 +30,7 @@ function ShipCity() {
     // }
 
     return (
-
         <Grid>
-
             <Grid.Col span={8} style={{}}>
                 {Cus_country && <Multiselect isObject={false}
                     placeholder="Shipping-Country" 

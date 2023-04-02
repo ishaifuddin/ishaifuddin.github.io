@@ -15,7 +15,7 @@ function PriceSx ({oneHundred='', }) {
 
   return (
     <section id='pricing' className="pricing-list">
-      <Container size="lg" my={90}>
+      <Container size="lg" py={90}>
         <Grid gutter={0} align='center'>
             <Grid.Col md={12} style={{textAlign: 'center'}}>
                 <Group position="center">

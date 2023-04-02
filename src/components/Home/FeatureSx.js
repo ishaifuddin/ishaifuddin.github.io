@@ -1,13 +1,14 @@
 import { useState } from 'react';
 import { Badge, Button, Collapse, Container, Grid, Group, Image, List, Text, ThemeIcon, Title } from '@mantine/core';
+import { useDisclosure } from '@mantine/hooks';
 import { IconBasket, IconChartPie, IconChevronDown, IconDiscount2, IconDiscountCheck, IconFilter, IconMailForward, IconSquareRoundedArrowDown, IconUsers } from '@tabler/icons';
 
 function FeatureSx() {
-  const [opened, setOpened] = useState(false);
+  const [opened, { toggle, }] = useDisclosure(false);
   return (
     <section className="features" id='features'>
          <Container size="lg" py={100}>
-            <Grid align='center'>
+            <Grid>
                 <Grid.Col md={12}>
                     <Group position="center">
                         <Badge variant="light" color='violet' size="lg">Core Service</Badge>
@@ -29,11 +30,11 @@ function FeatureSx() {
                 </Grid.Col>
                 <Grid.Col lg={6} mb={90}>
                 <Image radius="md" pt={60} pl={55} style={{background: '#FAE9EE', borderRadius: '10px', width: 'unset'}}
-                    src="./images/asset5.jpg"
-                    height={285}
-                    fit="contain"
-                    alt="Norway"
-                    />
+                  src="./images/asset5.jpg"
+                  height={285}
+                  fit="contain"
+                  alt="Norway"
+                  />
                 </Grid.Col>
                 <Grid.Col lg={6} mb={90}>
                     <Image radius="md" pt={60} pl={55} style={{background: '#EBF1FE', borderRadius: '10px', width: 'unset'}}
@@ -54,7 +55,12 @@ function FeatureSx() {
                             <List.Item>Create Catagory based pricing</List.Item>
                             <List.Item>Gift products based on product added to cart</List.Item>
                             <List.Item> Offer discount on entire shop</List.Item>
-                            <List.Item>And with the help of our advanced segmentation system, you can segmentize your customers based on their purchase behavior and offer invivisual "product-pricing-and-discounts" to "indivisual-segment"</List.Item>
+                            <Collapse in={opened} transitionDuration={400} transitionTimingFunction="linear">
+                              <List.Item>And with the help of our advanced segmentation system, you can segmentize your customers based on their purchase behavior and offer invivisual "product-pricing-and-discounts" to "indivisual-segment"</List.Item>
+                            </Collapse>
+                            <small style={{color: '#40BF56', cursor: 'pointer', display: 'inline-flex'}} onClick={toggle}>
+                            {opened ? 'View Less' : 'View More'} <IconChevronDown size={20} stroke={1} />
+                            </small>
                         </List>
                     </Group>
                 </Grid.Col>
@@ -67,15 +73,14 @@ function FeatureSx() {
                       <List>
                           <List.Item>Advanced reports on order data, order-shipping and billing location-wise reports</List.Item>
                           <List.Item>Customer reports, customer revenue breakdown based on location, customer retention analysis, find makes them purchase again, retention analysis of specific location, compare retention between different location</List.Item>
-                          
                           <Collapse in={opened} transitionDuration={400} transitionTimingFunction="linear">
                           <List.Item>Single customer report, See what they buy most, avarage day gap between each indivisual product-purchase , average day-gap between each order, what they buy most with discount, average shipping cost of this customer and each session data and much more</List.Item>
                             <List.Item>Reports on product performance, product sales data, shipping location-wise product performace, Select specific shipping city and find which product it loves most, which products demand is growing, which product makes more revenue and profit with the help of line charts</List.Item>
                             <List.Item>Single product performance report, product frequently bought together with a product, each quarter average sales report, Total view of specific product, average view duration, average view duration before adding to cart, Retention data of single product, performace comparision between different city</List.Item>
                             <List.Item>Reports on ad-campaigns, coupon data and much more .</List.Item>
                           </Collapse>
-                          <small style={{color: '#40BF56', cursor: 'pointer', display: 'inline-flex'}} onClick={() => setOpened((o) => !o)}>
-                            View More <IconChevronDown stroke={1} />
+                          <small style={{color: '#40BF56', cursor: 'pointer', display: 'inline-flex'}} onClick={toggle}>
+                          {opened ? 'View Less' : 'View More'} <IconChevronDown size={20} stroke={1} />
                           </small>
                       </List>
                   </Group>
@@ -120,10 +125,15 @@ function FeatureSx() {
                       <List>
                           <List.Item>Advanced reports on order data, order-shipping and billing location-wise reports</List.Item>
                           <List.Item>Customer reports, customer revenue breakdown based on location, customer retention analysis, find makes them purchase again, retention analysis of specific location, compare retention between different location</List.Item>
+                          <Collapse in={opened} transitionDuration={400} transitionTimingFunction="linear">
                           <List.Item>Single customer report, See what they buy most, avarage day gap between each indivisual product-purchase , average day-gap between each order, what they buy most with discount, average shipping cost of this customer and each session data and much more</List.Item>
                           <List.Item>Reports on product performance, product sales data, shipping location-wise product performace, Select specific shipping city and find which product it loves most, which products demand is growing, which product makes more revenue and profit with the help of line charts</List.Item>
                           <List.Item>Single product performance report, product frequently bought together with a product, each quarter average sales report, Total view of specific product, average view duration, average view duration before adding to cart, Retention data of single product, performace comparision between different city</List.Item>
                           <List.Item>Reports on ad-campaigns, coupon data and much more .</List.Item>
+                          </Collapse>
+                          <small style={{color: '#40BF56', cursor: 'pointer', display: 'inline-flex'}} onClick={toggle}>
+                          {opened ? 'View Less' : 'View More'} <IconChevronDown size={20} stroke={1} />
+                          </small>
                       </List>
                   </Group>
                 </Grid.Col>
