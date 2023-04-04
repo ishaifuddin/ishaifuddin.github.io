@@ -9,22 +9,20 @@ import ListItemText from "@mui/material/ListItemText";
 import Collapse from "@mui/material/Collapse";
 import ExpandLess from "@mui/icons-material/ExpandLess";
 import ExpandMore from "@mui/icons-material/ExpandMore";
-import NavigateNextOutlinedIcon from '@mui/icons-material/NavigateNextOutlined';
+import NavigateNextOutlinedIcon from "@mui/icons-material/NavigateNextOutlined";
+import PermContactCalendarIcon from "@material-ui/icons/PermContactCalendar";
 
-import PeopleIcon from '@mui/icons-material/People';
-import WidgetsIcon from '@mui/icons-material/Widgets';
-import ShoppingBasketIcon from '@mui/icons-material/ShoppingBasket';
-import CampaignIcon from '@mui/icons-material/Campaign';
-import DiscountRoundedIcon from '@mui/icons-material/DiscountRounded';
-import LocalOfferIcon from '@mui/icons-material/LocalOffer';
-import ScheduleSendIcon from '@mui/icons-material/ScheduleSend';
-import ManageAccountsIcon from '@mui/icons-material/ManageAccounts';
-import AnalyticsIcon from '@mui/icons-material/Analytics';
-
-
+import PeopleIcon from "@mui/icons-material/People";
+import WidgetsIcon from "@mui/icons-material/Widgets";
+import ShoppingBasketIcon from "@mui/icons-material/ShoppingBasket";
+import CampaignIcon from "@mui/icons-material/Campaign";
+import DiscountRoundedIcon from "@mui/icons-material/DiscountRounded";
+import LocalOfferIcon from "@mui/icons-material/LocalOffer";
+import ScheduleSendIcon from "@mui/icons-material/ScheduleSend";
+import ManageAccountsIcon from "@mui/icons-material/ManageAccounts";
+import AnalyticsIcon from "@mui/icons-material/Analytics";
 
 function SideNav() {
-
   var [open1, setOpen1] = useState(false);
   var [open2, setOpen2] = useState(false);
   var [open3, setOpen3] = useState(false);
@@ -34,22 +32,37 @@ function SideNav() {
 
   const [selectedIndex, setSelectedIndex] = useState(0);
 
-  const handleClick1 = () => { setSelectedIndex(1);setOpen1(!open1); };
-  const handleClick2 = () => { setSelectedIndex(2);setOpen2(!open2); };
-  const handleClick3 = () => { setSelectedIndex(3);setOpen3(!open3); };
-  const handleClick4 = () => { setSelectedIndex(4);setOpen4(!open4); };
-  const handleClick5 = () => { setSelectedIndex(5);setOpen5(!open5); };
-  const handleClick6 = () => { setSelectedIndex(6);setOpen6(!open6); };
-
-
+  const handleClick1 = () => {
+    setSelectedIndex(1);
+    setOpen1(!open1);
+  };
+  const handleClick2 = () => {
+    setSelectedIndex(2);
+    setOpen2(!open2);
+  };
+  const handleClick3 = () => {
+    setSelectedIndex(3);
+    setOpen3(!open3);
+  };
+  const handleClick4 = () => {
+    setSelectedIndex(4);
+    setOpen4(!open4);
+  };
+  const handleClick5 = () => {
+    setSelectedIndex(5);
+    setOpen5(!open5);
+  };
+  const handleClick6 = () => {
+    setSelectedIndex(6);
+    setOpen6(!open6);
+  };
 
   const handleListItemClick = (event, index) => {
     setSelectedIndex(index);
   };
+
   return (
-
     <>
-
       {/* <Grid style={{ width: '250px' }}>
 
                 <Sidenav style={{ boxShadow: '0 7px 14px 0 rgb(65 69 88 / 10%), 0 3px 6px 0 rgb(0 0 0 / 7%)'}} >
@@ -138,257 +151,382 @@ function SideNav() {
 
             </Grid> */}
 
-        
-        <List className="nav-list" component="nav" aria-labelledby="nested-list-subheader" subheader={<img className="logo" src='/images/shopex.png'/>}
-        >
-            <hr/>
-          <ListItemButton
+      <List
+        className="nav-list"
+        component="nav"
+        aria-labelledby="nested-list-subheader"
+        subheader={
+          <Link to="/Dashboard">
+            <img className="logo" src="/images/shopex.png" />
+          </Link>
+        }
+      >
+        <hr />
+        <ListItemButton
           selected={selectedIndex === 0}
           onClick={(event) => handleListItemClick(event, 0)}
-          >
+        >
+          <ListItemText>
+            <Link to="/Dashboard">
+              <ListItemIcon>
+                <AnalyticsIcon style={{ color: "#7366E3" }} />
+              </ListItemIcon>
+              Dashboard
+            </Link>
+          </ListItemText>
+        </ListItemButton>
+
+        <ListItemButton selected={selectedIndex === 1} onClick={handleClick1}>
+          <ListItemIcon>
+            <PeopleIcon style={{ color: "#F44D48" }} />
+          </ListItemIcon>
+          <ListItemText primary="Customers" />
+          {open1 ? <ExpandLess /> : <ExpandMore />}
+        </ListItemButton>
+
+        <Collapse className="nice" in={open1} timeout="auto" unmountOnExit>
+          <ListItemButton sx={{ pl: 4 }}>
             <ListItemIcon>
-              <AnalyticsIcon style={{color:'#7366E3'}}/>
+              <NavigateNextOutlinedIcon />
             </ListItemIcon>
             <ListItemText>
-              <Link to="/Dashboard">Dashboard</Link>
+              <Link to="/Customers/reports">
+                <PermContactCalendarIcon fontSize="small" />
+                Reports
+              </Link>{" "}
             </ListItemText>
           </ListItemButton>
+        </Collapse>
 
-          <ListItemButton selected={selectedIndex === 1} onClick={handleClick1}>
+        <Collapse in={open1} timeout="auto" unmountOnExit>
+          <ListItemButton sx={{ pl: 4 }}>
             <ListItemIcon>
-              <PeopleIcon style={{color:'#F44D48'}}/>
+              <NavigateNextOutlinedIcon />
             </ListItemIcon>
-            <ListItemText primary="Customers" />
-            {open1 ? <ExpandLess /> : <ExpandMore />}
+            <ListItemText>
+              {" "}
+              <Link to="/Customers/CustomerAndSegemnt">
+                <PermContactCalendarIcon fontSize="small" />
+                List And Segemnt
+              </Link>
+            </ListItemText>
           </ListItemButton>
+        </Collapse>
 
-          <Collapse in={open1} timeout="auto" unmountOnExit>
-            <ListItemButton  sx={{ pl: 4 }}>
-              <ListItemIcon>
-                <NavigateNextOutlinedIcon />
-              </ListItemIcon>
-              <ListItemText>  <Link to="/Customers/reports">Reports</Link>  </ListItemText>
-            </ListItemButton>
-          </Collapse>
-
-          <Collapse in={open1} timeout="auto" unmountOnExit>
-            <ListItemButton  sx={{ pl: 4 }}>
-              <ListItemIcon>
-                <NavigateNextOutlinedIcon />
-              </ListItemIcon>
-              <ListItemText >  <Link to="/Customers/CustomerAndSegemnt">List And Segemnt</Link></ListItemText>
-            </ListItemButton>
-          </Collapse>
-          
-          <Collapse in={open1} timeout="auto" unmountOnExit>
-            <ListItemButton  sx={{ pl: 4 }}>
-              <ListItemIcon>
-                <NavigateNextOutlinedIcon />
-              </ListItemIcon>
-              <ListItemText > <Link to="/Customers/retention">Retention</Link> </ListItemText>
-            </ListItemButton>
-          </Collapse>
-
-          <Collapse in={open1} timeout="auto" unmountOnExit>
-            <ListItemButton  sx={{ pl: 4 }}>
-              <ListItemIcon>
-                <NavigateNextOutlinedIcon />
-              </ListItemIcon>
-              <ListItemText > <Link to="/Customers/retention/selected-city">Retention-SingleCity</Link></ListItemText>
-            </ListItemButton>
-          </Collapse>
-
-          <ListItemButton selected={selectedIndex === 2} onClick={handleClick2}>
+        <Collapse in={open1} timeout="auto" unmountOnExit>
+          <ListItemButton sx={{ pl: 4 }}>
             <ListItemIcon>
-              <WidgetsIcon style={{color:'#2BCEA1'}}/>
+              <NavigateNextOutlinedIcon />
             </ListItemIcon>
-            <ListItemText primary="Products" />
-            {open2 ? <ExpandLess /> : <ExpandMore />}
+            <ListItemText>
+              {" "}
+              <Link to="/Customers/retention">
+                <PermContactCalendarIcon fontSize="small" />
+                Retention
+              </Link>{" "}
+            </ListItemText>
           </ListItemButton>
+        </Collapse>
 
-          <Collapse in={open2} timeout="auto" unmountOnExit>
-            <ListItemButton  sx={{ pl: 4 }}>
-              <ListItemIcon>
-                <NavigateNextOutlinedIcon />
-              </ListItemIcon>
-              <ListItemText> <Link to="/Products">Available</Link> </ListItemText>
-            </ListItemButton>
-          </Collapse>
-          <Collapse in={open2} timeout="auto" unmountOnExit>
-            <ListItemButton  sx={{ pl: 4 }}>
-              <ListItemIcon>
-                <NavigateNextOutlinedIcon />
-              </ListItemIcon>
-              <ListItemText> <Link to="/Products/Sales">Sales</Link> </ListItemText>
-            </ListItemButton>
-          </Collapse>
-          <Collapse in={open2} timeout="auto" unmountOnExit>
-            <ListItemButton  sx={{ pl: 4 }}>
-              <ListItemIcon>
-                <NavigateNextOutlinedIcon />
-              </ListItemIcon>
-              <ListItemText> <Link to="/Products/Performance">Performance</Link> </ListItemText>
-            </ListItemButton>
-          </Collapse>
-          <Collapse in={open2} timeout="auto" unmountOnExit>
-            <ListItemButton  sx={{ pl: 4 }}>
-              <ListItemIcon>
-                <NavigateNextOutlinedIcon />
-              </ListItemIcon>
-              <ListItemText> <Link to="/Products/Specific-city"> ShipCity-Performance</Link> </ListItemText>
-            </ListItemButton>
-          </Collapse>
-          <Collapse in={open2} timeout="auto" unmountOnExit>
-            <ListItemButton  sx={{ pl: 4 }}>
-              <ListItemIcon>
-                <NavigateNextOutlinedIcon />
-              </ListItemIcon>
-              <ListItemText> <Link to="/Products/Customer-Segment-based-on-product-purchase"> OrderBased Segment </Link> </ListItemText>
-            </ListItemButton>
-          </Collapse>
-          <Collapse in={open2} timeout="auto" unmountOnExit>
-            <ListItemButton  sx={{ pl: 4 }}>
-              <ListItemIcon>
-                <NavigateNextOutlinedIcon />
-              </ListItemIcon>
-              <ListItemText> <Link to="/Products/Product-segment-performance"> Segment Performance </Link> </ListItemText>
-            </ListItemButton>
-          </Collapse>
-
-          <ListItemButton  selected={selectedIndex === 2} onClick={handleClick3}>
+        <Collapse in={open1} timeout="auto" unmountOnExit>
+          <ListItemButton sx={{ pl: 4 }}>
             <ListItemIcon>
-              <ShoppingBasketIcon style={{color:'#FB7A40'}}/>
+              <NavigateNextOutlinedIcon />
             </ListItemIcon>
-            <ListItemText primary="Orders" />
-            {open3 ? <ExpandLess /> : <ExpandMore />}
+            <ListItemText>
+              {" "}
+              <Link to="/Customers/retention/selected-city">
+                <PermContactCalendarIcon fontSize="small" />
+                Retention-SingleCity
+              </Link>
+            </ListItemText>
           </ListItemButton>
+        </Collapse>
 
-          <Collapse in={open3} timeout="auto" unmountOnExit>
-            <ListItemButton  sx={{ pl: 4 }}>
-              <ListItemIcon>
-                <NavigateNextOutlinedIcon />
-              </ListItemIcon>
-              <ListItemText> <Link to="/Orders/Report">Report</Link> </ListItemText>
-            </ListItemButton>
-          </Collapse>
-          <Collapse in={open3} timeout="auto" unmountOnExit>
-            <ListItemButton  sx={{ pl: 4 }}>
-              <ListItemIcon>
-                <NavigateNextOutlinedIcon />
-              </ListItemIcon>
-              <ListItemText> <Link to="/Orders">List And Segments</Link> </ListItemText>
-            </ListItemButton>
-          </Collapse>
+        <ListItemButton selected={selectedIndex === 2} onClick={handleClick2}>
+          <ListItemIcon>
+            <WidgetsIcon style={{ color: "#2BCEA1" }} />
+          </ListItemIcon>
+          <ListItemText primary="Products" />
+          {open2 ? <ExpandLess /> : <ExpandMore />}
+        </ListItemButton>
 
-          <ListItemButton  selected={selectedIndex === 2} onClick={handleClick4}>
+        <Collapse in={open2} timeout="auto" unmountOnExit>
+          <ListItemButton sx={{ pl: 4 }}>
             <ListItemIcon>
-              <CampaignIcon style={{color:'#2C7AE5'}}/>
+              <NavigateNextOutlinedIcon />
             </ListItemIcon>
-            <ListItemText primary="Campaign" />
-            {open4 ? <ExpandLess /> : <ExpandMore />}
+            <ListItemText>
+              {" "}
+              <Link to="/Products">
+                <PermContactCalendarIcon fontSize="small" />
+                Available
+              </Link>{" "}
+            </ListItemText>
           </ListItemButton>
-
-          <Collapse in={open4} timeout="auto" unmountOnExit>
-            <ListItemButton  sx={{ pl: 4 }}>
-              <ListItemIcon>
-                <NavigateNextOutlinedIcon />
-              </ListItemIcon>
-              <ListItemText> <Link to="/campaign">Campaign</Link> </ListItemText>
-            </ListItemButton>
-          </Collapse>
-          <Collapse in={open4} timeout="auto" unmountOnExit>
-            <ListItemButton  sx={{ pl: 4 }}>
-              <ListItemIcon>
-                <NavigateNextOutlinedIcon />
-              </ListItemIcon>
-              <ListItemText> <Link to="/campaign/orders">Orders</Link> </ListItemText>
-            </ListItemButton>
-          </Collapse>
-          <Collapse in={open4} timeout="auto" unmountOnExit>
-            <ListItemButton  sx={{ pl: 4 }}>
-              <ListItemIcon>
-                <NavigateNextOutlinedIcon />
-              </ListItemIcon>
-              <ListItemText> <Link to="/campaign/compare">Compare</Link> </ListItemText>
-            </ListItemButton>
-          </Collapse>
-
-          <ListItemButton  selected={selectedIndex === 2} onClick={handleClick5}>
+        </Collapse>
+        <Collapse in={open2} timeout="auto" unmountOnExit>
+          <ListItemButton sx={{ pl: 4 }}>
             <ListItemIcon>
-              <DiscountRoundedIcon style={{color:'#ECA13B'}}/>
+              <NavigateNextOutlinedIcon />
             </ListItemIcon>
-            <ListItemText primary="Pricing" />
-            {open5 ? <ExpandLess /> : <ExpandMore />}
+            <ListItemText>
+              {" "}
+              <Link to="/Products/Sales">
+                <PermContactCalendarIcon fontSize="small" />
+                Sales
+              </Link>{" "}
+            </ListItemText>
           </ListItemButton>
+        </Collapse>
+        <Collapse in={open2} timeout="auto" unmountOnExit>
+          <ListItemButton sx={{ pl: 4 }}>
+            <ListItemIcon>
+              <NavigateNextOutlinedIcon />
+            </ListItemIcon>
+            <ListItemText>
+              {" "}
+              <Link to="/Products/Performance">
+                <PermContactCalendarIcon fontSize="small" />
+                Performance
+              </Link>{" "}
+            </ListItemText>
+          </ListItemButton>
+        </Collapse>
+        <Collapse in={open2} timeout="auto" unmountOnExit>
+          <ListItemButton sx={{ pl: 4 }}>
+            <ListItemIcon>
+              <NavigateNextOutlinedIcon />
+            </ListItemIcon>
+            <ListItemText>
+              {" "}
+              <Link to="/Products/Specific-city">
+                {" "}
+                <PermContactCalendarIcon fontSize="small" />
+                ShipCity-Performance
+              </Link>{" "}
+            </ListItemText>
+          </ListItemButton>
+        </Collapse>
+        <Collapse in={open2} timeout="auto" unmountOnExit>
+          <ListItemButton sx={{ pl: 4 }}>
+            <ListItemIcon>
+              <NavigateNextOutlinedIcon />
+            </ListItemIcon>
+            <ListItemText>
+              {" "}
+              <Link to="/Products/Customer-Segment-based-on-product-purchase">
+                {" "}
+                <PermContactCalendarIcon fontSize="small" />
+                OrderBased Segment{" "}
+              </Link>{" "}
+            </ListItemText>
+          </ListItemButton>
+        </Collapse>
+        <Collapse in={open2} timeout="auto" unmountOnExit>
+          <ListItemButton sx={{ pl: 4 }}>
+            <ListItemIcon>
+              <NavigateNextOutlinedIcon />
+            </ListItemIcon>
+            <ListItemText>
+              {" "}
+              <Link to="/Products/Product-segment-performance">
+                {" "}
+                <PermContactCalendarIcon fontSize="small" />
+                Segment Performance{" "}
+              </Link>{" "}
+            </ListItemText>
+          </ListItemButton>
+        </Collapse>
 
-          <Collapse in={open5} timeout="auto" unmountOnExit>
-            <ListItemButton  sx={{ pl: 4 }}>
-              <ListItemIcon>
-                <NavigateNextOutlinedIcon />
-              </ListItemIcon>
-              <ListItemText> <Link to="/pricing">Create New</Link> </ListItemText>
-            </ListItemButton>
-          </Collapse>
-          <Collapse in={open5} timeout="auto" unmountOnExit>
-            <ListItemButton  sx={{ pl: 4 }}>
-              <ListItemIcon>
-                <NavigateNextOutlinedIcon />
-              </ListItemIcon>
-              <ListItemText> <Link to="/pricing/created">Available</Link> </ListItemText>
-            </ListItemButton>
-          </Collapse>
+        <ListItemButton selected={selectedIndex === 3} onClick={handleClick3}>
+          <ListItemIcon>
+            <ShoppingBasketIcon style={{ color: "#FB7A40" }} />
+          </ListItemIcon>
+          <ListItemText primary="Orders" />
+          {open3 ? <ExpandLess /> : <ExpandMore />}
+        </ListItemButton>
 
-          <ListItemButton
+        <Collapse in={open3} timeout="auto" unmountOnExit>
+          <ListItemButton sx={{ pl: 4 }}>
+            <ListItemIcon>
+              <NavigateNextOutlinedIcon />
+            </ListItemIcon>
+            <ListItemText>
+              {" "}
+              <Link to="/Orders/Report">
+                <PermContactCalendarIcon fontSize="small" />
+                Report
+              </Link>{" "}
+            </ListItemText>
+          </ListItemButton>
+        </Collapse>
+        <Collapse in={open3} timeout="auto" unmountOnExit>
+          <ListItemButton sx={{ pl: 4 }}>
+            <ListItemIcon>
+              <NavigateNextOutlinedIcon />
+            </ListItemIcon>
+            <ListItemText>
+              {" "}
+              <Link to="/Orders">
+                <PermContactCalendarIcon fontSize="small" />
+                List And Segments
+              </Link>{" "}
+            </ListItemText>
+          </ListItemButton>
+        </Collapse>
+
+        <ListItemButton selected={selectedIndex === 4} onClick={handleClick4}>
+          <ListItemIcon>
+            <CampaignIcon style={{ color: "#2C7AE5" }} />
+          </ListItemIcon>
+          <ListItemText primary="Campaign" />
+          {open4 ? <ExpandLess /> : <ExpandMore />}
+        </ListItemButton>
+
+        <Collapse in={open4} timeout="auto" unmountOnExit>
+          <ListItemButton sx={{ pl: 4 }}>
+            <ListItemIcon>
+              <NavigateNextOutlinedIcon />
+            </ListItemIcon>
+            <ListItemText>
+              {" "}
+              <Link to="/campaign">
+                <PermContactCalendarIcon fontSize="small" />
+                Campaign
+              </Link>{" "}
+            </ListItemText>
+          </ListItemButton>
+        </Collapse>
+        <Collapse in={open4} timeout="auto" unmountOnExit>
+          <ListItemButton sx={{ pl: 4 }}>
+            <ListItemIcon>
+              <NavigateNextOutlinedIcon />
+            </ListItemIcon>
+            <ListItemText>
+              {" "}
+              <Link to="/campaign/orders">
+                <PermContactCalendarIcon fontSize="small" />
+                Orders
+              </Link>{" "}
+            </ListItemText>
+          </ListItemButton>
+        </Collapse>
+        <Collapse in={open4} timeout="auto" unmountOnExit>
+          <ListItemButton sx={{ pl: 4 }}>
+            <ListItemIcon>
+              <NavigateNextOutlinedIcon />
+            </ListItemIcon>
+            <ListItemText>
+              {" "}
+              <Link to="/campaign/compare">
+                <PermContactCalendarIcon fontSize="small" />
+                Compare
+              </Link>{" "}
+            </ListItemText>
+          </ListItemButton>
+        </Collapse>
+
+        <ListItemButton selected={selectedIndex === 5} onClick={handleClick5}>
+          <ListItemIcon>
+            <DiscountRoundedIcon style={{ color: "#ECA13B" }} />
+          </ListItemIcon>
+          <ListItemText primary="Pricing" />
+          {open5 ? <ExpandLess /> : <ExpandMore />}
+        </ListItemButton>
+
+        <Collapse in={open5} timeout="auto" unmountOnExit>
+          <ListItemButton sx={{ pl: 4 }}>
+            <ListItemIcon>
+              <NavigateNextOutlinedIcon />
+            </ListItemIcon>
+            <ListItemText>
+              {" "}
+              <Link to="/pricing">
+                <PermContactCalendarIcon fontSize="small" />
+                Create New
+              </Link>{" "}
+            </ListItemText>
+          </ListItemButton>
+        </Collapse>
+        <Collapse in={open5} timeout="auto" unmountOnExit>
+          <ListItemButton sx={{ pl: 4 }}>
+            <ListItemIcon>
+              <NavigateNextOutlinedIcon />
+            </ListItemIcon>
+            <ListItemText>
+              {" "}
+              <Link to="/pricing/created">
+                <PermContactCalendarIcon fontSize="small" />
+                Available
+              </Link>{" "}
+            </ListItemText>
+          </ListItemButton>
+        </Collapse>
+
+        <ListItemButton
           selected={selectedIndex === 7}
           onClick={(event) => handleListItemClick(event, 7)}
-          >
+        >
+          <ListItemIcon>
+            <LocalOfferIcon style={{ color: "#DE2868" }} />
+          </ListItemIcon>
+          <ListItemText>
+            <Link to="/coupons">Coupon</Link>
+          </ListItemText>
+        </ListItemButton>
+
+        <ListItemButton selected={selectedIndex === 6} onClick={handleClick6}>
+          <ListItemIcon>
+            <ScheduleSendIcon style={{ color: "#05AFC5" }} />
+          </ListItemIcon>
+          <ListItemText primary="Engage" />
+          {open6 ? <ExpandLess /> : <ExpandMore />}
+        </ListItemButton>
+
+        <Collapse in={open6} timeout="auto" unmountOnExit>
+          <ListItemButton sx={{ pl: 4 }}>
             <ListItemIcon>
-              <LocalOfferIcon style={{color:'#DE2868'}}/>
+              <NavigateNextOutlinedIcon />
             </ListItemIcon>
             <ListItemText>
-              <Link to="/coupons">Coupon</Link>
+              {" "}
+              <Link to="/engage/available">
+                <PermContactCalendarIcon fontSize="small" />
+                Available
+              </Link>{" "}
             </ListItemText>
           </ListItemButton>
-
-          <ListItemButton  selected={selectedIndex === 2} onClick={handleClick6}>
+        </Collapse>
+        <Collapse in={open6} timeout="auto" unmountOnExit>
+          <ListItemButton sx={{ pl: 4 }}>
             <ListItemIcon>
-              <ScheduleSendIcon style={{color:'#05AFC5'}}/>
+              <NavigateNextOutlinedIcon />
             </ListItemIcon>
-            <ListItemText primary="Engage" />
-            {open6 ? <ExpandLess /> : <ExpandMore />}
+            <ListItemText>
+              {" "}
+              <Link to="/engage/createnew">
+                <PermContactCalendarIcon fontSize="small" />
+                Create New
+              </Link>{" "}
+            </ListItemText>
           </ListItemButton>
+        </Collapse>
 
-          <Collapse in={open6} timeout="auto" unmountOnExit>
-            <ListItemButton  sx={{ pl: 4 }}>
-              <ListItemIcon>
-                <NavigateNextOutlinedIcon />
-              </ListItemIcon>
-              <ListItemText> <Link to="/engage/available">Available</Link> </ListItemText>
-            </ListItemButton>
-          </Collapse>
-          <Collapse in={open6} timeout="auto" unmountOnExit>
-            <ListItemButton  sx={{ pl: 4 }}>
-              <ListItemIcon>
-                <NavigateNextOutlinedIcon />
-              </ListItemIcon>
-              <ListItemText> <Link to="/engage/createnew">Create New</Link> </ListItemText>
-            </ListItemButton>
-          </Collapse>
-
-          <ListItemButton
+        <ListItemButton
           selected={selectedIndex === 8}
-          onClick={(event) => handleListItemClick(event, 8)}>
-            <ListItemIcon>
-              <ManageAccountsIcon  style={{color:'#4FA953'}}/>
-            </ListItemIcon>
-            <ListItemText>
-              <Link to="/profile">Profile</Link>
-            </ListItemText>
-          </ListItemButton>
-
-        </List>
+          onClick={(event) => handleListItemClick(event, 8)}
+        >
+          <ListItemIcon>
+            <ManageAccountsIcon style={{ color: "#4FA953" }} />
+          </ListItemIcon>
+          <ListItemText>
+            <Link to="/profile">Profile</Link>
+          </ListItemText>
+        </ListItemButton>
+      </List>
     </>
-  )
+  );
 }
 
-export default SideNav
+export default SideNav;

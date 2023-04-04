@@ -49,7 +49,7 @@ aside .nav-list, aside .nav-list a {
 }
 aside .nav-list a {
   text-decoration: none;
-  display: block;
+  display: flex;
 }
 aside .nav-list .MuiListItemButton-root {
   padding: 2px 15px;
@@ -72,11 +72,16 @@ aside .nav-list > .MuiButtonBase-root.Mui-selected, aside .nav-list a > .MuiButt
   background-color: rgba(25, 118, 210, 0.08) !important;
 }
 aside .MuiCollapse-vertical .MuiListItemButton-root {
-  padding-left: 65px;
+  padding-left: 33px;
   opacity: 0.75;
 }
 aside .MuiCollapse-vertical .MuiListItemButton-root a {
   font-size: 14px;
+  display: flex;
+  align-items: center;
+}
+aside .MuiCollapse-vertical .MuiListItemButton-root a svg {
+  margin-right: 0.8rem;
 }
 aside .MuiCollapse-vertical .MuiListItemButton-root:hover {
   background-color: transparent;
@@ -107,12 +112,26 @@ aside .css-cveggr-MuiListItemIcon-root {
   position: relative;
   padding-left: 300px;
 }
+.dashboard .top-wrap {
+  padding-bottom: 24px;
+}
 .dashboard .notifications {
-  color: white;
+  position: fixed;
+  width: calc(100% - 324px);
+  border-radius: 4px;
+  z-index: 999;
+  color: #fff;
+  transition: padding 0.1s;
 }
 .dashboard .notifications svg {
-  margin-left: 0.5rem;
+  margin: 0 0 -7px 0.5rem;
   cursor: pointer;
+}
+.dashboard .notifications.topper {
+  box-shadow: 0 2px 26px 0 rgba(0, 0, 0, 0.15);
+  padding: 1rem;
+  background: #fff;
+  color: #344767;
 }
 .dashboard .MuiTimeline-positionRight {
   min-height: 200px;

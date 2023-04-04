@@ -1,9 +1,7 @@
-import React from 'react'
+import React from "react";
 
 function Engage() {
-  return (
-    <div>Engage</div>
-  )
+  return <div>Engage</div>;
 }
 
-export default Engage
+export default Engage;

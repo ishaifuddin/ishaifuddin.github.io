@@ -1,14 +1,12 @@
-import React from 'react'
+import React from "react";
 
 function OrderID() {
-
-    return (
-        
-        <div className="input-filters">
-            <strong> Order-ID :</strong>
-            <input className='multi' defaultValue="" type="text" name="o_id"  /> 
-        </div>
-    )
+  return (
+    <div className="input-filters">
+      <strong> Order-ID :</strong>
+      <input className="multi" defaultValue="" type="text" name="o_id" />
+    </div>
+  );
 }
 
-export default OrderID
+export default OrderID;

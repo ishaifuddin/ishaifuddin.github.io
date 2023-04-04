@@ -1,11 +1,18 @@
-import { Button, Container, Grid, Image, Paper, TypographyStylesProvider } from '@mantine/core';
-import { IconArrowRight } from '@tabler/icons';
-import { Link as RouterLink } from 'react-router-dom';
-import ModalSx from './ModalSx';
+import {
+  Button,
+  Container,
+  Grid,
+  Image,
+  Paper,
+  TypographyStylesProvider,
+} from "@mantine/core";
+import { IconArrowRight } from "@tabler/icons";
+import { Link as RouterLink } from "react-router-dom";
+import ModalSx from "./ModalSx";
 
 function HomeSx() {
   return (
-    <Paper id='home' component="section" className="home">
+    <Paper id="home" component="section" className="home">
       {/* <div className="hero-img">
         <svg version="1.1" xmlns="http://www.w3.org/2000/svg" color='#EBF1FE' viewBox="191.167 0 420.833 411.166">
           <g>
@@ -13,32 +20,48 @@ function HomeSx() {
           </g>
         </svg>
        </div> */}
-         <Container size="lg">
-            <Grid align='center'>
-                <Grid.Col md={7}>
-                  <div className='content' style={{position: 'relative'}}>
-                    <TypographyStylesProvider>
-                        <h1>Analyse, Execute, Grow Your Business</h1>
-                        <p>The only e-commerce store analytics you’ll ever need - Understand your customers behaviors better - Quickly segment and visualize your data - Measure all e-commerce store metrics - Advanced Dynamic product pricing for targeted segment - Targeted Automatic Emails </p>
-                        <ModalSx formType='signup' formTitle='signup' />
-                    </TypographyStylesProvider>
-                    <div className='built-for'>
-                      <div>Build For: </div>
-                      <Image className='woocommerce' radius="md" src="./images/asset3.png" alt="woocommerce logo" />
-                      <Image className='woocommerce' radius="md" src="./images/asset2.png" alt="Shopify logo" />
-                    </div>
-                  </div>
-                </Grid.Col>
-                <Grid.Col md={5}>
-                <Image className='app-screen desktop'
-                  radius="lg"
-                  src="./images/asset1.jpg"
-                  alt="Shop Dashboard Screen"
+      <Container size="lg">
+        <Grid align="center">
+          <Grid.Col md={7}>
+            <div className="content" style={{ position: "relative" }}>
+              <TypographyStylesProvider>
+                <h1>Analyse, Execute, Grow Your Business</h1>
+                <p>
+                  The only e-commerce store analytics you’ll ever need -
+                  Understand your customers behaviors better - Quickly segment
+                  and visualize your data - Measure all e-commerce store metrics
+                  - Advanced Dynamic product pricing for targeted segment -
+                  Targeted Automatic Emails{" "}
+                </p>
+                <ModalSx formType="signup" formTitle="signup" />
+              </TypographyStylesProvider>
+              <div className="built-for">
+                <div>Build For: </div>
+                <Image
+                  className="woocommerce"
+                  radius="md"
+                  src="./images/asset3.png"
+                  alt="woocommerce logo"
                 />
-                </Grid.Col>
-            </Grid>
-
-         </Container>
+                <Image
+                  className="woocommerce"
+                  radius="md"
+                  src="./images/asset2.png"
+                  alt="Shopify logo"
+                />
+              </div>
+            </div>
+          </Grid.Col>
+          <Grid.Col md={5}>
+            <Image
+              className="app-screen desktop"
+              radius="lg"
+              src="./images/asset1.jpg"
+              alt="Shop Dashboard Screen"
+            />
+          </Grid.Col>
+        </Grid>
+      </Container>
     </Paper>
   );
 }

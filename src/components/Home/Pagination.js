@@ -7,7 +7,7 @@ function pageAlgo(currentPage, pageCount) {
     result = [];
 
   result = Array.from({ length: pageCount }, (v, k) => k + 1).filter(
-    i => i && i >= left && i < right
+    (i) => i && i >= left && i < right
   );
 
   if (result.length > 1) {
@@ -45,14 +45,22 @@ const Pagination = ({ nrOfPages, currentpage, onSelectPage }) => {
   return (
     <>
       {pagination.map((n, i) => {
-        return n != "..." ? <button key={i} onClick={() => { onSelectPage(n); }}> {n} </button> 
-        : 
-        <button key={i}>...</button>
+        return n != "..." ? (
+          <button
+            key={i}
+            onClick={() => {
+              onSelectPage(n);
+            }}
+          >
+            {" "}
+            {n}{" "}
+          </button>
+        ) : (
+          <button key={i}>...</button>
+        );
       })}
     </>
   );
 };
 
 export default Pagination;
-
-

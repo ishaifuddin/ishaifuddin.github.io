@@ -1,63 +1,77 @@
 import React, { useEffect, useState } from "react";
-import Select from 'react-select';
-import { Grid } from '@mantine/core';
+import Select from "react-select";
+import { Grid } from "@mantine/core";
 
 function Total_Profit_() {
+  var [profit_bellow, setprofit_bellow] = useState(true);
+  var [profit_above, setprofit_above] = useState(false);
+  var [profit_between, setprofit_between] = useState(false);
 
-    var [profit_bellow, setprofit_bellow] = useState(true);
-    var [profit_above, setprofit_above] = useState(false);
-    var [profit_between, setprofit_between] = useState(false);
+  var handleChange = (e) => {
+    setprofit_between(false);
+    setprofit_above(false);
+    setprofit_bellow(false);
 
-    var handleChange = e => {
+    if (e === "profit_between") setprofit_between(true);
+    if (e === "profit_above") setprofit_above(true);
+    if (e === "profit_bellow") setprofit_bellow(true);
+  };
 
-        setprofit_between(false);
-        setprofit_above(false);
-        setprofit_bellow(false);
+  const options = [
+    { value: "profit_bellow", label: "Less than" },
+    { value: "profit_above", label: "More than" },
+    { value: "profit_between", label: "In-Between" },
+  ];
 
-        if(e === 'profit_between') setprofit_between(true);
-        if(e === 'profit_above') setprofit_above(true);
-        if(e === 'profit_bellow') setprofit_bellow(true);
-    }
+  return (
+    <div className="input-filters">
+      <strong> Total Profit : </strong>
 
-    const options = [
-        { value: 'profit_bellow', label: 'Less than' },
-        { value: 'profit_above', label: 'More than' },
-        { value: 'profit_between', label: 'In-Between' },
-    ];
-      
+      <Select
+        className="multi"
+        placeholder="Less than"
+        defaultValue={"profit_bellow"}
+        onChange={(e) => {
+          handleChange(e.value);
+        }}
+        options={options}
+      />
+      {profit_bellow && (
+        <input
+          defaultValue="0"
+          type="number"
+          id="pa"
+          name="profit_amount_max"
+        />
+      )}
 
-    
-    return (
-    
-        <div className="input-filters">
-                <strong> Total Profit :  </strong>
+      {profit_above && (
+        <input
+          defaultValue="0"
+          type="number"
+          id="pa"
+          name="profit_amount_min"
+        />
+      )}
 
-                <Select className="multi"
-                    placeholder="Less than"
-                    defaultValue={'profit_bellow'}
-                    onChange={(e)=>{handleChange(e.value)}}
-                    options={options}
-                />
-                {   
-                    profit_bellow && 
-                    <input defaultValue="0" type="number" id="pa" name="profit_amount_max"  /> 
-                }
-            
-    
-                { 
-                    profit_above && 
-                    <input defaultValue="0" type="number" id="pa" name="profit_amount_min"  /> 
-                }
-
-                { profit_between && 
-
-                    <div id="profit_betwn" style={{display:'inline-flex'}}>
-                        <input placeholder="From" type="number" id="pmin" name="profit_amount_minval"  />   
-                        <input placeholder="To" type="number" id="pmax" name="profit_amount_maxval"  /> 
-                    </div>
-                }
+      {profit_between && (
+        <div id="profit_betwn" style={{ display: "inline-flex" }}>
+          <input
+            placeholder="From"
+            type="number"
+            id="pmin"
+            name="profit_amount_minval"
+          />
+          <input
+            placeholder="To"
+            type="number"
+            id="pmax"
+            name="profit_amount_maxval"
+          />
         </div>
-    )
+      )}
+    </div>
+  );
 }
 
-export default Total_Profit_
+export default Total_Profit_;

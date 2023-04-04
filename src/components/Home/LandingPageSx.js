@@ -1,22 +1,21 @@
-import React from 'react';
-import './shopexLanding.css'
-import HomeSx from './HomeSx';
-import FeatureSx from './FeatureSx';
-import FactSx from './FactSx';
-import PriceSx from './PriceSx'
-import FooterSx from './FooterSx';
-import NavbarSx from './NavbarSx';
+import React from "react";
+import "./shopexLanding.css";
+import HomeSx from "./HomeSx";
+import FeatureSx from "./FeatureSx";
+import FactSx from "./FactSx";
+import PriceSx from "./PriceSx";
+import FooterSx from "./FooterSx";
+import NavbarSx from "./NavbarSx";
 
 function LandingPageSx() {
-  
   return (
     <React.Fragment>
       <NavbarSx />
-      <HomeSx/>
+      <HomeSx />
       <FeatureSx />
-      <FactSx/>
+      <FactSx />
       <PriceSx />
-      <FooterSx/>
+      <FooterSx />
     </React.Fragment>
   );
 }

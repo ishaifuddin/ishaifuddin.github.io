@@ -1,34 +1,45 @@
-import React from 'react';
-import { useWindowScroll } from '@mantine/hooks';
-import { createStyles, Container, Group, ActionIcon, Button } from '@mantine/core';
-import { IconBrandTwitter, IconBrandYoutube, IconBrandInstagram, IconChevronUp } from '@tabler/icons';
+import React from "react";
+import { useWindowScroll } from "@mantine/hooks";
+import {
+  createStyles,
+  Container,
+  Group,
+  ActionIcon,
+  Button,
+} from "@mantine/core";
+import {
+  IconBrandTwitter,
+  IconBrandYoutube,
+  IconBrandInstagram,
+  IconChevronUp,
+} from "@tabler/icons";
 
 const useStyles = createStyles((theme) => ({
   footer: {
-    backgroundColor: '#fff',
-    borderTop: '1px solid #eee',
+    backgroundColor: "#fff",
+    borderTop: "1px solid #eee",
   },
 
   inner: {
-    display: 'flex',
-    justifyContent: 'center',
-    alignItems: 'center',
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
     paddingTop: theme.spacing.xl,
     paddingBottom: theme.spacing.xl,
-    position: 'relative',
+    position: "relative",
 
-    [theme.fn.smallerThan('xs')]: {
-      flexDirection: 'column',
+    [theme.fn.smallerThan("xs")]: {
+      flexDirection: "column",
     },
   },
 
   links: {
-    [theme.fn.smallerThan('xs')]: {
+    [theme.fn.smallerThan("xs")]: {
       marginTop: theme.spacing.md,
     },
   },
 }));
- function FooterSx() {
+function FooterSx() {
   const { classes } = useStyles();
   const [scroll, scrollTo] = useWindowScroll();
 
@@ -36,7 +47,9 @@ const useStyles = createStyles((theme) => ({
     <footer className={`${classes.footer} footer`}>
       <Container size="lg" className={classes.inner}>
         <div>
-          <small style={{color: '#777'}}>Shopex - 2023. All rights reserved.</small>
+          <small style={{ color: "#777" }}>
+            Shopex - 2023. All rights reserved.
+          </small>
         </div>
         {/* <Group spacing={0} className={classes.links} position="right" noWrap>
           <ActionIcon size="lg">

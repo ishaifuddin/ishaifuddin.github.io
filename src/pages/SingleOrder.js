@@ -1,9 +1,7 @@
-import React from 'react'
+import React from "react";
 
 function SingleOrder() {
-  return (
-    <div>SingleOrder</div>
-  )
+  return <div>SingleOrder</div>;
 }
 
-export default SingleOrder
+export default SingleOrder;

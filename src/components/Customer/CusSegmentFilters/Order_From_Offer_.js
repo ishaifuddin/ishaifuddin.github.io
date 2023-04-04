@@ -1,58 +1,77 @@
 import React, { useEffect, useState } from "react";
-import Select from 'react-select';
-import { Grid } from '@mantine/core';
+import Select from "react-select";
+import { Grid } from "@mantine/core";
 
 function Order_From_Offer_() {
+  var [order_number_bellow_ofo, setorder_number_bellow_ofo] = useState(true);
+  var [order_number_above_ofo, setorder_number_above_ofo] = useState(false);
+  var [order_number_between_ofo, setorder_number_between_ofo] = useState(false);
 
-    var [order_number_bellow_ofo, setorder_number_bellow_ofo] = useState(true);
-    var [order_number_above_ofo, setorder_number_above_ofo] = useState(false);
-    var [order_number_between_ofo, setorder_number_between_ofo] = useState(false);
+  var handleChange = (e) => {
+    setorder_number_between_ofo(false);
+    setorder_number_above_ofo(false);
+    setorder_number_bellow_ofo(false);
 
-    var handleChange = e => {
+    if (e === "order_number_between_ofo") setorder_number_between_ofo(true);
+    if (e === "order_number_above_ofo") setorder_number_above_ofo(true);
+    if (e === "order_number_bellow_ofo") setorder_number_bellow_ofo(true);
+  };
 
-        setorder_number_between_ofo(false);
-        setorder_number_above_ofo(false);
-        setorder_number_bellow_ofo(false);
+  const options = [
+    { value: "order_number_bellow_ofo", label: "Less than" },
+    { value: "order_number_above_ofo", label: "More than" },
+    { value: "order_number_between_ofo", label: "In-Between" },
+  ];
 
-        if(e === 'order_number_between_ofo') setorder_number_between_ofo(true);
-        if(e === 'order_number_above_ofo') setorder_number_above_ofo(true);
-        if(e === 'order_number_bellow_ofo') setorder_number_bellow_ofo(true);
-    }
+  return (
+    <div className="input-filters">
+      <strong> Order from offer : </strong>
+      <Select
+        className="multi"
+        placeholder="Less than"
+        defaultValue={"order_number_bellow_ofo"}
+        onChange={(e) => {
+          handleChange(e.value);
+        }}
+        options={options}
+      />
 
-    const options = [
-        { value: 'order_number_bellow_ofo', label: 'Less than' },
-        { value: 'order_number_above_ofo', label: 'More than' },
-        { value: 'order_number_between_ofo', label: 'In-Between' },
-    ];
-      
+      {order_number_bellow_ofo && (
+        <input
+          type="number"
+          id="8_ofo"
+          name="maximum_num_order_ofo"
+          defaultValue="0"
+        />
+      )}
 
-    return (
-        
-        <div className="input-filters">
-            <strong> Order from offer :  </strong>
-            <Select className="multi"
-                placeholder="Less than"
-                defaultValue={'order_number_bellow_ofo'}
-                onChange={(e)=>{handleChange(e.value)}}
-                options={options}
-            />
-            
-            { order_number_bellow_ofo && 
-                <input type="number" id="8_ofo" name="maximum_num_order_ofo" defaultValue="0"/>     
-            }
-            
-            { order_number_above_ofo && 
-                <input type="number" id="7_ofo" name="minimum_num_order_ofo" defaultValue="0"/>     
-            } 
+      {order_number_above_ofo && (
+        <input
+          type="number"
+          id="7_ofo"
+          name="minimum_num_order_ofo"
+          defaultValue="0"
+        />
+      )}
 
-            { order_number_between_ofo && 
-                <div>
-                    <input type="number" id="5_ofo" name="order_num_minval_ofo" defaultValue="0" />    
-                    <input type="number" id="6_ofo" name="order_num_maxval_ofo" defaultValue="0" />   
-                </div> 
-            }
+      {order_number_between_ofo && (
+        <div>
+          <input
+            type="number"
+            id="5_ofo"
+            name="order_num_minval_ofo"
+            defaultValue="0"
+          />
+          <input
+            type="number"
+            id="6_ofo"
+            name="order_num_maxval_ofo"
+            defaultValue="0"
+          />
         </div>
-    )
+      )}
+    </div>
+  );
 }
 
-export default Order_From_Offer_
+export default Order_From_Offer_;

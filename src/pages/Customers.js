@@ -9,7 +9,6 @@ import React, { useEffect, useState } from "react";
 // import { addDays,subDays,subMonths,getDate } from 'date-fns';
 // import { useSelector, useDispatch } from "react-redux";
 
-
 // import { Chart as ChartJS } from 'chart.js/auto'
 // import { Chart }            from 'react-chartjs-2'
 
@@ -35,23 +34,17 @@ import React, { useEffect, useState } from "react";
 // import CusListAndSegment from "../components/Customer/CusListAndSegment";
 
 function Customers() {
-    
-    // const defaultMaterialTheme = createTheme();
-    // const dispatch = useDispatch();
+  // const defaultMaterialTheme = createTheme();
+  // const dispatch = useDispatch();
 
-    
-    // var[Reports,setReports] = useState(true);
-    // var[Retention,setRetention]=useState(false);
-    // var[RetentionSpecificCity,setRetentionSpecificCity]=useState(false);
-    // var[CustomerSegmentsAndFilters,setCustomerSegmentsAndFilters]=useState(false);
-    // var[SegmentTracker,setSegmentTracker]=useState(false);
-    
+  // var[Reports,setReports] = useState(true);
+  // var[Retention,setRetention]=useState(false);
+  // var[RetentionSpecificCity,setRetentionSpecificCity]=useState(false);
+  // var[CustomerSegmentsAndFilters,setCustomerSegmentsAndFilters]=useState(false);
+  // var[SegmentTracker,setSegmentTracker]=useState(false);
 
   return (
-
     <>
-
-
       {/*   
             <Grid container style={{margin:'2%'}}>
 
@@ -137,7 +130,6 @@ function Customers() {
             </Grid>
       */}
 
-
       {/* <CusLocCT/>
 
 
@@ -148,10 +140,8 @@ function Customers() {
 
 
       <CusListAndSegment/> */}
-
     </>
-  )
-
+  );
 }
 
-export default Customers
+export default Customers;

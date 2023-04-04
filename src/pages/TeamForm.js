@@ -1,73 +1,66 @@
-import { ReactSession }  from 'react-client-session';
+import { ReactSession } from "react-client-session";
 
 import React, { useEffect, useState, useRef } from "react";
-import {useNavigate} from 'react-router-dom'; 
+import { useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
-import Radio from '@mui/material/Radio';
-import RadioGroup from '@mui/material/RadioGroup';
+import Radio from "@mui/material/Radio";
+import RadioGroup from "@mui/material/RadioGroup";
 import Grid from "@mui/material/Grid";
-import axios from 'axios';
+import axios from "axios";
 
-import Cookies from 'js-cookie'
+import Cookies from "js-cookie";
 
 function TeamForm() {
+  const navigate = useNavigate();
+  const navigateRef = useRef(navigate);
+  var [flag, setflag] = useState(false);
 
+  var TeamFormSubmit = (event) => {
+    event.preventDefault();
 
-    const navigate = useNavigate(); 
-    const navigateRef = useRef(navigate); 
-    var[flag,setflag] = useState(false);
+    const fdata = new FormData(event.target);
+    const data = Object.fromEntries(fdata.entries());
 
-    var TeamFormSubmit = (event) => {
+    axios
+      .post(
+        "https://server.shopex.io/profile/profile_member_form_process.php",
+        data,
+        { withCredentials: true }
+      )
+      .then(function (response) {
+        if (response.data === "success") {
+          navigateRef.current("/");
+        } else if (response.data === "Not") {
+          alert("No Invitetion Sent to you");
+        }
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+  };
 
-        event.preventDefault();
-        
-        const fdata = new FormData(event.target);
-        const data = Object.fromEntries(fdata.entries());
+  return (
+    <Grid container>
+      <form onSubmit={TeamFormSubmit} style={{ marginLeft: "40%" }}>
+        <Grid item sm={10} style={{ display: "grid" }}>
+          <h4>Sign-up</h4>
 
-        axios.post('https://server.shopex.io/profile/profile_member_form_process.php',data,{withCredentials: true})
-        .then(function (response) {
-            
-            if (response.data === 'success' ) {
-                navigateRef.current('/');
-            }else if(response.data === 'Not'){
-                alert("No Invitetion Sent to you");
-            }
-        })
-        .catch(function (error) {
-            console.log(error);
-        })
-    };
+          <strong>Name</strong>
+          <input type="text" name="name" required placeholder="" />
 
-    return (
-    
-        <Grid container>
+          <strong> Enter the Email address invitation sent to </strong>
+          <input type="email" name="email" required placeholder="" />
 
-            <form onSubmit={TeamFormSubmit} style={{marginLeft: '40%'}}>
+          <strong>Password</strong>
+          <input type="password" name="pcode" required />
 
-                <Grid item sm={10} style={{display: 'grid'}}>
+          <button type="submit">Submit</button>
 
-                    <h4>Sign-up</h4>
-
-                    <strong>Name</strong>
-                    <input type="text" name="name" required placeholder=""/>
-
-                    <strong> Enter the Email address invitation sent to </strong>
-                    <input type="email" name="email" required placeholder=""/>
-                    
-                    <strong>Password</strong>
-                    <input type="password"  name="pcode" required />
-
-                    <button type="submit">Submit</button>
-                   
-                   { flag && <h3> Invalid Credentials </h3> }
-                
-                </Grid>
-
-            </form>
-
+          {flag && <h3> Invalid Credentials </h3>}
         </Grid>
-    
-    )
+      </form>
+    </Grid>
+  );
 }
 
-export default TeamForm
+export default TeamForm;

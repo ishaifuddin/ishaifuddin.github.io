@@ -1,20 +1,17 @@
-import { ReactSession } from 'react-client-session';
+import { ReactSession } from "react-client-session";
 import React from "react";
-import './shopex.css';
+import "./shopex.css";
 import ReactDOM from "react-dom";
-import App from './App';
+import App from "./App";
 import { Provider } from "react-redux";
-import { persistStore } from 'redux-persist';
-import { PersistGate } from 'redux-persist/integration/react';
+import { persistStore } from "redux-persist";
+import { PersistGate } from "redux-persist/integration/react";
 import store from "./app/store";
-
-
-
 
 let persistor = persistStore(store);
 ReactSession.setStoreType("sessionStorage");
 
-//console.log(new Date().getTime());     
+//console.log(new Date().getTime());
 console.log(store.getState());
 
 ReactDOM.render(
@@ -23,5 +20,5 @@ ReactDOM.render(
       <App />
     </PersistGate>
   </Provider>,
-  document.getElementById('root')
-)
+  document.getElementById("root")
+);

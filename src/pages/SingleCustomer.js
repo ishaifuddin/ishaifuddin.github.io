@@ -1,13 +1,12 @@
-import React from 'react'
-import Products from '../components/SinCus/Products'
+import React from "react";
+import Products from "../components/SinCus/Products";
 
 function SingleCustomer() {
-
-   return (
-        <>
-           <Products/>
-        </>
-    )
+  return (
+    <>
+      <Products />
+    </>
+  );
 }
 
-export default SingleCustomer
+export default SingleCustomer;
