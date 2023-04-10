@@ -9,6 +9,7 @@ import Shops from "../components/Profile/Shops";
 import Grid from "@mui/material/Grid";
 import Button from "@mui/material/Button";
 import Team from "../components/Profile/Team";
+import NavButton from "./NavButton";
 
 function Profile() {
   var [PersonalData1, setPersonalData] = useState(true);
@@ -45,12 +46,13 @@ function Profile() {
         <div className="notifications">
           <h6>Profile</h6>
           <div className="notify">
-            <DehazeIcon />
+            <NavButton />
           </div>
         </div>
       </Grid>
-      <Grid item md={12}>
-        <Grid item md={12}>
+      <Grid item md={12} sm={12} xs={12}>
+        <br />
+        <Grid item md={12} sm={12} xs={12}>
           <div className="tabs">
             <Button
               className={PersonalData1 === true ? "active" : null}

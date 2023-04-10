@@ -241,17 +241,6 @@ export function NavbarSx() {
               <RouterLink to={"/blog"} className={classes.link}>
                 Blog
               </RouterLink>
-              {/* <RouterLink to={'/post/:id'} className={classes.link}/> */}
-              <RouterLink
-                to={"./demo"}
-                spy={true}
-                smooth={true}
-                offset={-80}
-                duration={500}
-                className={classes.link}
-              >
-                Demo
-              </RouterLink>
             </Group>
 
             <Group className={classes.hiddenMobile}>
@@ -307,9 +296,6 @@ export function NavbarSx() {
           </ScrollLink>
           <RouterLink to={"/blog"} className={classes.link}>
             Blog
-          </RouterLink>
-          <RouterLink to={"./demo"} className={classes.link}>
-            Demo
           </RouterLink>
 
           <Divider

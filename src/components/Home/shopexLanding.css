@@ -1,6 +1,15 @@
 @charset "UTF-8";
 @import url("https://fonts.googleapis.com/css2?family=Sen:wght@400;700;800&display=swap");
-#root, h1, h2, h3, h4, h5, h6, p, div, body {
+#root,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+div,
+body {
   font-family: "Sen", sans-serif !important;
 }
 
@@ -24,7 +33,8 @@ p {
   background: #fff;
   box-shadow: 0 2px 5px rgba(18, 25, 97, 0.09);
 }
-.menus .active, .menus :hover {
+.menus .active,
+.menus :hover {
   color: #18ce0f;
 }
 .menus.add-to-scroll-down {
@@ -89,22 +99,28 @@ p {
 .app-screen img, .facts img img {
   width: 700px !important;
   box-shadow: 0 2.75rem 5.5rem -3.5rem rgba(189, 197, 209, 0.5), 0 2rem 4rem -2rem rgba(33, 50, 91, 0.3), inset 0 -0.1875rem 0.3125rem 0 rgba(151, 164, 175, 0.5);
-  background-color: #F5F5F7;
+  background-color: #f5f5f7;
   padding: 1rem 0.5rem 2rem;
   z-index: 2;
   margin-left: 60px;
 }
 
 .features {
-  background-color: #F7FAFE;
+  background-color: #f7fafe;
 }
 .features ul {
   list-style: none;
   margin-left: 25px;
 }
+.features ul small {
+  color: #40bf56;
+  cursor: pointer;
+  display: inline-flex;
+}
 .features li {
   position: relative;
   padding: 2.5px 0;
+  transition: height 0.2s;
 }
 .features li ::before {
   content: "✤";
@@ -194,7 +210,7 @@ p {
   float: left;
   margin-left: -35px;
   margin-top: 3px;
-  stroke: #5C7CF9;
+  stroke: #5c7cf9;
 }
 .pricing-list .item .mantine-List-item .mantine-List-itemWrapper {
   display: inline;
@@ -222,7 +238,11 @@ p {
   color: #000 !important;
 }
 
-.blog-post h1, .blog-post .post-details {
+.blog-post {
+  background-color: #fff;
+}
+.blog-post h1,
+.blog-post .post-details {
   max-width: 700px;
   text-align: left;
 }
@@ -234,9 +254,15 @@ p {
 }
 .blog-post img {
   border-radius: 10px;
+  width: 100%;
 }
 .blog-post .post-details {
   padding: 30px 0;
+}
+.blog-post .mantine-Divider-root div {
+  font-size: 1.75rem;
+  font-weight: 600;
+  margin-bottom: 1.5rem;
 }
 
 .modal .mantine-Modal-title {

@@ -63,7 +63,7 @@ function App() {
     <BrowserRouter>
       <div className="wrapper">
         {status === "success" && (
-          <aside>
+          <aside className="aside">
             <SideNav />
           </aside>
         )}
@@ -72,6 +72,7 @@ function App() {
           <Routes>
             <Route path="/blog" element={<BlogPage />} />
             <Route path="/post/:id" element={<SinglePost />} />
+
             {status !== "success" && (
               <Route exact path="/" element={<Home />} />
             )}

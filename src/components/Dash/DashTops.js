@@ -417,7 +417,7 @@ function DashTops() {
         </div>
       </Grid>
 
-      <Grid item sm={6}>
+      <Grid item md={6} sm={12} xs={12}>
         <Card className="dash-card">
           <h6>Revenue & Profit</h6>
           {/* <Chart type='line' data={revprof_state} /> */}
@@ -433,7 +433,7 @@ function DashTops() {
           </Timeline>
         </Card>
       </Grid>
-      <Grid item sm={6}>
+      <Grid item md={6} sm={12} xs={12}>
         <Card className="dash-card">
           <h6> Customer & Order </h6>
           {/* <Chart type='line' data={cusor_state} /> */}
@@ -446,7 +446,7 @@ function DashTops() {
         </Card>
       </Grid>
 
-      <Grid item sm={6}>
+      <Grid item md={6} sm={12} xs={12}>
         {tmnew && tmnew.length > 0 && (
           <Card className="dash-card">
             <ThemeProvider theme={defaultMaterialTheme}>
@@ -534,7 +534,7 @@ function DashTops() {
         )}
       </Grid>
 
-      <Grid item sm={6}>
+      <Grid item md={6} sm={12} xs={12}>
         {tmret && tmret.length > 0 && (
           <Card className="dash-card">
             <ThemeProvider theme={defaultMaterialTheme}>
@@ -622,7 +622,7 @@ function DashTops() {
         )}
       </Grid>
 
-      <Grid item sm={4}>
+      <Grid item xl={4} md={6} sm={12} xs={12}>
         {tpbr && tpbr.length > 0 && (
           <Card className="dash-card">
             <ThemeProvider theme={defaultMaterialTheme}>
@@ -694,7 +694,7 @@ function DashTops() {
         )}
       </Grid>
 
-      <Grid item sm={4}>
+      <Grid item xl={4} md={6} sm={12} xs={12}>
         {tpbu && tpbu.length > 0 && (
           <Card className="dash-card">
             <ThemeProvider theme={defaultMaterialTheme}>
@@ -752,7 +752,7 @@ function DashTops() {
         )}
       </Grid>
 
-      <Grid item sm={4}>
+      <Grid item xl={4} md={6} sm={12} xs={12}>
         {tpbp && tpbp.length > 0 && (
           <Card className="dash-card">
             <ThemeProvider theme={defaultMaterialTheme}>
@@ -814,7 +814,7 @@ function DashTops() {
         )}
       </Grid>
 
-      <Grid item sm={4}>
+      <Grid item xl={4} md={6} sm={12} xs={12}>
         {tcbr && tcbr.length > 0 && (
           <Card className="dash-card">
             <ThemeProvider theme={defaultMaterialTheme}>
@@ -876,7 +876,7 @@ function DashTops() {
         )}
       </Grid>
 
-      <Grid item sm={4}>
+      <Grid item xl={4} md={6} sm={12} xs={12}>
         {tcbu && tcbu.length > 0 && (
           <Card className="dash-card">
             <ThemeProvider theme={defaultMaterialTheme}>
@@ -938,7 +938,7 @@ function DashTops() {
         )}
       </Grid>
 
-      <Grid item sm={4}>
+      <Grid item xl={4} md={6} sm={12} xs={12}>
         {tcbp && tcbp.length > 0 && (
           <Card className="dash-card">
             <ThemeProvider theme={defaultMaterialTheme}>

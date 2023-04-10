@@ -55,7 +55,7 @@ function PersonalData() {
         <input defaultValue={2} name="type" type="hidden" />
 
         <Grid container spacing={3} style={{ padding: 0 }}>
-          <Grid item md={6}>
+          <Grid item md={6} sm={12}>
             <div>
               <strong> Personal Info </strong> <br />
               <br />
@@ -102,7 +102,7 @@ function PersonalData() {
             </div>
           </Grid>
 
-          <Grid item md={6}>
+          <Grid item md={6} sm={12}>
             <div>
               <strong> Location </strong> <br />
               <br />

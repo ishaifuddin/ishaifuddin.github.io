@@ -48,6 +48,7 @@ import {
 import { Line } from "react-chartjs-2";
 import { Card } from "react-bootstrap";
 import { IconH6 } from "@tabler/icons";
+import NavButton from "../../pages/NavButton";
 ChartJS.register(
   CategoryScale,
   LinearScale,
@@ -545,9 +546,12 @@ function OrderReport() {
 
   return (
     <Grid container spacing={3}>
-      <Grid item md={12}>
+      <Grid item md={12} className="top-wrap">
         <div className="notifications">
           <h6>Orders Report</h6>
+          <div className="notify">
+            <NavButton />
+          </div>
         </div>
       </Grid>
       <Grid item md={12}>
@@ -557,7 +561,7 @@ function OrderReport() {
           style={{ marginBottom: "-15px" }}
         >
           <DateRangePicker
-            label="Timeline"
+            // label="Timeline"
             value={dateRange}
             onChange={setDateRange}
             oneTap={false}
@@ -606,7 +610,7 @@ function OrderReport() {
             value={format(dateRange[1], "yyyy-MM-dd")}
           />
           <DateRangePicker
-            label="Timeline"
+            // label="Timeline"
             value={dateRange1}
             onChange={setDateRange1}
             oneTap={false}
@@ -695,7 +699,7 @@ function OrderReport() {
         </form>
       </Grid>
 
-      <Grid item md={6}>
+      <Grid item xl={6} xs={12}>
         <Card className="dash-card">
           <h6>Total Order</h6>
           <Timeline style={{ padding: "0px", width: "180px" }}>
@@ -871,7 +875,7 @@ function OrderReport() {
           </div>
         </Card>
       </Grid>
-      <Grid item md={6}>
+      <Grid item xl={6} xs={12}>
         <Card className="dash-card">
           <h6>Total Revenue</h6>
           <Timeline style={{ padding: "0px", width: "180px" }}>
@@ -1045,7 +1049,7 @@ function OrderReport() {
           </div>
         </Card>
       </Grid>
-      <Grid item md={6}>
+      <Grid item xl={6} xs={12}>
         <Card className="dash-card">
           <h6>Order from New and Returning Customer</h6>
           <Timeline style={{ padding: "0px" }}>
@@ -1395,7 +1399,7 @@ function OrderReport() {
           </Timeline>
         </Card>
       </Grid>
-      <Grid item md={6}>
+      <Grid item xl={6} xs={12}>
         <Card className="dash-card">
           <h6>Revenue from New and Returning Customer</h6>
           <Timeline style={{ padding: "0px" }}>
@@ -1741,7 +1745,8 @@ function OrderReport() {
           </Timeline>
         </Card>
       </Grid>
-      <Grid item md={3}>
+
+      <Grid item xl={6} xs={12}>
         <Card className="dash-card">
           <h6>Order from different weekdays</h6>
           <div>
@@ -1751,7 +1756,7 @@ function OrderReport() {
           </div>
         </Card>
       </Grid>
-      <Grid item md={3}>
+      <Grid item xl={6} xs={12}>
         <Card className="dash-card">
           <h6> Revenue from different weekdays </h6>
           <div>
@@ -1761,7 +1766,7 @@ function OrderReport() {
           </div>
         </Card>
       </Grid>
-      <Grid item md={3}>
+      <Grid item xl={6} xs={12}>
         <Card className="dash-card">
           <h6>Order from different Payment method</h6>
           <div>
@@ -1771,7 +1776,7 @@ function OrderReport() {
           </div>
         </Card>
       </Grid>
-      <Grid item md={3}>
+      <Grid item xl={6} xs={12}>
         <Card className="dash-card">
           <h6>Revenue from different Payment method</h6>
           <div>
@@ -1784,7 +1789,7 @@ function OrderReport() {
 
       <OrderCityStateTable />
 
-      <Grid item md={12}>
+      <Grid item md={12} sm={12} xs={12}>
         {/* Order Shipping City Charts And Tables */}
         <form
           className="date-period"
@@ -1793,7 +1798,7 @@ function OrderReport() {
         >
           {/* Form Including Two Timeline , Order Type, Time Period */}
           <DateRangePicker
-            label="Timeline"
+            // label="Timeline"
             value={dr}
             onChange={setdr}
             oneTap={false}
@@ -1844,7 +1849,7 @@ function OrderReport() {
           />
 
           <DateRangePicker
-            label="Timeline"
+            // label="Timeline"
             value={dr1}
             onChange={setdr1}
             oneTap={false}
@@ -1952,11 +1957,13 @@ function OrderReport() {
             value="Submit"
           />
           <input type="hidden" value="1" name="ajax_call" />
+          <br />
+          <br />
           <strong> Shipping City to show in Chart </strong>
           <ShipCity />
         </form>
       </Grid>
-      <Grid item md={12}>
+      <Grid item md={12} sm={12} xs={12}>
         <Card className="dash-card">
           <Timeline className="timeline">
             <TimelineItem>

@@ -56,6 +56,7 @@ import { get_order_filtered_List } from "../../features/order/OrderListAndSegs";
 import { get_selseg_List } from "../../features/order/OrderListAndSegs";
 import CusSegment from "./OrderSegFilters/CusSegment";
 import { Card } from "react-bootstrap";
+import NavButton from "../../pages/NavButton";
 
 //import SideNav from '../../pages/SideNav';
 
@@ -297,9 +298,12 @@ function OrderList() {
 
   return (
     <Grid container spacing={3}>
-      <Grid item md={12}>
+      <Grid item md={12} className="top-wrap">
         <div className="notifications">
           <h6>Order : List and segments</h6>
+          <div className="notify">
+            <NavButton />
+          </div>
         </div>
       </Grid>
       <Grid item sm={12}>

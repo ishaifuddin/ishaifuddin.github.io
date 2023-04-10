@@ -1,6 +1,7 @@
 import { useState } from "react";
 import {
   Badge,
+  Box,
   Button,
   Collapse,
   Container,
@@ -12,7 +13,6 @@ import {
   ThemeIcon,
   Title,
 } from "@mantine/core";
-import { useDisclosure } from "@mantine/hooks";
 import {
   IconBasket,
   IconChartPie,
@@ -26,7 +26,19 @@ import {
 } from "@tabler/icons";
 
 function FeatureSx() {
-  const [opened, { toggle }] = useDisclosure(false);
+  const [opened, setOpened] = useState([false, false]);
+  const buttonTexts = ["View More"];
+  const viewMore = buttonTexts.concat(buttonTexts).concat(buttonTexts);
+
+  const toggle = (index) => {
+    const newOpened = [...opened];
+    newOpened[index] = !newOpened[index];
+    setOpened(newOpened);
+  };
+  const getButtonText = (index) => {
+    return opened[index] ? "View Less" : viewMore[index];
+  };
+
   return (
     <section className="features" id="features">
       <Container size="lg" py={100}>
@@ -72,8 +84,8 @@ function FeatureSx() {
                 borderRadius: "10px",
                 width: "unset",
               }}
-              src="./images/asset5.jpg"
-              height={285}
+              src="./images/data-filtering-and-segmentation.png"
+              height={272}
               fit="contain"
               alt="Norway"
             />
@@ -112,11 +124,7 @@ function FeatureSx() {
                   Gift products based on product added to cart
                 </List.Item>
                 <List.Item> Offer discount on entire shop</List.Item>
-                <Collapse
-                  in={opened}
-                  transitionDuration={400}
-                  transitionTimingFunction="linear"
-                >
+                <Collapse in={opened[0]}>
                   <List.Item>
                     And with the help of our advanced segmentation system, you
                     can segmentize your customers based on their purchase
@@ -124,15 +132,8 @@ function FeatureSx() {
                     "product-pricing-and-discounts" to "indivisual-segment"
                   </List.Item>
                 </Collapse>
-                <small
-                  style={{
-                    color: "#40BF56",
-                    cursor: "pointer",
-                    display: "inline-flex",
-                  }}
-                  onClick={toggle}
-                >
-                  {opened ? "View Less" : "View More"}{" "}
+                <small onClick={() => toggle(0)}>
+                  {getButtonText(0)}
                   <IconChevronDown size={20} stroke={1} />
                 </small>
               </List>
@@ -157,11 +158,7 @@ function FeatureSx() {
                   purchase again, retention analysis of specific location,
                   compare retention between different location
                 </List.Item>
-                <Collapse
-                  in={opened}
-                  transitionDuration={400}
-                  transitionTimingFunction="linear"
-                >
+                <Collapse in={opened[1]}>
                   <List.Item>
                     Single customer report, See what they buy most, avarage day
                     gap between each indivisual product-purchase , average
@@ -188,15 +185,8 @@ function FeatureSx() {
                     Reports on ad-campaigns, coupon data and much more .
                   </List.Item>
                 </Collapse>
-                <small
-                  style={{
-                    color: "#40BF56",
-                    cursor: "pointer",
-                    display: "inline-flex",
-                  }}
-                  onClick={toggle}
-                >
-                  {opened ? "View Less" : "View More"}{" "}
+                <small onClick={() => toggle(1)}>
+                  {getButtonText(1)}
                   <IconChevronDown size={20} stroke={1} />
                 </small>
               </List>
@@ -280,11 +270,7 @@ function FeatureSx() {
                   purchase again, retention analysis of specific location,
                   compare retention between different location
                 </List.Item>
-                <Collapse
-                  in={opened}
-                  transitionDuration={400}
-                  transitionTimingFunction="linear"
-                >
+                <Collapse in={opened[2]}>
                   <List.Item>
                     Single customer report, See what they buy most, avarage day
                     gap between each indivisual product-purchase , average
@@ -311,15 +297,8 @@ function FeatureSx() {
                     Reports on ad-campaigns, coupon data and much more .
                   </List.Item>
                 </Collapse>
-                <small
-                  style={{
-                    color: "#40BF56",
-                    cursor: "pointer",
-                    display: "inline-flex",
-                  }}
-                  onClick={toggle}
-                >
-                  {opened ? "View Less" : "View More"}{" "}
+                <small onClick={() => toggle(2)}>
+                  {getButtonText(2)}
                   <IconChevronDown size={20} stroke={1} />
                 </small>
               </List>

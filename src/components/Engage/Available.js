@@ -17,6 +17,7 @@ import { ThemeProvider, createTheme } from "@mui/material";
 
 import { get_all_engage_automation_performance } from "../../features/engage/PerformanceCompare";
 import { Card } from "@material-ui/core";
+import NavButton from "../../pages/NavButton";
 
 function Available() {
   var dispatch = useDispatch();
@@ -48,9 +49,12 @@ function Available() {
 
   return (
     <Grid className="campaign" container spacing={3}>
-      <Grid item md={12}>
+      <Grid item md={12} className="top-wrap">
         <div className="notifications">
           <h6>Engage : automation performance</h6>
+          <div className="notify">
+            <NavButton />
+          </div>
         </div>
       </Grid>
       <Grid item md={12}>

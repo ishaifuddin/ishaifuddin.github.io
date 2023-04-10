@@ -19,6 +19,7 @@ import moment from "moment";
 import { ThemeProvider, createTheme } from "@mui/material";
 
 import { Get_Product_Purchase_Based_Cus_Seg_Obj } from "../../features/product/ProductPurchaseBasedCusSeg";
+import NavButton from "../../pages/NavButton";
 
 //import Select from 'react-select';
 
@@ -96,9 +97,12 @@ function PricingCreate() {
 
   return (
     <Grid className="campaign" container spacing={3}>
-      <Grid item md={12}>
+      <Grid item md={12} className="top-wrap">
         <div className="notifications">
           <h6>Select Discount type</h6>
+          <div className="notify">
+            <NavButton />
+          </div>
         </div>
       </Grid>
       <Grid item md={12}>

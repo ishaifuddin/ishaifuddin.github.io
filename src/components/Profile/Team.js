@@ -97,7 +97,7 @@ function Team() {
 
   return (
     <Grid container spacing={5} style={{ padding: 0 }}>
-      <Grid item md={6}>
+      <Grid item md={6} sm={12}>
         <h6> Add team member :: </h6>
         <br />
         <form className="date-period" onSubmit={teamUpdate}>
@@ -197,7 +197,7 @@ function Team() {
           </div>
         </form>
       </Grid>
-      <Grid item md={6}>
+      <Grid item md={6} sm={12}>
         <div>
           <h6> Current members :: </h6>
           <br />

@@ -12,6 +12,7 @@ import NotificationsIcon from "@material-ui/icons/Notifications";
 import SettingsIcon from "@material-ui/icons/Settings";
 import "rsuite/dist/rsuite.css";
 import { Card } from "react-bootstrap";
+import NavButton from "./NavButton";
 
 // When the user scrolls down 20px from the top of the document Add/Remove class
 // onscroll = () => {
@@ -84,6 +85,7 @@ function Dashboard() {
 
   var cus_note = [];
   var order_note = [];
+
   return (
     <>
       <Grid container spacing={3}>
@@ -93,12 +95,13 @@ function Dashboard() {
             <div className="notify">
               <SettingsIcon />
               <NotificationsIcon />
+              <NavButton />
             </div>
           </div>
         </Grid>
-        <Grid item md={10}>
+        <Grid item lg={10} md={12}>
           <Grid container spacing={3} sx={{ padding: "0 !important" }}>
-            <Grid item md={3}>
+            <Grid item lg={3} md={6} sm={6} xs={12}>
               <Card className="dash-card key-note">
                 <div>
                   <h6> Average Spent </h6>
@@ -110,7 +113,7 @@ function Dashboard() {
                 <StorageIcon />
               </Card>
             </Grid>
-            <Grid item md={3}>
+            <Grid item lg={3} md={6} sm={6} xs={12}>
               <Card className="dash-card key-note">
                 <div>
                   <h6> Average Spent </h6>
@@ -126,7 +129,7 @@ function Dashboard() {
                 />
               </Card>
             </Grid>
-            <Grid item md={3}>
+            <Grid item lg={3} md={6} sm={6} xs={12}>
               <Card className="dash-card key-note">
                 <div>
                   <h6> Average Spent </h6>
@@ -142,7 +145,7 @@ function Dashboard() {
                 />
               </Card>
             </Grid>
-            <Grid item md={3}>
+            <Grid item lg={3} md={6} sm={6} xs={12}>
               <Card className="dash-card key-note">
                 <div>
                   <h6> Average Spent </h6>
@@ -161,7 +164,7 @@ function Dashboard() {
             <DashTops />
           </Grid>
         </Grid>
-        <Grid item md={2}>
+        <Grid item lg={2} md={12} xs={12}>
           <Card className="dash-card">
             <h6> Recent Sales </h6>
             <DashRecentSales />

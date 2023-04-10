@@ -75,7 +75,6 @@ function BlogPage() {
             </Grid.Col>
             {console.log("Posts", posts)}
             {posts &&
-              posts.length &&
               posts.map((post) => (
                 <Grid.Col span={6} key={post.id}>
                   <Card className="post-item" shadow="md" p="xl" radius="lg">
@@ -87,7 +86,9 @@ function BlogPage() {
                       />
                     </Card.Section>
                     <div style={{ padding: "30px 0 5px" }}>
-                      <PostCategory />
+                      <Badge color="pink" mr={5} variant="light">
+                        {post.post_category.cat_name}
+                      </Badge>
                       <h4>
                         <Link to={`/post/${post.id}`} className="post-title">
                           {post.title.rendered}
@@ -134,80 +135,3 @@ function BlogPage() {
   );
 }
 export default BlogPage;
-
-// import React, { useState, useEffect } from 'react';
-// import axios from 'axios';
-// import { Link } from 'react-router-dom';
-// import Grid from '@mui/material/Grid';
-
-// import { makeStyles } from '@material-ui/core/styles';
-// import Card from '@material-ui/core/Card';
-// import CardMedia from '@material-ui/core/CardMedia';
-// import CardContent from '@material-ui/core/CardContent';
-// import Typography from '@material-ui/core/Typography';
-// import { red } from '@material-ui/core/colors';
-
-// const useStyles = makeStyles((theme) => ({
-//   root: {
-//     maxWidth: 345,
-//   },
-//   media: {
-//     height: 0,
-//     paddingTop: '56.25%', // 16:9
-//   },
-//   expand: {
-//     transform: 'rotate(0deg)',
-//     marginLeft: 'auto',
-//     transition: theme.transitions.create('transform', {
-//       duration: theme.transitions.duration.shortest,
-//     }),
-//   },
-//   expandOpen: {
-//     transform: 'rotate(180deg)',
-//   },
-//   avatar: {
-//     backgroundColor: red[500],
-//   },
-// }));
-
-// function BlogPage() {
-
-//     const [posts, setPosts] = useState([]);
-
-//     useEffect(() => {
-//         let wp_API_Url = `http://localhost:10039`;
-//         axios.get(`${wp_API_Url}/wp-json/wp/v2/posts`)
-//         .then(response => {
-//             console.log(response)
-//             setPosts(response.data);
-//         })
-//         .catch(error => {
-//             console.log(error);
-//         });
-//     }, []);
-
-//   const classes = useStyles();
-
-//   return (
-//     <Grid container spacing={3}>
-//       {console.log('Posts', posts)}
-//       {posts.map(post => (
-//       <Grid item md={4} key={post.id}>
-//         <Card className={classes.root}>
-//             <CardMedia
-//               className={classes.media}
-//               image={post.featured_image_url}
-//               title="Paella dish"
-//             />
-//             <CardContent>
-//             <Link to={`/post/${post.id}`}><h4>{post.title.rendered}</h4></Link>
-//               <Typography variant="body2" color="textSecondary" component="p" dangerouslySetInnerHTML={{ __html: post.excerpt.rendered }} />
-//             </CardContent>
-//         </Card>
-//       </Grid>
-//       ))}
-//     </Grid>
-//   );
-// }
-
-// export default BlogPage

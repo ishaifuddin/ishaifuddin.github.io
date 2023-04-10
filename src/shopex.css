@@ -1,5 +1,11 @@
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap");
-body, h1, h2, h3, h4, h5, h6 {
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   font-family: "Montserrat", sans-serif !important;
 }
 
@@ -37,6 +43,7 @@ aside {
   transition: all 0.2s ease-in-out;
   margin: 1.5rem;
   border-radius: 6px;
+  left: 0;
 }
 aside .logo {
   padding: 1.8rem 2rem 0.5rem;
@@ -309,7 +316,8 @@ aside .css-cveggr-MuiListItemIcon-root {
 .dashboard .input-filters strong {
   min-width: 130px;
 }
-.dashboard .input-filters input, .dashboard .input-filters .multi {
+.dashboard .input-filters input,
+.dashboard .input-filters .multi {
   margin-right: 1rem;
   min-width: 172px;
 }
@@ -321,7 +329,8 @@ aside .css-cveggr-MuiListItemIcon-root {
 .dashboard .input-filters .searchWrapper {
   background: #eee;
 }
-.dashboard input, .dashboard textarea {
+.dashboard input,
+.dashboard textarea {
   padding: 8px;
   border: 1px solid #ccc;
   border-radius: 4px;
@@ -428,4 +437,26 @@ aside .css-cveggr-MuiListItemIcon-root {
 .dashboard .profile .overlay .mail-list li:nth-child(odd) {
   background-color: rgba(25, 118, 210, 0.09);
   border-radius: 4px;
+}
+
+@media (max-width: 1199.99px) {
+  .wrapper::before {
+    min-height: 500px;
+  }
+  .aside {
+    transition: left 0.2s;
+    left: -275px;
+  }
+  .aside.active {
+    left: 0;
+  }
+  .dashboard {
+    padding-left: 24px;
+  }
+  .dashboard .navbutton {
+    display: inline-block !important;
+  }
+  .dashboard .notifications {
+    width: calc(100% - 48px);
+  }
 }/*# sourceMappingURL=shopex.css.map */

@@ -7,6 +7,7 @@ import { ThemeProvider, createTheme } from "@mui/material";
 import { get_all_coupons } from "../features/Coupons/Get_coupon_list";
 import SideNav from "./SideNav";
 import { Card } from "react-bootstrap";
+import NavButton from "./NavButton";
 
 function Coupons() {
   const dispatch = useDispatch();
@@ -31,9 +32,12 @@ function Coupons() {
 
   return (
     <Grid className="campaign" container spacing={3}>
-      <Grid item md={12}>
+      <Grid item md={12} className="top-wrap">
         <div className="notifications">
           <h6>Available coupons</h6>
+          <div className="notify">
+            <NavButton />
+          </div>
         </div>
       </Grid>
       <Grid item md={12}>
