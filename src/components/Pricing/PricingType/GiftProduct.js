@@ -314,7 +314,7 @@ function GiftProduct({
   );
 
   var ops = [];
-  if (product_obj.length > 0) {
+  if (product_obj && product_obj.length > 0) {
     for (var i of product_obj) {
       var label = i.product_name;
       var value = i.product_id;

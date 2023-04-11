@@ -162,11 +162,16 @@ function CategoryDiscount({ data }) {
   Cus_Purchase_based_segment = structuredClone(Cus_Purchase_based_segment);
 
   var ops = [];
-  for (var i of Cus_Purchase_based_segment) {
-    var label = i.name;
-    var value = i.id;
-    ops.push({ value: value, label: label });
+  
+  if(Cus_Purchase_based_segment){
+    for (var i of Cus_Purchase_based_segment) {
+      var label = i.name;
+      var value = i.id;
+      ops.push({ value: value, label: label });
+    }
   }
+
+  
   var [daterange, setdrange] = useState([
     new Date(moment().startOf("month")),
     new Date(moment().endOf("month")),
