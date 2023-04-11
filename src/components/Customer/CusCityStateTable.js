@@ -1934,7 +1934,7 @@ function CusCityStateTable() {
   return (
     <>
       {/* Billing And Shipping City,State Customer Table */}
-      <Grid item md={12}>
+      <Grid item xs={12}>
         <Card className="dash-card">
           <ThemeProvider theme={defaultMaterialTheme}>
             {
@@ -1985,7 +1985,7 @@ function CusCityStateTable() {
         </Card>
       </Grid>
 
-      <Grid item md={12}>
+      <Grid item xs={12}>
         <Card className="dash-card">
           <ThemeProvider theme={defaultMaterialTheme}>
             {
@@ -2036,7 +2036,7 @@ function CusCityStateTable() {
         </Card>
       </Grid>
 
-      <Grid item md={12}>
+      <Grid item xs={12}>
         <Card className="dash-card">
           <ThemeProvider theme={defaultMaterialTheme}>
             {
@@ -2087,7 +2087,7 @@ function CusCityStateTable() {
         </Card>
       </Grid>
 
-      <Grid item md={12}>
+      <Grid item xs={12}>
         <Card className="dash-card">
           <ThemeProvider theme={defaultMaterialTheme}>
             {

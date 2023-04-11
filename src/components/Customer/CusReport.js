@@ -37,6 +37,7 @@ import {
 } from "chart.js";
 import { Line } from "react-chartjs-2";
 import { Card } from "react-bootstrap";
+import NavButton from "../../pages/NavButton";
 
 ChartJS.register(
   CategoryScale,
@@ -205,18 +206,18 @@ function CusReport() {
   return (
     <>
       <Grid container spacing={3}>
-        <Grid item md={12} className="top-wrap">
+        <Grid item xs={12} className="top-wrap">
           <div className="notifications">
             <h6>Customer Reports</h6>
             <div className="notify">
-              <DehazeIcon />
+              <NavButton />
             </div>
           </div>
         </Grid>
-        <Grid item md={12}>
+        <Grid item xs={12}>
           <div className="date-period">
             <DateRangePicker
-              label="Timeline"
+              // label="Timeline"
               value={daterange2}
               onChange={setdrange2}
               oneTap={false}
@@ -296,7 +297,7 @@ function CusReport() {
             </button>
           </div>
         </Grid>
-        <Grid item md={6}>
+        <Grid item xl={6} xs={12}>
           <Card className="dash-card">
             <h6>Total Customer</h6>
             <Line data={totcus_object} />
@@ -322,7 +323,7 @@ function CusReport() {
             </Timeline>
           </Card>
         </Grid>
-        <Grid item md={6}>
+        <Grid item xl={6} xs={12}>
           <Card className="dash-card">
             <h6>Repeat & New Customer</h6>
             <Line data={nrcus_object} />
@@ -388,18 +389,15 @@ function CusReport() {
         </Grid>
 
         <CusFromThisMonth />
-        <Grid item md={4}>
+
+        <Grid item xl={4} lg={12} xs={12}>
           <CusGroupByFirstMonth />
         </Grid>
 
-        <Grid item md={12}>
+        <Grid item xs={12}>
           <br />
-          <div className="">
-            <h6>Location Based Data</h6>
-          </div>
-        </Grid>
-
-        <Grid item md={12}>
+          <h6>Location Based Data</h6>
+          <br />
           <div className="date-period" style={{ marginBottom: "-15px" }}>
             <DateRangePicker
               value={daterange}
@@ -520,7 +518,7 @@ function CusReport() {
 
         <CusCityStateTable />
 
-        <Grid item md={12}>
+        <Grid item xs={12}>
           <CusCityStateChart />
         </Grid>
       </Grid>

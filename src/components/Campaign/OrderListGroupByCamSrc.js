@@ -15,6 +15,7 @@ import { ThemeProvider, createTheme } from "@mui/material";
 
 import { get_all_orders_group_by_campaign } from "../../features/campaign/OrderListAndGroupByCam";
 import { Card } from "react-bootstrap";
+import NavButton from "../../pages/NavButton";
 
 function OrderListGroupbyCamSrc() {
   const dispatch = useDispatch();
@@ -42,9 +43,12 @@ function OrderListGroupbyCamSrc() {
 
   return (
     <Grid className="campaign" container spacing={3}>
-      <Grid item md={12}>
+      <Grid item md={12} className="top-wrap">
         <div className="notifications">
           <h6>Camapign comparison</h6>
+          <div className="notify">
+            <NavButton />
+          </div>
         </div>
       </Grid>
       <Grid item md={12}>

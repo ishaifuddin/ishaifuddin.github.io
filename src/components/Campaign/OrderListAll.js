@@ -15,6 +15,7 @@ import { ThemeProvider, createTheme } from "@mui/material";
 
 import { get_all_orders_from_campaign } from "../../features/campaign/OrderListAndGroupByCam";
 import { Card } from "react-bootstrap";
+import NavButton from "../../pages/NavButton";
 
 function OrderListAll() {
   const dispatch = useDispatch();
@@ -39,9 +40,12 @@ function OrderListAll() {
 
   return (
     <Grid className="campaign" container spacing={3}>
-      <Grid item md={12}>
+      <Grid item md={12} className="top-wrap">
         <div className="notifications">
           <h6>Orders From campaign</h6>
+          <div className="notify">
+            <NavButton />
+          </div>
         </div>
       </Grid>
       <Grid item md={12}>

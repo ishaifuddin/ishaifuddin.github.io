@@ -8,6 +8,7 @@ import Select from "react-select";
 import Grid from "@mui/material/Grid";
 import Button from "@mui/material/Button";
 import moment from "moment";
+import NavButton from "../../pages/NavButton";
 
 function AddNewCampaign() {
   var handleSubmit = (event) => {
@@ -16,9 +17,12 @@ function AddNewCampaign() {
 
   return (
     <Grid className="campaign" container spacing={3}>
-      <Grid item md={12}>
+      <Grid item md={12} className="top-wrap">
         <div className="notifications">
           <h6>Campaign</h6>
+          <div className="notify">
+            <NavButton />
+          </div>
         </div>
       </Grid>
       <Grid item md={12}>

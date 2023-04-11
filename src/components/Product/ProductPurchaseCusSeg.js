@@ -29,6 +29,7 @@ import { Get_Product_Purchase_Based_Cus_Seg_Obj } from "../../features/product/P
 
 import { get_product_and_catagory_and_sku_data } from "../../features/product/ProductListAndSegment";
 import { Card } from "react-bootstrap";
+import NavButton from "../../pages/NavButton";
 // import OutlinedInput from '@mui/material/OutlinedInput';
 // import InputLabel from '@mui/material/InputLabel';
 // import MenuItem from '@mui/material/MenuItem';
@@ -182,12 +183,15 @@ function ProductPurchaseCusSeg() {
 
   return (
     <Grid container spacing={3}>
-      <Grid item md={12}>
+      <Grid item xs={12} className="top-wrap">
         <div className="notifications">
           <h6>Product : Customer segment based on product purchase</h6>
+          <div className="notify">
+            <NavButton />
+          </div>
         </div>
       </Grid>
-      <Grid item md={12}>
+      <Grid item xs={12}>
         {/* Segment List Modal  */}
         <Modal
           overflow="inside"

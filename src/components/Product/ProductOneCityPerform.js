@@ -54,6 +54,7 @@ import LayersRoundedIcon from "@mui/icons-material/LayersRounded";
 import AttachMoneyIcon from "@mui/icons-material/AttachMoney";
 import MonetizationOnIcon from "@mui/icons-material/MonetizationOn";
 import { Card } from "react-bootstrap";
+import NavButton from "../../pages/NavButton";
 
 function ProductOneCityPerform() {
   const dispatch = useDispatch();
@@ -483,12 +484,15 @@ function ProductOneCityPerform() {
 
   return (
     <Grid container spacing={3}>
-      <Grid item md={12}>
+      <Grid item xs={12} className="top-wrap">
         <div className="notifications">
           <h6>Product : Single city performance</h6>
+          <div className="notify">
+            <NavButton />
+          </div>
         </div>
       </Grid>
-      <Grid item md={12}>
+      <Grid item xs={12}>
         <form
           className="date-period"
           style={{ marginBottom: "-15px" }}
@@ -496,7 +500,7 @@ function ProductOneCityPerform() {
         >
           <DateRangePicker
             //placement='rightEnd'
-            label="Timeline"
+            // label="Timeline"
             value={daterange}
             onChange={setdrange}
             oneTap={false}
@@ -579,7 +583,7 @@ function ProductOneCityPerform() {
         </form>
       </Grid>
 
-      <Grid item md={12}>
+      <Grid item xl={6} xs={12}>
         <Card className="dash-card">
           {comparison_table && comparison_table.length > 0 && (
             <ThemeProvider theme={defaultMaterialTheme}>
@@ -689,7 +693,7 @@ function ProductOneCityPerform() {
           )}
         </Card>
       </Grid>
-      <Grid item md={12}>
+      <Grid item xl={6} xs={12}>
         <Card className="dash-card">
           <Timeline className="timeline">
             <TimelineItem>

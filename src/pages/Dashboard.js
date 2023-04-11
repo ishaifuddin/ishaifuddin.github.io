@@ -89,7 +89,7 @@ function Dashboard() {
   return (
     <>
       <Grid container spacing={3}>
-        <Grid item md={12} className="top-wrap">
+        <Grid item xs={12} className="top-wrap">
           <div className="notifications">
             <h6>Dashboard</h6>
             <div className="notify">
@@ -99,9 +99,9 @@ function Dashboard() {
             </div>
           </div>
         </Grid>
-        <Grid item lg={10} md={12}>
+        <Grid item xl={10} lg={9} xs={12}>
           <Grid container spacing={3} sx={{ padding: "0 !important" }}>
-            <Grid item lg={3} md={6} sm={6} xs={12}>
+            <Grid item xl={3} lg={6} md={6} sm={6} xs={12}>
               <Card className="dash-card key-note">
                 <div>
                   <h6> Average Spent </h6>
@@ -113,7 +113,7 @@ function Dashboard() {
                 <StorageIcon />
               </Card>
             </Grid>
-            <Grid item lg={3} md={6} sm={6} xs={12}>
+            <Grid item xl={3} lg={6} md={6} sm={6} xs={12}>
               <Card className="dash-card key-note">
                 <div>
                   <h6> Average Spent </h6>
@@ -129,7 +129,7 @@ function Dashboard() {
                 />
               </Card>
             </Grid>
-            <Grid item lg={3} md={6} sm={6} xs={12}>
+            <Grid item xl={3} lg={6} md={6} sm={6} xs={12}>
               <Card className="dash-card key-note">
                 <div>
                   <h6> Average Spent </h6>
@@ -145,7 +145,7 @@ function Dashboard() {
                 />
               </Card>
             </Grid>
-            <Grid item lg={3} md={6} sm={6} xs={12}>
+            <Grid item xl={3} lg={6} md={6} sm={6} xs={12}>
               <Card className="dash-card key-note">
                 <div>
                   <h6> Average Spent </h6>
@@ -164,7 +164,7 @@ function Dashboard() {
             <DashTops />
           </Grid>
         </Grid>
-        <Grid item lg={2} md={12} xs={12}>
+        <Grid item xl={2} lg={3} md={12} xs={12}>
           <Card className="dash-card">
             <h6> Recent Sales </h6>
             <DashRecentSales />

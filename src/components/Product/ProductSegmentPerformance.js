@@ -50,6 +50,7 @@ import AttachMoneyIcon from "@mui/icons-material/AttachMoney";
 
 import MonetizationOnIcon from "@mui/icons-material/MonetizationOn";
 import { Card } from "react-bootstrap";
+import NavButton from "../../pages/NavButton";
 
 var option = {
   scales: {
@@ -254,12 +255,15 @@ function ProductSegmentPerformance() {
 
   return (
     <Grid container spacing={3}>
-      <Grid item md={12}>
+      <Grid item xs={12} className="top-wrap">
         <div className="notifications">
           <h6>Product : Product Segment performance</h6>
+          <div className="notify">
+            <NavButton />
+          </div>
         </div>
       </Grid>
-      <Grid item md={12}>
+      <Grid item xs={12}>
         <form onSubmit={dateSubmit}>
           <input type="hidden" name="ajax_call" value="1" />
           {ops && ops.length > 0 && (
@@ -348,7 +352,7 @@ function ProductSegmentPerformance() {
           </div>
         </form>
       </Grid>
-      <Grid item sm={12}>
+      <Grid item xs={12}>
         {comparison_table && comparison_table.length > 0 && (
           <Card className="dash-card">
             <ThemeProvider theme={defaultMaterialTheme}>
@@ -504,7 +508,7 @@ function ProductSegmentPerformance() {
           </Card>
         )}
       </Grid>
-      <Grid item sm={12}>
+      <Grid item xs={12}>
         <Card className="dash-card">
           <Timeline className="timeline">
             <TimelineItem>

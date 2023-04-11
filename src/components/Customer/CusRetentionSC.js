@@ -35,6 +35,7 @@ import {
   Legend,
 } from "chart.js";
 import { Line } from "react-chartjs-2";
+import NavButton from "../../pages/NavButton";
 ChartJS.register(
   CategoryScale,
   LinearScale,
@@ -112,15 +113,18 @@ function CusRetentionSC() {
 
   return (
     <Grid container spacing={3}>
-      <Grid item md={12}>
+      <Grid item xs={12} className="top-wrap">
         <div className="notifications">
           <h6>Customer retention from specific city</h6>
+          <div className="notify">
+            <NavButton />
+          </div>
         </div>
       </Grid>
-      <Grid item md={12}>
+      <Grid item xs={12}>
         <div className="date-period" style={{ marginBottom: "-15px" }}>
           <DateRangePicker
-            label="Timeline"
+            // label="Timeline"
             value={daterange}
             onChange={setdrange}
             oneTap={false}

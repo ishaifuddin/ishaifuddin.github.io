@@ -52,6 +52,7 @@ import ShoppingBasketIcon from "@mui/icons-material/ShoppingBasket";
 import LayersRoundedIcon from "@mui/icons-material/LayersRounded";
 import AttachMoneyIcon from "@mui/icons-material/AttachMoney";
 import { Card } from "react-bootstrap";
+import NavButton from "../../pages/NavButton";
 
 function ProductPerformance() {
   const dispatch = useDispatch();
@@ -504,19 +505,22 @@ function ProductPerformance() {
 
   return (
     <Grid container spacing={3}>
-      <Grid item md={12}>
+      <Grid item xs={12} className="top-wrap">
         <div className="notifications">
           <h6>Product : Performance</h6>
+          <div className="notify">
+            <NavButton />
+          </div>
         </div>
       </Grid>
-      <Grid item md={12}>
+      <Grid item xs={12}>
         <form
           className="date-period"
           style={{ marginBottom: "-15px" }}
           onSubmit={dateSubmit}
         >
           <DateRangePicker
-            label="Timeline"
+            // label="Timeline"
             value={dr}
             onChange={setdr}
             oneTap={false}
@@ -591,7 +595,7 @@ function ProductPerformance() {
           />
         </form>
       </Grid>
-      <Grid item md={12}>
+      <Grid item xs={12}>
         <Card className="dash-card">
           {
             //comparison_table && comparison_table.length > 0 &&
@@ -741,7 +745,7 @@ function ProductPerformance() {
           }
         </Card>
       </Grid>
-      <Grid item md={12}>
+      <Grid item xs={12}>
         <Card className="dash-card">
           <Timeline className="timeline">
             <TimelineItem>

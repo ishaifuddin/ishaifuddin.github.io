@@ -29,6 +29,7 @@ import CancelIcon from "@mui/icons-material/Cancel";
 import { get_product_and_catagory_sales_object } from "../../features/product/ProductSalesTable";
 import { get_products_sales_from_selected_catagory } from "../../features/product/ProductSalesTable";
 import { Card } from "react-bootstrap";
+import NavButton from "../../pages/NavButton";
 
 function ProductSalesTable() {
   const defaultMaterialTheme = createTheme();
@@ -1632,12 +1633,15 @@ function ProductSalesTable() {
 
   return (
     <Grid container spacing={3}>
-      <Grid item md={12}>
+      <Grid item xs={12} className="top-wrap">
         <div className="notifications">
           <h6>Product : Sales data</h6>
+          <div className="notify">
+            <NavButton />
+          </div>
         </div>
       </Grid>
-      <Grid item md={12}>
+      <Grid item xs={12}>
         <form
           onSubmit={dateSubmit}
           className="date-period"
@@ -1645,7 +1649,7 @@ function ProductSalesTable() {
         >
           <DateRangePicker
             //placement='rightEnd'
-            label="Timeline"
+            // label="Timeline"
             value={daterange}
             onChange={setdrange}
             oneTap={false}
@@ -1687,7 +1691,7 @@ function ProductSalesTable() {
 
           <DateRangePicker
             //placement='rightEnd'
-            label="Timeline"
+            // label="Timeline"
             value={daterange1}
             onChange={setdrange1}
             oneTap={false}
@@ -1741,7 +1745,7 @@ function ProductSalesTable() {
           />
         </form>
       </Grid>
-      <Grid item md={12}>
+      <Grid item xs={12}>
         <Card className="dash-card">
           <ThemeProvider theme={defaultMaterialTheme}>
             <MaterialTable
@@ -1974,7 +1978,7 @@ function ProductSalesTable() {
           </ThemeProvider>
         </Card>
       </Grid>
-      <Grid item md={12}>
+      <Grid item xs={12}>
         <Card className="dash-card">
           <ThemeProvider
             theme={defaultMaterialTheme}

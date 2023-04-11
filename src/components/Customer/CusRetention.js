@@ -33,6 +33,7 @@ import {
   Legend,
 } from "chart.js";
 import { Line } from "react-chartjs-2";
+import NavButton from "../../pages/NavButton";
 ChartJS.register(
   CategoryScale,
   LinearScale,
@@ -164,12 +165,15 @@ function CusRetention() {
   return (
     <>
       <Grid container spacing={3}>
-        <Grid item md={12}>
+        <Grid item xs={12} className="top-wrap">
           <div className="notifications">
             <h6>Customer Retention</h6>
+            <div className="notify">
+              <NavButton />
+            </div>
           </div>
         </Grid>
-        <Grid item md={12}>
+        <Grid item xs={12}>
           <div className="date-period" style={{ marginBottom: "-15px" }}>
             <DateRangePicker
               label="Timeline"
@@ -258,7 +262,7 @@ function CusRetention() {
           style={{ marginLeft: "2%", zIndex: "0", marginTop: "5%" }}
         >
           {/* Showing retention table :: <div style={{ margin: '2%' }} dangerouslySetInnerHTML={{ __html: cus_table }}></div> */}
-          <Grid style={{ margin: "2%" }}>
+          <Grid>
             {ret_cus_obj && ret_cus_obj.length > 0 && (
               <Line
                 data={ret_cus_obj}
@@ -276,7 +280,7 @@ function CusRetention() {
           </Grid>
 
           {/* <div style={{ margin: '2%' }} dangerouslySetInnerHTML={{ __html: order_table }}></div> */}
-          <Grid style={{ margin: "2%" }}>
+          <Grid>
             {ret_order_obj && ret_order_obj.length > 0 && (
               <Line
                 data={ret_order_obj}

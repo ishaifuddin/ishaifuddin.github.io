@@ -47,6 +47,7 @@ import { get_cussegs_List } from "../../features/cus/CusListAndSeg";
 import { get_selseg_List } from "../../features/cus/CusListAndSeg";
 
 import Typography from "@material-ui/core/Typography";
+import NavButton from "../../pages/NavButton";
 
 //import SideNav from '../../pages/SideNav';
 
@@ -323,16 +324,15 @@ function CusListAndSegment() {
   return (
     <>
       <Grid container spacing={3}>
-        <Grid item md={12} className="top-wrap">
+        <Grid item xs={12} className="top-wrap">
           <div className="notifications">
             <h6>Customer List and Segments</h6>
             <div className="notify">
-              <DehazeIcon />
+              <NavButton />
             </div>
           </div>
         </Grid>
-
-        <Grid item sm={12}>
+        <Grid item xs={12}>
           <Modal
             overflow="inside"
             overlayColor={

@@ -43,6 +43,7 @@ import SingleProduct from "../SinPro/SingleProduct";
 
 import { EditCost } from "../../features/product/ProductListAndSegment";
 import { Card } from "react-bootstrap";
+import NavButton from "../../pages/NavButton";
 
 function ProductListAndSegments() {
   var dispatch = useDispatch();
@@ -656,12 +657,15 @@ function ProductListAndSegments() {
 
   return (
     <Grid container spacing={3}>
-      <Grid item md={12}>
+      <Grid item xs={12} className="top-wrap">
         <div className="notifications">
           <h6>Product : List and segments</h6>
+          <div className="notify">
+            <NavButton />
+          </div>
         </div>
       </Grid>
-      <Grid item md={12}>
+      <Grid item xs={12}>
         <Multiselect
           isObject={false}
           placeholder=" + Add Filter"
@@ -682,7 +686,7 @@ function ProductListAndSegments() {
             </Group>
             }*/}
       </Grid>
-      <Grid item md={12}>
+      <Grid item xs={12}>
         <form className="dash-card" onSubmit={filterSubmit}>
           {filterList_.length > 0 && (
             <div className="input-filters">
@@ -705,7 +709,7 @@ function ProductListAndSegments() {
           )}
         </form>
       </Grid>
-      <Grid item md={3}>
+      <Grid item xl={3} xs={12}>
         <Card className="dash-card">
           <ThemeProvider theme={defaultMaterialTheme}>
             {
@@ -781,7 +785,7 @@ function ProductListAndSegments() {
           </ThemeProvider>
         </Card>
       </Grid>
-      <Grid item md={9}>
+      <Grid item xl={9} xs={12}>
         <Card className="dash-card">
           <ThemeProvider theme={defaultMaterialTheme}>
             {
