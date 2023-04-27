@@ -42,7 +42,7 @@ function FeatureSx() {
   return (
     <section className="features" id="features">
       <Container size="lg" py={100}>
-        <Grid>
+        <Grid align="center">
           <Grid.Col md={12}>
             <Group position="center">
               <Badge variant="light" color="violet" size="lg">
@@ -84,7 +84,7 @@ function FeatureSx() {
                 borderRadius: "10px",
                 width: "unset",
               }}
-              src="./images/data-filtering-and-segmentation.png"
+              src="./images/features-1.png"
               height={272}
               fit="contain"
               alt="Norway"
@@ -100,7 +100,7 @@ function FeatureSx() {
                 borderRadius: "10px",
                 width: "unset",
               }}
-              src="./images/asset5.jpg"
+              src="./images/features-2.png"
               height={285}
               fit="contain"
               alt="Norway"
@@ -202,7 +202,7 @@ function FeatureSx() {
                 borderRadius: "10px",
                 width: "unset",
               }}
-              src="./images/asset5.jpg"
+              src="./images/features-3.png"
               height={285}
               fit="contain"
               alt="Norway"
@@ -218,7 +218,7 @@ function FeatureSx() {
                 borderRadius: "10px",
                 width: "unset",
               }}
-              src="./images/asset5.jpg"
+              src="./images/features-4.png"
               height={285}
               fit="contain"
               alt="Norway"
@@ -314,7 +314,7 @@ function FeatureSx() {
                 borderRadius: "10px",
                 width: "unset",
               }}
-              src="./images/asset5.jpg"
+              src="./images/features-5.png"
               height={285}
               fit="contain"
               alt="Norway"
@@ -330,7 +330,7 @@ function FeatureSx() {
                 borderRadius: "10px",
                 width: "unset",
               }}
-              src="./images/asset5.jpg"
+              src="./images/features-6.png"
               height={285}
               fit="contain"
               alt="Norway"
@@ -394,7 +394,7 @@ function FeatureSx() {
                 borderRadius: "10px",
                 width: "unset",
               }}
-              src="./images/asset5.jpg"
+              src="./images/features-7.png"
               height={285}
               fit="contain"
               alt="Norway"

@@ -84,7 +84,7 @@ aside {
   }
   .MuiCollapse-vertical {
     .MuiListItemButton-root {
-      padding-left: 33px;
+      padding-left: 68px;
       opacity: 0.75;
 
       a {
@@ -186,6 +186,11 @@ aside {
     height: 100%;
     display: flex;
     flex-direction: column;
+
+    &.price strong {
+      min-width: 180px;
+    }
+
     &.key-note {
       @extend .space-between;
 
@@ -352,7 +357,6 @@ aside {
     flex-direction: row;
     align-items: center;
     margin-bottom: 1rem;
-
     strong {
       min-width: 130px;
     }
@@ -404,6 +408,11 @@ aside {
         display: inline-block;
         color: #fff;
       }
+    }
+  }
+  .pricing form {
+    label {
+      margin: 0 1rem;
     }
   }
 

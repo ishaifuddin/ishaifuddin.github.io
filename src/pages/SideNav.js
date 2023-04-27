@@ -190,10 +190,7 @@ function SideNav() {
               <NavigateNextOutlinedIcon />
             </ListItemIcon>
             <ListItemText>
-              <Link to="/Customers/reports">
-                <PermContactCalendarIcon fontSize="small" />
-                Reports
-              </Link>{" "}
+              <Link to="/Customers/reports">Reports</Link>{" "}
             </ListItemText>
           </ListItemButton>
         </Collapse>
@@ -205,10 +202,7 @@ function SideNav() {
             </ListItemIcon>
             <ListItemText>
               {" "}
-              <Link to="/Customers/CustomerAndSegemnt">
-                <PermContactCalendarIcon fontSize="small" />
-                List And Segemnt
-              </Link>
+              <Link to="/Customers/CustomerAndSegemnt">List And Segemnt</Link>
             </ListItemText>
           </ListItemButton>
         </Collapse>
@@ -220,10 +214,7 @@ function SideNav() {
             </ListItemIcon>
             <ListItemText>
               {" "}
-              <Link to="/Customers/retention">
-                <PermContactCalendarIcon fontSize="small" />
-                Retention
-              </Link>{" "}
+              <Link to="/Customers/retention">Retention</Link>{" "}
             </ListItemText>
           </ListItemButton>
         </Collapse>
@@ -236,7 +227,6 @@ function SideNav() {
             <ListItemText>
               {" "}
               <Link to="/Customers/retention/selected-city">
-                <PermContactCalendarIcon fontSize="small" />
                 Retention-SingleCity
               </Link>
             </ListItemText>
@@ -258,10 +248,7 @@ function SideNav() {
             </ListItemIcon>
             <ListItemText>
               {" "}
-              <Link to="/Products">
-                <PermContactCalendarIcon fontSize="small" />
-                Available
-              </Link>{" "}
+              <Link to="/Products">Available</Link>{" "}
             </ListItemText>
           </ListItemButton>
         </Collapse>
@@ -272,10 +259,7 @@ function SideNav() {
             </ListItemIcon>
             <ListItemText>
               {" "}
-              <Link to="/Products/Sales">
-                <PermContactCalendarIcon fontSize="small" />
-                Sales
-              </Link>{" "}
+              <Link to="/Products/Sales">Sales</Link>{" "}
             </ListItemText>
           </ListItemButton>
         </Collapse>
@@ -286,10 +270,7 @@ function SideNav() {
             </ListItemIcon>
             <ListItemText>
               {" "}
-              <Link to="/Products/Performance">
-                <PermContactCalendarIcon fontSize="small" />
-                Performance
-              </Link>{" "}
+              <Link to="/Products/Performance">Performance</Link>{" "}
             </ListItemText>
           </ListItemButton>
         </Collapse>
@@ -302,7 +283,6 @@ function SideNav() {
               {" "}
               <Link to="/Products/Specific-city">
                 {" "}
-                <PermContactCalendarIcon fontSize="small" />
                 ShipCity-Performance
               </Link>{" "}
             </ListItemText>
@@ -317,7 +297,6 @@ function SideNav() {
               {" "}
               <Link to="/Products/Customer-Segment-based-on-product-purchase">
                 {" "}
-                <PermContactCalendarIcon fontSize="small" />
                 OrderBased Segment{" "}
               </Link>{" "}
             </ListItemText>
@@ -332,7 +311,6 @@ function SideNav() {
               {" "}
               <Link to="/Products/Product-segment-performance">
                 {" "}
-                <PermContactCalendarIcon fontSize="small" />
                 Segment Performance{" "}
               </Link>{" "}
             </ListItemText>
@@ -354,10 +332,7 @@ function SideNav() {
             </ListItemIcon>
             <ListItemText>
               {" "}
-              <Link to="/Orders/Report">
-                <PermContactCalendarIcon fontSize="small" />
-                Report
-              </Link>{" "}
+              <Link to="/Orders/Report">Report</Link>{" "}
             </ListItemText>
           </ListItemButton>
         </Collapse>
@@ -368,10 +343,7 @@ function SideNav() {
             </ListItemIcon>
             <ListItemText>
               {" "}
-              <Link to="/Orders">
-                <PermContactCalendarIcon fontSize="small" />
-                List And Segments
-              </Link>{" "}
+              <Link to="/Orders">List And Segments</Link>{" "}
             </ListItemText>
           </ListItemButton>
         </Collapse>
@@ -391,10 +363,7 @@ function SideNav() {
             </ListItemIcon>
             <ListItemText>
               {" "}
-              <Link to="/campaign">
-                <PermContactCalendarIcon fontSize="small" />
-                Campaign
-              </Link>{" "}
+              <Link to="/campaign">Campaign</Link>{" "}
             </ListItemText>
           </ListItemButton>
         </Collapse>
@@ -405,10 +374,7 @@ function SideNav() {
             </ListItemIcon>
             <ListItemText>
               {" "}
-              <Link to="/campaign/orders">
-                <PermContactCalendarIcon fontSize="small" />
-                Orders
-              </Link>{" "}
+              <Link to="/campaign/orders">Orders</Link>{" "}
             </ListItemText>
           </ListItemButton>
         </Collapse>
@@ -419,10 +385,7 @@ function SideNav() {
             </ListItemIcon>
             <ListItemText>
               {" "}
-              <Link to="/campaign/compare">
-                <PermContactCalendarIcon fontSize="small" />
-                Compare
-              </Link>{" "}
+              <Link to="/campaign/compare">Compare</Link>{" "}
             </ListItemText>
           </ListItemButton>
         </Collapse>
@@ -442,10 +405,7 @@ function SideNav() {
             </ListItemIcon>
             <ListItemText>
               {" "}
-              <Link to="/pricing">
-                <PermContactCalendarIcon fontSize="small" />
-                Create New
-              </Link>{" "}
+              <Link to="/pricing">Create New</Link>{" "}
             </ListItemText>
           </ListItemButton>
         </Collapse>
@@ -456,10 +416,7 @@ function SideNav() {
             </ListItemIcon>
             <ListItemText>
               {" "}
-              <Link to="/pricing/created">
-                <PermContactCalendarIcon fontSize="small" />
-                Available
-              </Link>{" "}
+              <Link to="/pricing/created">Available</Link>{" "}
             </ListItemText>
           </ListItemButton>
         </Collapse>
@@ -491,10 +448,7 @@ function SideNav() {
             </ListItemIcon>
             <ListItemText>
               {" "}
-              <Link to="/engage/available">
-                <PermContactCalendarIcon fontSize="small" />
-                Available
-              </Link>{" "}
+              <Link to="/engage/available">Available</Link>{" "}
             </ListItemText>
           </ListItemButton>
         </Collapse>
@@ -505,10 +459,7 @@ function SideNav() {
             </ListItemIcon>
             <ListItemText>
               {" "}
-              <Link to="/engage/createnew">
-                <PermContactCalendarIcon fontSize="small" />
-                Create New
-              </Link>{" "}
+              <Link to="/engage/createnew">Create New</Link>{" "}
             </ListItemText>
           </ListItemButton>
         </Collapse>

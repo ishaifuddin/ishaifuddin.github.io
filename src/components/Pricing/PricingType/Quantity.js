@@ -7,7 +7,7 @@ import RadioGroup from "@mui/material/RadioGroup";
 import { useSelector, useDispatch } from "react-redux";
 import { format } from "date-fns";
 import Grid from "@mui/material/Grid";
-import { DateRangePicker } from "rsuite";
+import { Button, DateRangePicker } from "rsuite";
 import moment from "moment";
 import Select from "react-select";
 import axios from "axios";
@@ -16,6 +16,7 @@ import { get_product_and_catagory_and_sku_data } from "../../../features/product
 import { Get_Product_Purchase_Based_Cus_Seg_Obj } from "../../../features/product/ProductPurchaseBasedCusSeg";
 
 import { addRole } from "../../../features/DynamicPricing/CurrentRules";
+import { Card } from "@material-ui/core";
 
 function Quantity({
   target_segment_name,
@@ -148,11 +149,9 @@ function Quantity({
   );
   Cus_Purchase_based_segment = structuredClone(Cus_Purchase_based_segment);
 
-
-
   var ops = [];
-  
-  if(Cus_Purchase_based_segment){
+
+  if (Cus_Purchase_based_segment) {
     for (var i of Cus_Purchase_based_segment) {
       var label = i.name;
       var value = i.id;
@@ -306,22 +305,24 @@ function Quantity({
   //var[
 
   return (
-    <>
+    <Card className="dash-card price">
       <form onSubmit={formSubmit}>
-        <strong> Set a relevant offer name </strong>
-        <input
-          style={{ height: "40px", width: "300px", fontSize: "16px" }}
-          required={true}
-          name="name"
-          type="text"
-          defaultValue={rulename}
-        />
-        <div style={{ margin: "2% 0% 2% 0%", width: "90%" }}>
-          <strong> Select target Segment </strong>
+        <div className="input-filters">
+          <strong>Set a relevant offer name:</strong>
+          <input
+            required={true}
+            name="name"
+            type="text"
+            defaultValue={rulename}
+          />
+        </div>
+        <div className="input-filters">
+          <strong>Select target Segment:</strong>
 
           {ops && (
             <Select
-              placeholder={target_segment_name1 || "Select target Segment"}
+              className="multi"
+              placeholder={target_segment_name1 || "Select target"}
               defaultValue={target_segment_id1}
               onChange={(e) => {
                 settarget(e.value);
@@ -331,38 +332,39 @@ function Quantity({
           )}
           <input name="target" type="hidden" defaultValue={target} />
         </div>
-        Discount is available for
-        <RadioGroup
-          style={{ display: "inline-block" }}
-          onChange={(e) => {
-            available_for(e);
-          }}
-        >
-          <Radio checked={prod} value="prod" name="cat_or_product" /> Specific
-          Product
-          <Radio checked={cat} value="cat" name="cat_or_product" /> Specific
-          Category
-          <Radio checked={all} value="all" name="cat_or_product" /> All
-        </RadioGroup>
+        <div className="input-filters">
+          <strong>Discount is available for:</strong>
+          <RadioGroup
+            style={{ display: "inline-block" }}
+            onChange={(e) => {
+              available_for(e);
+            }}
+          >
+            <Radio checked={prod} value="prod" name="cat_or_product" /> Specific
+            Product
+            <Radio checked={cat} value="cat" name="cat_or_product" /> Specific
+            Category
+            <Radio checked={all} value="all" name="cat_or_product" /> All
+          </RadioGroup>
+        </div>
         {/* {JSON.stringify(QDIS_OnCategory)}
                     <h1></h1>
                 {JSON.stringify(QDIS_OnProduct)}
                 */}
         {cat && <ProductCatagory data={QDIS_OnCategory} />}
         {prod && <Products data={QDIS_OnProduct} />}
-        <div>
-          <button
+        <div className="input-filters">
+          <Button
             className="button add"
-            type="button"
             onClick={() => addRules(rules.length + 1)}
+            variant="outlined"
           >
-            <strong style={{ padding: "10px" }}>+ADD</strong>
-          </button>
+            <strong>+ADD</strong>
+          </Button>
         </div>
         {rules.map((element, index) => (
           <div className="form-inline" key={index} id={"id-" + index}>
-            <label>From</label>
-
+            <label style={{ marginLeft: 0 }}>From</label>
             <input
               required={true}
               name="from"
@@ -418,21 +420,28 @@ function Quantity({
 
             {index ? (
               <button
+                style={{
+                  borderRadius: "2px",
+                  marginLeft: "0.5rem",
+                  color: "#fff",
+                  background: "red",
+                }}
+                className="fields-remove"
                 type="button"
-                className="button remove"
                 onClick={() => removeRules(index)}
               >
                 Remove
               </button>
             ) : null}
+            <br />
+            <br />
           </div>
         ))}
-        <Grid>
+        <div className="input-filters">
           <strong>
-            Disable this offer for <span style={{ color: "red" }}>on-sale</span>{" "}
-            products{" "}
+            Disable this offer for <span style={{ color: "red" }}>on-sale</span>
+            products:
           </strong>
-
           <RadioGroup
             style={{ display: "inline-block" }}
             onChange={(e) => {
@@ -443,9 +452,9 @@ function Quantity({
             <Radio value="0" name="onsale_on_off" /> No
           </RadioGroup>
           <input name="onsalerun" type="hidden" defaultValue={NOosrun} />
-        </Grid>
-        <Grid>
-          <strong>Set Schedule for this offer </strong>
+        </div>
+        <div className="input-filters">
+          <strong>Set Schedule for this offer:</strong>
 
           <RadioGroup
             style={{ display: "inline-block" }}
@@ -480,14 +489,14 @@ function Quantity({
           )}
 
           <input name="schedule" type="hidden" defaultValue={daterange} />
-        </Grid>
-        <Grid style={{ margin: "2% 0% 2% 0%" }}>
-          <strong> Set Priority for this rule </strong>
+        </div>
+        <div className="input-filters">
+          <strong>Set Priority for this rule:</strong>
           <input required={true} name="pr" type="number" defaultValue={pr} />
-        </Grid>
-        <input type="submit" />
+        </div>
+        <input type="submit" style={{ width: "100%", maxWidth: "500px" }} />
       </form>
-    </>
+    </Card>
   );
 }
 

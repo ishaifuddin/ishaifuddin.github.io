@@ -51,7 +51,6 @@ import SideNav from "./pages/SideNav";
 import TestPage from "./pages/TestPage";
 
 import { useSelector } from "react-redux";
-
 import Grid from "@mui/material/Grid";
 import SingleOrder from "./components/SinOrder/SingleOrder";
 
@@ -68,7 +67,7 @@ function App() {
           </aside>
         )}
 
-        <main className="dashboard">
+        <main className={status !== "success" ? "dashboard pl-0" : "dashboard"}>
           <Routes>
             <Route path="/blog" element={<BlogPage />} />
             <Route path="/post/:id" element={<SinglePost />} />

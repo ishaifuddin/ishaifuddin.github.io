@@ -86,9 +86,9 @@ function BlogPage() {
                       />
                     </Card.Section>
                     <div style={{ padding: "30px 0 5px" }}>
-                      <Badge color="pink" mr={5} variant="light">
+                      {/* <Badge color="pink" mr={5} variant="light">
                         {post.post_category.cat_name}
-                      </Badge>
+                      </Badge> */}
                       <h4>
                         <Link to={`/post/${post.id}`} className="post-title">
                           {post.title.rendered}

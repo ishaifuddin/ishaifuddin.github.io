@@ -56,7 +56,7 @@ function HomeSx() {
             <Image
               className="app-screen desktop"
               radius="lg"
-              src="./images/asset1.jpg"
+              src="./images/dashboard.png"
               alt="Shop Dashboard Screen"
             />
           </Grid.Col>

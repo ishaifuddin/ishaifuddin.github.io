@@ -82,13 +82,16 @@ function FactSx() {
         <Title style={{ fontWeight: 900 }} align="center" mt="sm">
           Cool facts about this app
         </Title>
-        <Image
+        <br />
+        <br />
+        <br />
+        {/* <Image
           style={{ padding: "3rem 0 2rem" }}
           className="app-screen desktop"
           radius="lg"
           src="./images/asset4.jpg"
           alt="Shop Dashboard Screen"
-        />
+        /> */}
         <SimpleGrid cols={3} breakpoints={[{ maxWidth: "sm", cols: 1 }]}>
           {stats}
         </SimpleGrid>

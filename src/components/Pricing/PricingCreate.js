@@ -96,7 +96,7 @@ function PricingCreate() {
   const defaultMaterialTheme = createTheme();
 
   return (
-    <Grid className="campaign" container spacing={3}>
+    <Grid className="pricing" container spacing={3}>
       <Grid item md={12} className="top-wrap">
         <div className="notifications">
           <h6>Select Discount type</h6>

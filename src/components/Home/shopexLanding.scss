@@ -16,8 +16,8 @@ body {
   font-family: "Sen", sans-serif !important;
 }
 
-.dashboard {
-  // padding-left: 0 !important;
+.dashboard.pl-0 {
+  padding-left: 0;
 }
 
 p {
@@ -31,6 +31,7 @@ p {
   width: 100%;
   top: 0;
   transition: all ease-in-out 0.3s;
+
   a {
     cursor: pointer;
     text-decoration: none !important;
@@ -114,8 +115,8 @@ p {
     box-shadow: 0 2.75rem 5.5rem -3.5rem rgb(189 197 209 / 50%),
       0 2rem 4rem -2rem rgb(33 50 91 / 30%),
       inset 0 -0.1875rem 0.3125rem 0 rgb(151 164 175 / 50%);
-    background-color: #f5f5f7;
-    padding: 1rem 0.5rem 2rem;
+    background-color: #e9eff4;
+    padding: 1.1rem;
     z-index: 2;
     margin-left: 60px;
   }

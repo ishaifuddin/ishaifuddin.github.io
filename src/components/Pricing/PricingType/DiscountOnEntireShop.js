@@ -14,6 +14,7 @@ import { format } from "date-fns";
 
 import { get_product_and_catagory_and_sku_data } from "../../../features/product/ProductListAndSegment";
 import { Get_Product_Purchase_Based_Cus_Seg_Obj } from "../../../features/product/ProductPurchaseBasedCusSeg";
+import { Card } from "@mui/material";
 
 function DiscountOnEntireShop({ data, target_segment_name }) {
   var [schedule_type, setSchedule_type] = useState("manual");
@@ -203,26 +204,27 @@ function DiscountOnEntireShop({ data, target_segment_name }) {
   };
 
   return (
-    <>
+    <Card className="dash-card price">
       <form id="dpriceform" onSubmit={formSubmit}>
-        <strong> Set a relevant offer name </strong>
-        <input
-          style={{ height: "40px", width: "300px", fontSize: "16px" }}
-          required={true}
-          name="name"
-          type="text"
-          defaultValue={offername || ""}
-        />
+        <div className="input-filters">
+          <strong>Set a relevant offer name: </strong>
+          <input
+            required={true}
+            name="name"
+            type="text"
+            defaultValue={offername || ""}
+          />
+        </div>
 
-        <div style={{ margin: "2% 0% 2% 0%", width: "90%" }}>
+        <div className="input-filters">
           <strong>
-            {" "}
-            Select target Segment :: <p>{target_segment_name_}</p>{" "}
+            Select target Segment: <p>{target_segment_name_}</p>{" "}
           </strong>
 
           {Customer_segment_options && (
             <Select
-              placeholder={"Select target Segment"}
+              className="multi"
+              placeholder={"Select target"}
               defaultValue={target_segment_id}
               onChange={(e) => {
                 settarget_segment_id(e.value);
@@ -238,49 +240,46 @@ function DiscountOnEntireShop({ data, target_segment_name }) {
             defaultValue={target_segment_id || ""}
           />
         </div>
+        <div className="input-filters">
+          <strong>Offer: </strong>
 
-        <label>
-          {" "}
-          <strong> Offer </strong>{" "}
-        </label>
+          <input name="entire_offer" type="number" defaultValue={offer} />
 
-        <input name="entire_offer" type="number" defaultValue={offer} />
+          <RadioGroup
+            defaultValue={offertype || "percent"}
+            style={{ display: "inline-block" }}
+            onChange={handleChange}
+          >
+            <Radio
+              checked={offertype === "percent"}
+              value="percent"
+              name="type"
+            />
+            % Off
+            <Radio
+              checked={offertype === "amount"}
+              value="amount"
+              name="type"
+            />
+            $ Off
+            <Radio
+              checked={offertype === "fixedprice"}
+              value="fixedprice"
+              name="type"
+            />
+            $ Each Product
+          </RadioGroup>
+          <input
+            name="entire_offer_type"
+            type="hidden"
+            defaultValue={offertype || "percent"}
+          />
+        </div>
 
-        <RadioGroup
-          defaultValue={offertype || "percent"}
-          style={{ display: "inline-block" }}
-          onChange={handleChange}
-        >
-          <Radio
-            checked={offertype === "percent"}
-            value="percent"
-            name="type"
-          />{" "}
-          % Off
-          <Radio
-            checked={offertype === "amount"}
-            value="amount"
-            name="type"
-          />{" "}
-          $ Off
-          <Radio
-            checked={offertype === "fixedprice"}
-            value="fixedprice"
-            name="type"
-          />{" "}
-          $ Each Product
-        </RadioGroup>
-        <input
-          name="entire_offer_type"
-          type="hidden"
-          defaultValue={offertype || "percent"}
-        />
-
-        <Grid>
+        <div className="input-filters">
           <strong>
-            {" "}
-            Disable this offer for{" "}
-            <span style={{ color: "red" }}> on-sale </span> products{" "}
+            Disable this offer for
+            <span> on-sale </span> products:
           </strong>
           <RadioGroup
             defaultValue={disable_role_onsale}
@@ -291,13 +290,13 @@ function DiscountOnEntireShop({ data, target_segment_name }) {
               checked={disable_role_onsale === "1"}
               value="1"
               name="onsale_on_off"
-            />{" "}
+            />
             Yes
             <Radio
               checked={disable_role_onsale === "0"}
               value="0"
               name="onsale_on_off"
-            />{" "}
+            />
             No
           </RadioGroup>
           <input
@@ -305,10 +304,10 @@ function DiscountOnEntireShop({ data, target_segment_name }) {
             type="hidden"
             defaultValue={disable_role_onsale}
           />
-        </Grid>
+        </div>
 
-        <Grid>
-          <strong>Set Schedule for this offer </strong>
+        <div className="input-filters">
+          <strong>Set Schedule for this offer: </strong>
           <RadioGroup
             defaultValue={schedule_type}
             style={{ display: "inline-block" }}
@@ -318,13 +317,13 @@ function DiscountOnEntireShop({ data, target_segment_name }) {
               checked={schedule_type === "manual"}
               value="manual"
               name="schedule"
-            />{" "}
+            />
             Start now and End manually
             <Radio
               checked={schedule_type === "tl"}
               value="tl"
               name="schedule"
-            />{" "}
+            />
             Set Timeline
           </RadioGroup>
 
@@ -334,9 +333,7 @@ function DiscountOnEntireShop({ data, target_segment_name }) {
               value={daterange}
               onChange={setdrange}
               oneTap={false}
-            >
-              {" "}
-            </DateRangePicker>
+            ></DateRangePicker>
           )}
 
           {drflag === true && schedule_type === "tl" && (
@@ -345,22 +342,19 @@ function DiscountOnEntireShop({ data, target_segment_name }) {
               value={[start, end]}
               onChange={setdrange}
               oneTap={false}
-            >
-              {" "}
-            </DateRangePicker>
+            ></DateRangePicker>
           )}
 
           {/* <input name="schedule_dr" type="hidden" defaultValue={daterange} /> */}
-        </Grid>
+        </div>
 
-        <Grid style={{ margin: "2% 0% 2% 0%" }}>
-          <strong> Set Priority for this rule </strong>
+        <div className="input-filters">
+          <strong>Set Priority for this rule: </strong>
           <input required={true} name="pr" type="number" defaultValue={pr} />
-        </Grid>
-
-        <input type="submit" />
+        </div>
+        <input type="submit" style={{ width: "100%", maxWidth: "500px" }} />
       </form>
-    </>
+    </Card>
   );
 }
 

@@ -6,7 +6,7 @@ import Radio from "@mui/material/Radio";
 import RadioGroup from "@mui/material/RadioGroup";
 import { useSelector, useDispatch } from "react-redux";
 import Grid from "@mui/material/Grid";
-import { DateRangePicker } from "rsuite";
+import { Button, DateRangePicker } from "rsuite";
 import moment from "moment";
 import Select from "react-select";
 //import { SettingsOverscanRounded } from "@material-ui/icons";
@@ -16,6 +16,8 @@ import { get_product_and_catagory_and_sku_data } from "../../../features/product
 import { Get_Product_Purchase_Based_Cus_Seg_Obj } from "../../../features/product/ProductPurchaseBasedCusSeg";
 
 import { addRole } from "../../../features/DynamicPricing/CurrentRules";
+import { Card } from "react-bootstrap";
+import { Height } from "@material-ui/icons";
 
 function CategoryDiscount({ data }) {
   var dispatch = useDispatch();
@@ -162,8 +164,8 @@ function CategoryDiscount({ data }) {
   Cus_Purchase_based_segment = structuredClone(Cus_Purchase_based_segment);
 
   var ops = [];
-  
-  if(Cus_Purchase_based_segment){
+
+  if (Cus_Purchase_based_segment) {
     for (var i of Cus_Purchase_based_segment) {
       var label = i.name;
       var value = i.id;
@@ -171,7 +173,6 @@ function CategoryDiscount({ data }) {
     }
   }
 
-  
   var [daterange, setdrange] = useState([
     new Date(moment().startOf("month")),
     new Date(moment().endOf("month")),
@@ -278,19 +279,14 @@ function CategoryDiscount({ data }) {
   };
 
   return (
-    <>
+    <Card className="dash-card price">
       <form id="dpriceform" onSubmit={formSubmit}>
-        <strong> Set a relevant offer name </strong>
-        <input
-          style={{ height: "40px", width: "300px", fontSize: "16px" }}
-          required={true}
-          name="name"
-          type="text"
-          defaultValue=""
-        />
-
-        <div style={{ margin: "2% 0% 2% 0%", width: "90%" }}>
-          <strong> Select target Segment </strong>
+        <div className="input-filters">
+          <strong>Set a relevant offer name:</strong>
+          <input required={true} name="name" type="text" defaultValue="" />
+        </div>
+        <div className="input-filters">
+          <strong>Select target Segment:</strong>
 
           {ops && (
             <Select
@@ -305,22 +301,29 @@ function CategoryDiscount({ data }) {
           <input name="target" type="hidden" defaultValue={target} />
         </div>
 
-        <div>
-          {" "}
-          <button onClick={() => addRules(rules.length + 1)}>
-            {" "}
-            <h4>AddRule</h4>{" "}
-          </button>{" "}
+        <div className="input-filters">
+          <Button
+            className="button add"
+            variant="outlined"
+            onClick={() => addRules(rules.length + 1)}
+          >
+            <strong>AddRule</strong>
+          </Button>
         </div>
 
         {rules.map((element, index) => (
           <div
-            style={{ display: "inline-flex", width: "100%", margin: "10px" }}
+            style={{
+              display: "inline-flex",
+              alignItems: "center",
+              width: "100%",
+              marginBottom: "1rem",
+            }}
             className="form-inline"
             key={index}
             id={"id-" + index}
           >
-            <strong style={{ padding: "10px" }}> Offer </strong>
+            <label style={{ marginLeft: "0" }}>Offer</label>
 
             <input
               name="offer"
@@ -356,35 +359,39 @@ function CategoryDiscount({ data }) {
               $ Each Product
             </RadioGroup>
 
-            <div style={{ width: "25%" }}>
-              <Select
-                placeholder={element.catname}
-                value={element.catid}
-                onChange={(e) => {
-                  handleChange1(index, e.value, e.label);
-                }}
-                options={ops1}
-              />
-              {/* {element.catname} */}
-            </div>
+            <Select
+              className="multi"
+              placeholder="select Options"
+              // placeholder={element.catname}
+              value={element.catid}
+              onChange={(e) => {
+                handleChange1(index, e.value, e.label);
+              }}
+              options={ops1}
+            />
+            {/* {element.catname} */}
 
             {index ? (
               <button
+                style={{
+                  borderRadius: "2px",
+                  marginLeft: "0.5rem",
+                  color: "#fff",
+                  background: "red",
+                }}
                 type="button"
-                className="button remove"
                 onClick={() => removeRules(index)}
               >
-                {" "}
-                Remove{" "}
+                Remove
               </button>
             ) : null}
           </div>
         ))}
 
-        <Grid>
+        <div className="input-filters">
           <strong>
-            Disable this offer for <span style={{ color: "red" }}>on-sale</span>{" "}
-            products{" "}
+            Disable this offer for <span style={{ color: "red" }}>on-sale</span>
+            products:
           </strong>
           <RadioGroup
             style={{ display: "inline-block" }}
@@ -394,10 +401,10 @@ function CategoryDiscount({ data }) {
             <Radio value="0" name="onsale_on_off" /> No
           </RadioGroup>
           <input name="onsalerun" type="hidden" defaultValue={onsale} />
-        </Grid>
+        </div>
 
-        <Grid>
-          <strong>Set Schedule for this offer </strong>
+        <div className="input-filters">
+          <strong>Set Schedule for this offer: </strong>
           <RadioGroup
             style={{ display: "inline-block" }}
             onChange={(e) => {
@@ -418,16 +425,15 @@ function CategoryDiscount({ data }) {
               {" "}
             </DateRangePicker>
           )}
-        </Grid>
+        </div>
 
-        <Grid style={{ margin: "2% 0% 2% 0%" }}>
-          <strong> Set Priority for this rule </strong>
+        <div className="input-filters">
+          <strong>Set Priority for this rule:</strong>
           <input required={true} name="pr" type="number" defaultValue="10" />
-        </Grid>
-
-        <input type="submit" />
+        </div>
+        <input type="submit" style={{ width: "100%", maxWidth: "500px" }} />
       </form>
-    </>
+    </Card>
   );
 }
 

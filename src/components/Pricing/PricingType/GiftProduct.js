@@ -21,6 +21,7 @@ import { get_product_and_catagory_and_sku_data } from "../../../features/product
 import { Get_Product_Purchase_Based_Cus_Seg_Obj } from "../../../features/product/ProductPurchaseBasedCusSeg";
 
 import { addRole } from "../../../features/DynamicPricing/CurrentRules";
+import { Card } from "@material-ui/core";
 
 function GiftProduct({
   offername,
@@ -323,21 +324,23 @@ function GiftProduct({
   }
 
   return (
-    <>
+    <Card className="dash-card price">
       <form id="dpriceform" onSubmit={formSubmit}>
-        <strong> Set a relevant offer name </strong>
-        <input
-          style={{ height: "40px", width: "300px", fontSize: "16px" }}
-          required={true}
-          name="name"
-          type="text"
-          defaultValue={offerName}
-        />
-        <div style={{ margin: "2% 0% 2% 0%", width: "90%" }}>
-          <strong> Select target Segment </strong>
-
+        <div className="input-filters">
+          <strong>Set a relevant offer name:</strong>
+          <input
+            style={{ height: "40px", width: "300px", fontSize: "16px" }}
+            required={true}
+            name="name"
+            type="text"
+            defaultValue={offerName}
+          />
+        </div>
+        <div className="input-filters">
+          <strong>Select target Segment:</strong>
           {Customer_segment_options && (
             <Select
+              className="multi"
               placeholder={Target_segment_Name || "Select target Segment"}
               defaultValue={Target_segment_Id}
               onChange={(e) => {
@@ -348,73 +351,77 @@ function GiftProduct({
           )}
           <input name="target" type="hidden" defaultValue={target} />
         </div>
-        Discount is available for
-        <RadioGroup
-          defaultValue={all_or_cat_or_product_radio || "prod"}
-          style={{ display: "inline-block" }}
-          onChange={(e) => {
-            gift_available_for(e);
-          }}
-        >
-          <Radio
-            checked={all_or_cat_or_product_radio === "all"}
-            value="all"
-            name="cat_or_product"
-          />{" "}
-          All
-          <Radio
-            checked={all_or_cat_or_product_radio === "prod"}
-            value="prod"
-            name="cat_or_product"
-          />{" "}
-          Specific Product
-          <Radio
-            checked={all_or_cat_or_product_radio === "cat"}
-            value="cat"
-            name="cat_or_product"
-          />{" "}
-          Specific Category
-        </RadioGroup>
-        {cat && <ProductCatagory data={GiftOnCategory} />}
-        {prod && <Products data={GiftOnProduct} />}
-        <RadioGroup
-          style={{ display: "inline-block" }}
-          onChange={(e) => {
-            minimum_amount_OR_quantity(e);
-          }}
-        >
-          <Radio value="minQdiv" name="item_or_amount_r" /> Minimal Quantity
-          <Radio value="minAdiv" name="item_or_amount_r" /> Minimul amount
-        </RadioGroup>
-        <input name="item_or_amount" type="hidden" defaultValue={item_amount} />
+        <div className="input-filters">
+          <strong>Discount is available for:</strong>
+          <RadioGroup
+            defaultValue={all_or_cat_or_product_radio || "prod"}
+            style={{ display: "inline-block" }}
+            onChange={(e) => {
+              gift_available_for(e);
+            }}
+          >
+            <Radio
+              checked={all_or_cat_or_product_radio === "all"}
+              value="all"
+              name="cat_or_product"
+            />
+            All
+            <Radio
+              checked={all_or_cat_or_product_radio === "prod"}
+              value="prod"
+              name="cat_or_product"
+            />{" "}
+            Specific Product
+            <Radio
+              checked={all_or_cat_or_product_radio === "cat"}
+              value="cat"
+              name="cat_or_product"
+            />{" "}
+            Specific Category
+          </RadioGroup>
+          {cat && <ProductCatagory data={GiftOnCategory} />}
+          {prod && <Products data={GiftOnProduct} />}
+          <RadioGroup
+            style={{ display: "inline-block" }}
+            onChange={(e) => {
+              minimum_amount_OR_quantity(e);
+            }}
+          >
+            <Radio value="minQdiv" name="item_or_amount_r" /> Minimal Quantity
+            <Radio value="minAdiv" name="item_or_amount_r" /> Minimul amount
+          </RadioGroup>
+          <input
+            name="item_or_amount"
+            type="hidden"
+            defaultValue={item_amount}
+          />
+        </div>
         {minQuantitydiv && (
-          <Grid>
+          <div className="input-filters">
             <strong>
-              {" "}
-              Minimal Quantity need to buy from any selected product{" "}
+              Minimal Quantity need to buy from any selected product:
             </strong>
             <input
               type="number"
               defaultValue={gift_min_quantity}
               name="gift_min_quantity"
             />
-          </Grid>
+          </div>
         )}
         {minAmountdiv && (
-          <Grid>
+          <div className="input-filters">
             <strong>
-              {" "}
-              Minimul amount need to spent on any selected product{" "}
+              Minimul amount need to spent on any selected product:
             </strong>
             <input
               type="number"
               defaultValue={gift_min_amount}
               name="gift_min_amount"
             />
-          </Grid>
+          </div>
         )}
-        <Grid>
-          <strong style={{ margin: "10px" }}>Offer as gift</strong>
+        <div className="input-filters">
+          <strong>Offer as gift</strong>
 
           {/* {JSON.stringify(offer_as_gifts)}
                     <h1></h1>
@@ -451,11 +458,11 @@ function GiftProduct({
             defaultValue={offer_as_gifts}
           />
           <input name="giftstring" type="hidden" defaultValue={giftproduct} />
-        </Grid>
-        <Grid>
+        </div>
+        <div className="input-filters">
           <strong>
-            Disable this offer for <span style={{ color: "red" }}>on-sale</span>{" "}
-            products{" "}
+            Disable this offer for <span style={{ color: "red" }}>on-sale</span>
+            products:
           </strong>
 
           <RadioGroup
@@ -468,9 +475,9 @@ function GiftProduct({
             <Radio value="0" name="onsale_on_off" /> No
           </RadioGroup>
           <input name="onsalerun" type="hidden" defaultValue={onsalerun} />
-        </Grid>
-        <Grid>
-          <strong>Set Schedule for this offer </strong>
+        </div>
+        <div className="input-filters">
+          <strong>Set Schedule for this offer:</strong>
 
           <RadioGroup
             style={{ display: "inline-block" }}
@@ -489,9 +496,7 @@ function GiftProduct({
                 value={daterange}
                 onChange={setdrange}
                 oneTap={false}
-              >
-                {" "}
-              </DateRangePicker>
+              ></DateRangePicker>
               <input
                 name="schedule_dr"
                 type={"hidden"}
@@ -507,14 +512,14 @@ function GiftProduct({
           {/* from : format(daterange[0],'yyyy-MM-dd'), to : format(daterange[1],'yyyy-MM-dd'), */}
           {/* <input name="schedule_option" type="hidden" defaultValue={schudule} /> */}
           {/* <input name="schedule" type="hidden" defaultValue={format(daterange[0],'yyyy-MM-dd').concat("TO").concat(format(daterange[1],'yyyy-MM-dd'))} /> */}
-        </Grid>
-        <Grid style={{ margin: "2% 0% 2% 0%" }}>
-          <strong> Set Priority for this rule </strong>
+        </div>
+        <div className="input-filters">
+          <strong>Set Priority for this rule: </strong>
           <input required={true} name="pr" type="number" defaultValue={pr} />
-        </Grid>
-        <input type="submit" />
+        </div>
+        <input type="submit" style={{ width: "100%", maxWidth: "500px" }} />
       </form>
-    </>
+    </Card>
   );
 }
 
