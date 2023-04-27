@@ -58,6 +58,7 @@ function App() {
   //var authenticated = JSON.parse(localStorage.getItem('authenticated'));
   //var status = useSelector((state) => state.dash.status);
   var status = "success";
+  //var status = "";
   return (
     <BrowserRouter>
       <div className="wrapper">
