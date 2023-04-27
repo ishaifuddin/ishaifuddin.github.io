@@ -583,7 +583,7 @@ function ProductOneCityPerform() {
         </form>
       </Grid>
 
-      <Grid item xl={6} xs={12}>
+      <Grid item xs={24}>
         <Card className="dash-card">
           {comparison_table && comparison_table.length > 0 && (
             <ThemeProvider theme={defaultMaterialTheme}>
@@ -693,7 +693,7 @@ function ProductOneCityPerform() {
           )}
         </Card>
       </Grid>
-      <Grid item xl={6} xs={12}>
+      <Grid item xs={24}>
         <Card className="dash-card">
           <Timeline className="timeline">
             <TimelineItem>
