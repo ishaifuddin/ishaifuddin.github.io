@@ -187,7 +187,7 @@ function CusReport() {
     startOfMonth(subDays(new Date(), getDate(new Date()))),
     endOfMonth(subDays(new Date(), getDate(new Date()))),
   ]);
-  var [duration, setduration] = useState();
+  var [duration, setduration] = useState("monthly");
   var [cusType, setcusType] = useState();
   var dateSubmit = (e) => {
     dispatch6(
@@ -264,26 +264,26 @@ function CusReport() {
                 fontWeight: "500",
               }}
               onChange={(e) => {
-                setduration2(e.target.value);
+                setduration(e.target.value);
               }}
             >
               <Radio
                 checked={duration === "daily"}
                 value="daily"
                 name="duration"
-              />{" "}
+              />
               Day
               <Radio
                 checked={duration === "weekly"}
                 value="weekly"
                 name="duration"
-              />{" "}
+              />
               Week
               <Radio
                 checked={duration === "monthly"}
                 value="monthly"
                 name="duration"
-              />{" "}
+              />
               Month
             </RadioGroup>
             <button
@@ -292,8 +292,7 @@ function CusReport() {
               color="secondary"
               onClick={dateSubmit2}
             >
-              {" "}
-              Submit{" "}
+              Submit
             </button>
           </div>
         </Grid>
@@ -337,10 +336,10 @@ function CusReport() {
                     Min : {repeat_side_note_Array[1]}
                   </Timeline.Item>
                   <Timeline.Item>
-                    Max :{repeat_side_note_Array[2]}{" "}
+                    Max :{repeat_side_note_Array[2]}
                   </Timeline.Item>
                   <Timeline.Item>
-                    AVG :{repeat_side_note_Array[3]}{" "}
+                    AVG :{repeat_side_note_Array[3]}
                   </Timeline.Item>
                   <Timeline.Item>
                     Total Point : {repeat_side_note_Array[4]}
@@ -390,7 +389,7 @@ function CusReport() {
 
         <CusFromThisMonth />
 
-        <Grid item xl={4} lg={12} xs={12}>
+        <Grid item xs={12}>
           <CusGroupByFirstMonth />
         </Grid>
 
@@ -510,8 +509,7 @@ function CusReport() {
               color="secondary"
               onClick={dateSubmit}
             >
-              {" "}
-              Submit{" "}
+              Submit
             </button>
           </div>
         </Grid>

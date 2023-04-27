@@ -203,7 +203,7 @@ function CreateNew() {
 
         <form>
           <input
-            style={{ marginRight: "1rem" }}
+            style={{ minWidth: "300px", marginRight: "1rem" }}
             placeholder="Email-automation name :"
             required={true}
             name="name"
@@ -212,7 +212,7 @@ function CreateNew() {
             onChange={(e) => setName(e.target.value)}
           />
           <input
-            style={{ marginRight: "1rem" }}
+            style={{ minWidth: "300px", marginRight: "1rem" }}
             placeholder="Email-Subject :"
             required={true}
             name="name"

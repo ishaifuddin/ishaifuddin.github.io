@@ -51,6 +51,7 @@ import {
 } from "chart.js";
 import { Line } from "react-chartjs-2";
 import { Card } from "react-bootstrap";
+import DashRecentSales from "./DashRecentSales";
 ChartJS.register(
   CategoryScale,
   LinearScale,
@@ -416,33 +417,44 @@ function DashTops() {
           </Button>
         </div>
       </Grid>
+      <Grid item xl={10} lg={9} md={8} xs={12}>
+        <Grid container spacing={3} style={{ padding: 0 }}>
+          <Grid item xl={6} xs={12}>
+            <Card className="dash-card">
+              <h6>Revenue & Profit</h6>
+              {/* <Chart type='line' data={revprof_state} /> */}
+              <Line data={revprof_state} />
+              <br />
 
-      <Grid item xl={6} xs={12}>
-        <Card className="dash-card">
-          <h6>Revenue & Profit</h6>
-          {/* <Chart type='line' data={revprof_state} /> */}
-          <Line data={revprof_state} />
-          <br />
-
-          <Timeline>
-            <Timeline.Item>Revenue :: {rev_note[0]}</Timeline.Item>
-            <Timeline.Item>Revenue/Order :: {rev_note[1]}</Timeline.Item>
-            <Timeline.Item>Revenue/Customer :: {rev_note[2]} </Timeline.Item>
-            <Timeline.Item>Profit :: {prof_note[0]}</Timeline.Item>
-            <Timeline.Item>Profit/Customer :: {prof_note[1]}</Timeline.Item>
-          </Timeline>
-        </Card>
+              <Timeline>
+                <Timeline.Item>Revenue :: {rev_note[0]}</Timeline.Item>
+                <Timeline.Item>Revenue/Order :: {rev_note[1]}</Timeline.Item>
+                <Timeline.Item>
+                  Revenue/Customer :: {rev_note[2]}{" "}
+                </Timeline.Item>
+                <Timeline.Item>Profit :: {prof_note[0]}</Timeline.Item>
+                <Timeline.Item>Profit/Customer :: {prof_note[1]}</Timeline.Item>
+              </Timeline>
+            </Card>
+          </Grid>
+          <Grid item xl={6} xs={12}>
+            <Card className="dash-card">
+              <h6> Customer & Order </h6>
+              {/* <Chart type='line' data={cusor_state} /> */}
+              <Line data={cusor_state} options={options} />
+              <br />
+              <Timeline>
+                <Timeline.Item>customer :: {cus_note} </Timeline.Item>
+                <Timeline.Item>Order : {order_note} </Timeline.Item>
+              </Timeline>
+            </Card>
+          </Grid>
+        </Grid>
       </Grid>
-      <Grid item xl={6} xs={12}>
+      <Grid item xl={2} lg={3} md={4} xs={12}>
         <Card className="dash-card">
-          <h6> Customer & Order </h6>
-          {/* <Chart type='line' data={cusor_state} /> */}
-          <Line data={cusor_state} options={options} />
-          <br />
-          <Timeline>
-            <Timeline.Item>customer :: {cus_note} </Timeline.Item>
-            <Timeline.Item>Order : {order_note} </Timeline.Item>
-          </Timeline>
+          <h6> Recent Sales </h6>
+          <DashRecentSales />
         </Card>
       </Grid>
 

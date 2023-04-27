@@ -99,7 +99,8 @@ function Dashboard() {
             </div>
           </div>
         </Grid>
-        <Grid item xl={10} lg={9} xs={12}>
+
+        <Grid item xs={12}>
           <Grid container spacing={3} sx={{ padding: "0 !important" }}>
             <Grid item xl={3} lg={6} md={6} sm={6} xs={12}>
               <Card className="dash-card key-note">
@@ -161,15 +162,12 @@ function Dashboard() {
                 />
               </Card>
             </Grid>
-            <DashTops />
           </Grid>
         </Grid>
-        <Grid item xl={2} lg={3} md={12} xs={12}>
-          <Card className="dash-card">
-            <h6> Recent Sales </h6>
-            <DashRecentSales />
-          </Card>
-        </Grid>
+
+        {/* <Grid item xs={24}> */}
+        <DashTops />
+        {/* </Grid> */}
       </Grid>
       {/* <DashEmail/> */}
     </>
