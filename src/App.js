@@ -57,7 +57,7 @@ import SingleOrder from "./components/SinOrder/SingleOrder";
 function App() {
   //var authenticated = JSON.parse(localStorage.getItem('authenticated'));
   //var status = useSelector((state) => state.dash.status);
-  var status = "success";
+  var status = "";
   //var status = "";
   return (
     <BrowserRouter>

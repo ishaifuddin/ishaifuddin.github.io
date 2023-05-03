@@ -203,7 +203,6 @@ function FeatureSx() {
                 width: "unset",
               }}
               src="./images/features-3.png"
-              height={285}
               fit="contain"
               alt="Norway"
             />
@@ -214,11 +213,11 @@ function FeatureSx() {
               pt={60}
               pl={55}
               style={{
-                background: "#FEF0DE",
+                background: "#F1FBDB",
                 borderRadius: "10px",
                 width: "unset",
               }}
-              src="./images/features-4.png"
+              src="./images/features-4.jpg"
               height={285}
               fit="contain"
               alt="Norway"
@@ -229,30 +228,6 @@ function FeatureSx() {
               position="left"
               style={{ maxWidth: "480px", marginLeft: "auto" }}
             >
-              <ThemeIcon variant="light" color="orange" size={60} radius={40}>
-                <IconUsers size={35} stroke={2} />
-              </ThemeIcon>
-              <Title weight={600} size={30}>
-                Traffic
-              </Title>
-              <List>
-                <List.Item>Create Quantity based pricing</List.Item>
-                <List.Item>Create Catagory based pricing</List.Item>
-                <List.Item>
-                  Gift products based on product added to cart
-                </List.Item>
-                <List.Item> Offer discount on entire shop</List.Item>
-                <List.Item>
-                  And with the help of our advanced segmentation system, you can
-                  segmentize your customers based on their purchase behavior and
-                  offer invivisual "product-pricing-and-discounts" to
-                  "indivisual-segment"
-                </List.Item>
-              </List>
-            </Group>
-          </Grid.Col>
-          <Grid.Col lg={6} mb={90}>
-            <Group position="left" style={{ maxWidth: "480px" }}>
               <ThemeIcon variant="light" color="lime" size={60} radius={40}>
                 <IconMailForward size={35} stroke={2} />
               </ThemeIcon>
@@ -304,65 +279,7 @@ function FeatureSx() {
               </List>
             </Group>
           </Grid.Col>
-          <Grid.Col lg={6} mb={90}>
-            <Image
-              radius="md"
-              pt={60}
-              pl={55}
-              style={{
-                background: "#F1FBDB",
-                borderRadius: "10px",
-                width: "unset",
-              }}
-              src="./images/features-5.png"
-              height={285}
-              fit="contain"
-              alt="Norway"
-            />
-          </Grid.Col>
-          <Grid.Col lg={6} mb={90}>
-            <Image
-              radius="md"
-              pt={60}
-              pl={55}
-              style={{
-                background: "#F7E6FB",
-                borderRadius: "10px",
-                width: "unset",
-              }}
-              src="./images/features-6.png"
-              height={285}
-              fit="contain"
-              alt="Norway"
-            />
-          </Grid.Col>
-          <Grid.Col lg={6} mb={90}>
-            <Group
-              position="left"
-              style={{ maxWidth: "480px", marginLeft: "auto" }}
-            >
-              <ThemeIcon variant="light" color="grape" size={60} radius={40}>
-                <IconBasket size={35} stroke={2} />
-              </ThemeIcon>
-              <Title weight={600} size={30}>
-                Carts
-              </Title>
-              <List>
-                <List.Item>Create Quantity based pricing</List.Item>
-                <List.Item>Create Catagory based pricing</List.Item>
-                <List.Item>
-                  Gift products based on product added to cart
-                </List.Item>
-                <List.Item> Offer discount on entire shop</List.Item>
-                <List.Item>
-                  And with the help of our advanced segmentation system, you can
-                  segmentize your customers based on their purchase behavior and
-                  offer invivisual "product-pricing-and-discounts" to
-                  "indivisual-segment"
-                </List.Item>
-              </List>
-            </Group>
-          </Grid.Col>
+
           <Grid.Col lg={6} mb={90}>
             <Group position="left" style={{ maxWidth: "400px" }}>
               <ThemeIcon variant="light" color="cyan" size={60} radius={40}>
@@ -394,8 +311,7 @@ function FeatureSx() {
                 borderRadius: "10px",
                 width: "unset",
               }}
-              src="./images/features-7.png"
-              height={285}
+              src="./images/features-5.png"
               fit="contain"
               alt="Norway"
             />
