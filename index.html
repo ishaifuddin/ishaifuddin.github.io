@@ -128,13 +128,6 @@
       resize: none;
     }
 
-    .modal input:-internal-autofill-selected {
-      appearance: menulist-button;
-      background-image: none !important;
-      background-color: oklch(20.8% 0.042 265.755) !important;
-      color: fieldtext !important;
-    }
-
     .close-btn {
       position: absolute;
       top: 10px;
@@ -388,8 +381,8 @@
     });
     /* // Particles */
   </script>
-  <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
 
+  <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
   <script>
     // Initialize EmailJS
     emailjs.init("z9gk3smUovj0weKiH");
@@ -422,7 +415,10 @@
           this.reset();
 
           // Optional: close modal after 2 seconds
+          from_email: this.email.value = ""
+          message: this.message.value = ""
           setTimeout(closeModal, 2000);
+          status.innerText = ""
         })
         .catch(() => {
           status.innerText = "Failed to send message. Please try again.";
