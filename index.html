@@ -75,12 +75,80 @@
       z-index: 999;
       position: relative;
       text-align: center;
-      opacity: 0.6
+      opacity: 0.4
     }
 
     .contact .text {
-      opacity: 0.7;
       margin: 0 7px;
+    }
+
+
+    .hire-me {
+      padding: 10px 20px;
+      cursor: pointer;
+    }
+
+    .modal-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.6);
+      display: none;
+      z-index: 99;
+    }
+
+    .modal {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background: oklch(27.9% 0.041 260.031);
+      padding: 40px;
+      width: 500px;
+      border-radius: 8px;
+      display: none;
+      z-index: 100;
+      height: 450px;
+    }
+
+    .modal h3 {
+      margin-top: 0;
+      color: white;
+      margin-bottom: 25px;
+    }
+
+    .modal input,
+    .modal textarea {
+      width: 100%;
+      margin-bottom: 15px;
+      padding: 10px 15px;
+      border-radius: 6px;
+      background-color: oklch(20.8% 0.042 265.755) !important;
+      border: 1px solid oklch(27.9% 0.041 260.031);
+      color: white;
+      resize: none;
+    }
+
+    .modal input:-internal-autofill-selected {
+      appearance: menulist-button;
+      background-image: none !important;
+      background-color: oklch(20.8% 0.042 265.755) !important;
+      color: fieldtext !important;
+    }
+
+    .close-btn {
+      position: absolute;
+      top: 10px;
+      right: 12px;
+      border: none;
+      background: none;
+      font-size: 20px;
+      cursor: pointer;
+      color: #fff;
+      opacity: 0.3;
+    }
+
+    .close-btn:hover {
+      opacity: 1;
     }
   </style>
 </head>
@@ -139,7 +207,38 @@
             style="font-size: 40px;letter-spacing: 0.5px;font-family: 'Poppins', sans-serif;">Mohammad Shaifuddin</h2>
           <h3 class="text-white mt-3 mb-4" style="font-family: 'Julius Sans One', sans;font-size: 22px;">Professional
             UX/UI Designer</h3>
-          <a class="hire-me py-2 px-4 d-inline-block mb-3" href="#">Hire me</a>
+          <!-- <a class="hire-me py-2 px-4 d-inline-block mb-3"
+            href="https://mail.google.com/mail/?view=cm&fs=1&to=shaifu.work@gmail.com" target="_blank"
+            rel="noopener noreferrer">
+            Hire me
+          </a> -->
+
+          <!-- Hire Me Button -->
+          <button class="hire-me" onclick="openModal()">Hire Me</button>
+
+          <!-- Modal Overlay -->
+          <div id="modalOverlay" class="modal-overlay" onclick="closeModal()"></div>
+
+          <!-- Modal -->
+          <div id="contactModal" class="modal">
+            <button class="close-btn" onclick="closeModal()">×</button>
+
+            <h3>Contact Me</h3>
+
+            <form id="contactForm">
+              <input type="email" name="email" placeholder="Your email" required />
+
+              <textarea name="message" placeholder="Your message" rows="6" required></textarea>
+
+              <button class="hire-me" type="submit">Send Message</button>
+              <p id="status" style="margin-top: 15px; color: #2dde98;"></p>
+            </form>
+
+
+          </div>
+
+
+
         </div>
       </div>
     </div>
@@ -151,9 +250,9 @@
       <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16"
         style="margin-top: -3px; margin-right: 3px;">
         <path
-          d="M13.601 2.326A7.85 7.85 0 0 0 7.994 0C3.627 0 .068 3.558.064 7.926c0 1.399.366 2.76 1.057 3.965L0 16l4.204-1.102a7.9 7.9 0 0 0 3.79.965h.004c4.368 0 7.926-3.558 7.93-7.93A7.9 7.9 0 0 0 13.6 2.326zM7.994 14.521a6.6 6.6 0 0 1-3.356-.92l-.24-.144-2.494.654.666-2.433-.156-.251a6.56 6.56 0 0 1-1.007-3.505c0-3.626 2.957-6.584 6.591-6.584a6.56 6.56 0 0 1 4.66 1.931 6.56 6.56 0 0 1 1.928 4.66c-.004 3.639-2.961 6.592-6.592 6.592m3.615-4.934c-.197-.099-1.17-.578-1.353-.646-.182-.065-.315-.099-.445.099-.133.197-.513.646-.627.775-.114.133-.232.148-.43.05-.197-.1-.836-.308-1.592-.985-.59-.525-.985-1.175-1.103-1.372-.114-.198-.011-.304.088-.403.087-.088.197-.232.296-.346.1-.114.133-.198.198-.33.065-.134.034-.248-.015-.347-.05-.099-.445-1.076-.612-1.47-.16-.389-.323-.335-.445-.34-.114-.007-.247-.007-.38-.007a.73.73 0 0 0-.529.247c-.182.198-.691.677-.691 1.654s.71 1.916.81 2.049c.098.133 1.394 2.132 3.383 2.992.47.205.84.326 1.129.418.475.152.904.129 1.246.08.38-.058 1.171-.48 1.338-.943.164-.464.164-.86.114-.943-.049-.084-.182-.133-.38-.232" />
+          d="M.05 3.555A2 2 0 0 1 2 2h12a2 2 0 0 1 1.95 1.555L8 8.414zM0 4.697v7.104l5.803-3.558zM6.761 8.83l-6.57 4.027A2 2 0 0 0 2 14h12a2 2 0 0 0 1.808-1.144l-6.57-4.027L8 9.586zm3.436-.586L16 11.801V4.697z" />
       </svg>
-      WhatsApp
+      shaifu.work@gmail.com
     </span> |
     <span class="text">
       <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-telephone-inbound"
@@ -161,7 +260,7 @@
         <path
           d="M15.854.146a.5.5 0 0 1 0 .708L11.707 5H14.5a.5.5 0 0 1 0 1h-4a.5.5 0 0 1-.5-.5v-4a.5.5 0 0 1 1 0v2.793L15.146.146a.5.5 0 0 1 .708 0m-12.2 1.182a.678.678 0 0 0-1.015-.063L1.605 2.3c-.483.484-.661 1.169-.45 1.77a17.6 17.6 0 0 0 4.168 6.608 17.6 17.6 0 0 0 6.608 4.168c.601.211 1.286.033 1.77-.45l1.034-1.034a.678.678 0 0 0-.063-1.015l-2.307-1.794a.68.68 0 0 0-.58-.122l-2.19.547a1.75 1.75 0 0 1-1.657-.459L5.482 8.062a1.75 1.75 0 0 1-.46-1.657l.548-2.19a.68.68 0 0 0-.122-.58zM1.884.511a1.745 1.745 0 0 1 2.612.163L6.29 2.98c.329.423.445.974.315 1.494l-.547 2.19a.68.68 0 0 0 .178.643l2.457 2.457a.68.68 0 0 0 .644.178l2.189-.547a1.75 1.75 0 0 1 1.494.315l2.306 1.794c.829.645.905 1.87.163 2.611l-1.034 1.034c-.74.74-1.846 1.065-2.877.702a18.6 18.6 0 0 1-7.01-4.42 18.6 18.6 0 0 1-4.42-7.009c-.362-1.03-.037-2.137.703-2.877z" />
       </svg>
-      Contact No:</span> 01883337384
+      Contact:</span> +8801883337384
   </div>
 
   <!-- Option 2: jQuery, Popper.js, and Bootstrap JS -->
@@ -289,6 +388,50 @@
     });
     /* // Particles */
   </script>
+  <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+
+  <script>
+    // Initialize EmailJS
+    emailjs.init("z9gk3smUovj0weKiH");
+
+    // Modal controls
+    function openModal() {
+      document.getElementById("contactModal").style.display = "block";
+      document.getElementById("modalOverlay").style.display = "block";
+    }
+
+    function closeModal() {
+      document.getElementById("contactModal").style.display = "none";
+      document.getElementById("modalOverlay").style.display = "none";
+    }
+
+    // Handle form submit
+    document.getElementById("contactForm").addEventListener("submit", function (e) {
+      e.preventDefault();
+
+      const status = document.getElementById("status");
+      status.innerText = "Sending...";
+
+      emailjs
+        .send("service_qviax9u", "template_ohl7kdo", {
+          from_email: this.email.value,
+          message: this.message.value,
+        })
+        .then(() => {
+          status.innerText = "Message sent successfully!";
+          this.reset();
+
+          // Optional: close modal after 2 seconds
+          setTimeout(closeModal, 2000);
+        })
+        .catch(() => {
+          status.innerText = "Failed to send message. Please try again.";
+        });
+    });
+  </script>
+
+
+
 
 </body>
 
